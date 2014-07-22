@@ -1,0 +1,25 @@
+{
+  "name": "awaren.es",
+  "version": "0.0.0",
+  "description": "awaren.es =========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/VolaryFoundation/awaren.es.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VolaryFoundation/awaren.es/issues"
+  },
+  "homepage": "https://github.com/VolaryFoundation/awaren.es",
+  "dependencies": {
+    "volary-static-builder": "*"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.6"
+  }
+}

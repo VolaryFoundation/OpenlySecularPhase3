@@ -1,0 +1,5 @@
+database:
+  url: 'mongodb://localhost:27017/townpulse-simple'
+parse:
+  appId: 'd10HxHqjlK3ERfm9lJ0QZqPRNdVIvFmQSYYUxBEM' 
+  jsKey: 'jvehUiyOIgoNfgSJXyCCQI7Sb3aYhMZcNdlyn4EK'

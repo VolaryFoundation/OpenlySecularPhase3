@@ -6,11 +6,12 @@ var builder = require('volary-static-builder')({ srcPath: srcPath })
 
 
 gulp.task('buildAndServe', function() {
+  console.log('building and such')
   builder.buildAndServe({}, {})
 })
 
-gulp.task('dev', function() {
-  gulp.watch([ srcPath ], [ 'buildAndServe' ]) 
+gulp.task('dev', [ 'buildAndServe' ], function() {
+  gulp.watch(srcPath + '/**/*', [ 'buildAndServe' ]) 
 })
 
 //==========================================================================//

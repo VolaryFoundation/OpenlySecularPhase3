@@ -1,4 +1,19 @@
-hi
-<link rel="stylesheet" href="main.css"></link>
-<script src="/foo.js"></script>
-<script src="/bar.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="main.css"></link>
+  </head>
+  <body>
+
+    <div id="app">
+      <div id="header"></div>
+      <div id="content"></div>
+      <div id="grid"></div>
+    </div>
+
+    <script src="/main.js"></script>
+    <script>
+      require('./boot')
+    </script>
+  </body>
+</html>

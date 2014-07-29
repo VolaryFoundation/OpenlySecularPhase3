@@ -27,7 +27,7 @@ var Content = React.createClass({
   },
 
   render: function() {
-    return d.div({}, this.state.page())
+    return d.div({ className: 'container' }, this.state.page())
   }
 })
 

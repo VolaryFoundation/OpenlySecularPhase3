@@ -6,11 +6,6 @@ var React = require('react')
 
 var io = socketio('http://localhost:3000')
 
-var grid = $('#grid').gridster({
-  widget_margins: [ 10, 10 ],
-  widget_base_dimensions: [ 140, 140 ]
-}).data('gridster')
-
 var Header = require('./components/header')
 var Content = require('./components/content')
 var Grid = require('./components/grid')

@@ -23,7 +23,7 @@ var Header = React.createClass({
   },
 
   render: function() {
-    return d.div({ onClick: this.toPage }, 
+    return d.div({ className: 'container', onClick: this.toPage }, 
       d.a({ rel: 'home' }, 'home'),  
       d.a({ rel: 'about' }, 'about'),  
       d.a({ rel: 'media' }, 'media'),

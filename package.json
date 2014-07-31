@@ -25,6 +25,7 @@
     "express": "^4.6.1",
     "feathers": "*",
     "feathers-hooks": "git://github.com/feathersjs/feathers-hooks.git",
+    "feathers-mongodb": "^0.3.0",
     "jquery": "^2.1.1",
     "lodash": "^2.4.1",
     "mongo-promise": "^0.0.71",

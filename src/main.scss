@@ -1,7 +1,25 @@
 @import "vendor/bootstrap/assets/stylesheets/bootstrap";
 
-#header {
-  height: 100px;
+header .container {
+  position: relative;
+  #logo {
+    height: 100px;
+    background: #005CB9;
+    position: absolute;
+    top: 30px;
+    left: 100px;
+  }
+  ul {
+    float: right;
+    li {
+      margin-left: 30px;
+      float: left;
+      list-style: none;
+      a {
+        line-height: 50px;
+      }
+    }
+  }
 }
 
 #content {

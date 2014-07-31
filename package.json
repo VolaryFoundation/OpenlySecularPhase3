@@ -28,6 +28,7 @@
     "feathers-mongodb": "^0.3.0",
     "jquery": "^2.1.1",
     "lodash": "^2.4.1",
+    "mithril": "^0.1.19",
     "mongo-promise": "^0.0.71",
     "parse": "^1.2.19",
     "passport": "^0.2.0",

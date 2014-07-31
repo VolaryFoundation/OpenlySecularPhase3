@@ -39,16 +39,35 @@ header.controller = function() {
   this.logo = m.prop('http://www.openlysecular.org/widgets/awareness/img/logo.png')
 }
 header.view = function(ctl) {
-  return m('header', m('.container', [
-    m('img#logo', { src: ctl.logo() }),
-    m('ul', [
-      m('li.active', m('a[href=/]', 'Home')),
-      m('li', m('a[href=/]', 'About')),
-      m('li', m('a[href=/]', 'Partners')),
-      m('li', m('a[href=/]', 'Media')),
-      m('li', m('a[href=/]', 'Contact'))
-    ])
-  ]))
+  return m('header.site-header', 
+      m('nav.navbar.navbar-default.navbar-fixed-top[role=navigation]', 
+        m('.container', [
+          m('.navbar-header', [
+            m('button[type=button][data-toggle=collapse][data-target=#awareness-navbar-collapse-1].navbar-toggle', [
+              m('span.sr-only', 'Toggle Navigation'),
+              m('span.icon-bar'),
+              m('span.icon-bar'),
+              m('span.icon-bar')
+            ]),
+            m('a.navbar-brand[href=/]', m('img#logo[src=' + ctl.logo() + ']'))
+          ]),
+          m('.collapse.navbar-collapse#awareness-navbar-collapse-1',
+            m('.nav.navbar-nav.navbar-right', [
+              m('li.active', m('a[href=/]', 'Home')),
+              m('li', m('a[href=/]', 'About')),
+              m('li', m('a[href=/]', 'Partners')),
+              m('li', m('a[href=/]', 'Media')),
+              m('li', m('a[href=/]', 'Contact'))
+            ]))
+        ])))
+}
+
+var featuredSection = {
+  controller: function() {
+
+  },
+  view: function() {
+  }
 }
 
 var aboutSection = {}

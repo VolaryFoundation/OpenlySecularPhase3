@@ -26,10 +26,12 @@
     "feathers": "*",
     "feathers-hooks": "git://github.com/feathersjs/feathers-hooks.git",
     "feathers-mongodb": "^0.3.0",
+    "immutable": "^2.0.3",
     "jquery": "^2.1.1",
     "lodash": "^2.4.1",
     "mithril": "^0.1.19",
     "mongo-promise": "^0.0.71",
+    "mori": "^0.2.9",
     "parse": "^1.2.19",
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",
@@ -38,7 +40,8 @@
     "socket.io-client": "^1.0.6",
     "tv4": "^1.1.0",
     "volary-static-builder": "*",
-    "yaml": "^0.2.3"
+    "yaml": "^0.2.3",
+    "zepto": "0.0.4"
   },
   "devDependencies": {
     "gulp": "^3.8.6"

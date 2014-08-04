@@ -7,7 +7,7 @@ var builder = require('volary-static-builder')({ srcPath: srcPath })
 
 gulp.task('buildAndServe', function() {
   console.log('building and such')
-  builder.buildAndServe({}, {})
+  builder.buildAndServe({ slug: 'development' }, {})
 })
 
 gulp.task('dev', [ 'buildAndServe' ], function() {

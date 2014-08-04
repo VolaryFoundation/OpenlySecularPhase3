@@ -9,22 +9,20 @@ window.Immutable = Immutable
 
 var app = require('./modules/app')
 
-var config = {
-  apiDomain: 'http://localhost:3000'
-}
-
 var state = {
   campaign: {
+    slug: '<%= slug %>',
     title: 'Some Campaign',
     logo: 'https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg',
-    partners: [
-      { name: 'RDF', logo: '/rdf.png' },
-      { name: 'SCA', logo: '/sca.png' }
-    ]
+    partners: []
   },
   view: {
     page: 'home'
   }
+}
+
+var config = {
+  apiDomain: 'http://localhost:3000/api/' + state.campaign.slug
 }
 
 var root = cursor(state)

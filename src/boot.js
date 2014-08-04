@@ -16,7 +16,7 @@ var config = {
 var state = {
   campaign: {
     title: 'Some Campaign',
-    logo: 'http://www.openlysecular.org/widgets/awareness/img/logo.png',
+    logo: 'https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg',
     partners: [
       { name: 'RDF', logo: '/rdf.png' },
       { name: 'SCA', logo: '/sca.png' }

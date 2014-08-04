@@ -3,7 +3,8 @@ var m = require('mithril')
 
 var pages = {
   home: require('./home'),
-  about: require('./about')
+  about: require('./about'),
+  partners: require('./partners')
 }
 
 var cache = {}

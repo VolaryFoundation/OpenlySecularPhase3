@@ -19,14 +19,13 @@ function render(pageName, cArgs, vArgs) {
 
 var content = {
 
-  controller: function(cursor) {
+  controller: function(cursor, pageCursor) {
     this.state = cursor
-    cursor.swap = this.state
+    this.pageCursor = pageCursor
   },
 
   view: function(ctl) {
-    var page = ctl.state().value().get('view').get('page')
-    return m('#content', render(page, [ ctl.state() ]))
+    return m('#content', render(ctl.pageCursor.value(), [ ctl.state ]))
   }
 }
 

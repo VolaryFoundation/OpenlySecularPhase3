@@ -1,10 +1,8 @@
 @import "vendor/bootstrap/assets/stylesheets/bootstrap";
 
-header .container {
-  #logo {
-    height: 100px;
-    background: #005CB9;
-  }
+#logo {
+  height: 100px;
+  background: #005CB9;
 }
 
 #content {
@@ -28,7 +26,6 @@ header .container {
 
 body {
   font-family: 'Roboto', sans-serif;
-  padding-top: 31px;
 }
 
 #content {
@@ -42,9 +39,6 @@ body {
 }
 
 .site-header {
-  text-align: center;
-  margin-bottom: 20px;
-  background: #f5f5f5;
 }
 
 .navbar-brand {

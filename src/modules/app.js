@@ -7,28 +7,17 @@ var content = require('./content')
 var app = {
   
   controller: function(cursor) {
-
-    var state = m.prop()
-    var headerCursor = m.prop()
-    var contentCursor = m.prop()
-
-    cursor.swap = function(newState) {
-      state(newState)
-      headerCursor(newState.refine(''))
-      contentCursor(newState.refine(''))
-    }
-
-    cursor.swap(cursor)
-
-    this.header = new header.controller(headerCursor)
-    this.content = new content.controller(contentCursor)
+    var pageCursor = cursor.refine('view.page')
+    this.header = new header.controller(cursor, pageCursor)
+    this.content = new content.controller(cursor, pageCursor)
   },
 
   view: function(ctl) {
-    return m('#app', [
-      header.view(ctl.header),
-      content.view(ctl.content)
-    ])
+    return m('#app',
+      m('header.site-header', [
+        header.view(ctl.header),
+        content.view(ctl.content)
+      ]))
   }
 }
 

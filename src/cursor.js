@@ -1,70 +1,70 @@
 
 var Immutable = require('immutable')
 var m = require('mithril')
+var _ = require('lodash')
 
 var cursor = function(source, path) {
-    
-  var root = rootCursor(source, path)
-  return root;
 
-  function rootCursor(rawSource, path) {
-    var root = subCursor(source, path)
-    root.subs = []
-    root.rebuild = function(source, path) {
-      source || (source = root.source)
-      path || (path = root.path)
-      var next = rootCursor(source, path) 
-      root.swap(next)
-      root.subs.forEach(function(sub) {
-        sub.rebuild(source)
-      })
-    }
-    return root
-  }
+  function sub(path) {
 
-  function subCursor(rawSource, path) {
-
-    var pathArray = path.split('.')
-    var source = Immutable.fromJS(rawSource)
-    
     return {
 
-      source: source,
       path: path,
+      pathArray: path.split('.'),
 
-      asProp: function() {
-        return m.prop(this)
+      refine: function(ext, placeholder) {
+        placeholder = (placeholder || {})
+        var newPath = ext ? (path ? path + '.' : '') + ext : path
+        var cursor = sub(newPath)
+        var current = history.peek()
+
+        var pathParts = newPath.split('.')
+        var starter = pathParts.slice(0, pathParts.length - 1)
+        var next = current.updateIn(starter, function(parent) { 
+          var key = _.last(pathParts)
+          var existing = parent.get(key)
+          return parent.set(key, Immutable.fromJS(existing || placeholder))
+        })
+        history.push(next)
+        return cursor
       },
 
-      refine: function(ext) {
-        var sub
-        if (!ext) sub = subCursor(source, path)
-        else sub = subCursor(source, path + '.' + ext)
-        root.subs.push(sub)
-        return sub
-      },
+      value: function(mutate) {
 
-      value: function(data) {
-        if (typeof data === 'undefined') return source.getIn(pathArray)
+        var current = history.peek()
+        var pathArrayClone = this.pathArray.slice(0)
 
-        var updated = root.source.updateIn(pathArray, Immutable.fromJS.bind(Immutable, data))
-        m.startComputation()
-        root.rebuild(updated)
-        m.endComputation()
-      },
+        if (typeof mutate === 'undefined') {
+          if (!this.path) return current
+          else return current.getIn(pathArrayClone)
+        }
 
-      rebuild: function(source, path) {
-        var next = subCursor(source || this.source, path || this.path)
-        next.swap = this.swap
-        this.swap(next)
-      },
-
-      // override with function to handle replacement cursor
-      swap: function() {
-        console.warn('Cursor#rebuild called without custom #swap')
+        var next = current.updateIn(pathArrayClone, mutate)
+        history.push(next)
       }
     }
   }
-}
 
+  var history = {
+    stack: [],
+    peek: function() { return history.stack[this.stack.length - 1] },
+    push: function(data) { 
+      var pushed = Immutable.fromJS(data)
+      history.stack.push(pushed) 
+      return pushed
+    },
+    pop: function() { 
+      var popped = history.stack.pop() 
+      return popped
+    }
+  }
+
+  path = '__root' + (path ? '.' + path : '')
+  var root = sub(path || '')
+  root.history = history
+  history.push({ __root: source })
+
+  return root
+}
+window.cursor = cursor
 module.exports = cursor

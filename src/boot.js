@@ -14,21 +14,20 @@ var config = {
 }
 
 var state = {
-  root: {
-    campaign: {
-      title: 'Some Campaign',
-      logo: 'http://www.openlysecular.org/widgets/awareness/img/logo.png',
-      partners: [
-        { name: 'RDF', logo: '/rdf.png' },
-        { name: 'SCA', logo: '/sca.png' }
-      ]
-    },
-    view: {
-      page: 'home'
-    }
+  campaign: {
+    title: 'Some Campaign',
+    logo: 'http://www.openlysecular.org/widgets/awareness/img/logo.png',
+    partners: [
+      { name: 'RDF', logo: '/rdf.png' },
+      { name: 'SCA', logo: '/sca.png' }
+    ]
+  },
+  view: {
+    page: 'home'
   }
 }
 
-var root = cursor(state, 'root')
+var root = cursor(state)
 app.controller = app.controller.bind(app.controller, root, config)
 m.module(document.body, app)
+window.root = root

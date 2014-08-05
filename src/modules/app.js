@@ -6,10 +6,20 @@ var content = require('./content')
 
 var app = {
 
-  controller: function(cursor) {
-    var pageCursor = cursor.refine('view.page')
-    this.header = new header.controller(cursor, pageCursor)
-    this.content = new content.controller(cursor, pageCursor)
+  controller: function(cursors, config) {
+
+    var campaign = cursors.get('root').refine('campaign')
+    var view = cursors.get('root').refine('view')
+    var page = view.refine('page')
+
+    var nextCursors = cursors.merge({
+      campaign: campaign,
+      view: view,
+      page: page
+    })
+
+    this.header = new header.controller(nextCursors, config)
+    this.content = new content.controller(nextCursors, config)
   },
 
   view: function(ctl) {

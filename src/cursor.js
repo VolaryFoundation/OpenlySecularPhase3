@@ -66,5 +66,10 @@ var cursor = function(source, path) {
 
   return root
 }
+
+cursor.hash = function(starter) {
+  return Immutable.Map(starter)
+}
+
 window.cursor = cursor
 module.exports = cursor

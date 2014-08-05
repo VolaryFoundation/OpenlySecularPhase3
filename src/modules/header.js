@@ -4,18 +4,19 @@ var _ = require('lodash')
 
 var header = {
 
-  controller: function(cursor, pageCursor) {
-    this.state = cursor
+  controller: function(cursors, config) {
+    this.cursors = cursors
+    this.config = config
     this.pageUpdater = function(name) {
       return function() {
-        pageCursor.value(function() { return name })
+        cursors.get('page').value(function() { return name })
       }
     }
   },
 
   view: function(ctl) {
 
-    var logo = ctl.state.value().get('campaign').get('logo')
+    var logo = ctl.cursors.get('campaign').value().get('logo')
 
     return m('nav.navbar[role=navigation]',
         m('.container', [

@@ -26,6 +26,10 @@ var config = {
 }
 
 var root = cursor(state)
-app.controller = app.controller.bind(app.controller, root, config)
+var cursors = cursor.hash({ root: root })
+
+app.controller = app.controller.bind(app.controller, cursors, config)
+
+
 m.module(document.body, app)
 window.root = root

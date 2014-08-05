@@ -4,7 +4,8 @@ var m = require('mithril')
 var pages = {
   home: require('./home'),
   about: require('./about'),
-  partners: require('./partners')
+  partners: require('./partners'),
+  media: require('./media')
 }
 
 var cache = {}

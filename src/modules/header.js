@@ -17,7 +17,7 @@ var header = {
 
     var logo = ctl.state.value().get('campaign').get('logo')
 
-    return m('nav.navbar.navbar-default.navbar-fixed-top[role=navigation]', 
+    return m('nav.navbar[role=navigation]',
         m('.container', [
           m('.navbar-header', [
             m('button[type=button][data-toggle=collapse][data-target=#awareness-navbar-collapse-1].navbar-toggle', [
@@ -30,7 +30,7 @@ var header = {
           ]),
           m('.collapse.navbar-collapse#awareness-navbar-collapse-1',
             m('.nav.navbar-nav.navbar-right', [
-              m('li.active', m('a[href=/#/]', { onclick: ctl.pageUpdater('home') }, 'Home')),
+              m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('home') }, 'Home')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('about') }, 'About')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('partners') }, 'Partners')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('media') }, 'Media')),

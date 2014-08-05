@@ -21,7 +21,7 @@ function contentBox(ctl, data) {
 var about = {
 
   controller: function(cursors, config) {
-    this.campaign = cursors.root.refine('campaign')
+    this.campaign = cursors.get('campaign')
     this.editing = m.prop(true)
     this.box1 = m.prop({ title: m.prop('Our Story'), content: m.prop('...is pretty boring') })
     this.box2 = m.prop({ title: m.prop('Why now?'), content: m.prop('Because we said so!') })

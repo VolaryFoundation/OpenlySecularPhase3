@@ -30,12 +30,9 @@ server
   .configure(hooks())
   .configure(feathers.socketio())
   .configure(feathers.rest())
-  .use('/users', userService)
-  .use('/feed', feedService)
-  .use('/campaign', campaignService)
+  .use('/api/:campaign/users', userService)
+  .use('/api/:campaign/feed', feedService)
+  .use('/api/:campaign/campaign', campaignService)
   .configure(feathers.errors())
 
-var container = express()
-container.use('/api/:campaign', server)
-
-module.exports = container
+module.exports = server

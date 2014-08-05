@@ -1,5 +1,6 @@
 
 var m = require('mithril')
+var _ = require('lodash')
 
 var header = require('./header')
 var content = require('./content')
@@ -16,6 +17,15 @@ var app = {
       campaign: campaign,
       view: view,
       page: page
+    })
+
+    m.request({
+      method: 'GET',
+      url: config.apiDomain + '/campaign'
+    }).then(function(data) {
+      campaign.value(function(existing) {
+        return existing.merge(data)
+      })
     })
 
     this.header = new header.controller(nextCursors, config)

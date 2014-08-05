@@ -7,10 +7,12 @@ var cursor = function(source, path) {
 
   function sub(path) {
 
+    var pathArray = path.split('.')
+
     return {
 
       path: path,
-      pathArray: path.split('.'),
+      pathArray: pathArray,
 
       refine: function(ext, placeholder) {
         placeholder = (placeholder || {})
@@ -32,14 +34,17 @@ var cursor = function(source, path) {
       value: function(mutate) {
 
         var current = history.peek()
-        var pathArrayClone = this.pathArray.slice(0)
+        var pathArrayClone = pathArray.slice(0)
 
         if (typeof mutate === 'undefined') {
-          if (!this.path) return current
+          if (!path) return current
           else return current.getIn(pathArrayClone)
         }
 
-        var next = current.updateIn(pathArrayClone, mutate)
+        var next = current.updateIn(pathArrayClone, function(existing) {
+          if (_.isFunction(mutate)) return Immutable.fromJS(mutate(existing))
+          else return Immutable.fromJS(mutate)
+        })
         history.push(next)
       }
     }

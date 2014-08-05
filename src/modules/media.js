@@ -16,7 +16,7 @@ var media = {
               m('p.tagline', 'Here.')
             ]),
             m('.col-md-4', [
-              m('.panel.panel-default', [
+              m('.panel.panel-custom', [
                 m('.panel-heading',
                   m('.panel-title', [
                   m('i.fa.fa-microphone'),

@@ -37,7 +37,7 @@ var about = {
               m('p.tagline', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.')
             ]),
             m('.col-md-4', [
-              m('.panel.panel-default', [
+              m('.panel.panel-custom', [
                 m('.panel-heading',
                   m('.panel-title', [
                     m('i.fa.fa-heart'),

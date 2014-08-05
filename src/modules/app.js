@@ -4,6 +4,7 @@ var _ = require('lodash')
 
 var header = require('./header')
 var content = require('./content')
+var stream = require('./stream')
 
 var app = {
 
@@ -30,12 +31,14 @@ var app = {
 
     this.header = new header.controller(nextCursors, config)
     this.content = new content.controller(nextCursors, config)
+    this.stream = new stream.controller(nextCursors, config)
   },
 
   view: function(ctl) {
     return m('#app', [
       header.view(ctl.header),
-      content.view(ctl.content)
+      content.view(ctl.content),
+      stream.view(ctl.stream)
     ])
   }
 }

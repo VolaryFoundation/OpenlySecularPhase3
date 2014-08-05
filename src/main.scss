@@ -1,3 +1,5 @@
+$brand-primary: #005CB9;
+
 @import "vendor/bootstrap/assets/stylesheets/bootstrap";
 
 //temp fix
@@ -5,6 +7,10 @@
 	.btn {
 		height: 34px;
 	}
+}
+
+body {
+  background: #f5f5f5;
 }
 
 #logo {
@@ -36,7 +42,7 @@ body {
 }
 
 #content {
-
+  min-height: 530px;
 }
 
 #home {
@@ -46,10 +52,11 @@ body {
 }
 
 .site-header {
-  padding: 60px 0 50px 0;
+  margin-top: -50px;
+  padding: 100px 0 50px 0;
   text-align: center;
-  background: #f5f5f5;
-  border-bottom: 1px solid #ddd;
+  background: lighten( $brand-primary, 40% ) url(https://dl.dropboxusercontent.com/u/1549509/awareness/app/images/congruent_pentagon.png);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 
   .tagline {
     font-size: 24px;
@@ -60,10 +67,24 @@ body {
 }
 
 .navbar {
-  background: rgba(255,255,255,0.9);
   margin-bottom: 0;
   border: none;
-  box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+  -webkit-transition: all 0.2s ease-out;
+     -moz-transition: all 0.2s ease-out;
+       -o-transition: all 0.2s ease-out;
+          transition: all 0.2s ease-out;
+	&:hover {
+		background: rgba(255,255,255,0.8);
+		box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+	}
+
+  li > a {
+    font-weight: 700;
+
+    &:hover {
+      background: rgba(255,255,255,0.4);
+    }
+  }
 }
 
 .navbar-brand {
@@ -72,12 +93,24 @@ body {
   height: 100px;
 }
 
+.navbar-toggle > .icon-bar {
+		background-color: $brand-primary;
+	}
+
 .action-bar {
   padding: 15px 0;
 }
 
-.panel-heading {
-  text-align: center;
+.panel-custom {
+  border: 1px solid #ddd;
+
+  .panel-heading {
+    text-align: center;
+
+    i {
+      color: $brand-primary;
+    }
+  }
 }
 
 .stream {
@@ -86,29 +119,41 @@ body {
 }
 
 ul.stream-nav {
+  position: relative;
   list-style: none;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
+	background: #f5f5f5;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 
-ul.stream-nav > li {
-  display: inline-block;
-  margin-bottom: -1px;
-  padding: 10px 15px;
-}
 
-ul.stream-nav > li:hover {
-  border-bottom: 2px solid #000;
-}
+	li {
+		display: inline-block;
 
-ul.stream-nav > li.brand-hashtag {
-  font-size: 22px;
-  font-weight: 700;
-  margin-right: 20px;
-}
+		a {
+			display: block;
+			height: 60px;
+			line-height: 60px;
+			text-decoration: none;
+			font-weight: 700;
+			margin-bottom: -1px;
+			padding: 0 15px;
 
-ul.stream-nav > li.brand-hashtag:hover {
-  border: none;
+			&:hover {
+
+			}
+		}
+
+		&.brand-hashtag {
+			font-size: 24px;
+			font-weight: 700;
+			color: #333;
+			margin-right: 20px;
+
+			&:hover {
+				border: none;
+			}
+		}
+	}
 }
 
 .panel-title > i {

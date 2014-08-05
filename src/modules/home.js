@@ -18,7 +18,7 @@ var home = {
         m('.container',
           m('.row', [
             m('.col-md-4',
-              m('.panel.panel-default', [
+              m('.panel.panel-custom', [
                 m('.panel-heading',
                   m('.panel-title', [
                     m('i.fa.fa-paper-plane'),
@@ -55,7 +55,7 @@ var home = {
               ])
             ),
             m('.col-md-4',
-              m('.panel.panel-default', [
+              m('.panel.panel-custom', [
                 m('.panel-heading',
                   m('.panel-title', [
                     m('i.fa.fa-heart'),
@@ -83,7 +83,7 @@ var home = {
               ])
             ),
             m('.col-md-4',
-              m('.panel.panel-default', [
+              m('.panel.panel-custom', [
                 m('.panel-heading',
                   m('.panel-title', [
                     m('i.fa.fa-group'),

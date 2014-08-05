@@ -34,7 +34,7 @@ var header = {
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('about') }, 'About')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('partners') }, 'Partners')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('media') }, 'Media')),
-              m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('contact') }, 'Contact'))
+              m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('contact') }, m('i.fa.fa-envelope')))
             ]))
         ]))
   }

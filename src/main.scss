@@ -1,5 +1,12 @@
 @import "vendor/bootstrap/assets/stylesheets/bootstrap";
 
+//temp fix
+.input-group-btn {
+	.btn {
+		height: 34px;
+	}
+}
+
 #logo {
   height: 100px;
   background: #005CB9;
@@ -32,8 +39,10 @@ body {
 
 }
 
-#featured {
-
+#home {
+  .panel-body {
+    min-height: 200px;
+  }
 }
 
 .site-header {

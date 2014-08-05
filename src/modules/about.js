@@ -39,11 +39,29 @@ var about = {
             m('.col-md-4', [
               m('.panel.panel-default', [
                 m('.panel-heading',
-                  m('.panel-title', 'Support Our Work')
+                  m('.panel-title', [
+                    m('i.fa.fa-heart'),
+                    'Make a Donation'
+                  ])
                 ),
-                m('.panel-body',
-                  m('p', 'Loren Getsum')
-                )
+                m('.panel-body', [
+                  m('p', 'Loren Getsum'),
+                  m('.input-group input-group-lg', [
+                    m('span.input-group-addon',
+                      m('i.fa.fa-dollar')
+                    ),
+                    m('input.form-control[type=text][placeholder=40.00]')
+                  ]),
+                  m('br'),
+                  m('.btn-toolbar.text-center', [
+                    m('a.btn.btn-lg.btn-primary',
+                      m('i.fa.fa-lg.fa-credit-card')
+                    ),
+                    m('a.btn.btn-lg.btn-primary',
+                      m('small', 'PayPal')
+                    )
+                  ])
+                ])
               ])
             ])
           ])

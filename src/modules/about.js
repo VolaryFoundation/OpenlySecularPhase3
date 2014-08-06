@@ -41,7 +41,7 @@ var about = {
                 m('.panel-heading',
                   m('.panel-title', [
                     m('i.fa.fa-heart'),
-                    'Make a Donation'
+                    'Support Our Work'
                   ])
                 ),
                 m('.panel-body', [

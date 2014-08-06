@@ -1,13 +1,42 @@
 
 var gulp = require('gulp')
+var mongo = require('mongo-promise')
+var config = require('config')
 
 var srcPath = __dirname + '/src'
 var builder = require('volary-static-builder')({ srcPath: srcPath })
 
+gulp.task('buildAndServe', function(done) {
 
-gulp.task('buildAndServe', function() {
-  console.log('building and such')
-  builder.buildAndServe({ campaignId: '53e16b944257fd9482237e4d' }, {})
+  mongo.url = config.database.url
+  mongo.shortcut('campaigns')
+  mongo.campaigns.find({ slug: 'development' }, {}).then(function(found) {
+    if (found) {
+      return found
+    } else {
+      return mongo.campaigns.insert({
+        "about1" : "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
+        "about1Editing" : false,
+        "about1Title" : "Our Mission blah",
+        "logo" : "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
+        "partners" : [
+          {
+            "name" : "rdf",
+            "logo" : "someogo.png"
+          }
+        ],
+        "slug" : "development",
+        "title" : "Some freakin campaign"
+      })
+    }
+  }).then(function(campaigns) {
+    go(campaigns[0]._id)
+  }).catch(function() { console.log(arguments) })
+
+  function go(id) {
+    builder.buildAndServe({ campaignId: id }, {})
+    done()
+  }
 })
 
 gulp.task('dev', [ 'buildAndServe' ], function() {

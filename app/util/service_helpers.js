@@ -20,6 +20,7 @@ var api = {
       if (hook.method === 'patch') {
         results = tv4.validateMultiple(hook.data, schema)
         error = results.errors[0]
+        console.log(results.errors)
         valid = !error || _.all(results.errors, { code: tv4.errorCodes.OBJECT_REQUIRED })
       } else {
         results = tv4.validateResult(hook.data, schema)
@@ -28,7 +29,7 @@ var api = {
       }
 
       if (valid) next()
-      else next(new errors.BadRequest(error))
+      else next(new errors.BadRequest(errors || error))
     }
   },
   authenticate: function(hook, next) {

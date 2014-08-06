@@ -15,7 +15,7 @@ var cursor = function(source, path) {
       pathArray: pathArray,
 
       refine: function(ext, placeholder) {
-        placeholder = (placeholder || {})
+        placeholder = typeof placeholder == 'undefined' ? {} : placeholder
         var newPath = ext ? (path ? path + '.' : '') + ext : path
         var cursor = sub(newPath)
         var current = history.peek()

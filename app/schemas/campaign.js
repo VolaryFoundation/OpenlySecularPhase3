@@ -2,12 +2,12 @@
 module.exports = {
   type: 'object',
   properties: {
-    name: {
+    title: {
       type: 'string'
     },
-    description: {
+    about1Title: {
       type: 'string'
     }
   },
-  required: [ 'name', 'description' ]
+  required: [ 'title' ]
 }

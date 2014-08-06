@@ -30,9 +30,9 @@ server
   .configure(hooks())
   .configure(feathers.socketio())
   .configure(feathers.rest())
-  .use('/api/:campaign/users', userService)
-  .use('/api/:campaign/feed', feedService)
-  .use('/api/:campaign/campaign', campaignService)
+  .use('/api/:campaignId/users', userService)
+  .use('/api/:campaignId/feed', feedService)
+  .use('/api/campaigns', campaignService)
   .configure(feathers.errors())
 
 module.exports = server

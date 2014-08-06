@@ -31,6 +31,7 @@ var header = {
           ]),
           m('.collapse.navbar-collapse#awareness-navbar-collapse-1',
             m('.nav.navbar-nav.navbar-right', [
+              m('li', ctl.cursors.get('view').refine('message', '').value()),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('home') }, 'Home')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('about') }, 'About')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('partners') }, 'Partners')),

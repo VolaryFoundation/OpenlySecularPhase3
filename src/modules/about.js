@@ -1,19 +1,19 @@
 
 var m = require('mithril')
 
-function contentBox(ctl, data) {
-  if (ctl.editing()) {
+function contentBox(opts) {
+  if (opts.editing()) {
     return [
-      [
-        m('input', { type: 'text', onchange: m.withAttr('value', data.title), value: data.title() }),
-        m('button', { onclick: ctl.editing.bind(ctl, false) }, 'done')
-      ],
-      m('textarea', { onchange: m.withAttr('value', data.content) }, data.content())
+      m('div', [
+        m('input', { type: 'text', onchange: m.withAttr('value', opts.title.value), value: opts.title.value() }),
+        m('button', { onclick: function() { opts.editing(false); opts.done() } }, 'done')
+      ]),
+      m('textarea', { onchange: m.withAttr('value', opts.content.value) }, opts.content.value())
     ]
   } else {
     return [
-      m('h3', { onclick: ctl.editing.bind(ctl, true) }, data.title()),
-      m('p', data.content())
+      m(opts.title.tag, { onclick: opts.editing.bind(opts.editing, true) }, opts.title.value()),
+      m(opts.content.tag, {}, opts.content.value())
     ]
   }
 }
@@ -22,9 +22,30 @@ var about = {
 
   controller: function(cursors, config) {
     this.campaign = cursors.get('campaign')
-    this.editing = m.prop(true)
-    this.box1 = m.prop({ title: m.prop('Our Story'), content: m.prop('...is pretty boring') })
-    this.box2 = m.prop({ title: m.prop('Why now?'), content: m.prop('Because we said so!') })
+    this.view = cursors.get('view')
+    this.about1 = m.prop(this.campaign.value().get('about1'))
+    this.about1Title = m.prop(this.campaign.value().get('about1Title'))
+    this.about1Editing = m.prop(this.campaign.value().get('about1Editing'))
+
+    var self = this
+    this.saveAbout = function() {
+      m.request({
+        method: 'PATCH',
+        data: { 
+          about1: self.about1(), 
+          about1Title: self.about1Title(),
+          about1Editing: self.about1Editing()
+        },
+        url: config.apiRoot + '/campaigns/' + config.campaignId
+      }).then(function(updates) {
+        self.campaign.value(function(v) { return v.merge(updates) })
+        self.view.value(function(v) { return v.set('message', 'about updated') })
+        setTimeout(function() {
+          self.view.value(function(v) { return v.set('message', '') })
+          m.redraw()
+        }, 1000)
+      })
+    }
   },
 
   view: function(ctl) {
@@ -32,10 +53,18 @@ var about = {
       m('header.site-header',
         m('.container',
           m('.row', [
-            m('.col-md-8', [
-              m('h1','Our Mission'),
-              m('p.tagline', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.')
-            ]),
+            m('.col-md-8', contentBox({
+              done: ctl.saveAbout,
+              editing: ctl.about1Editing,
+              title: {
+                tag: 'h1',
+                value: ctl.about1Title
+              },
+              content: {
+                tag: 'p.tagline',
+                value: ctl.about1 
+              }
+            })),
             m('.col-md-4', [
               m('.panel.panel-custom', [
                 m('.panel-heading',
@@ -66,9 +95,7 @@ var about = {
             ])
           ])
         )
-      ),
-      m('.box.box1', contentBox(ctl, ctl.box1())),
-      m('.box.box2', contentBox(ctl, ctl.box2()))
+      )
     ])
   }
 }

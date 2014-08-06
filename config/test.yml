@@ -1,2 +1,2 @@
 database:
-  url: 'mongodb://localhost:27017/townpulse-simple-test'
+  url: 'mongodb://localhost:27017/awaren-es-test'

@@ -22,7 +22,7 @@ var app = {
 
     m.request({
       method: 'GET',
-      url: config.apiDomain + '/campaign'
+      url: config.apiRoot + '/campaigns/' + config.campaignId
     }).then(function(data) {
       campaign.value(function(existing) {
         return existing.merge(data)

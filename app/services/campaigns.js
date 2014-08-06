@@ -13,16 +13,6 @@ var campaignService = mongoService({
   collection: 'campaigns'
 })
 
-campaignService.find = function(params, cb) {
-  cb(null, { 
-    title: 'Some freakin campaign',
-    logo: 'https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg',
-    partners: [
-      { name: 'rdf', logo: 'someogo.png' }
-    ]
-  })
-}
-
 campaignService.before = {
   create: [ validate ],
   update: [ validate ],

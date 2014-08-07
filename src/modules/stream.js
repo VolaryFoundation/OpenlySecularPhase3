@@ -14,19 +14,19 @@ var stream = {
         m('li.brand-hashtag', '#hashtag'),
         m('li',
           m('a[href=/#/]', [
-            m('i.fa.fa-fw.fa-lg.fa-cube'),
+            m('i.fa.fa-fw.fa-lg.fa-filter'),
             ' Filter'
           ])
         ),
         m('li',
           m('a[href=/#/]', [
-            m('i.fa.fa-fw.fa-lg.fa-cube'),
+            m('i.fa.fa-fw.fa-lg.fa-filter'),
             ' Filter'
           ])
         ),
         m('li',
           m('a[href=/#/]', [
-            m('i.fa.fa-fw.fa-lg.fa-cube'),
+            m('i.fa.fa-fw.fa-lg.fa-filter'),
             ' Filter'
           ])
         )

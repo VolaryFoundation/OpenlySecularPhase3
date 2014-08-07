@@ -11,7 +11,7 @@ gulp.task('buildAndServe', function(done) {
   mongo.url = config.database.url
   mongo.shortcut('campaigns')
   mongo.campaigns.find({ slug: 'development' }, {}).then(function(found) {
-    if (found) {
+    if (found[0]) {
       return found
     } else {
       return mongo.campaigns.insert({

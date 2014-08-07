@@ -1,23 +1,67 @@
 
 var mongoService = require('feathers-mongodb')
 var helpers = require('../util/service_helpers')
-var schema = require('../schemas/campaign')
 var tv4 = require('tv4')
 var _ = require('lodash')
 var config = require('config')
+var Parse = require('parse').Parse
 
-var validate = helpers.validator(schema)
+var userService = {
 
-var campaignService = mongoService({
-  connectionString: helpers.connectionString,
-  collection: 'campaigns'
-})
+  find: function(params, cb) {
+    var query = new Parse.Query(Parse.User)
+    query.get(params.campaign.userId).then(function(user) {
+      if (user) {
+        cb(null, user)
+      } else {
+        cb(helpers.error('NotFound'))
+      }
+    }, function(e) {
+      cb(helpers.error('GeneralError'))
+    })
+  },
 
-campaignService.before = {
-  create: [ validate ],
-  update: [ validate ],
-  patch: [ validate ]
+  create: function(data, params, cb) {
+
+    var user = new Parse.User
+
+    user.set("username", data.email)
+    user.set("password", data.password)
+    user.set("email", data.email)
+    user.set("campaignId", data.campaignId)
+
+    user.save().then(function(user) {
+      cb(null, user)
+    }, function(e) {
+      cb(helpers.error('BadRequest'))
+    })
+  },
+
+  patch: function(id, data, params, cb) {
+
+    if (params.query.resetPassword) {
+      Parse.User.requestPasswordReset(params.user.get('email')).then(function() {
+        cb(null, {})
+      }, function() {
+        cb(helpers.error('BadRequest'))
+      })
+    } else {
+
+      var user = params.user
+
+      user.set('email', data.email)
+      user.set('username', data.email)
+
+      user.save().then(function(updated) {
+        cb(null, updated)
+      }, function(e) {
+        cb(helpers.error('BadRequest'))
+      })
+    }
+  }
 }
 
-module.exports = campaignService
+userService.before = {
+}
 
+module.exports = userService

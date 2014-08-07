@@ -20,7 +20,6 @@ var api = {
       if (hook.method === 'patch') {
         results = tv4.validateMultiple(hook.data, schema)
         error = results.errors[0]
-        console.log(results.errors)
         valid = !error || _.all(results.errors, { code: tv4.errorCodes.OBJECT_REQUIRED })
       } else {
         results = tv4.validateResult(hook.data, schema)
@@ -32,12 +31,17 @@ var api = {
       else next(new errors.BadRequest(errors || error))
     }
   },
+
+  // require a user and that the user is associated with campaign
   authenticate: function(hook, next) {
-    if (hook.params.currentUser) {
-      next()
-    } else {
-      next(new error('NotAuthenticated'))
+
+    if (hook.params.user.authenticated) {
+      if (hook.params.user.get('campaignId') == hook.params.campaignId) {
+        return next()
+      }
     }
+
+    next(error('NotAuthenticated'))
   }
 }
 

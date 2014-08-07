@@ -24,6 +24,12 @@ var cursors = cursor.hash({ root: root })
 
 app.controller = app.controller.bind(app.controller, cursors, config)
 
+// always withCredentials !!!
+var oldRequest = m.request
+m.request = function(opts) {
+  opts.withCredentials = true
+  return oldRequest(opts)
+}
 
 m.module(document.body, app)
 window.root = root

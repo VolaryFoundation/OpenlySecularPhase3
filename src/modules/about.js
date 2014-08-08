@@ -4,11 +4,30 @@ var m = require('mithril')
 function contentBox(opts) {
   if (opts.editing()) {
     return [
-      m('div', [
-        m('input', { type: 'text', onchange: m.withAttr('value', opts.title.value), value: opts.title.value() }),
-        m('button', { onclick: function() { opts.editing(false); opts.done() } }, 'done')
-      ]),
-      m('textarea', { onchange: m.withAttr('value', opts.content.value) }, opts.content.value())
+      m('.panel.panel-warning', [
+        m('.panel-heading',
+          m('input.form-control', { type: 'text', onchange: m.withAttr('value', opts.title.value), value: opts.title.value() })
+        ),
+        m('.panel-body',
+          m('textarea.form-control[rows=4]', { onchange: m.withAttr('value', opts.content.value) }, opts.content.value())
+        ),
+        m('.panel-footer',
+          m('.row', [
+            m('.col-xs-6.text-left',
+              m('button.btn.btn-sm.btn-danger', [
+                m('i.fa.fa-fw.fa-times'),
+                m('span', ' Cancel')
+              ])
+            ),
+            m('.col-xs-6.text-right',
+              m('button.btn.btn-sm.btn-success', { onclick: function() { opts.editing(false); opts.done() } }, [
+                m('i.fa.fa-fw.fa-check'),
+                m('span', ' Save')
+              ])
+            )
+          ])
+        )
+      ])
     ]
   } else {
     return [
@@ -31,8 +50,8 @@ var about = {
     this.saveAbout = function() {
       m.request({
         method: 'PATCH',
-        data: { 
-          about1: self.about1(), 
+        data: {
+          about1: self.about1(),
           about1Title: self.about1Title(),
           about1Editing: self.about1Editing()
         },
@@ -53,48 +72,66 @@ var about = {
       m('header.site-header',
         m('.container',
           m('.row', [
-            m('.col-md-8', contentBox({
-              done: ctl.saveAbout,
-              editing: ctl.about1Editing,
-              title: {
-                tag: 'h1',
-                value: ctl.about1Title
-              },
-              content: {
-                tag: 'p.tagline',
-                value: ctl.about1 
-              }
-            })),
-            m('.col-md-4', [
-              m('.panel.panel-custom', [
-                m('.panel-heading',
-                  m('.panel-title', [
-                    m('i.fa.fa-heart'),
-                    'Support Our Work'
+            m('.col-md-10.col-md-offset-1',
+              m('.mission', [
+                contentBox({
+                  done: ctl.saveAbout,
+                  editing: ctl.about1Editing,
+                  title: {
+                    tag: 'h1',
+                    value: ctl.about1Title
+                  },
+                  content: {
+                    tag: 'p.tagline',
+                    value: ctl.about1
+                  }
+                }),
+                m('span.edit',
+                  m('a.btn.btn-sm.btn-warning', [
+                    m('i.fa.fa-fw.fa-pencil'),
+                    m('span', ' Edit')
                   ])
-                ),
-                m('.panel-body', [
-                  m('p', 'Loren Getsum'),
-                  m('.input-group input-group-lg', [
-                    m('span.input-group-addon',
-                      m('i.fa.fa-dollar')
-                    ),
-                    m('input.form-control[type=text][placeholder=40.00]')
-                  ]),
-                  m('br'),
-                  m('.btn-toolbar.text-center', [
-                    m('a.btn.btn-lg.btn-primary',
-                      m('i.fa.fa-lg.fa-credit-card')
-                    ),
-                    m('a.btn.btn-lg.btn-primary',
-                      m('small', 'PayPal')
-                    )
-                  ])
-                ])
+                )
               ])
-            ])
+            )
           ])
         )
+      ),
+      m('.container',
+        m('.row', [
+          m('.col-md-6',
+            m('.panel.panel-custom', [
+              m('.panel-heading', [
+                m('.panel-title', 'Who We Are'),
+                m('span.edit',
+                  m('a.btn.btn-sm.btn-hover.btn-warning', [
+                    m('i.fa.fa-fw.fa-pencil'),
+                    m('span', ' Edit')
+                  ])
+                )
+              ]),
+              m('.panel-body',
+                m('p', 'Loren Getsum')
+              )
+            ])
+          ),
+          m('.col-md-6',
+            m('.panel.panel-custom', [
+              m('.panel-heading', [
+                m('.panel-title', 'What We Do'),
+                m('span.edit',
+                  m('a.btn.btn-sm.btn-warning', [
+                    m('i.fa.fa-fw.fa-pencil'),
+                    m('span', ' Edit')
+                  ])
+                )
+              ]),
+              m('.panel-body',
+                m('p', 'Loren Getsum')
+              )
+            ])
+          )
+        ])
       )
     ])
   }

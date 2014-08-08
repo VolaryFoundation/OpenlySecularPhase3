@@ -13,56 +13,10 @@ var partners = {
         m('.container',
           m('.row', [
             m('.col-md-9', [
-              m('#FeaturedPartners.carousel.slide',
-                m('.carousel-inner', [
-                  m('.item.active',
-                    m('.row', [
-                      m('.col-xs-6.col-md-3',
-                        m('.panel.panel-custom', [
-                          m('.panel-body', 'Logo'),
-                          m('.panel-footer', 'Partner Title')
-                        ])
-                      ),
-                      m('.col-xs-6.col-md-3',
-                        m('.panel.panel-custom', [
-                          m('.panel-body', 'Logo'),
-                          m('.panel-footer', 'Partner Title')
-                        ])
-                      ),
-                      m('.col-xs-6.col-md-3',
-                        m('.panel.panel-custom', [
-                          m('.panel-body', 'Logo'),
-                          m('.panel-footer', 'Partner Title')
-                        ])
-                      ),
-                      m('.col-xs-6.col-md-3',
-                        m('.panel.panel-custom', [
-                          m('.panel-body', 'Logo'),
-                          m('.panel-footer', 'Partner Title')
-                        ])
-                      )
-                    ])
-                  )
-                ])
-              )
+
             ]),
             m('.col-md-3', [
-                m('.panel.panel-custom', [
-                  m('.panel-heading',
-                    m('.panel-title', 'Featured Partners')
-                  ),
-                  m('.panel-body',
-                    m('p', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan quis enim non porta. Ut nec massa sed tellus fringilla consectetur non.')
-                  ),
-                  m('.panel-footer.text-right', [
-                    m('a.btn.btn-default[data-slide=prev][href=#FeaturedPartners]',
-                      m('i.fa.fa-lg.fa-angle-left')
-                    ),
-                    m('a.btn.btn-default[data-slide=next][href=#FeaturedPartners]',
-                      m('i.fa.fa-lg.fa-angle-right')
-                    )
-                  ])
-                ])
+
             ])
           ])
         )
@@ -71,17 +25,29 @@ var partners = {
         m('.row', [
           m('.col-md-3', [
               m('.panel.panel-custom', [
-                m('.panel-heading',
-                  m('.panel-title', 'Partners')
-                ),
+                m('.panel-heading', [
+                  m('.panel-title', 'Partners'),
+                  m('span.edit',
+                    m('a.btn.btn-sm.btn-warning', [
+                      m('i.fa.fa-fw.fa-pencil'),
+                      m('span', ' Edit')
+                    ])
+                  )
+                ]),
                 m('.panel-body',
                   m('p', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan quis enim non porta. Ut nec massa sed tellus fringilla consectetur non.')
                 ),
                 m('.panel-footer.text-right', [
-                  m('a.btn.btn-default[data-slide=prev][href=#Partners]',
+                  m('span.create',
+                    m('a.btn.btn-sm.btn-success', [
+                      m('i.fa.fa-fw.fa-plus'),
+                      m('span', ' Add')
+                    ])
+                  ),
+                  m('a.btn.btn-primary[data-slide=prev][href=#Partners]',
                     m('i.fa.fa-lg.fa-angle-left')
                   ),
-                  m('a.btn.btn-default[data-slide=next][href=#Partners]',
+                  m('a.btn.btn-primary[data-slide=next][href=#Partners]',
                     m('i.fa.fa-lg.fa-angle-right')
                   )
                 ])
@@ -95,7 +61,15 @@ var partners = {
                     m('.col-xs-6.col-md-3',
                       m('.panel.panel-custom', [
                         m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
+                        m('.panel-footer', [
+                         'Partner Title',
+                         m('span.edit',
+                           m('a.btn.btn-sm.btn-warning', [
+                             m('i.fa.fa-fw.fa-pencil'),
+                             m('span', ' Edit')
+                           ])
+                         )
+                         ])
                       ])
                     ),
                     m('.col-xs-6.col-md-3',

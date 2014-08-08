@@ -1,4 +1,5 @@
 $brand-primary: #005CB9;
+$brand-secondary: lighten( $brand-primary, 50% );
 
 @import "vendor/bootstrap/assets/stylesheets/bootstrap";
 
@@ -60,7 +61,7 @@ body {
   border-bottom: 1px solid rgba(0,0,0,0.1);
 
   .tagline {
-    font-size: 24px;
+    font-size: 22px;
 	  font-weight: 400;
     line-height: 1.1;
     color: #777;
@@ -145,9 +146,9 @@ body {
     text-align: center;
     .panel-title {
       color: #555;
-    }
-    i {
-      color: $brand-primary;
+			i {
+				color: $brand-primary;
+			}
     }
   }
 }
@@ -205,10 +206,53 @@ ul.stream-nav {
 	}
 }
 
-.admin {
+.create {
+	position: absolute;
+	left: 5px;
+	span {
+		display: none;
+	}
+	&:hover {
+		span {
+			display: inline;
+		}
+	}
+}
+
+.edit {
   position: absolute;
   top: 3px;
   right: 10px;
+	span {
+		display: none;
+	}
+	&:hover {
+		span {
+			display: inline;
+		}
+	}
+}
+
+.btn-hover {
+  font-weight: normal;
+  color: #333333;
+  cursor: pointer;
+  background-color: inherit;
+  border-color: transparent;
+	&.btn-warning {
+		color: $brand-warning;
+	}
+	&:hover {
+		color: #fff;
+	}
+}
+
+.btn-hover-alt {
+  font-weight: normal;
+  color: #ffffff;
+  cursor: pointer;
+  background-color: inherit;
+  border-color: transparent;
 }
 
 .carousel-inner {

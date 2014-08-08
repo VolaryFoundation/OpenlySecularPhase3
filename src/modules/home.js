@@ -21,7 +21,7 @@ var home = {
               m('.panel.panel-custom', [
                 m('.panel-heading',
                   m('.panel-title', [
-                    m('i.fa.fa-paper-plane'),
+                    m('i.fa.fa-bullhorn'),
                     'Stay Informed'
                   ])
                 ),
@@ -90,9 +90,9 @@ var home = {
                     'Get Involved'
                   ])
                 ),
-                m('.panel-body',
+                m('.panel-body', [
                   m('p', 'Loren Getsum')
-                )
+                ])
               ])
             )
           ])

@@ -5,7 +5,9 @@ var pages = {
   home: require('./home'),
   about: require('./about'),
   partners: require('./partners'),
-  media: require('./media')
+  media: require('./media'),
+  contact: require('./contact'),
+  guidelines: require('./guidelines')
 }
 
 var cache = {}

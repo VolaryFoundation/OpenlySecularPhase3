@@ -37,12 +37,12 @@ var header = {
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('partners') }, 'Partners')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('media') }, 'Media')),
               m('li.dropdown', [
-                m('a.dropdown-toggle[href=/#/][data-toggle=dropdown]', [
+                m('a.dropdown-toggle[data-toggle=dropdown]', [
                   'Resources',
                   m('span.caret')
                 ]),
                 m('ul.dropdown-menu[role=menu]', [
-                  m('li', m('a[href=/#/]', 'Link')),
+                  m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('guidelines') }, 'Guidelines')),
                   m('li', m('a[href=/#/]', 'Link'))
                 ])
               ]),

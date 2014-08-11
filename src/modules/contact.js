@@ -84,10 +84,10 @@ var contact = {
                   ])
                 ]),
                 m('address', [
-                  m('.panel-title',
+                  m('.panel-title', [
                     m('i.fa.fa-microphone'),
                     ' Media Contact',
-                  ),
+                  ]),
                   m('strong', 'Person Name'),
                   m('p', [
                     m('abbr[title=Email]',

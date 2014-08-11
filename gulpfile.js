@@ -34,6 +34,7 @@ gulp.task('buildAndServe', function(done) {
   }).catch(function() { console.log(arguments) })
 
   function go(id) {
+    console.log('serving ', id)
     builder.buildAndServe({ campaignId: id }, {})
     done()
   }

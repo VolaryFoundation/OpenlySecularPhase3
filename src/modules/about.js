@@ -104,7 +104,7 @@ var about = {
               m('.panel-heading', [
                 m('.panel-title', 'Who We Are'),
                 m('span.edit',
-                  m('a.btn.btn-sm.btn-hover.btn-warning', [
+                  m('a.btn.btn-sm.btn-warning', [
                     m('i.fa.fa-fw.fa-pencil'),
                     m('span', ' Edit')
                   ])
@@ -120,6 +120,22 @@ var about = {
               m('.panel-heading', [
                 m('.panel-title', 'What We Do'),
                 m('span.edit',
+                  m('a.btn.btn-sm.btn-hover.btn-primary', [
+                    m('i.fa.fa-fw.fa-share-alt'),
+                    m('span', ' Share')
+                  ])
+                )
+              ]),
+              m('.panel-body',
+                m('p', 'Loren Getsum')
+              )
+            ])
+          ),
+          m('.col-md-12',
+            m('.panel.panel-custom', [
+              m('.panel-heading', [
+                m('.panel-title', 'Download More Info'),
+                m('span.edit',
                   m('a.btn.btn-sm.btn-warning', [
                     m('i.fa.fa-fw.fa-pencil'),
                     m('span', ' Edit')
@@ -130,7 +146,7 @@ var about = {
                 m('p', 'Loren Getsum')
               )
             ])
-          )
+          ),
         ])
       )
     ])

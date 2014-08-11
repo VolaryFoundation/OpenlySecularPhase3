@@ -8,11 +8,14 @@ var home = {
   view: function() {
     return m('#home', [
       m('header.site-header',
-        m('h1', [
-          'Featured Videos',
-          m('br'),
-          m('small', 'will go right here')
-        ])
+        m('.container',
+          m('.row', [
+            m('.col-md-10.col-md-offset-1', [
+              m('h1','Featured Videos'),
+              m('p.tagline', 'Will Go Here.')
+            ]),
+          ])
+        )
       ),
       m('.action-bar',
         m('.container',
@@ -27,14 +30,26 @@ var home = {
                 ),
                 m('.panel-body', [
                   m('p', 'Get our latest updates through email or social media.'),
-                  m('.input-group', [
-                    m('span.input-group-addon',
-                      m('i.fa.fa-envelope')
-                    ),
-                    m('input.form-control[type=email][placeholder=E-mail address]'),
-                    m('span.input-group-btn',
-                      m('button.btn.btn-primary', 'Submit')
-                    )
+                  m('.form-group', [
+                    m('label.sr-only', 'Name'),
+                    m('.input-group', [
+                      m('span.input-group-addon',
+                        m('i.fa.fa-fw.fa-user')
+                      ),
+                      m('input.form-control[type=text][id=name][placeholder=Name]')
+                    ])
+                  ]),
+                  m('.form-group', [
+                    m('label.sr-only', 'Email'),
+                    m('.input-group', [
+                      m('span.input-group-addon',
+                        m('i.fa.fa-fw.fa-envelope')
+                      ),
+                      m('input.form-control[type=email][id=email][placeholder=Email address][required=required]'),
+                      m('span.input-group-btn',
+                        m('button.btn.btn-primary', 'Subscribe')
+                      )
+                    ])
                   ]),
                   m('hr'),
                   m('span.center-block.text-center', [

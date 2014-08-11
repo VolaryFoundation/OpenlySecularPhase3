@@ -43,12 +43,10 @@ server
     }
 
     req.feathers.login = function(user, cb) {
-      console.log('logging in')
       req.logIn(user, cb)
     }
 
     req.feathers.logout = function() {
-      console.log('logging out')
       req.logOut()
     }
 

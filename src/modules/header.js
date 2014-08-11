@@ -15,9 +15,11 @@ var header = {
       e.preventDefault()
       m.request({
         method: 'DELETE',
-        url: config.apiRoot + '/' + config.campaignId + '/session'
+        url: config.apiRoot + '/' + config.campaignId + '/session/1'
       }).then(function() {
-        view.value().set('loggedIn', false)
+        view.value(function(existing) {
+          return existing.set('loggedIn', false)
+        })
       }, function() {
         console.log('problem logging out')
       })

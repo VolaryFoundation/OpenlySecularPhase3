@@ -61,6 +61,7 @@ server
 
 // give HTTP services campaign if built into route
 function mixinCampaign(req, res, next) {
+  console.log('mixing campaign')
   var cId = req.params.campaignId
   req.feathers.campaignId = cId
   if (cId) {

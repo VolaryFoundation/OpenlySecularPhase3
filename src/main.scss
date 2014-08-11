@@ -3,6 +3,24 @@ $brand-secondary: lighten( $brand-primary, 50% );
 
 @import "vendor/bootstrap/assets/stylesheets/bootstrap";
 
+.hidden {
+  display: none;
+}
+
+#login {
+  position: absolute;
+  top: -100px;
+  z-index: 100;
+  left: 100px;
+  right: 100px;
+  background: yellow;
+  padding: 20px;
+  transition: top .6s;
+  &.active {
+    top: 0;
+  }
+}
+
 //temp fix
 .input-group-btn {
 	.btn {

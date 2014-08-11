@@ -38,17 +38,19 @@ server
     req.feathers.user = req.user || {}
     req.feathers.user.authenticated = req.isAuthenticated()
 
-    hub.on('authenticate', function(type, cb, next) {
+    req.feathers.authenticate = function(type, cb, next) {
       passport.authenticate(type, cb)(req, res, next)
-    })
+    }
 
-    hub.on('login', function(user, cb) {
+    req.feathers.login = function(user, cb) {
+      console.log('logging in')
       req.logIn(user, cb)
-    })
+    }
 
-    hub.on('logout', function() {
+    req.feathers.logout = function() {
+      console.log('logging out')
       req.logOut()
-    })
+    }
 
     next()
   })
@@ -64,7 +66,7 @@ function mixinCampaign(req, res, next) {
   var cId = req.params.campaignId
   req.feathers.campaignId = cId
   if (cId) {
-    campaignService.get(cId, {}, function(e, c) {
+    campaignService.find({ slug: cId }, function(e, c) {
       if (e) return send(404, 'Could not find campaign')
       req.feathers.campaign = c
       next()

@@ -30,7 +30,7 @@ gulp.task('buildAndServe', function(done) {
       })
     }
   }).then(function(campaigns) {
-    go(campaigns[0]._id)
+    go(campaigns[0].slug)
   }).catch(function() { console.log(arguments) })
 
   function go(id) {

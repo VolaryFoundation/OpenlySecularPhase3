@@ -5,6 +5,7 @@ var _ = require('lodash')
 var header = require('./header')
 var content = require('./content')
 var stream = require('./stream')
+var login = require('./login')
 
 var app = {
 
@@ -29,6 +30,7 @@ var app = {
       })
     })
 
+    this.login = new login.controller(nextCursors, config)
     this.header = new header.controller(nextCursors, config)
     this.content = new content.controller(nextCursors, config)
     this.stream = new stream.controller(nextCursors, config)
@@ -36,6 +38,7 @@ var app = {
 
   view: function(ctl) {
     return m('#app', [
+      login.view(ctl.login),
       header.view(ctl.header),
       content.view(ctl.content),
       stream.view(ctl.stream)

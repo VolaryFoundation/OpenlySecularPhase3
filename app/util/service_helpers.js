@@ -5,7 +5,8 @@ var _ = require('lodash')
 var config = require('config')
 
 function error(type, msg, data) {
-  return new errors[type](msg)
+  console.log('type ', type, msg, data, errors[type])
+  return new (errors[type])(msg)
 }
 
 var api = {
@@ -36,7 +37,8 @@ var api = {
   authenticate: function(hook, next) {
 
     if (hook.params.user.authenticated) {
-      if (hook.params.user.get('campaignId') == hook.params.campaignId) {
+      console.log(hook.params.user.get('campaign'), hook.params.campaignId)
+      if (hook.params.user.get('campaign') == hook.params.campaignId) {
         return next()
       }
     }

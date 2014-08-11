@@ -27,7 +27,11 @@ app.controller = app.controller.bind(app.controller, cursors, config)
 // always withCredentials !!!
 var oldRequest = m.request
 m.request = function(opts) {
-  opts.withCredentials = true
+  opts.config = function(xhr) {
+    xhr.setRequestHeader('Accept', 'application/json,*/*')
+    xhr.withCredentials = true
+    return xhr
+  }
   return oldRequest(opts)
 }
 

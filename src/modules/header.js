@@ -6,7 +6,22 @@ var header = {
 
   controller: function(cursors, config) {
     this.cursors = cursors
+    var view = this.view = cursors.get('view')
     this.config = config
+    this.loggedState = function() {
+      return view.value().get('loggedIn') ? '' : 'hidden'
+    }
+    this.logout = function(e) {
+      e.preventDefault()
+      m.request({
+        method: 'DELETE',
+        url: config.apiRoot + '/' + config.campaignId + '/session'
+      }).then(function() {
+        view.value().set('loggedIn', false)
+      }, function() {
+        console.log('problem logging out')
+      })
+    }
     this.pageUpdater = function(name) {
       return function() {
         cursors.get('page').value(function() { return name })
@@ -46,7 +61,8 @@ var header = {
                   m('li', m('a[href=/#/]', 'Link'))
                 ])
               ]),
-              m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('contact') }, m('i.fa.fa-envelope')))
+              m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('contact') }, m('i.fa.fa-envelope'))),
+              m('li', m('a[href=/#/]', { onclick: ctl.logout, className: ctl.loggedState() }, 'Logout'))
             ]))
         ]))
   }

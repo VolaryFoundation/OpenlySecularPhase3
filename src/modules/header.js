@@ -35,7 +35,7 @@ var header = {
 
     var logo = ctl.cursors.get('campaign').value().get('logo')
 
-    return m('nav.navbar[role=navigation]',
+    return m('nav.navbar.navbar-custom[role=navigation]',
         m('.container', [
           m('.navbar-header', [
             m('button[type=button][data-toggle=collapse][data-target=#awareness-navbar-collapse-1].navbar-toggle', [

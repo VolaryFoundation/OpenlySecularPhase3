@@ -26,7 +26,7 @@ var login = {
         url: config.apiRoot + '/' + config.campaignId + '/session',
         data: {
           email: this.email(),
-          password: this.password() 
+          password: this.password()
         }
       }).then(function(result) {
         errorMsg('')
@@ -51,12 +51,31 @@ var login = {
   },
 
   view: function(ctl) {
-    return m('#login', [
-      m('.close', { onclick: ctl.toggle }, 'close'),
-      m('form', { onsubmit: ctl.submit }, [
-        m('input', { placeholder: 'Email', type: 'text', onchange: m.withAttr('value', ctl.email), value: ctl.email() }),
-        m('input', { placeholder: 'Password', type: 'password', onchange: m.withAttr('value', ctl.password), value: ctl.password() }),
-        m('button', 'Log in')
+    return m('#login.alert.alert-warning', [
+      m('button.close[type=button]', { onclick: ctl.toggle }, [
+        m('span[aria-hidden=true]', 'x'),
+        m('span.sr-only', 'Close')
+      ]),
+      m('form.form-inline[role=form]', { onsubmit: ctl.submit }, [
+        m('.form-group', [
+          m('label.sr-only[for=loginEmailInput]', 'Email address'),
+          m('.input-group', [
+            m('.input-group-addon',
+                m('i.fa.fa-fw.fa-envelope')
+            ),
+            m('input.form-control#loginEmailInput', { placeholder: 'Email address', type: 'email', onchange: m.withAttr('value', ctl.email), value: ctl.email() })
+          ])
+        ]),
+        m('.form-group', [
+          m('label.sr-only[for=loginPasswordInput]', 'Password'),
+          m('.input-group', [
+            m('.input-group-addon',
+                m('i.fa.fa-fw.fa-asterisk')
+            ),
+            m('input.form-control#loginPasswordInput', { placeholder: 'Password', type: 'password', onchange: m.withAttr('value', ctl.password), value: ctl.password() })
+          ])
+        ]),
+        m('button.btn.btn-success[type=submit]', 'Log in')
       ]),
       m('.error', ctl.errorMsg())
     ])

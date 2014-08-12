@@ -83,11 +83,13 @@ var contact = {
                     ])
                   ])
                 ]),
-                m('address', [
+                m('.panel-heading', [
                   m('.panel-title', [
                     m('i.fa.fa-microphone'),
-                    ' Media Contact',
+                    'Press Contact'
                   ]),
+                ]),
+                m('address', [ 
                   m('strong', 'Person Name'),
                   m('p', [
                     m('abbr[title=Email]',

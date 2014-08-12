@@ -6,6 +6,7 @@ var header = require('./header')
 var content = require('./content')
 var stream = require('./stream')
 var login = require('./login')
+var hash = require('./hash')
 
 var app = {
 

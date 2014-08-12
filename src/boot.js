@@ -4,6 +4,7 @@
 var Immutable = require('immutable')
 var hub = require('./hub')
 var cursor = require('./cursor')
+var routes = require('./routes')
 
 window.Immutable = Immutable
 
@@ -23,6 +24,7 @@ var root = cursor(state)
 var cursors = cursor.hash({ root: root })
 
 app.controller = app.controller.bind(app.controller, cursors, config)
+routes(cursors)
 
 // always withCredentials !!!
 var oldRequest = m.request

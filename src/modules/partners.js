@@ -1,10 +1,11 @@
 
 var m = require('mithril')
+var util = require('../util')
 
 var partners = {
 
-  controller: function(cursors, config) {
-    this.partners = cursors.get('campaign').refine('partners', [])
+  controller: function($partners, config) {
+    this.$partners = $partners
   },
 
   view: function(ctl) {
@@ -27,23 +28,27 @@ var partners = {
               m('.panel.panel-custom', [
                 m('.panel-heading', [
                   m('.panel-title', 'Partners'),
-                  m('span.edit',
-                    m('a.btn.btn-sm.btn-warning', [
-                      m('i.fa.fa-fw.fa-pencil'),
-                      m('span', ' Edit')
-                    ])
-                  )
+                  util.when(ctl.$partners.shared().get('loggedIn'), function() {
+                    return m('span.edit',
+                      m('a.btn.btn-sm.btn-warning', [
+                        m('i.fa.fa-fw.fa-pencil'),
+                        m('span', ' Edit')
+                      ])
+                    )
+                  })
                 ]),
                 m('.panel-body',
                   m('p', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan quis enim non porta. Ut nec massa sed tellus fringilla consectetur non.')
                 ),
                 m('.panel-footer.text-right', [
-                  m('span.create',
-                    m('a.btn.btn-sm.btn-success', [
-                      m('i.fa.fa-fw.fa-plus'),
-                      m('span', ' Add')
-                    ])
-                  ),
+                  util.when(ctl.$partners.shared().get('loggedIn'), function() {
+                    m('span.create',
+                      m('a.btn.btn-sm.btn-success', [
+                        m('i.fa.fa-fw.fa-plus'),
+                        m('span', ' Add')
+                      ])
+                    )
+                  }),
                   m('a.btn.btn-primary[data-slide=prev][href=#Partners]',
                     m('i.fa.fa-lg.fa-angle-left')
                   ),
@@ -54,117 +59,27 @@ var partners = {
               ])
           ]),
           m('.col-md-9', [
-            m('#Partners.carousel.slide',
+            m('#partners.carousel.slide',
               m('.carousel-inner', [
                 m('.item.active',
                   m('.row', [
                     m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', [
-                         'Partner Title',
-                         m('span.edit',
-                           m('a.btn.btn-sm.btn-warning', [
-                             m('i.fa.fa-fw.fa-pencil'),
-                             m('span', ' Edit')
-                           ])
-                         )
-                         ])
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    )
-                  ])
-                ),
-                m('.item',
-                  m('.row', [
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
-                    ),
-                    m('.col-xs-6.col-md-3',
-                      m('.panel.panel-custom', [
-                        m('.panel-body', 'Logo'),
-                        m('.panel-footer', 'Partner Title')
-                      ])
+                      ctl.$partners.value().toJS().map(function(partner) {
+                        return m('.panel.panel-custom', [
+                          m('.panel-body', m('img', { src: partner.logo })),
+                          m('.panel-footer', [
+                            partner.name,
+                            util.when(ctl.$partners.shared().get('loggedIn'), function() {
+                              return m('span.edit',
+                                m('a.btn.btn-sm.btn-warning', [
+                                  m('i.fa.fa-fw.fa-pencil'),
+                                  m('span', ' Edit')
+                                ])
+                              )
+                            })
+                          ])
+                        ])
+                      })
                     )
                   ])
                 )

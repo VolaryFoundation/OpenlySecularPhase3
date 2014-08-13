@@ -1,39 +1,40 @@
 
 var m = require('mithril')
 var _ = require('lodash')
+var util = require('../util')
+var routie = require('routie-client')
+var session = require('../services/session')
 
 var header = {
 
-  controller: function(cursors, config) {
-    this.cursors = cursors
-    var view = this.view = cursors.get('view')
-    this.config = config
+  controller: function($campaign, config) {
+    this.$campaign = $campaign
+    var $shared = this.$shared = $campaign.shared()
+
     this.loggedState = function() {
-      return view.value().get('loggedIn') ? '' : 'hidden'
+      return $shared.get('loggedIn') ? '' : 'hidden'
     }
+
     this.logout = function(e) {
       e.preventDefault()
-      m.request({
-        method: 'DELETE',
-        url: config.apiRoot + '/' + config.campaignId + '/session/1'
-      }).then(function() {
-        view.value(function(existing) {
-          return existing.set('loggedIn', false)
-        })
+      session.destroy($shared.refine('session')).then(function() {
+        return $shared.set('loggedIn', false)
       }, function() {
-        console.log('problem logging out')
+        return $shared.flash({ type: 'error', message: 'Sorry, could not log you out at this moment. Please try again' })
       })
     }
+
     this.pageUpdater = function(name) {
-      return function() {
-        cursors.get('page').value(function() { return name })
+      return function(e) {
+        e.preventDefault()
+        $shared.set('page', name)
       }
     }
   },
 
   view: function(ctl) {
 
-    var logo = ctl.cursors.get('campaign').value().get('logo')
+    var logo = ctl.$campaign.get('logo')
 
     return m('nav.navbar.navbar-custom[role=navigation]',
         m('.container', [
@@ -48,7 +49,7 @@ var header = {
           ]),
           m('.collapse.navbar-collapse#awareness-navbar-collapse-1',
             m('.nav.navbar-nav.navbar-right', [
-              m('li', ctl.cursors.get('view').refine('message', '').value()),
+              m('li', {}, JSON.stringify(ctl.$shared.get('flash'))),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('home') }, 'Home')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('about') }, 'About')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('partners') }, 'Partners')),
@@ -64,7 +65,9 @@ var header = {
                 ])
               ]),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('contact') }, m('i.fa.fa-envelope'))),
-              m('li', m('a[href=/#/]', { onclick: ctl.logout, className: ctl.loggedState() }, 'Logout'))
+              util.when(ctl.$shared.loggedIn(), function() {
+                return m('li', m('a[href=/#/]', { onclick: ctl.logout }, 'Logout'))
+              })
             ]))
         ]))
   }

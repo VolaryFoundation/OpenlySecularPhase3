@@ -1,30 +1,40 @@
 
 //var $ = require('zepto')
 //require('../vendor/gridster').call({ jQuery: $ })
+var _ = require('lodash')
 var Immutable = require('immutable')
 var hub = require('./hub')
 var cursor = require('./cursor')
 var routes = require('./routes')
-
-window.Immutable = Immutable
+var config = require('./config')
 
 var app = require('./modules/app')
 
-var state = {
-  campaign: { },
-  view: {
-    page: 'home'
-  }
+var $app = cursor({
+  shared: {
+    page: 'home',
+    session: {},
+    flash: []
+  },
+  campaign: {},
+})
+
+// some custom cursor helpers
+$app.shared().flash = function(obj) {
+  this.set('flash', this.get('flash').push(obj))
+  var i = this.get('flash').length - 1
+  console.log('SET FLASH', obj)
+  console.log('in flash array ', this.get('flash').toJS(), i)
+  var unset = function() { return this.set('flash', this.get('flash').splice(i, 1)) }.bind(this)
+  _.delay(unset, obj.duration || 2000)
 }
 
-var config = <%= config %>
-config.apiRoot = 'http://localhost:3000/api'
+$app.shared().loggedIn = function() { 
+  return this.get('session').get('active') 
+}
 
-var root = cursor(state)
-var cursors = cursor.hash({ root: root })
-
-app.controller = app.controller.bind(app.controller, cursors, config)
-routes(cursors)
+app.controller = app.controller.bind(app.controller, $app, config)
+routes($app.shared())
 
 // always withCredentials !!!
 var oldRequest = m.request
@@ -38,4 +48,5 @@ m.request = function(opts) {
 }
 
 m.module(document.body, app)
-window.root = root
+
+window.$app = $app

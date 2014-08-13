@@ -10,26 +10,41 @@ var pages = {
   guidelines: require('./guidelines')
 }
 
-var cache = {}
-
-function render(pageName, cArgs, vArgs) {
-  cArgs || (cArgs = [])
-  vArgs || (vArgs = [])
-  var module = pages[pageName]
-  var c = cache[pageName] ? cache[pageName] : new (module.controller.bind.apply(module.controller, [ null ].concat(cArgs)))
-  cache[pageName] = c
-  return module.view.apply(module.view, [ c ].concat(vArgs))
-}
-
 var content = {
 
-  controller: function(cursors, config) {
-    this.cursors = cursors
+  controller: function($app, config) {
+
+    this.$app = $app
     this.config = config
+
+    var $campaign = $app.refine('campaign')
+
+    this.controllers = {
+      home: new pages.home.controller($app, config),
+      about: new pages.about.controller($campaign, config),
+      partners: new pages.partners.controller($campaign.refine('partners'), config),
+    }
   },
 
   view: function(ctl) {
-    return m('#content', render(ctl.cursors.get('page').value(), [ ctl.cursors, ctl.config ]))
+
+    var page
+    switch (ctl.$app.shared().get('page')) {
+      case 'home': page = pages.home.view(ctl.controllers.home)
+        break
+      case 'about': page = pages.about.view(ctl.controllers.about)
+        break
+      case 'partners': page = pages.partners.view(ctl.controllers.partners)
+        break
+      case 'media': page = pages.media.view(new pages.media.controller(ctl.$app.refine('campaign'), ctl.config))
+        break
+      case 'contact': page = pages.contact.view(new pages.contact.controller(ctl.$app.refine('campaign'), ctl.config))
+        break
+      case 'guidelines': page = pages.guidelines.view(new pages.guidelines.controller(ctl.$app.refine('campaign'), ctl.config))
+        break
+    }
+    
+    return m('#content', page)
   }
 }
 

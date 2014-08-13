@@ -15,11 +15,6 @@ var campaignService = mongoService({
 })
 
 campaignService.before = {
-  get: function(hook, next) {
-    return campaignService.find({ slug: hook.id }, function(e, cs) {
-      hook.callback(e, cs[0])
-    })
-  },
   create: [ setUser, validate ],
   update: [ validate ],
   patch: [ validate ]

@@ -30,12 +30,12 @@ gulp.task('buildAndServe', function(done) {
       })
     }
   }).then(function(campaigns) {
-    go(campaigns[0].slug)
+    go(campaigns[0])
   }).catch(function() { console.log(arguments) })
 
-  function go(id) {
-    console.log('serving ', id)
-    builder.buildAndServe({ campaignId: id }, {})
+  function go(campaign) {
+    console.log('serving ', campaign._id)
+    builder.buildAndServe({ campaign: { id: campaign._id, slug: campaign.slug } }, {})
     done()
   }
 })

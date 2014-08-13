@@ -1,48 +1,46 @@
 
 var m = require('mithril')
 var _ = require('lodash')
+var routie = require('routie-client')
+
+var campaign = require('../services/campaign')
+var session = require('../services/session')
 
 var header = require('./header')
 var content = require('./content')
 var stream = require('./stream')
 var login = require('./login')
-var hash = require('./hash')
 
 var app = {
 
-  controller: function(cursors, config) {
+  controller: function($app, config) {
 
-    var campaign = cursors.get('root').refine('campaign')
-    var view = cursors.get('root').refine('view')
-    var page = view.refine('page')
+    var $campaign = $app.refine('campaign')
+    var $session = $app.shared().refine('session')
 
-    var nextCursors = cursors.merge({
-      campaign: campaign,
-      view: view,
-      page: page
-    })
+    campaign.load($app)
+    session.load($session)
 
-    m.request({
-      method: 'GET',
-      url: config.apiRoot + '/campaigns/' + config.campaignId
-    }).then(function(data) {
-      campaign.value(function(existing) {
-        return existing.merge(data)
-      })
-    })
+    this.updateHash = function() {
+      var name = $app.shared().get('page')
+      if (name) routie.navigate(routie.lookup(name), { silent: true })
+    }
 
-    this.login = new login.controller(nextCursors, config)
-    this.header = new header.controller(nextCursors, config)
-    this.content = new content.controller(nextCursors, config)
-    this.stream = new stream.controller(nextCursors, config)
+    this.login = new login.controller($session, config)
+    this.header = new header.controller($campaign, config)
+    this.content = new content.controller($app, config)
+    //this.stream = new stream.controller(nextCursors, config)
   },
 
   view: function(ctl) {
+
+    ctl.updateHash()
+
     return m('#app', [
       login.view(ctl.login),
       header.view(ctl.header),
       content.view(ctl.content),
-      stream.view(ctl.stream)
+      //stream.view(ctl.stream)
     ])
   }
 }

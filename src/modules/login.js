@@ -1,58 +1,49 @@
 
 var m = require('mithril')
+var session = require('../services/session')
 
 var login = {
 
-  controller: function(cursors, config) {
-    this.cursors = cursors
+  controller: function($session, config) {
 
-    this.email = m.prop('')
-    this.password = m.prop('')
+    this.$session = $session
+
+    var email = this.email = m.prop('')
+    var password = this.password = m.prop('')
     var errorMsg = this.errorMsg = m.prop('')
-
-    m.request({
-      method: 'GET',
-      url: config.apiRoot + '/' + config.campaignId + '/session'
-    }).then(function(data) {
-      cursors.get('view').value(function(ex) { return ex.set('loggedIn', true) })
-    }, function(e) {
-      cursors.get('view').value(function(ex) { return ex.set('loggedIn', false) })
-    })
 
     this.submit = function(e) {
       e.preventDefault()
-      m.request({
-        method: 'POST',
-        url: config.apiRoot + '/' + config.campaignId + '/session',
-        data: {
-          email: this.email(),
-          password: this.password()
-        }
-      }).then(function(result) {
+      session.create($session, { email: email, password: password }).then(function() {
         errorMsg('')
-        cursors.get('view').value(function(existing) {
-          return existing.set('loggedIn', true)
-        })
-        toggle()
-      }, function(e) {
+        $session.shared().set('showingLogin', false)
+      }, function() {
         errorMsg('Sorry, email or password does not match')
       })
-    }.bind(this)
+    }
 
-    // hacks
-    var toggle = this.toggle = function() {
-      document.getElementById('login').classList.toggle('active')
+    this.hide = function(e) {
+      e.preventDefault()
+      $session.shared().value(function(s) { return s.set('showingLogin', false) })
+    }
+
+    this.activeClass = function() {
+      return $session.shared().get('showingLogin') ? 'active' : ''
     }
 
     // hacks
     document.addEventListener('keydown', function(e) {
-      if (e.which == 27) toggle()
+      if (e.which == 27) {
+        if ($session.get('active')) return
+        $session.shared().set('showingLogin', true)
+        m.redraw()
+      }
     })
   },
 
   view: function(ctl) {
-    return m('#login.alert.alert-warning', [
-      m('button.close[type=button]', { onclick: ctl.toggle }, [
+    return m('#login.alert.alert-warning', { className: ctl.activeClass() }, [
+      m('button.close[type=button]', { onclick: ctl.hide }, [
         m('span[aria-hidden=true]', 'x'),
         m('span.sr-only', 'Close')
       ]),

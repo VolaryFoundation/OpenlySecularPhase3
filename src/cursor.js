@@ -3,9 +3,9 @@ var Immutable = require('immutable')
 var m = require('mithril')
 var _ = require('lodash')
 
-var cursor = function(source, path) {
+var cursor = function(source) {
 
-  function sub(path) {
+  function sub(path, initHelpers) {
 
     var pathArray = path.split('.')
 
@@ -13,6 +13,10 @@ var cursor = function(source, path) {
 
       path: path,
       pathArray: pathArray,
+
+      shared: function() {
+        return shared
+      },
 
       refine: function(ext, placeholder) {
         placeholder = typeof placeholder == 'undefined' ? {} : placeholder
@@ -28,6 +32,7 @@ var cursor = function(source, path) {
           return parent.set(key, Immutable.fromJS(existing || placeholder))
         })
         history.push(next)
+
         return cursor
       },
 
@@ -37,15 +42,25 @@ var cursor = function(source, path) {
         var pathArrayClone = pathArray.slice(0)
 
         if (typeof mutate === 'undefined') {
+          // GET
           if (!path) return current
           else return current.getIn(pathArrayClone)
+        } else {
+          // SET
+          var next = current.updateIn(pathArrayClone, function(existing) {
+            if (_.isFunction(mutate)) return Immutable.fromJS(mutate(existing))
+            else return Immutable.fromJS(mutate)
+          })
+          history.push(next)
         }
+      },
 
-        var next = current.updateIn(pathArrayClone, function(existing) {
-          if (_.isFunction(mutate)) return Immutable.fromJS(mutate(existing))
-          else return Immutable.fromJS(mutate)
-        })
-        history.push(next)
+      set: function(k, v) {
+        return this.value(function(ex) { return ex.set(k, Immutable.fromJS(v)) })
+      },
+
+      get: function(k) {
+        return this.value().get(k)
       }
     }
   }
@@ -64,10 +79,10 @@ var cursor = function(source, path) {
     }
   }
 
-  path = '__root' + (path ? '.' + path : '')
-  var root = sub(path || '')
-  root.history = history
-  history.push({ __root: source })
+  history.push({ __root: _.extend({ shared: {} }, source) })
+
+  var root = sub('__root')
+  var shared = root.refine('shared')
 
   return root
 }

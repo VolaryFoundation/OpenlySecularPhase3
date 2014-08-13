@@ -43,6 +43,8 @@ var contact = {
                       m('br'),
                       'Santa Monica, CA 90404',
                     ]),
+                    m('p','EIN ###############'
+                    ),
                     m('p', [
                       m('abbr[title=Email]',
                         m('i.fa.fa-envelope')
@@ -89,7 +91,7 @@ var contact = {
                     'Press Contact'
                   ]),
                 ]),
-                m('address', [ 
+                m('address', [
                   m('strong', 'Person Name'),
                   m('p', [
                     m('abbr[title=Email]',

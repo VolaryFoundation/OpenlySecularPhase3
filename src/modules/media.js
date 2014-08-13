@@ -23,7 +23,10 @@ var media = {
           m('.col-md-7',
             m('.panel.panel-custom', [
               m('.panel-heading',
-                m('.panel-title', 'In the News')
+                m('.panel-title', [
+                  m('i.fa.fa-quote-left'),
+                  'In the News'
+                ])
               ),
               m('.news-list', [
                 m('.list-group', [
@@ -114,65 +117,72 @@ var media = {
               m('.col-md-12',
                 m('.panel.panel-custom', [
                   m('.panel-heading',
-                    m('.panel-title', 'Press Releases')
+                    m('.panel-title', [
+                      m('i.fa.fa-file-text-o'),
+                      'Press Releases'
+                    ])
                   ),
                   m('.news-list', [
                     m('.list-group', [
                       m('a.list-group-item[href=/#/]', [
+                      m('span.edit',
+                        m('a.btn.btn-sm.btn-warning', [
+                          m('i.fa.fa-fw.fa-pencil'),
+                          m('span', ' Edit')
+                        ])
+                      ),
                         m('.list-group-item-heading', 'A Monthly Press Release About Your Brand Name'),
-                        m('small', [
+                        m('p.small', [
+                          m('span.city', 'Santa Monica, CA '),
                           m('span.date', ' August 8, 2014')
+                        ]),
+                        m('p.list-group-item-text', [
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan quis enim non porta.',
                         ])
                       ]),
                       m('a.list-group-item[href=/#/]', [
                         m('.list-group-item-heading', 'A Monthly Press Release About Your Brand Name'),
-                        m('small', [
+                        m('p.small', [
                           m('span.date', ' August 8, 2014')
+                        ]),
+                        m('p.list-group-item-text', [
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan quis enim non porta.',
                         ])
                       ]),
                       m('a.list-group-item[href=/#/]', [
                         m('.list-group-item-heading', 'A Monthly Press Release About Your Brand Name'),
-                        m('small', [
+                        m('p.small', [
                           m('span.date', ' August 8, 2014')
+                        ]),
+                        m('p.list-group-item-text', [
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan quis enim non porta.',
                         ])
                       ]),
                       m('a.list-group-item[href=/#/]', [
                         m('.list-group-item-heading', 'A Monthly Press Release About Your Brand Name'),
-                        m('small', [
+                        m('p.small', [
                           m('span.date', ' August 8, 2014')
+                        ]),
+                        m('p.list-group-item-text', [
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan quis enim non porta.',
                         ])
                       ])
                     ])
                   ]),
-                  m('.text-center',
-                    m('ul.pagination', [
-                      m('li.disabled',
-                        m('a[href=/#/]',
-                          m('i.fa.fa-lg.fa-angle-left')
-                        )
-                      ),
-                      m('li',
-                        m('a[href=/#/]', '1')
-                      ),
-                      m('li',
-                        m('a[href=/#/]', '2')
-                      ),
-                      m('li',
-                        m('a[href=/#/]', '3')
-                      ),
-                      m('li',
-                        m('a[href=/#/]', '4')
-                      ),
-                      m('li',
-                        m('a[href=/#/]', '5')
-                      ),
-                      m('li',
-                        m('a[href=/#/]',
-                          m('i.fa.fa-lg.fa-angle-right')
-                        )
-                      ),
-                    ])
-                  )
+                  m('.panel-footer.text-right', [
+                    m('span.create',
+                      m('a.btn.btn-sm.btn-success', [
+                        m('i.fa.fa-fw.fa-plus'),
+                        m('span', ' Add')
+                      ])
+                    ),
+                    m('a.btn.btn-primary[href=/#/]',
+                      m('i.fa.fa-lg.fa-angle-left')
+                    ),
+                    m('a.btn.btn-primary[href=/#/]',
+                      m('i.fa.fa-lg.fa-angle-right')
+                    )
+                  ])
                 ])
               ),
               m('.col-md-12', [
@@ -180,12 +190,18 @@ var media = {
                   m('ul.nav.nav-tabbed[role=tablist]', [
                     m('li.active',
                       m('a[href=#press-contact][role=tab][data-toggle=tab]',
-                        ' Press Contact'
+                        m('.panel-title', [
+                          m('i.fa.fa-microphone'),
+                          'Press Contact'
+                        ])
                       )
                     ),
                     m('li',
                       m('a[href=#media-resources][role=tab][data-toggle=tab]',
-                        ' Media Resources'
+                        m('.panel-title', [
+                          m('i.fa.fa-download'),
+                          'Media Resources'
+                        ])
                       )
                     )
                   ]),

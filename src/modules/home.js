@@ -101,8 +101,8 @@ var home = {
               m('.panel.panel-custom', [
                 m('.panel-heading',
                   m('.panel-title', [
-                    m('i.fa.fa-group'),
-                    'Get Involved'
+                    m('i.fa.fa-slack'),
+                    'Join the Conversation'
                   ])
                 ),
                 m('.panel-body', [

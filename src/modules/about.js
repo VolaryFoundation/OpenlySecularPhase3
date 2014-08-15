@@ -123,25 +123,7 @@ var about = {
                 m('p', 'Loren Getsum')
               )
             ])
-          ),
-          m('.col-md-12',
-            m('.panel.panel-custom', [
-              m('.panel-heading', [
-                m('.panel-title', 'Download More Info'),
-                util.when(ctl.$shared.loggedIn(), function() {
-                  return m('span.edit',
-                    m('a.btn.btn-sm.btn-warning', [
-                      m('i.fa.fa-fw.fa-pencil'),
-                      m('span', ' Edit')
-                    ])
-                  )
-                })
-              ]),
-              m('.panel-body',
-                m('p', 'Loren Getsum')
-              )
-            ])
-          ),
+          )
         ])
       )
     ])

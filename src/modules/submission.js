@@ -1,19 +1,19 @@
 var m = require('mithril')
 
-var guidelines = {
+var submission = {
 
   controller: function(cursor) {
     this.state = cursor
   },
 
   view: function(ctl) {
-    return m('#guidlines', [
+    return m('#submission', [
       m('header.site-header',
         m('.container',
           m('.row', [
             m('.col-md-10.col-md-offset-1', [
-              m('h1','Guidelines'),
-              m('p.tagline', 'Submissions Guideline Page.')
+              m('h1','Video Submission'),
+              m('p.tagline', 'Video Submissions Guideline Page.')
             ])
           ])
         )
@@ -25,34 +25,27 @@ var guidelines = {
               m('.panel.panel-custom', [
                 m('.panel-heading',
                   m('.panel-title', [
-                    m('i.fa.fa-legal'),
-                    'Legal'
+                    m('i.fa.fa-cube'),
+                    'Guidelines'
                   ])
                 ),
                 m('.panel-body', [
-                  m('p', 'Loren Getsum.')
-                ])
-              ])
-            ),
-            m('.col-md-4',
-              m('.panel.panel-custom', [
-                m('.panel-heading',
-                  m('.panel-title', [
-                    m('i.fa.fa-thumbs-up'),
-                    'Do'
+                  m('p', 'Loren Getsum.'),
+                  m('br'),
+                  m('.text-center', [
+                    m('p',
+                      m('a[href=/#/guidelines]', 'View Full Guidelines')
+                    )
                   ])
-                ),
-                m('.panel-body', [
-                  m('p', 'Loren Getsum')
                 ])
               ])
             ),
-            m('.col-md-4',
+            m('.col-md-8',
               m('.panel.panel-custom', [
                 m('.panel-heading',
                   m('.panel-title', [
-                    m('i.fa.fa-thumbs-down'),
-                    'Dont'
+                    m('i.fa.fa-cube'),
+                    'Submit Your Video'
                   ])
                 ),
                 m('.panel-body', [
@@ -67,4 +60,4 @@ var guidelines = {
   }
 }
 
-module.exports = guidelines
+module.exports = submission

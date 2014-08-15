@@ -6,8 +6,10 @@ var pages = {
   about: require('./about'),
   partners: require('./partners'),
   media: require('./media'),
-  contact: require('./contact'),
-  guidelines: require('./guidelines')
+  submission: require('./submission'),
+  guidelines: require('./guidelines'),
+  resources: require('./resources'),
+  contact: require('./contact')
 }
 
 var content = {
@@ -38,12 +40,16 @@ var content = {
         break
       case 'media': page = pages.media.view(new pages.media.controller(ctl.$app.refine('campaign'), ctl.config))
         break
-      case 'contact': page = pages.contact.view(new pages.contact.controller(ctl.$app.refine('campaign'), ctl.config))
+      case 'submission': page = pages.submission.view(new pages.submission.controller(ctl.$app.refine('campaign'), ctl.config))
         break
       case 'guidelines': page = pages.guidelines.view(new pages.guidelines.controller(ctl.$app.refine('campaign'), ctl.config))
         break
+      case 'resources': page = pages.resources.view(new pages.resources.controller(ctl.$app.refine('campaign'), ctl.config))
+        break
+      case 'contact': page = pages.contact.view(new pages.contact.controller(ctl.$app.refine('campaign'), ctl.config))
+        break
     }
-    
+
     return m('#content', page)
   }
 }

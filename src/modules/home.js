@@ -79,7 +79,7 @@ var home = {
                 ),
                 m('.panel-body', [
                   m('p', 'Loren Getsum'),
-                  m('.input-group input-group-lg', [
+                  m('.input-group', [
                     m('span.input-group-addon',
                       m('i.fa.fa-dollar')
                     ),
@@ -87,10 +87,10 @@ var home = {
                   ]),
                   m('br'),
                   m('.btn-toolbar.text-center', [
-                    m('a.btn.btn-lg.btn-primary',
+                    m('a.btn.btn-primary',
                       m('i.fa.fa-lg.fa-credit-card')
                     ),
-                    m('a.btn.btn-lg.btn-primary',
+                    m('a.btn.btn-primary',
                       m('small', 'PayPal')
                     )
                   ])
@@ -106,7 +106,20 @@ var home = {
                   ])
                 ),
                 m('.panel-body', [
-                  m('p', 'Loren Getsum')
+                  m('p', [
+                    'Together, take action in fighting / promoting ... by posting a status, photo, or video on social media with the hashtag ',
+                    m('strong', '#ourhashtag'),
+                    '.'
+                  ]),
+                  m('br'),
+                  m('.text-center', [
+                    m('p',
+                      m('a[href=/#/guidelines]', 'View Guidelines')
+                    ),
+                    m('p',
+                      m('a.btn.btn-primary[href=/#/submission]', 'Submit Video')
+                    )
+                  ])
                 ])
               ])
             )

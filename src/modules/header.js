@@ -36,7 +36,8 @@ var header = {
 
     var logo = ctl.$campaign.get('logo')
 
-    return m('nav.navbar.navbar-custom[role=navigation]',
+    return m('nav.navbar.navbar-custom[role=navigation]', [
+        m('.alert.alert-warning.flash', {}, JSON.stringify(ctl.$shared.get('flash'))),
         m('.container', [
           m('.navbar-header', [
             m('button[type=button][data-toggle=collapse][data-target=#awareness-navbar-collapse-1].navbar-toggle', [
@@ -49,27 +50,18 @@ var header = {
           ]),
           m('.collapse.navbar-collapse#awareness-navbar-collapse-1',
             m('.nav.navbar-nav.navbar-right', [
-              m('li', {}, JSON.stringify(ctl.$shared.get('flash'))),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('home') }, 'Home')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('about') }, 'About')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('partners') }, 'Partners')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('media') }, 'Media')),
-              m('li.dropdown', [
-                m('a.dropdown-toggle[data-toggle=dropdown]', [
-                  'Resources',
-                  m('span.caret')
-                ]),
-                m('ul.dropdown-menu[role=menu]', [
-                  m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('guidelines') }, 'Guidelines')),
-                  m('li', m('a[href=/#/]', 'Link'))
-                ])
-              ]),
+              m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('resources') }, 'Resources')),
               m('li', m('a[href=/#/]', { onclick: ctl.pageUpdater('contact') }, m('i.fa.fa-envelope'))),
               util.when(ctl.$shared.loggedIn(), function() {
                 return m('li', m('a[href=/#/]', { onclick: ctl.logout }, 'Logout'))
               })
             ]))
-        ]))
+        ])
+      ])
   }
 }
 

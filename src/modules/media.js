@@ -184,65 +184,7 @@ var media = {
                     )
                   ])
                 ])
-              ),
-              m('.col-md-12', [
-                m('.panel.panel-custom#media-info', [
-                  m('ul.nav.nav-tabbed[role=tablist]', [
-                    m('li.active',
-                      m('a[href=#press-contact][role=tab][data-toggle=tab]',
-                        m('.panel-title', [
-                          m('i.fa.fa-microphone'),
-                          'Press Contact'
-                        ])
-                      )
-                    ),
-                    m('li',
-                      m('a[href=#media-resources][role=tab][data-toggle=tab]',
-                        m('.panel-title', [
-                          m('i.fa.fa-download'),
-                          'Media Resources'
-                        ])
-                      )
-                    )
-                  ]),
-                  m('.panel-body', [
-                    m('.tab-content.text-center', [
-                      m('.tab-pane.active[id=press-contact]', [
-                        m('address', [
-                          m('strong', 'Person Name'),
-                          m('p', [
-                            m('abbr[title=Email]',
-                              m('i.fa.fa-envelope')
-                            ),
-                            ' email@domain.org'
-                          ]),
-                          m('p', [
-                            m('abbr[title=Phone]',
-                              m('i.fa.fa-phone')
-                            ),
-                            ' (123) 456-7890'
-                          ])
-                        ])
-                      ]),
-                      m('.tab-pane[id=media-resources]', [
-                        m('p', 'Resources for download.'),
-                        m('.form-group', [
-                          m('label.sr-only', 'Downloads'),
-                          m('.input-group', [
-                            m('select.form-control', [
-                              m('option', 'Media Kit'),
-                              m('option', 'option')
-                            ]),
-                            m('span.input-group-btn',
-                              m('button.btn.btn-primary', 'Download')
-                            )
-                          ])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ])
+              )
             ])
           )
         ])

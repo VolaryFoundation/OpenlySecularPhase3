@@ -15,22 +15,34 @@ var about = {
     // temporary data
     this.about1 = m.prop(this.$campaign.get('about1'))
     this.about1Title = m.prop(this.$campaign.get('about1Title'))
+    this.about2 = m.prop(this.$campaign.get('about2'))
+    this.about2Title = m.prop(this.$campaign.get('about2Title'))
+    this.about3 = m.prop(this.$campaign.get('about3'))
+    this.about3Title = m.prop(this.$campaign.get('about3Title'))
 
-    this.submit = function() {
-      campaign.patch({
-        about1: this.about1(),
-        about1Title: this.about1Title()
-      }).then(function(data) {
-        $campaign.value(function(c) { return c.merge(data) })
-        $shared.set('about1Editing', false)
-        $shared.flash({ type: 'success', message: 'About information saved.' })
-      }, function() {
-        $shared.flash({ type: 'error', message: 'Unable to save.. Try again.' })
-      })
+    var saver = function(num) {
+      return function() {
+        var data = {}
+        data['about' + num] = this['about' + num]()
+        data['about' + num + 'Title'] = this['about' + num + 'Title']()
+        campaign.patch(data).then(function(data) {
+          $campaign.value(function(c) { return c.merge(data) })
+          $shared.set('about' + num + 'Editing', false)
+          $shared.flash({ type: 'success', message: 'About information saved.' })
+        }, function() {
+          $shared.flash({ type: 'error', message: 'Unable to save.. Try again.' })
+        })
+      }.bind(this)
     }.bind(this)
+
+    this.saveAbout1 = saver(1)
+    this.saveAbout2 = saver(2)
+    this.saveAbout3 = saver(3)
 
     this.cancel = function() {
       $shared.set('about1Editing', false)
+      $shared.set('about2Editing', false)
+      $shared.set('about3Editing', false)
     }
   },
 
@@ -59,7 +71,7 @@ var about = {
                           ])
                         ),
                         m('.col-xs-6.text-right',
-                          m('button.btn.btn-sm.btn-success', { onclick: ctl.submit }, [
+                          m('button.btn.btn-sm.btn-success', { onclick: ctl.saveAbout1 }, [
                             m('i.fa.fa-fw.fa-check'),
                             m('span', ' Save')
                           ])
@@ -91,10 +103,10 @@ var about = {
           m('.col-md-6',
             m('.panel.panel-custom', [
               m('.panel-heading', [
-                m('.panel-title', 'Who We Are'),
+                m('.panel-title', ctl.$campaign.get('about2Title')),
                 util.when(ctl.$shared.loggedIn(), function() {
                   return m('span.edit',
-                    m('a.btn.btn-sm.btn-warning', [
+                    m('a.btn.btn-sm.btn-warning', { onclick: ctl.$shared.set.bind(ctl.$shared, 'about2Editing', true) }, [
                       m('i.fa.fa-fw.fa-pencil'),
                       m('span', ' Edit')
                     ])
@@ -102,25 +114,79 @@ var about = {
                 })
               ]),
               m('.panel-body',
-                m('p', 'Loren Getsum')
+                util.when(ctl.$shared.get('about2Editing'), function() {
+                  return m('.panel.panel-warning', [
+                    m('.panel-header',
+                      m('input', { onchange: m.withAttr('value', ctl.about2Title) }, ctl.$campaign.get('about2Title'))
+                    ),
+                    m('.panel-body',
+                      m('textarea', { onchange: m.withAttr('value', ctl.about2) }, ctl.$campaign.get('about2'))
+                    ),
+                    m('.panel-footer',
+                      m('.row', [
+                        m('.col-xs-6.text-left',
+                          m('button.btn.btn-sm.btn-danger', { onclick: ctl.cancel }, [
+                            m('i.fa.fa-fw.fa-times'),
+                            m('span', ' Cancel')
+                          ])
+                        ),
+                        m('.col-xs-6.text-right',
+                          m('button.btn.btn-sm.btn-success', { onclick: ctl.saveAbout2 }, [
+                            m('i.fa.fa-fw.fa-check'),
+                            m('span', ' Save')
+                          ])
+                        )
+                      ])
+                    )
+                  ])
+                }, function() {
+                  return m('p', ctl.$campaign.get('about2'))
+                })
               )
             ])
           ),
           m('.col-md-6',
             m('.panel.panel-custom', [
               m('.panel-heading', [
-                m('.panel-title', 'What We Do'),
+                m('.panel-title', ctl.$campaign.get('about3Title')),
                 util.when(ctl.$shared.loggedIn(), function() {
                   return m('span.edit',
-                    m('a.btn.btn-sm.btn-hover.btn-primary', [
-                      m('i.fa.fa-fw.fa-share-alt'),
-                      m('span', ' Share')
+                    m('a.btn.btn-sm.btn-warning', { onclick: ctl.$shared.set.bind(ctl.$shared, 'about3Editing', true) }, [
+                      m('i.fa.fa-fw.fa-pencil'),
+                      m('span', ' Edit')
                     ])
                   )
                 })
               ]),
               m('.panel-body',
-                m('p', 'Loren Getsum')
+                util.when(ctl.$shared.get('about3Editing'), function() {
+                  return m('.panel.panel-warning', [
+                    m('.panel-header',
+                      m('input', { onchange: m.withAttr('value', ctl.about3Title) }, ctl.$campaign.get('about3Title'))
+                    ),
+                    m('.panel-body',
+                      m('textarea', { onchange: m.withAttr('value', ctl.about3) }, ctl.$campaign.get('about3'))
+                    ),
+                    m('.panel-footer',
+                      m('.row', [
+                        m('.col-xs-6.text-left',
+                          m('button.btn.btn-sm.btn-danger', { onclick: ctl.cancel }, [
+                            m('i.fa.fa-fw.fa-times'),
+                            m('span', ' Cancel')
+                          ])
+                        ),
+                        m('.col-xs-6.text-right',
+                          m('button.btn.btn-sm.btn-success', { onclick: ctl.saveAbout3 }, [
+                            m('i.fa.fa-fw.fa-check'),
+                            m('span', ' Save')
+                          ])
+                        )
+                      ])
+                    )
+                  ])
+                }, function() {
+                  return m('p', ctl.$campaign.get('about3'))
+                })
               )
             ])
           )

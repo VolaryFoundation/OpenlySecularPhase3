@@ -6,11 +6,14 @@ var hub = require('./hub')
 var routes = require('./routes')
 var config = require('./config')
 
+// for react devtools
+window.React = React
+
 var App = require('./components/app')
 
 function render(newAppState) {
   React.renderComponent(
-    App({ cursors: { root: newAppState.cursor(render) } }),
+    App({ $root: newAppState.cursor(render) }),
     document.getElementById('app')
   )
 }

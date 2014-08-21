@@ -44,6 +44,7 @@
     "tower-route": "^0.1.0",
     "tv4": "^1.1.0",
     "volary-static-builder": "*",
+    "xhr": "^1.15.0",
     "yaml": "^0.2.3",
     "zepto": "0.0.4"
   },

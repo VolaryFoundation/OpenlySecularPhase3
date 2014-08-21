@@ -1,9 +1,22 @@
 
 /** @jsx React.DOM */
 
-var React = require('react')
+var React = require('react/addons')
+var hub = require('../hub')
 
 module.exports = React.createClass({
+
+  toggle: function() {
+    this.props.$shared.set('showLogin', !this.props.$shared.get('showLogin'))
+  },
+
+  componentDidMount: function() {
+    hub.on('keydown:esc', this.toggle, this)
+  },
+
+  componentWillUnmount: function() {
+    hub.off('keydown:esc', this.toggle, this)
+  },
 
   pageUpdater: function(name) {
     var $shared = this.props.$shared
@@ -15,6 +28,14 @@ module.exports = React.createClass({
 
   render: function() {
 
+    var $shared = this.props.$shared
+
+    var loginClasses = React.addons.classSet({
+      'login': true,
+      'text-center': true,
+      'open': this.props.$shared.get('showLogin')
+    })
+
     function logoutButton() {
       return ''
     }
@@ -22,7 +43,7 @@ module.exports = React.createClass({
     return (
       <header>
         <div className="alert alert-warning flash">
-          { JSON.stringify(this.props.$shared.get('flash')) }
+          { JSON.stringify($shared.get('flash')) }
         </div>
         <nav className="navbar navbar-custom navbar-static-top" role="navigation">
           <div className="container">
@@ -48,9 +69,9 @@ module.exports = React.createClass({
             </div>
           </div>
         </nav>
-        <div className="login text-center">
+        <div className={loginClasses}>
           <div className="alert">
-            <button type="button" className="close"><span aria-hidden="true">x</span><span className="sr-only">Close</span></button>
+            <button onClick={this.toggle} type="button" className="close"><span aria-hidden="true">x</span><span className="sr-only">Close</span></button>
             <form className="form-inline" role="form">
               <div className="form-group">
                 <div className="input-group">

@@ -3,11 +3,17 @@ var Immutable = require('immutable')
 var m = require('mithril')
 var _ = require('lodash')
 
+function toPathArray(pathString) {
+  return pathString.split('.').map(function(part) {
+    return /^\d+$/.test(part) ? parseInt(part) : part
+  })
+}
+
 var cursor = function(source) {
 
   function sub(path, initHelpers) {
 
-    var pathArray = path.split('.')
+    var pathArray = toPathArray(path)
 
     return {
 
@@ -24,7 +30,7 @@ var cursor = function(source) {
         var cursor = sub(newPath)
         var current = history.peek()
 
-        var pathParts = newPath.split('.')
+        var pathParts = toPathArray(newPath)
         var starter = pathParts.slice(0, pathParts.length - 1)
         var next = current.updateIn(starter, function(parent) { 
           var key = _.last(pathParts)
@@ -34,6 +40,12 @@ var cursor = function(source) {
         history.push(next)
 
         return cursor
+      },
+
+      hasChanged: function() {
+        var previous = _.last(history.pop())
+        var current = history.peek()
+        return !previous || previous.getIn(pathArray) != current.getIn(pathArray)
       },
 
       value: function(mutate) {

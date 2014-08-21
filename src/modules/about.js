@@ -102,25 +102,22 @@ var about = {
         m('.row', [
           m('.col-md-6',
             m('.panel.panel-custom', [
-              m('.panel-heading', [
-                m('.panel-title', ctl.$campaign.get('about2Title')),
-                util.when(ctl.$shared.loggedIn(), function() {
-                  return m('span.edit',
-                    m('a.btn.btn-sm.btn-warning', { onclick: ctl.$shared.set.bind(ctl.$shared, 'about2Editing', true) }, [
-                      m('i.fa.fa-fw.fa-pencil'),
-                      m('span', ' Edit')
-                    ])
-                  )
-                })
-              ]),
+              util.when(ctl.$shared.loggedIn(), function() {
+                return m('span.edit',
+                  m('a.btn.btn-sm.btn-warning', { onclick: ctl.$shared.set.bind(ctl.$shared, 'about2Editing', true) }, [
+                    m('i.fa.fa-fw.fa-pencil'),
+                    m('span', ' Edit')
+                  ])
+                )
+              }),
               m('.panel-body',
                 util.when(ctl.$shared.get('about2Editing'), function() {
                   return m('.panel.panel-warning', [
                     m('.panel-header',
-                      m('input', { onchange: m.withAttr('value', ctl.about2Title) }, ctl.$campaign.get('about2Title'))
+                      m('input.form-control', { type: 'text', onchange: m.withAttr('value', ctl.about2Title) }, ctl.$campaign.get('about2Title'))
                     ),
                     m('.panel-body',
-                      m('textarea', { onchange: m.withAttr('value', ctl.about2) }, ctl.$campaign.get('about2'))
+                      m('textarea.form-control[rows=4]', { onchange: m.withAttr('value', ctl.about2) }, ctl.$campaign.get('about2'))
                     ),
                     m('.panel-footer',
                       m('.row', [
@@ -140,7 +137,12 @@ var about = {
                     )
                   ])
                 }, function() {
-                  return m('p', ctl.$campaign.get('about2'))
+                  return m('.panel-heading', [
+                    m('.panel-title', ctl.$campaign.get('about2Title')),
+                    m('.panel-body', 
+                      m('p', ctl.$campaign.get('about2'))
+                    )
+                  ])
                 })
               )
             ])
@@ -162,10 +164,10 @@ var about = {
                 util.when(ctl.$shared.get('about3Editing'), function() {
                   return m('.panel.panel-warning', [
                     m('.panel-header',
-                      m('input', { onchange: m.withAttr('value', ctl.about3Title) }, ctl.$campaign.get('about3Title'))
+                      m('input.form-control', { onchange: m.withAttr('value', ctl.about3Title) }, ctl.$campaign.get('about3Title'))
                     ),
                     m('.panel-body',
-                      m('textarea', { onchange: m.withAttr('value', ctl.about3) }, ctl.$campaign.get('about3'))
+                      m('textarea.form-control[rows=4]', { onchange: m.withAttr('value', ctl.about3) }, ctl.$campaign.get('about3'))
                     ),
                     m('.panel-footer',
                       m('.row', [

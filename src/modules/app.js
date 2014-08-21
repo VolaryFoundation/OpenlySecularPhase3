@@ -13,7 +13,7 @@ var login = require('./login')
 
 var app = {
 
-  controller: function($app, config) {
+  controller: function(config) {
 
     var $campaign = $app.refine('campaign')
     var $session = $app.shared().refine('session')
@@ -25,6 +25,8 @@ var app = {
       var name = $app.shared().get('page')
       if (name) routie.navigate(routie.lookup(name), { silent: true })
     }
+
+    this.$app = m.prop()
 
     this.login = new login.controller($session, config)
     this.header = new header.controller($campaign, config)

@@ -19,7 +19,7 @@ function render(newAppState) {
 }
 
 // set initial state
-render(Immutable.Map({
+render(Immutable.fromJS({
   shared: {
     page: 'home',
     session: {},

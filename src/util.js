@@ -1,8 +1,8 @@
 
 var _ = require('lodash')
-var m = require('mithril')
+var React = require('react/addons')
 
-module.exports = {
+var util = {
 
   preventDefault: function(fn) {
     return function(e) {
@@ -15,15 +15,72 @@ module.exports = {
     return bool ? yep() : (nope ? nope() : null) 
   },
 
-  render: function(module, cursors, config) {
+  swapper: function(val) {
+    return function() { return val }
+  },
 
-    var c = new module.controller(config)
+  pusher: function(val) {
+    return function(coll) { return coll.push(val) }
+  },
 
-    _.each(cursors, function(v, k) {
-      if (c[k]) c[k](v)
-      else c[k] = m.prop(v)
-    })
-    
-    return module.view(c)
+  cursors: {
+
+    value: function(cursor, path) {
+      
+    }, 
+
+    update: function(cursor, delta) {
+      var target = util.cursors.value(cursor)
+      React.addons.update(target)
+    },
+
+    refine: function(parent, path) {
+      return {
+        path: parent.path.concat(path || []),
+        _root: parent._root
+      }
+    }
+  },
+
+  pick: function(data, path) {
+    return path.reduce(function(memo, segment) {
+      return memo[segment]
+    }, data)
+  },
+
+  nest: function(path, nestee) {
+    var lastI = path.length - 1
+    var leadUp = path.slice(0, lastI)
+    var nestKey = path[lastI]
+    var base = {}
+    var nestPoint = leadUp.reduce(function(memo, key, i) {
+      return memo[key] = {}
+    }, base)
+    nestPoint[nestKey] = nestee
+    return base
+  },
+
+  cursor: function(data, cb) {
+
+    var sub = function(path) {
+
+      return {
+
+        value: util.pick(data, path),
+
+        refine: function(newPath) {
+          return sub(path.concat(newPath))
+        },
+
+        update: function(delta) {
+          var deltaForRoot = util.nest(path, delta)
+          cb(React.addons.update(data, deltaForRoot))
+        }
+      }
+    }
+
+    return sub([])
   }
 }
+
+module.exports = util

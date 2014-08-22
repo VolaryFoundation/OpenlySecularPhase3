@@ -1,15 +1,17 @@
 
 var m = require('mithril')
 var config = require('../config')
+var xhr = require('xhr')
+var rsvp = require('rsvp')
 
 var url = config.apiRoot + '/' + config.campaign.slug + '/session'
 
 var session = {
 
   load: function($session) {
-    return m.request({
+    return xhr({
       method: 'GET',
-      url: url, 
+      uri: url, 
     }).then(function(data) {
       return $session.set('active', true)
     }, function(e) {
@@ -17,22 +19,27 @@ var session = {
     })
   },
 
-  create: function($session, creds) {
-    return m.request({
-      method: 'POST',
-      url: url,
-      data: creds
-    }).then(function(result) {
-      return $session.set('active', true)
+  create: function(creds) {
+    return new rsvp.Promise(function(res, rej) {
+      xhr({
+        method: 'POST',
+        uri: url,
+        json: creds
+      }, function(e, resp) {
+        if (e) rej(e)
+        return res(resp.body)
+      })
     })
   },
 
   destroy: function($session) {
-    return m.request({
-      method: 'DELETE',
-      url: url + '/1'
-    }).then(function() {
-      return $session.set('active', false)
+    return new rsvp.Promise(function(res, rej) {
+      return xhr({
+        method: 'DELETE',
+        uri: url + '/1'
+      }, function(e) {
+        (e) ? rej() : res()
+      })
     })
   }
 }

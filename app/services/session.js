@@ -25,7 +25,6 @@ var session = {
   },
 
   remove: function(id, params, cb) {
-    console.log('in session remove')
     params.logout()
     cb(null)
   }

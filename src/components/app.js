@@ -4,7 +4,9 @@ var React = require('react')
 var Header = require('./header')
 var Content = require('./content')
 var Stream = require('./stream')
+var Immutable = require('immutable')
 var hub = require('../hub')
+var _ = require('lodash')
 
 module.exports = React.createClass({
 
@@ -18,10 +20,21 @@ module.exports = React.createClass({
     }
   },
 
+  resolveFlash: function($shared) {
+    if (_.isEmpty($shared.value.flash)) return
+    _.delay(function() {
+      $shared.update({ flash: { $set: [] } })
+    }, 2000)
+  },
+
   render: function() {
 
     var $root = this.props.$root
-    var $shared = $root.cursor('shared')
+    var $shared = $root.refine('shared')
+
+    window.$shared = $shared
+
+    this.resolveFlash($shared)
 
     return (
       <div>

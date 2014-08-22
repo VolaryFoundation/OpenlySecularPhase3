@@ -3,47 +3,50 @@
 
 var React = require('react/addons')
 var hub = require('../hub')
+var _ = require('lodash')
+var Login = require('./login')
+var Immutable = require('immutable')
+var sessions = require('../services/session')
+var util = require('../util')
 
 module.exports = React.createClass({
-
-  toggle: function() {
-    this.props.$shared.set('showLogin', !this.props.$shared.get('showLogin'))
-  },
-
-  componentDidMount: function() {
-    hub.on('keydown:esc', this.toggle, this)
-  },
-
-  componentWillUnmount: function() {
-    hub.off('keydown:esc', this.toggle, this)
-  },
 
   pageUpdater: function(name) {
     var $shared = this.props.$shared
     return function(e) {
       e.preventDefault()
-      $shared.set('page', name)
+      $shared.update({ $set: { page: name } })
     }
+  },
+
+  logout: function() {
+    var $shared = this.props.$shared
+    sessions.destroy().then(function() {
+      $shared.update({ session: { $set: {} }, flash: { $push: [ { message: 'Successfully logged out' } ] } })
+    }, function() {
+      $shared.update({ flash: { $push: [ { message: 'Could not log out for some reason.. Try again.' } ] } })
+    })
   },
 
   render: function() {
 
     var $shared = this.props.$shared
 
-    var loginClasses = React.addons.classSet({
-      'login': true,
-      'text-center': true,
-      'open': this.props.$shared.get('showLogin')
+    var flashClasses = React.addons.classSet({
+      'hidden': _.isEmpty($shared.value.flash),
+      'alert': true,
+      'alert-warning': true,
+      'flash': true
     })
 
-    function logoutButton() {
-      return ''
-    }
+    var logoutButton = function() {
+      return _.isEmpty($shared.value.session) ? '' : <button className="btn" onClick={this.logout}>Logout</button>
+    }.bind(this)
 
     return (
       <header>
-        <div className="alert alert-warning flash">
-          { JSON.stringify($shared.get('flash')) }
+        <div className={flashClasses}>
+          { $shared.value.flash.map(function(f) { return f.message }).join(', ') }
         </div>
         <nav className="navbar navbar-custom navbar-static-top" role="navigation">
           <div className="container">
@@ -69,30 +72,7 @@ module.exports = React.createClass({
             </div>
           </div>
         </nav>
-        <div className={loginClasses}>
-          <div className="alert">
-            <button onClick={this.toggle} type="button" className="close"><span aria-hidden="true">x</span><span className="sr-only">Close</span></button>
-            <form className="form-inline" role="form">
-              <div className="form-group">
-                <div className="input-group">
-                  <div className="input-group-addon"><i className="fa fa-fw fa-envelope"></i></div>
-                  <label className="sr-only" htmlFor="loginEmail">Email</label>
-                  <input className="form-control" id="loginEmail" type="email" placeholder="Enter email" />
-                </div>
-              </div>
-              <div className="form-group">
-                <div className="form-group">
-                  <div className="input-group">
-                    <div className="input-group-addon"><i className="fa fa-fw fa-asterisk"></i></div>
-                    <label className="sr-only" htmlFor="loginPassword">Password</label>
-                    <input type="password" className="form-control" id="loginPassword" placeholder="Password" />
-                  </div>
-                </div>
-              </div>
-              <a href="#" className="btn btn-primary btn-login">Log in</a>
-            </form>
-          </div>
-        </div>
+        <Login $shared={$shared} />
       </header>
     )
   }

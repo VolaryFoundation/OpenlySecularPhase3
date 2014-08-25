@@ -9,7 +9,7 @@ module.exports = React.createClass({
     return (
       <div className="container-fluid media-content">
         <ul className="row">
-          <li className="col-md-8 col-md-push-4">
+          <li className="col-md-8 col-md-push-4 media-story">
             <div className="inner">
               <strong className="type"><i className="fa fa-fw fa-file-text"></i> Press Release</strong>
               <h3>Our Monthly Status Update Press Release</h3>
@@ -25,51 +25,50 @@ module.exports = React.createClass({
           <li className="col-md-4 col-md-pull-8 list">
             <div className="xinner">
               <div className="panel-heading">
-                <h3 className="panel-title text-center">Latest Updates</h3>
+                <h3 className="panel-title">Latest Updates</h3>
               </div>
                 <div className="feed-list">
                   <ul className="nav nav-pills">
                     <li className="active"><a href="#">All</a></li>
-                    <li><a href="#">Blog</a></li>
                     <li><a href="#">In the News</a></li>
                     <li><a href="#">Press Releases</a></li>
                   </ul>
-                  <a href="#" className="list-group-item active">
+                  <a href="#" className="list-group-item">
                     <p className="list-group-meta">
-                      <span className="type">Press Release <i className="fa fa-fw fa-file-text"></i></span>
                       <span className="date"><i className="fa fa-fw fa-clock-o"></i>Sept 1, 2014</span>
+                      <span className="type">Press Release <i className="fa fa-fw fa-file-text"></i></span>
                     </p>
                     <h4 className="list-group-item-heading">Our Monthly Status Update Press Release</h4>
-                    <p className="list-group-item-text">Loren getsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit.</p>
+                    <p className="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit.</p>
                   </a>
                   <a href="#" className="list-group-item">
                     <p className="list-group-meta">
-                      <span className="type">Blog Post <i className="fa fa-fw fa-bookmark"></i></span>
                       <span className="date"><i className="fa fa-fw fa-clock-o"></i>Sept 1, 2014</span>
+                      <span className="type">Blog Post <i className="fa fa-fw fa-bookmark"></i></span>
                     </p>
                     <h4 className="list-group-item-heading">Another News Headline</h4>
-                    <p className="list-group-item-text">Loren getsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit.</p>
+                    <p className="list-group-item-text">Lorenm ipum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit.</p>
                   </a>
                   <a href="#" className="list-group-item">
                     <p className="list-group-meta">
-                      <span className="type">In the News <i className="fa fa-fw fa-quote-right"></i></span>
                       <span className="date"><i className="fa fa-fw fa-clock-o"></i>Sept 1, 2014</span>
+                      <span className="type">In the News <i className="fa fa-fw fa-quote-right"></i></span>
                     </p>
                     <h4 className="list-group-item-heading">Another News Headline</h4>
                     <p className="list-group-item-text"><strong>News Source Name</strong></p>
                   </a>
                   <a href="#" className="list-group-item">
                     <p className="list-group-meta">
-                      <span className="type">Press Release <i className="fa fa-fw fa-file-text"></i></span>
                       <span className="date"><i className="fa fa-fw fa-clock-o"></i> Sept 1, 2014</span>
+                      <span className="type">Press Release <i className="fa fa-fw fa-file-text"></i></span>
                     </p>
                     <h4 className="list-group-item-heading">Another News Headline</h4>
-                    <p className="list-group-item-text">Loren getsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit.</p>
+                    <p className="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit.</p>
                   </a>
                   <a href="#" className="list-group-item">
                     <p className="list-group-meta">
-                      <span className="type">In the News <i className="fa fa-fw fa-quote-right"></i></span>
                       <span className="date"><i className="fa fa-fw fa-clock-o"></i> Sept 1, 2014</span>
+                      <span className="type">In the News <i className="fa fa-fw fa-quote-right"></i></span>
                     </p>
                     <h4 className="list-group-item-heading">Another News Headline</h4>
                     <p className="list-group-item-text"><strong>News Source Name</strong></p>
@@ -77,10 +76,10 @@ module.exports = React.createClass({
                 </div>
               <ul className="view-more clearfix">
                 <li>
-                  <a href="#"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
+                  <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
                 </li>
                 <li>
-                  <i className="fa fa-fw fa-lg fa-angle-right"></i>
+                  <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
                 </li>
               </ul>
             </div>

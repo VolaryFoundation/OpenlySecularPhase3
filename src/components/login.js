@@ -63,12 +63,10 @@ var Login = React.createClass({
               </div>
             </div>
             <div className="form-group">
-              <div className="form-group">
-                <div className="input-group">
-                  <div className="input-group-addon"><i className="fa fa-fw fa-asterisk"></i></div>
-                  <label className="sr-only" htmlFor="loginPassword">Password</label>
-                  <input type="password" className="form-control" id="loginPassword" onChange={this.handleChange('password')} placeholder="Password" />
-                </div>
+              <div className="input-group">
+                <div className="input-group-addon"><i className="fa fa-fw fa-asterisk"></i></div>
+                <label className="sr-only" htmlFor="loginPassword">Password</label>
+                <input type="password" className="form-control" id="loginPassword" onChange={this.handleChange('password')} placeholder="Password" />
               </div>
             </div>
             <button type="submit" className="btn btn-primary btn-login">Log in</button>

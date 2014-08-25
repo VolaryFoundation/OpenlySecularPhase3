@@ -64,9 +64,9 @@ module.exports = React.createClass({
                 <li><a href="/#/" onClick={this.pageUpdater('home')}>Home</a></li>
                 <li><a href="/#/" onClick={this.pageUpdater('latest')}>Latest</a></li>
                 <li><a href="/#/" onClick={this.pageUpdater('about')}>About</a></li>
-                <li><a href="/#/">Partners</a></li>
+                <li><a href="/#/" onClick={this.pageUpdater('partners')}>Partners</a></li>
                 <li><a href="/#/">Resources</a></li>
-                <li><a href="/#/">Contact</a></li>
+                <li><a href="/#/" onClick={this.pageUpdater('contact')}>Contact</a></li>
                 { logoutButton() }
               </ul>
             </div>

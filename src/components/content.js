@@ -7,7 +7,9 @@ var _ = require('lodash')
 var pages = {
   Home: require('./home'),
   About: require('./about'),
-  Latest: require('./latest')
+  Latest: require('./latest'),
+  Partners: require('./partners'),
+  Contact: require('./contact')
 }
 
 module.exports = React.createClass({
@@ -24,6 +26,12 @@ module.exports = React.createClass({
         break
       case 'latest':
         Page = _.partial(pages.Latest, {})
+        break
+      case 'partners':
+        Page = _.partial(pages.Partners, {})
+        break
+      case 'contact':
+        Page = _.partial(pages.Contact, {})
         break
     }
 

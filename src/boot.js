@@ -11,13 +11,15 @@ window.React = React
 var App = require('./components/app')
 
 function render(state) {
+  $root.swap(state)
   React.renderComponent(
-    App({ $root: util.cursor(state, render) }),
+    App({ $root: $root }),
     document.getElementById('app')
   )
 }
 
-// set initial state
+var $root = util.cursor({}, render)
+
 render({
   campaign: {},
   shared: {

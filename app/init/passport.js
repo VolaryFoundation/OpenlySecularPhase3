@@ -24,8 +24,10 @@ var local = new LocalStrategy({
 },
 function(email, password, done) {
   Parse.User.logIn(email, password).then(function(user) {
+    console.log('logged in', user)
     return done(null, user)
   }, function(e) {
+    console.log('log in failed', e)
     return done(e)
   }) 
 })

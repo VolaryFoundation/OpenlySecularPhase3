@@ -80,7 +80,9 @@ var util = {
       }
     }
 
-    return sub([])
+    var root = sub([])
+    root.swap = function(updated) { data = updated }
+    return root
   }
 }
 

@@ -27,19 +27,32 @@ module.exports = React.createClass({
     }, 2000)
   },
 
+  loadSession: _.once(function($shared) {
+    require('../services/session').load($shared)
+  }),
+
+  loadCampaign: _.once(function($campaign) {
+    require('../services/campaign').load($campaign)
+  }),
+
   render: function() {
 
     var $root = this.props.$root
     var $shared = $root.refine('shared')
+    var $campaign = $root.refine('campaign')
 
     window.$shared = $shared
 
+    this.loadSession($shared)
+    this.loadCampaign($campaign)
     this.resolveFlash($shared)
+
+    console.log('rendering app', $campaign.deref())
 
     return (
       <div>
         <Header $root={$root} $shared={$shared} />
-        <Content $root={$root} $shared={$shared} />
+        <Content $root={$root} $campaign={$campaign} $shared={$shared} />
         <Stream $root={$root} />
       </div>
     )

@@ -1,23 +1,32 @@
 
-var m = require('mithril')
 var config = require('../config')
+var xhr = require('xhr')
+var rsvp = require('rsvp')
 
 module.exports = {
 
   patch: function(patches) {
-    return m.request({
-      method: 'PATCH',
-      data: patches,
-      url: config.apiRoot + '/campaigns/' + config.campaign.id
+    return new rsvp.Promise(function(res, rej) {
+      return xhr({
+        method: 'PATCH',
+        uri: config.apiRoot + '/campaigns/' + config.campaign.id,
+        json: patches,
+        withCredentials: true
+      }, function(e, resp, body) {
+        e ? rej(e) : res(body)
+      })
     })
   },
 
-  load: function($app) {
+  load: function($campaign) {
     return m.request({
       method: 'GET',
-      url: config.apiRoot + '/campaigns/' + config.campaign.id
+      url: config.apiRoot + '/campaigns/' + config.campaign.id,
+      json: 1,
+      withCredentials: true
     }).then(function(data) {
-      $app.set('campaign', data)
+      console.log('updating campaign')
+      $campaign.update({ $set: data })
     })
   }
 }

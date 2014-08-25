@@ -64,6 +64,7 @@ function mixinCampaign(req, res, next) {
   console.log('mixing campaign')
   var cId = req.params.campaignId
   req.feathers.campaignId = cId
+  console.log(cId)
   if (cId) {
     campaignService.find({ slug: cId }, function(e, c) {
       if (e) return send(404, 'Could not find campaign')

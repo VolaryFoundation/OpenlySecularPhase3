@@ -5,7 +5,7 @@ var helpers = require('../util/service_helpers')
 var session = {
 
   find: function(params, cb) {
-    cb(null)
+    cb(null, params.user)
   },
 
   create: function(data, params, cb) {

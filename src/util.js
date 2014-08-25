@@ -49,6 +49,7 @@ var util = {
   },
 
   nest: function(path, nestee) {
+    if (!path.length) return nestee
     var lastI = path.length - 1
     var leadUp = path.slice(0, lastI)
     var nestKey = path[lastI]

@@ -9,7 +9,7 @@ var _ = require('lodash')
 var Login = React.createClass({
 
   toggle: function() {
-    this.props.$shared.update({ showLogin: { $set: !this.props.$shared.value.showLogin } })
+    this.props.$shared.update({ showLogin: { $set: !this.props.$shared.deref().showLogin } })
   },
 
   componentDidMount: function() {
@@ -47,7 +47,7 @@ var Login = React.createClass({
     var loginClasses = React.addons.classSet({
       'login': true,
       'text-center': true,
-      'open': this.props.$shared.value.showLogin
+      'open': this.props.$shared.deref().showLogin
     })
 
     return (

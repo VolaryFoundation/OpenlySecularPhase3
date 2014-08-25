@@ -17,7 +17,7 @@ module.exports = React.createClass({
   render: function() {
 
     var Page
-    switch (this.props.$shared.value.page) {
+    switch (this.props.$shared.deref().page) {
       case 'home':
         Page = _.partial(pages.Home, {})
         break

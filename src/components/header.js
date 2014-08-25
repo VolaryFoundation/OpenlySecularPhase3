@@ -15,7 +15,7 @@ module.exports = React.createClass({
     var $shared = this.props.$shared
     return function(e) {
       e.preventDefault()
-      $shared.update({ $set: { page: name } })
+      $shared.update({ page: { $set: name } })
     }
   },
 
@@ -33,20 +33,20 @@ module.exports = React.createClass({
     var $shared = this.props.$shared
 
     var flashClasses = React.addons.classSet({
-      'hidden': _.isEmpty($shared.value.flash),
+      'hidden': _.isEmpty($shared.deref().flash),
       'alert': true,
       'alert-warning': true,
       'flash': true
     })
 
     var logoutButton = function() {
-      return _.isEmpty($shared.value.session) ? '' : <button className="btn" onClick={this.logout}>Logout</button>
+      return _.isEmpty($shared.deref().session) ? '' : <button className="btn" onClick={this.logout}>Logout</button>
     }.bind(this)
 
     return (
       <header>
         <div className={flashClasses}>
-          { $shared.value.flash.map(function(f) { return f.message }).join(', ') }
+          { $shared.deref().flash.map(function(f) { return f.message }).join(', ') }
         </div>
         <nav className="navbar navbar-custom navbar-static-top" role="navigation">
           <div className="container">

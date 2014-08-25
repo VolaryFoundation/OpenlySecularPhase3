@@ -21,7 +21,7 @@ module.exports = React.createClass({
   },
 
   resolveFlash: function($shared) {
-    if (_.isEmpty($shared.value.flash)) return
+    if (_.isEmpty($shared.deref().flash)) return
     _.delay(function() {
       $shared.update({ flash: { $set: [] } })
     }, 2000)

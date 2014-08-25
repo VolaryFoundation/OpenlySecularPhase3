@@ -67,7 +67,7 @@ var util = {
 
       return {
 
-        value: util.pick(data, path),
+        deref: util.pick.bind(null, data, path),
 
         refine: function(newPath) {
           return sub(path.concat(newPath))

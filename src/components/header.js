@@ -40,7 +40,7 @@ module.exports = React.createClass({
     })
 
     var logoutButton = function() {
-      return _.isEmpty($shared.deref().session) ? '' : <button className="btn" onClick={this.logout}>Logout</button>
+      return _.isEmpty($shared.deref().session) ? '' : <a href="#" onClick={this.logout}><i className="fa fa-fw fa-sign-out"></i> Logout</a>
     }.bind(this)
 
     return (
@@ -67,7 +67,7 @@ module.exports = React.createClass({
                 <li><a href="/#/" onClick={this.pageUpdater('partners')}>Partners</a></li>
                 <li><a href="/#/">Resources</a></li>
                 <li><a href="/#/" onClick={this.pageUpdater('contact')}>Contact</a></li>
-                { logoutButton() }
+                <li className="setting">{ logoutButton() }</li>
               </ul>
             </div>
           </div>

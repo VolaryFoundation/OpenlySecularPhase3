@@ -54,22 +54,34 @@ module.exports = React.createClass({
   renderAbout1: function() {
     if (this.state.about1Editing) {
       return (
-        <div className="inner">
-          <input type="text" onChange={this.setter('about1Title')} defaultValue={this.props.$campaign.deref().about1Title} />
-          <textarea onChange={this.setter('about1')} defaultValue={this.props.$campaign.deref().about1}></textarea>
-          <button onClick={this.toggler('about1Editing')}>Cancel</button>
-          <button onClick={this.saver('about1')}>Save</button>
+        <div className="outer">
+          <div className="inner">
+            <div className="panel-body">
+              <div className="form-group">
+                <input type="text" className="form-control" onChange={this.setter('about1Title')} defaultValue={this.props.$campaign.deref().about1Title} />
+              </div>
+              <div className="form-group">
+                <textarea className="form-control" rows="5" onChange={this.setter('about1')} defaultValue={this.props.$campaign.deref().about1}></textarea>
+              </div>
+            </div>
+          </div>
+          <a href="#" className="btn btn-danger cancel" onClick={this.toggler('about1Editing')}><i className="fa fa-fw fa-times"></i></a>
+          <a href="#" className="btn btn-success save" onClick={this.saver('about1')}><i className="fa fa-fw fa-check"></i></a>
         </div>
       )
     } else {
       return (
-        <div className="inner">
-          { _.isEmpty(this.props.$shared.deref().session) ? null : (<button onClick={this.toggler('about1Editing')}>Edit</button>) }
-          <div className="panel-heading">
-            <h3 className="panel-title text-center">{ this.props.$campaign.deref().about1Title }</h3>
+        <div className="outer">
+          <div className="btn-toolbar clearfix" role="toolbar">
+            { _.isEmpty(this.props.$shared.deref().session) ? null : (<button className="btn btn-warning edit" onClick={this.toggler('about1Editing')}><i className="fa fa-fw fa-pencil"></i></button>) }
           </div>
-          <div className="panel-body">
-            <p className="lead">{ this.props.$campaign.deref().about1 }</p>
+          <div className="inner">
+            <div className="panel-heading">
+              <h3 className="panel-title text-center">{ this.props.$campaign.deref().about1Title }</h3>
+            </div>
+            <div className="panel-body">
+              <p className="lead">{ this.props.$campaign.deref().about1 }</p>
+            </div>
           </div>
         </div>
       )

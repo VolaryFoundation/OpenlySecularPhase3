@@ -28,7 +28,7 @@ module.exports = React.createClass({
         Page = _.partial(pages.Latest, {})
         break
       case 'partners':
-        Page = _.partial(pages.Partners, {})
+        Page = _.partial(pages.Partners, { $shared: this.props.$shared, $campaign: this.props.$campaign })
         break
       case 'contact':
         Page = _.partial(pages.Contact, {})

@@ -23,23 +23,11 @@ var util = {
     return function(coll) { return coll.push(val) }
   },
 
-  cursors: {
-
-    value: function(cursor, path) {
-      
-    }, 
-
-    update: function(cursor, delta) {
-      var target = util.cursors.value(cursor)
-      React.addons.update(target)
-    },
-
-    refine: function(parent, path) {
-      return {
-        path: parent.path.concat(path || []),
-        _root: parent._root
-      }
-    }
+  toDelta: function(obj) {
+    return _.reduce(object, function(memo, v, k) {
+      memo[k] = { $set: v }
+      return memo
+    }, {})
   },
 
   pick: function(data, path) {

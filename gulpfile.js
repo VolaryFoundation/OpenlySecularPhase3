@@ -6,38 +6,35 @@ var config = require('config')
 var srcPath = __dirname + '/src'
 var builder = require('volary-static-builder')({ srcPath: srcPath })
 
+mongo.url = config.database.url
+mongo.shortcut('campaigns')
+
 gulp.task('buildAndServe', function(done) {
-
-  mongo.url = config.database.url
-  mongo.shortcut('campaigns')
   mongo.campaigns.find({ slug: 'development' }, {}).then(function(found) {
-    if (found[0]) {
-      return found
-    } else {
-      return mongo.campaigns.insert({
-        "about1" : "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
-        "about1Editing" : false,
-        "about1Title" : "Our Mission blah",
-        "logo" : "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
-        "partners" : [
-          {
-            "name" : "rdf",
-            "logo" : "someogo.png"
-          }
-        ],
-        "slug" : "development",
-        "title" : "Some freakin campaign"
-      })
-    }
-  }).then(function(campaigns) {
-    go(campaigns[0])
-  }).catch(function() { console.log(arguments) })
-
-  function go(campaign) {
+    var campaign = found[0]
     console.log('serving ', campaign._id)
     builder.buildAndServe({ campaign: { id: campaign._id, slug: campaign.slug } }, {})
     done()
-  }
+  }).catch(function() { console.log(arguments) })
+})
+
+gulp.task('initDev', function(done) {
+  mongo.campaigns.insert({
+    userId: "MF8y1308Qh",
+    about1: {
+      content: "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
+      title: "Our Mission blah",
+    },
+    logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
+    partners: [
+      {
+        name: "rdf",
+        logo: "someogo.png"
+      }
+    ],
+    slug: "development",
+    title: "Some freakin campaign"
+  }).then(done, done)
 })
 
 gulp.task('dev', [ 'buildAndServe' ], function() {

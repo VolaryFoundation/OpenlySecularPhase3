@@ -9,17 +9,9 @@ var util = require('../util')
 
 var AboutSection = React.createClass({
 
-  displayName: 'AboutSection',
-
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  syncState: function(props) {
-    this.setState({
-      editing: false,
-      title: props.title,
-      content: props.content
-    })
-  },
+  schema: [ 'title', 'content' ],
 
   render: function() {
     if (this.state.editing) {
@@ -54,12 +46,7 @@ module.exports = React.createClass({
   saver: function(name) {
     var $campaign = this.props.$campaign
     return function(state) {
-      var data = _.object([ [ name, state.content ], [ name + 'Title', state.title ] ])
-      campaign.patch(data).then(function(saved) {
-        $campaign.update({ $set: saved }) 
-      }, function(e) {
-        debugger
-      })
+      debugger
     }
   },
 
@@ -78,8 +65,7 @@ module.exports = React.createClass({
           </li>
           <li className="col-md-8">
             <AboutSection 
-              title={data.about1Title}
-              content={data.about1}
+              $cursor={$campaign.refine('about1')}
               isEditable={!_.isEmpty($shared.deref().session)}
               onReset={this.forceUpdate.bind(this)}
               onSave={this.saver('about1')}
@@ -89,8 +75,7 @@ module.exports = React.createClass({
         <ul className="row">
           <li className="col-md-4">
             <AboutSection 
-              title={data.about2Title}
-              content={data.about2}
+              $cursor={$campaign.refine('about1')}
               isEditable={!_.isEmpty($shared.deref().session)}
               onReset={this.forceUpdate.bind(this)}
               onSave={this.saver('about2')}
@@ -98,8 +83,7 @@ module.exports = React.createClass({
           </li>
           <li className="col-md-4">
             <AboutSection 
-              title={data.about3Title}
-              content={data.about3}
+              $cursor={$campaign.refine('about3')}
               isEditable={!_.isEmpty($shared.deref().session)}
               onReset={this.forceUpdate.bind(this)}
               onSave={this.saver('about3')}
@@ -107,8 +91,7 @@ module.exports = React.createClass({
           </li>
           <li className="col-md-4">
             <AboutSection 
-              title={data.about4Title}
-              content={data.about4}
+              $cursor={$campaign.refine('about4')}
               isEditable={!_.isEmpty($shared.deref().session)}
               onReset={this.forceUpdate.bind(this)}
             />

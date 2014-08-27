@@ -10,15 +10,7 @@ var PartnerList = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  syncState: function(props) {
-    this.setState({
-      editing: false,
-      name: props.name,
-      description: props.description,
-      list: props.list,
-      key: props.key
-    })
-  },
+  schema: [ 'title', 'description', 'list' ],
 
   add: function(e) {
     e.preventDefault()
@@ -64,9 +56,7 @@ var PartnerList = React.createClass({
                   { 
                     this.state.list.map(function(item, key) { 
                       return <PartnerItem
-                        name={item.name}
-                        logo={item.logo}
-                        link={item.link}
+                        $cursor={this.props.$cursor.refine([ 'list', key ])}
                         key={key}
                         editing={item.editing}
                         onSave={this.saveItem}
@@ -90,15 +80,7 @@ var PartnerItem = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  syncState: function(props) {
-    this.setState({
-      editing: props.editing || false,
-      name: props.name,
-      logo: props.logo,
-      link: props.link,
-      key: props.key
-    })
-  },
+  schema: [ 'name', 'logo', 'link' ],
 
   render: function() {
     if (this.state.editing) {
@@ -152,9 +134,7 @@ module.exports = React.createClass({
         {
           $campaign.deref().partners.map(function(partners, key) {
             return <PartnerList
-              name={partners.name}
-              description={partners.description}
-              list={partners.list}
+              $cursor={$campaign.refine([ 'partners', key ])}
               key={key}
               onSave={this.save}
               onReset={this.forceUpdate.bind(this)}

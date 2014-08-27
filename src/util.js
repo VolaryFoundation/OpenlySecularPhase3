@@ -64,6 +64,19 @@ var util = {
         update: function(delta) {
           var deltaForRoot = util.nest(path, delta)
           cb(React.addons.update(data, deltaForRoot))
+        },
+
+        detach: function() {
+
+          var source = this
+          var data = this.deref()
+
+          return { 
+            
+            reattach: function() {
+
+            }
+          }
         }
       }
     }

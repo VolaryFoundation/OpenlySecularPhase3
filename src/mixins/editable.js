@@ -1,4 +1,6 @@
 
+var _ = require('lodash')
+
 var Editable = {
 
   propTypes: {
@@ -8,26 +10,38 @@ var Editable = {
   },
 
   edit: function() {
-    this.setState({ editing: true })
+    this.replaceState(
+      _.extend(this.getInitialState(), {
+        editing: true 
+      })
+    )
   },
 
   save: function() {
-    this.props.onSave(this.state)
+
+    var shitWeCareAbout = _.reduce(this.state, function(memo, v, k) {
+      if (this.schema.indexOf(k) > -1) memo[k] = v
+      return memo
+    }.bind(this), {})
+
+    this.props.$cursor.update({ $set: shitWeCareAbout })
+    this.setState({ editing: false })
   },
 
   cancel: function() {
-    this.props.onReset()
+    this.replaceState(this.getInitialState())
   },
 
-  // on forced update (cancel)
   componentWillReceiveProps: function(newProps) {
-    this.syncState(newProps)
+    this.setState(newProps.$cursor.deref() || {})
   },
 
-  // on first go
-  componentWillMount: function() {
-    this.syncState(this.props)
+  getInitialState: function() {
+    return _.extend({
+      editing: false
+    }, this.props.$cursor.deref())
   }
+
 }
 
 module.exports = Editable

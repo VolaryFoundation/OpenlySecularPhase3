@@ -11,8 +11,6 @@ var AboutSection = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  schema: [ 'title', 'content' ],
-
   render: function() {
     if (this.state.editing) {
       return (
@@ -40,15 +38,6 @@ var AboutSection = React.createClass({
 })
 
 module.exports = React.createClass({
-
-  mixins: [  ],
-
-  saver: function(name) {
-    var $campaign = this.props.$campaign
-    return function(state) {
-      debugger
-    }
-  },
 
   render: function() {
 

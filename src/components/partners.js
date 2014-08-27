@@ -10,19 +10,10 @@ var PartnerList = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  schema: [ 'title', 'description', 'list' ],
-
   add: function(e) {
     e.preventDefault()
     var list = this.state.list
-    this.setState({ list: list.concat([ { name: '', logo: '', link: '', editing: true } ]) })
-  },
-
-  saveItem: function(item) {
-    var data = { name: item.name, logo: item.logo, link: item.link }
-    this.state.list.splice(item.key, 1, data)
-    this.setState({ list: this.state.list })
-    this.save()
+    this.props.$cursor.update({ list: { $set: list.concat([ { name: '', logo: '', link: '' } ]) } })
   },
 
   render: function() {
@@ -31,7 +22,7 @@ var PartnerList = React.createClass({
       <ul className="row" key={this.state.name}>
         <li className="col-md-4 list">
           <div className="panel-heading">
-            <h3 className="panel-title">{this.state.name}</h3>
+            <h3 className="panel-title">{this.state.title}</h3>
             { this.props.isEditable ? (<a href="#" onClick={this.add}>+</a>) : null }
           </div>
           <div className="inner">
@@ -59,8 +50,6 @@ var PartnerList = React.createClass({
                         $cursor={this.props.$cursor.refine([ 'list', key ])}
                         key={key}
                         editing={item.editing}
-                        onSave={this.saveItem}
-                        onReset={this.forceUpdate.bind(this)}
                         isEditable={this.props.isEditable}
                       />
                     }, this) 
@@ -80,7 +69,10 @@ var PartnerItem = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  schema: [ 'name', 'logo', 'link' ],
+  componentWillMount: function() {
+    // infer editing state
+    if (!this.state.name) this.setState({ editing: true })
+  },
 
   render: function() {
     if (this.state.editing) {
@@ -109,20 +101,6 @@ var PartnerItem = React.createClass({
 
 module.exports = React.createClass({
 
-  save: function(state) {
-    var data = { name: state.name, description: state.description, list: state.list }
-    var partners = this.props.$campaign.deref().partners
-    var self = this
-    partners.splice(state.key, 1, data)
-    campaignService.patch({ partners: partners }).then(function(saved) {
-      self.$campaign.update({ $set: saved })
-    }, function() {
-      debugger
-    })
-  },
-
-  getInitialState: function() { return {} },
-
   render: function() {
 
     var $campaign = this.props.$campaign
@@ -136,7 +114,6 @@ module.exports = React.createClass({
             return <PartnerList
               $cursor={$campaign.refine([ 'partners', key ])}
               key={key}
-              onSave={this.save}
               onReset={this.forceUpdate.bind(this)}
               isEditable={!_.isEmpty($shared.deref().session)}
             />

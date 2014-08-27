@@ -27,9 +27,15 @@ gulp.task('initDev', function(done) {
     },
     logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
     partners: [
-      {
-        name: "rdf",
-        logo: "someogo.png"
+      { 
+        title: 'friends',
+        description: 'some friends of ours',
+        list: [
+          {
+            name: "rdf",
+            logo: "someogo.png"
+          }
+        ]
       }
     ],
     slug: "development",

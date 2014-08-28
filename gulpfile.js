@@ -62,6 +62,20 @@ gulp.task('initDev', function(done) {
         ]
       }
     ],
+    downloads: [
+    {
+      title: 'Downloads',
+      description: 'Get your files bitch',
+      list: [
+        {
+          name: "rdf",
+          file: "someogo.png",
+          description: 'This is my description babyy'
+        }
+      ]
+    },
+
+    ],
     slug: "development",
     title: "Some freakin campaign"
   }).then(done, done)

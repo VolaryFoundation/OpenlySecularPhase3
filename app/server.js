@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser')
 var cookieSession = require('cookie-session')
 var passport = require('passport')
 var hub = require('./util/hub')
+var multiparty = require('connect-multiparty')
 
 var server = feathers()
 
@@ -18,8 +19,10 @@ var userService = require('./services/users')
 var feedService = require('./services/feed')
 var campaignService = require('./services/campaigns')
 var sessionService = require('./services/session')
+var uploadService = require('./services/uploads')
 
 server
+  .use(multiparty())
   .use(bodyParser.json())
   .use(cookieParser('foo'))
   .use(cookieSession({ secret: 'foo' }))
@@ -42,6 +45,8 @@ server
       passport.authenticate(type, cb)(req, res, next)
     }
 
+    req.feathers.files = req.files
+
     req.feathers.login = function(user, cb) {
       req.logIn(user, cb)
     }
@@ -56,6 +61,7 @@ server
   .use('/api/:campaignId/user', mixinCampaign, userService)
   .use('/api/:campaignId/feed', mixinCampaign, feedService)
   .use('/api/:campaignId/session', mixinCampaign, sessionService)
+  .use('/api/:campaignId/upload', mixinCampaign, uploadService)
   .use('/api/campaigns', campaignService)
   .configure(feathers.errors())
 

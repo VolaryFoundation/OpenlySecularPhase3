@@ -4,6 +4,7 @@
 var React = require('react/addons')
 var Editable = require('../mixins/editable')
 var campaignService = require('../services/campaign')
+var uploadService = require('../services/upload')
 var _ = require('lodash')
 
 var PartnerList = React.createClass({
@@ -53,7 +54,6 @@ var PartnerList = React.createClass({
                       return <PartnerItem
                         $cursor={this.props.$cursor.refine([ 'list', key ])}
                         index={key}
-                        editing={item.editing}
                         isEditable={this.props.isEditable}
                         onDelete={this.deleteItem}
                       />
@@ -87,11 +87,29 @@ var PartnerItem = React.createClass({
     }
   },
 
+  promptUpload: function() {
+    var el = this.refs.upload.getDOMNode()
+    el.click()
+  },
+
+  upload: function(e) {
+    var fd = new FormData
+    var file = e.target.files[0]
+    fd.append('upload', file, file.name)
+    var self = this
+    uploadService.create(fd).then(function(url) {
+      self.props.$cursor.update({ logo: { $set: url } })
+    }, function() {
+      debugger
+    })
+  },
+
   render: function() {
     if (this.state.editing) {
       return (
-        <li className="col-xs-6 col-md-3">
-          <img src={this.state.logo} />
+        <li className="col-xs-6 col-md-3" key={this.props.index}>
+          <img style={{ height: 100, width: 100 }} onClick={this.promptUpload} src={this.state.logo} />
+          <input onChange={this.upload} type="file" name="upload" ref="upload" />
           <div className="panel-footer">
             <input type="text" valueLink={this.linkState('name')} />
             <input type="text" valueLink={this.linkState('link')} />

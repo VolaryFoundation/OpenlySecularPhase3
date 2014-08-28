@@ -6,6 +6,7 @@ var Editable = require('../mixins/editable')
 var campaignService = require('../services/campaign')
 var uploadService = require('../services/upload')
 var _ = require('lodash')
+var util = require('util')
 
 var PartnerList = React.createClass({
 
@@ -23,12 +24,30 @@ var PartnerList = React.createClass({
 
   render: function() {
 
-    return (
-      <ul className="row" key={this.state.name}>
+    var renderEditing = function() {
+      return (
+        <li className="col-md-4 list">
+          <div className="panel-heading">
+            <input type="text" valueLink={this.linkState('title')} />
+          </div>
+          <div className="inner">
+            <div className="panel-body">
+              <textarea valueLink={this.linkState('description')}></textarea>
+            </div>
+          </div>
+          <button onClick={this.cancel}>cancel</button>
+          <button onClick={this.save}>save</button>
+        </li>
+      )
+    }.bind(this)
+
+    var renderViewing = function() {
+      return (
         <li className="col-md-4 list">
           <div className="panel-heading">
             <h3 className="panel-title">{this.state.title}</h3>
-            { this.props.isEditable ? (<a href="#" onClick={this.add}>+</a>) : null }
+            { this.props.isEditable ? (<a href="#" onClick={this.add}>add</a>) : null }
+            { this.props.isEditable ? (<a href="#" onClick={this.edit}>edit</a>) : null }
           </div>
           <div className="inner">
             <div className="panel-body">
@@ -44,16 +63,22 @@ var PartnerList = React.createClass({
             </ul>
           </div>
         </li>
+      )
+    }.bind(this)
+
+    return (
+      <ul className="row" key={this.state.name}>
+        { this.state.editing ? renderEditing() : renderViewing() }
         <li className="col-md-8">
           <div className="carousel slide">
             <div className="carousel-inner">
               <div className="item active">
                 <ul className="row">
                   { 
-                    this.state.list.map(function(item, key) { 
+                    this.state.list.map(function(item, index) { 
                       return <PartnerItem
-                        $cursor={this.props.$cursor.refine([ 'list', key ])}
-                        index={key}
+                        $cursor={this.props.$cursor.refine([ 'list', index ])}
+                        index={index}
                         isEditable={this.props.isEditable}
                         onDelete={this.deleteItem}
                       />
@@ -121,6 +146,8 @@ var PartnerItem = React.createClass({
     } else {
       return (
         <li className="col-xs-6 col-md-3">
+          { this.props.isEditable ? (<button onClick={this.edit}>Edit</button>) : '' }
+          { this.props.isEditable ? (<button onClick={this.props.onDelete.bind(null, this.props.index)}>delete</button>) : '' }
           <img src={this.state.logo} />
           <div className="panel-footer">
             <h3 className="panel-title">{this.state.name}</h3>
@@ -143,10 +170,10 @@ module.exports = React.createClass({
       <div className="container-fluid partners-content">
 
         {
-          $campaign.deref().partners.map(function(partners, key) {
+          $campaign.deref().partners.map(function(partners, index) {
             return <PartnerList
-              $cursor={$campaign.refine([ 'partners', key ])}
-              key={key}
+              $cursor={$campaign.refine([ 'partners', index ])}
+              index={index}
               onReset={this.forceUpdate.bind(this)}
               isEditable={!_.isEmpty($shared.deref().session)}
             />

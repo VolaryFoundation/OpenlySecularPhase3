@@ -19,6 +19,11 @@ var util = {
     return function() { return val }
   },
 
+  id: (function() {
+    var i = 0
+    return function(prefix) { return (prefix || 'a') + (i++) }
+  })(),
+
   pusher: function(val) {
     return function(coll) { return coll.push(val) }
   },

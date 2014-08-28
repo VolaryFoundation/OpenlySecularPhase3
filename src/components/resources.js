@@ -82,7 +82,7 @@ var DownloadItem = React.createClass({
   render: function() {
     if (this.state.editing) {
       return (
-        <div href="#" className="list-group-item" key={guid()}>
+        <div href="#" className="list-group-item" key={this.props.index}>
           <input type="text" valueLink={this.linkState('name')} />
           <p className="list-group-meta">
             <input type="text" valueLink={this.linkState('file')} />
@@ -95,7 +95,7 @@ var DownloadItem = React.createClass({
       )
     } else {
       return (
-        <a href="#" className="list-group-item">
+        <a href="#" className="list-group-item" key={this.props.index}>
           <h4 className="list-group-item-heading">{this.state.name}</h4>
           <p className="list-group-meta">
             <span className="type"><i className="fa fa-fw fa-file-pdf-o"></i>{this.state.file}</span>

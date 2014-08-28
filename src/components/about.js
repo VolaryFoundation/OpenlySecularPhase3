@@ -62,7 +62,7 @@ module.exports = React.createClass({
         <ul className="row">
           <li className="col-md-4">
             <AboutSection
-              $cursor={$campaign.refine('about1')}
+              $cursor={$campaign.refine('about2')}
               isEditable={!_.isEmpty($shared.deref().session)}
             />
           </li>

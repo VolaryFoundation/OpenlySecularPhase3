@@ -19,7 +19,9 @@ gulp.task('buildAndServe', function(done) {
 })
 
 gulp.task('initDev', function(done) {
-  mongo.campaigns.insert({
+  mongo.campaigns.update({
+    slug: 'development'
+  }, {
     userId: "MF8y1308Qh",
     about1: {
       content: "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
@@ -40,10 +42,12 @@ gulp.task('initDev', function(done) {
     logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
     partners: [
       {
+        _id: 0,
         title: 'friends',
         description: 'some friends of ours',
         list: [
           {
+            _id: 0,
             name: "rdf",
             logo: "someogo.png",
             link: 'rdf.net'
@@ -51,10 +55,12 @@ gulp.task('initDev', function(done) {
         ]
       },
       {
+        _id: 1,
         title: 'people who hate us',
         description: 'some friends of ours... not',
         list: [
           {
+            _id: 0,
             name: "brendan",
             logo: "someogo.png",
             link: 'google.com'
@@ -63,22 +69,34 @@ gulp.task('initDev', function(done) {
       }
     ],
     downloads: [
-    {
-      title: 'Downloads',
-      description: 'Get your files bitch',
+      {
+        title: 'Downloads',
+        description: 'Get your files bitch',
+        list: [
+          {
+            _id: 0,
+            name: "rdf",
+            file: "someogo.png",
+            description: 'This is my description babyy'
+          }
+        ]
+      }
+    ],
+    updates: {
+      title: 'Latest updates',
       list: [
-        {
-          name: "rdf",
-          file: "someogo.png",
-          description: 'This is my description babyy'
-        }
+        { _id: 0, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' }
       ]
     },
-
-    ],
+    news: {
+      title: 'In the news',
+      list: [
+        { _id: 0, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' }
+      ]
+    },
     slug: "development",
     title: "Some freakin campaign"
-  }).then(done, done)
+  }, { upsert: true }).then(done, done)
 })
 
 gulp.task('dev', [ 'buildAndServe' ], function() {

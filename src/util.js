@@ -4,6 +4,12 @@ var React = require('react/addons')
 
 var util = {
 
+  nextId: function(list) {
+    return 1 + (_.pluck(list, '_id').reduce(function(a, b) {
+      return Math.max(a, b)
+    }, 0))
+  },
+
   preventDefault: function(fn) {
     return function(e) {
       if (e) e.preventDefault()

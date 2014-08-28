@@ -11,6 +11,8 @@ var AboutSection = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
+  schema: [ 'title', 'content' ],
+
   render: function() {
     if (this.state.editing) {
       return (
@@ -39,6 +41,15 @@ var AboutSection = React.createClass({
 
 module.exports = React.createClass({
 
+  mixins: [  ],
+
+  saver: function(name) {
+    var $campaign = this.props.$campaign
+    return function(state) {
+      debugger
+    }
+  },
+
   render: function() {
 
     var $shared = this.props.$shared
@@ -53,7 +64,7 @@ module.exports = React.createClass({
             </div>
           </li>
           <li className="col-md-8">
-            <AboutSection 
+            <AboutSection
               $cursor={$campaign.refine('about1')}
               isEditable={!_.isEmpty($shared.deref().session)}
               onReset={this.forceUpdate.bind(this)}
@@ -63,7 +74,7 @@ module.exports = React.createClass({
         </ul>
         <ul className="row">
           <li className="col-md-4">
-            <AboutSection 
+            <AboutSection
               $cursor={$campaign.refine('about1')}
               isEditable={!_.isEmpty($shared.deref().session)}
               onReset={this.forceUpdate.bind(this)}
@@ -71,7 +82,7 @@ module.exports = React.createClass({
             />
           </li>
           <li className="col-md-4">
-            <AboutSection 
+            <AboutSection
               $cursor={$campaign.refine('about3')}
               isEditable={!_.isEmpty($shared.deref().session)}
               onReset={this.forceUpdate.bind(this)}
@@ -79,7 +90,7 @@ module.exports = React.createClass({
             />
           </li>
           <li className="col-md-4">
-            <AboutSection 
+            <AboutSection
               $cursor={$campaign.refine('about4')}
               isEditable={!_.isEmpty($shared.deref().session)}
               onReset={this.forceUpdate.bind(this)}

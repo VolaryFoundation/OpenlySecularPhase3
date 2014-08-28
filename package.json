@@ -28,6 +28,7 @@
     "feathers": "*",
     "feathers-hooks": "git://github.com/feathersjs/feathers-hooks.git",
     "feathers-mongodb": "^0.3.0",
+    "font-awesome": "^4.2.0",
     "immutable": "^2.0.3",
     "jquery": "^2.1.1",
     "lodash": "^2.4.1",

@@ -25,15 +25,39 @@ gulp.task('initDev', function(done) {
       content: "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
       title: "Our Mission blah",
     },
+    about2: {
+      content: "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
+      title: "Our Mission blah",
+    },
+    about3: {
+      content: "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
+      title: "Our Mission blah",
+    },
+    about4: {
+      content: "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
+      title: "Our Mission blah",
+    },
     logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
     partners: [
-      { 
+      {
         title: 'friends',
         description: 'some friends of ours',
         list: [
           {
             name: "rdf",
-            logo: "someogo.png"
+            logo: "someogo.png",
+            link: 'rdf.net'
+          }
+        ]
+      },
+      {
+        title: 'people who hate us',
+        description: 'some friends of ours... not',
+        list: [
+          {
+            name: "brendan",
+            logo: "someogo.png",
+            link: 'google.com'
           }
         ]
       }
@@ -44,7 +68,7 @@ gulp.task('initDev', function(done) {
 })
 
 gulp.task('dev', [ 'buildAndServe' ], function() {
-  gulp.watch(srcPath + '/**/*', [ 'buildAndServe' ]) 
+  gulp.watch(srcPath + '/**/*', [ 'buildAndServe' ])
 })
 
 //==========================================================================//

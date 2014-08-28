@@ -94,6 +94,7 @@ var PartnerItem = React.createClass({
           <img src={this.state.logo} />
           <div className="panel-footer">
             <input type="text" valueLink={this.linkState('name')} />
+            <input type="text" valueLink={this.linkState('link')} />
             <button onClick={this.smartCancel}>cancel</button>
             <button onClick={this.save}>save</button>
           </div>
@@ -105,6 +106,7 @@ var PartnerItem = React.createClass({
           <img src={this.state.logo} />
           <div className="panel-footer">
             <h3 className="panel-title">{this.state.name}</h3>
+            <h3 className="panel-title">{this.state.link}</h3>
           </div>
         </li>
       )

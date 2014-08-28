@@ -13,7 +13,11 @@ var PartnerList = React.createClass({
   add: function(e) {
     e.preventDefault()
     var list = this.state.list
-    this.props.$cursor.update({ list: { $set: list.concat([ { name: '', logo: '', link: '' } ]) } })
+    this.props.$cursor.update({ list: { $push: [ { name: '', logo: '', link: '' } ] } })
+  },
+
+  deleteItem: function(index) {
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
   },
 
   render: function() {
@@ -48,9 +52,10 @@ var PartnerList = React.createClass({
                     this.state.list.map(function(item, key) { 
                       return <PartnerItem
                         $cursor={this.props.$cursor.refine([ 'list', key ])}
-                        key={key}
+                        index={key}
                         editing={item.editing}
                         isEditable={this.props.isEditable}
+                        onDelete={this.deleteItem}
                       />
                     }, this) 
                   }
@@ -71,7 +76,15 @@ var PartnerItem = React.createClass({
 
   componentWillMount: function() {
     // infer editing state
-    if (!this.state.name) this.setState({ editing: true })
+    if (!this.state.name) this.setState({ created: true, editing: true })
+  },
+
+  smartCancel: function() {
+    if (this.state.created) {
+      this.props.onDelete(this.props.index)
+    } else {
+      this.cancel()
+    }
   },
 
   render: function() {
@@ -81,7 +94,7 @@ var PartnerItem = React.createClass({
           <img src={this.state.logo} />
           <div className="panel-footer">
             <input type="text" valueLink={this.linkState('name')} />
-            <button onClick={this.cancel}>cancel</button>
+            <button onClick={this.smartCancel}>cancel</button>
             <button onClick={this.save}>save</button>
           </div>
         </li>

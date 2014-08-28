@@ -2,7 +2,7 @@ $brand-primary: #005CB9;
 $brand-secondary: lighten( $brand-primary, 20% );
 
 @import "vendor/bootstrap/assets/stylesheets/bootstrap";
-@import "../node_modules/font-awesome/scss/font-awesome";
+@import "node_modules/font-awesome/scss/font-awesome";
 
 $border: 1px solid rgba(0,0,0,0.1);
 

@@ -1,5 +1,4 @@
 
-var m = require('mithril')
 var config = require('../config')
 var xhr = require('xhr')
 var rsvp = require('rsvp')

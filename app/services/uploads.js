@@ -7,8 +7,6 @@ module.exports = {
 
     var AWS = require('aws-sdk')
     var s3 = new AWS.S3({
-      accessKeyId: "AKIAIGZSWTBFYXH5J5PA",
-      secretAccessKey: "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",
     })
 
     if (params.files.upload) {

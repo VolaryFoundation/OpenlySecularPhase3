@@ -19,12 +19,12 @@ module.exports = {
   },
 
   load: function($campaign) {
-    return m.request({
+    return xhr({
       method: 'GET',
-      url: config.apiRoot + '/campaigns/' + config.campaign.id,
+      uri: config.apiRoot + '/campaigns/' + config.campaign.id,
       json: 1,
       withCredentials: true
-    }).then(function(data) {
+    }, function(e, resp, data) {
       console.log('updating campaign')
       $campaign.update({ $set: data })
     })

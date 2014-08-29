@@ -120,7 +120,7 @@ ul.row {
       }
     }
 
-    @media (min-width: $screen-sm) and (max-width: $screen-md) {
+    @media (max-width: $screen-md) {
       &.col-sm-6 +.col-sm-6 {
         border-left: $border;
       }
@@ -327,7 +327,7 @@ HEADER STYLES:
 
 .open {
   top: 90px;
-  z-index: 3;
+  z-index: 6;
 }
 
 
@@ -900,59 +900,144 @@ ADMIN STYLES:
 ****************************
 ***************************/
 
-.edit {
+.btn-admin {
+  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, 0);
+  @include fa-icon();
   position: absolute;
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font-weight: $btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  white-space: nowrap;
+  z-index: 3;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+
+.btn-edit {
+  @extend .btn-admin;
+  @extend .btn-warning;
+  @extend .fa-pencil;
+  float: right;
   top: 0;
-	right: 0;
+  right: 0;
+  border-top: none;
+  border-right: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-	border-right: none;
-	border-top: none;
-}
 
-.save {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	border-top-right-radius: 0;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-	border-right: none;
-	border-bottom: none;
-}
-
-.cancel {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	margin: 0;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-	border-top-left-radius: 0;
-	border-left: none;
-	border-bottom: none;
-}
-
-.add {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  .btn {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 0;
-  }
-  span {
-    display: none;
-  }
   &:hover {
-    span {
-      display: inline;
+    &:after {
+      padding-left: 5px;
+      content: " Edit";
     }
   }
 }
+
+.btn-cancel {
+  @extend .btn-admin;
+  @extend .btn-danger;
+  @extend .fa-times;
+  bottom: 0;
+  left: 0;
+  border-left: none;
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  &:after {
+    padding-left: 5px;
+    content: " Cancel";
+  }
+}
+
+.btn-save {
+  @extend .btn-admin;
+  @extend .btn-success;
+  @extend .fa-check;
+  float: right;
+  bottom: 0;
+  right: 0;
+  border-right: none;
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+
+  &:after {
+    padding-left: 5px;
+    content: " Save";
+  }
+}
+
+.btn-delete {
+  @extend .btn-admin;
+  @extend .btn-danger;
+  @extend .fa-trash-o;
+  float: left;
+  bottom: 0;
+  left: 0;
+  //color: $btn-warning-bg;
+  //border-color: $btn-warning-border;
+  border-top: none;
+  border-right: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+
+  &:hover {
+    &:after {
+      padding-left: 5px;
+      content: " Delete";
+    }
+  }
+}
+
+.btn-add {
+  @extend .btn-admin;
+  @extend .btn-info;
+  @extend .fa-plus;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  &:hover {
+    &:after {
+      padding-left: 5px;
+      content: " Add";
+    }
+  }
+}
+
+
+.btn-logout {
+  @extend .btn-admin;
+  @extend .btn-danger;
+  @extend .fa-sign-out;
+  top: 0;
+  right: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+
+  &:hover {
+    &:after {
+      padding-left: 5px;
+      content: " Logout";
+    }
+  }
+}
+
 
 footer {
   padding: 10px 0;

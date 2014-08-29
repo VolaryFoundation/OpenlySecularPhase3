@@ -31,7 +31,7 @@ var DownloadList = React.createClass({
       <li className="col-md-3 list" key={guid()}>
         <div className="panel-heading">
           <h3 className="panel-title">{this.state.title}</h3>
-          { this.props.isEditable ? (<a href="#" onClick={this.add}>+</a>) : null }
+          { this.props.isEditable ? (<button className="btn-add" onClick={this.add}></button>) : null }
         </div>
         <div className="feed-list">
           {

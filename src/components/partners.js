@@ -28,15 +28,15 @@ var PartnerList = React.createClass({
       return (
         <li className="col-md-4 list">
           <div className="panel-heading">
-            <input type="text" valueLink={this.linkState('title')} />
+            <input className="form-control" type="text" valueLink={this.linkState('title')} />
           </div>
           <div className="inner">
             <div className="panel-body">
-              <textarea valueLink={this.linkState('description')}></textarea>
+              <textarea className="form-control" rows="6" valueLink={this.linkState('description')}></textarea>
             </div>
           </div>
-          <button onClick={this.cancel}>cancel</button>
-          <button onClick={this.save}>save</button>
+          <button className="btn-cancel" onClick={this.cancel}></button>
+          <button className="btn-save" onClick={this.save}></button>
         </li>
       )
     }.bind(this)
@@ -46,8 +46,8 @@ var PartnerList = React.createClass({
         <li className="col-md-4 list">
           <div className="panel-heading">
             <h3 className="panel-title">{this.state.title}</h3>
-            { this.props.isEditable ? (<a href="#" onClick={this.add}>add</a>) : null }
-            { this.props.isEditable ? (<a href="#" onClick={this.edit}>edit</a>) : null }
+            { this.props.isEditable ? (<button className="btn-add" onClick={this.add}></button>) : null }
+            { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : null }
           </div>
           <div className="inner">
             <div className="panel-body">
@@ -73,16 +73,16 @@ var PartnerList = React.createClass({
           <div className="carousel slide">
             <div className="carousel-inner">
               <div className="item active">
-                <ul className="row">
-                  { 
-                    this.state.list.map(function(item, index) { 
+                <ul className="row no-gutter">
+                  {
+                    this.state.list.map(function(item, index) {
                       return <PartnerItem
                         $cursor={this.props.$cursor.refine([ 'list', index ])}
                         index={index}
                         isEditable={this.props.isEditable}
                         onDelete={this.deleteItem}
                       />
-                    }, this) 
+                    }, this)
                   }
                 </ul>
               </div>
@@ -133,26 +133,39 @@ var PartnerItem = React.createClass({
     if (this.state.editing) {
       return (
         <li className="col-xs-6 col-md-3" key={this.props.index}>
-          <img style={{ height: 100, width: 100 }} onClick={this.promptUpload} src={this.state.logo} />
-          <input onChange={this.upload} type="file" name="upload" ref="upload" />
-          <div className="panel-footer">
-            <input type="text" valueLink={this.linkState('name')} />
-            <input type="text" valueLink={this.linkState('link')} />
-            <button onClick={this.smartCancel}>cancel</button>
-            <button onClick={this.save}>save</button>
+
+          <div className="panel-body">
+            <div className="form-group">
+              <label>Logo</label>
+              <input onChange={this.upload} type="file" id="logoUpload" />
+              <p className="help-block">Upload an image file.</p>
+            </div>
+            <label>Name</label>
+            <div className="input-group">
+              <span className="input-group-addon"><i className="fa fa-fw fa-cube"></i></span>
+              <input className="form-control" type="text" valueLink={this.linkState('name')} />
+            </div>
+            <label>Website</label>
+            <div className="input-group">
+              <span className="input-group-addon"><i className="fa fa-fw fa-link"></i></span>
+              <input className="form-control" type="text" valueLink={this.linkState('link')} />
+            </div>
+            <button className="btn-cancel" onClick={this.smartCancel}></button>
+            <button className="btn-save" onClick={this.save}></button>
           </div>
         </li>
       )
     } else {
       return (
         <li className="col-xs-6 col-md-3">
-          { this.props.isEditable ? (<button onClick={this.edit}>Edit</button>) : '' }
-          { this.props.isEditable ? (<button onClick={this.props.onDelete.bind(null, this.props.index)}>delete</button>) : '' }
+          { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : '' }
+          { this.props.isEditable ? (<button className="btn-delete" onClick={this.props.onDelete.bind(null, this.props.index)}></button>) : '' }
+          <a href={this.state.link} target="_blank">
           <img src={this.state.logo} />
           <div className="panel-footer">
             <h3 className="panel-title">{this.state.name}</h3>
-            <h3 className="panel-title">{this.state.link}</h3>
           </div>
+          </a>
         </li>
       )
     }

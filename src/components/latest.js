@@ -122,6 +122,17 @@ var UpdateItem = React.createClass({
 
 var News = React.createClass({
 
+  add: function(e) {
+    e.preventDefault()
+    var list = this.props.$cursor.deref().list
+    var _id = util.nextId(list)
+    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', source: '', link: '', date: '' } ] } })
+  },
+
+  deleteItem: function(index) {
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
+  },
+
   render: function() {
     return (
       <ul className="row no-gutter news list">
@@ -129,43 +140,20 @@ var News = React.createClass({
           <div className="panel-heading">
             <h3 className="panel-title">In the News</h3>
           </div>
+          { this.props.isEditable ? (<button className="btn-add" onClick={this.add}></button>) : null }
           <ul className="row no-gutter feed-list text-center">
-            <li className="col-md-6">
-              <a href="#" className="list-group-item">
-                <p className="list-group-meta">
-                  <span className="date">Sept 1, 2014</span>
-                </p>
-                <h4 className="list-group-item-heading">An Article Featured in the News Media About Our Campaign That We Decided We Want to Link to</h4>
-                <p className="list-group-item-text"><strong>News Source Name</strong></p>
-              </a>
-            </li>
-            <li className="col-md-6">
-              <a href="#" className="list-group-item">
-                <p className="list-group-meta">
-                  <span className="date">Sept 1, 2014</span>
-                </p>
-                <h4 className="list-group-item-heading">An Article Featured in the News Media About Our Campaign That We Decided We Want to Link to</h4>
-                <p className="list-group-item-text"><strong>News Source Name</strong></p>
-              </a>
-            </li>
-            <li className="col-md-6">
-              <a href="#" className="list-group-item">
-                <p className="list-group-meta">
-                  <span className="date">Sept 1, 2014</span>
-                </p>
-                <h4 className="list-group-item-heading">An Article Featured in the News Media About Our Campaign That We Decided We Want to Link to</h4>
-                <p className="list-group-item-text"><strong>News Source Name</strong></p>
-              </a>
-            </li>
-            <li className="col-md-6">
-              <a href="#" className="list-group-item">
-                <p className="list-group-meta">
-                  <span className="date">Sept 1, 2014</span>
-                </p>
-                <h4 className="list-group-item-heading">An Article Featured in the News Media About Our Campaign That We Decided We Want to Link to</h4>
-                <p className="list-group-item-text"><strong>News Source Name</strong></p>
-              </a>
-            </li>
+
+            {
+              this.props.$cursor.deref().list.map(function(item, i) {
+                return <NewsItem
+                  $cursor={this.props.$cursor.refine(['list', i])}
+                  onDelete={this.deleteItem.bind(null, i)}
+                  isEditable={this.props.isEditable}
+                  isNew={!item.title}
+                />
+              }, this)
+            }
+
           </ul>
           <ul className="view-more clearfix">
             <li>
@@ -178,6 +166,46 @@ var News = React.createClass({
         </li>
       </ul>
     )
+  }
+})
+
+var NewsItem = React.createClass({
+
+  mixins: [ Editable, React.addons.LinkedStateMixin ],
+
+  smartCancel: function() {
+    if (this.props.isNew) {
+      this.props.onDelete(this.props.index)
+    } else {
+      this.cancel()
+    }
+  },
+
+  render: function() {
+    if (this.props.isNew || this.state.editing) {
+      return (
+        <li className="col-md-6" key={this.state._id}>
+          <input type='text' valueLink={this.linkState('title')} />
+          <input type='text' valueLink={this.linkState('date')} />
+          <input type='text' valueLink={this.linkState('source')} />
+          <input type='text' valueLink={this.linkState('link')} />
+          <button className="btn-cancel" onClick={this.smartCancel}></button>
+          <button className="btn-save" onClick={this.save}></button>
+        </li>
+      )
+    } else {
+      return (
+        <li className="col-md-6" key={this.state._id}>
+          <a href={this.state.link} className="list-group-item">
+            <p className="list-group-meta">
+              <span className="date">{this.state.date}</span>
+            </p>
+            <h4 className="list-group-item-heading">{this.state.title}</h4>
+            <p className="list-group-item-text"><strong>{this.state.source}</strong></p>
+          </a>
+        </li>
+      )
+    }
   }
 })
 
@@ -227,7 +255,7 @@ module.exports = React.createClass({
               </li>
             </ul>
             <News 
-              $cursor={$campaign.refine('articles')}
+              $cursor={$campaign.refine('news')}
               isEditable={!_.isEmpty($shared.deref().session)}
             />
           </li>

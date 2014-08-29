@@ -10,28 +10,34 @@ var ActiveUpdate = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
+  saveAndReset: function() {
+    this.save(); 
+    this.props.activate(null)
+  },
+
   render: function() {
-    if (this.props.isNew || this.state.editing) {
+    if (this.props.isEditing) {
+      var cancel = this.props.isNew ? this.props.onDelete : this.props.activate.bind(null, this.props.$cursor)
       return (
-        <a href="#" className="list-group-item" key={this.state._id}>
+        <div className="list-group-item">
           <input type="text" valueLink={this.linkState('title')} />
           <input type="text" valueLink={this.linkState('date')} />
           <textarea valueLink={this.linkState('excerpt')}></textarea>
           <textarea valueLink={this.linkState('content')}></textarea>
-          <button onClick={this.props.isNew ? this.props.onDelete : this.cancel}>cancel</button>
-          <button onClick={this.save}>save</button>
-        </a>
+          <button onClick={cancel}>cancel</button>
+          <button onClick={this.saveAndReset}>save</button>
+        </div>
       )
     } else {
       return (
-        <a href="#" className="list-group-item" key={this.state._id}>
+        <div href="#" className="list-group-item">
+          <button onClick={this.props.activate.bind(null, null)}>close</button>
           <h4 className="list-group-item-heading">{this.state.title}</h4>
           <p className="list-group-meta">
             <span className="date"><i className="fa fa-fw fa-clock-o"></i>{this.state.date}</span>
           </p>
-          <p className="list-group-item-text">{this.state.excerpt}</p>
           <p>{this.state.content}</p>
-        </a>
+        </div>
       )
     }
   }
@@ -45,10 +51,13 @@ var Updates = React.createClass({
     e.preventDefault()
     var list = this.state.list
     var _id = util.nextId(list)
-    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', date: '', excerpt: '', content: '' } ] } })
+    var newUpdate = { _id: _id, title: '', date: '', excerpt: '', content: '' } 
+    this.props.$cursor.update({ list: { $unshift: [ newUpdate ] } })
+    this.props.activate(this.props.$cursor.refine([ 'list', 0 ]), { isEditing: true, isNew: true, onDelete: this.deleteItem.bind(null, 0) })
   },
 
   deleteItem: function(index) {
+    this.props.activate(null)
     this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
   },
 
@@ -65,8 +74,7 @@ var Updates = React.createClass({
               this.state.list.map(function(item, index) {
                 return <UpdateItem
                   $cursor={this.props.$cursor.refine([ 'list', index ])}
-                  $activeUpdate={this.props.$activeUpdate}
-                  isNew={!item.title}
+                  activate={this.props.activate}
                   isEditable={this.props.isEditable}
                   onDelete={this.deleteItem.bind(this, index)}
                 />
@@ -91,14 +99,16 @@ var UpdateItem = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  activate: function() {
-    this.props.$activeUpdate.update({ $set: this.props.$cursor })
+  activateEdit: function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    this.props.activate(this.props.$cursor, { isEditing: true })
   },
 
   render: function() {
     return (
-      <a href="#" className="list-group-item" key={this.state._id}>
-        { this.props.isEditable ? (<button onClick={this.activate}>Edit</button>) : '' }
+      <a href="#" onClick={this.props.activate.bind(null, this.props.$cursor)} className="list-group-item" key={this.state._id}>
+        { this.props.isEditable ? (<button onClick={this.activateEdit}>Edit</button>) : '' }
         { this.props.isEditable ? (<button onClick={this.props.onDelete}>delete</button>) : '' }
         <h4 className="list-group-item-heading">{this.state.title}</h4>
         <p className="list-group-meta">
@@ -173,24 +183,32 @@ var News = React.createClass({
 
 module.exports = React.createClass({
 
+  activate: function($cursor, props) {
+    if (!$cursor) this.props.$shared.update({ activeUpdate: { $set: null } })
+    else this.props.$shared.update({ activeUpdate: { $set: { $cursor: $cursor, props: props || {} } } })
+  },
+
+  getInitialState: function() { return {} },
 
   render: function() {
+
     var $shared = this.props.$shared
     var $campaign = this.props.$campaign
-    var $activeUpdate = $shared.refine('activeUpdate')
-    var renderActiveUpdate = function() {
-      if ($activeUpdate.deref()) {
-        return <ActiveUpdate
-          $cursor={$activeUpdate}
-          isEditable={!_.isEmpty($shared.deref().session)}
-        />
-      }
-    }
+    var activeUpdate = this.props.$shared.deref().activeUpdate
+
     return (
       <div className="container-fluid latest-content">
         <ul className="row">
           <li className="col-md-8 col-md-push-4 news list">
-            { renderActiveUpdate() }
+            { 
+              activeUpdate ? (<ActiveUpdate
+                activate={this.activate}
+                $cursor={activeUpdate.$cursor}
+                isEditing={activeUpdate.props.isEditing}
+                isNew={activeUpdate.props.isNew}
+                onDelete={activeUpdate.props.onDelete}
+              />) : null
+            }
             <ul className="row no-gutter latest-social-media">
               <li className="col-md-4">
                 <div className="inner">
@@ -214,9 +232,9 @@ module.exports = React.createClass({
             />
           </li>
           <Updates 
-            $activeUpdate={$activeUpdate}
             $cursor={$campaign.refine('updates')}
             isEditable={!_.isEmpty($shared.deref().session)}
+            activate={this.activate}
           />
         </ul>
       </div>

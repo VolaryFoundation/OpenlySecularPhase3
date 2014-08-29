@@ -2,6 +2,9 @@
 var config = require('../config')
 var xhr = require('xhr')
 var rsvp = require('rsvp')
+var sync = require('../sync')
+
+sync.register('campaign')
 
 module.exports = {
 

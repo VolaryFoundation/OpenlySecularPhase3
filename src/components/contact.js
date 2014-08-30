@@ -1,50 +1,253 @@
 
 /** @jsx React.DOM */
 
-var React = require('react')
+var React = require('react/addons')
+var campaign = require('../services/campaign')
+var _ = require('lodash')
+var Editable = require('../mixins/editable')
+var util = require('../util')
+
+var ContactDetail = React.createClass({
+
+  mixins: [ Editable, React.addons.LinkedStateMixin ],
+
+  render: function() {
+    if (this.state.editing) {
+      return (
+        <div>
+        <ul className="row no-gutter">
+        { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : null }
+        <div className="col-xs-7">
+        <address className="inner">
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-cube"></i>
+            </span>
+            <input type="text" className="form-control" valueLink={this.linkState('name')} />
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-building"></i>
+            </span>
+            <input type="text" className="form-control" valueLink={this.linkState('address')} />
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-envelope"></i>
+            </span>
+            <input type="text" className="form-control" valueLink={this.linkState('email')} />
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-phone"></i>
+            </span>
+            <input type="text" className="form-control" valueLink={this.linkState('phone')} />
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-fax"></i>
+            </span>
+            <input type="text" className="form-control" valueLink={this.linkState('fax')} />
+          </div>
+        </address>
+        </div>
+        <div className="col-xs-5">
+        <div className="inner">
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-twitter"></i>
+            </span>
+            <input type="text" className="form-control" valueLink={this.linkState('twitter')} />
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-instagram"></i>
+            </span>
+            <input type="text" className="form-control" valueLink={this.linkState('instagram')} />
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-youtube-play"></i>
+            </span>
+            <input type="text" className="form-control" valueLink={this.linkState('youtube')} />
+          </div>
+        </div>
+        </div>
+      </ul>
+      <button className="btn btn-danger" type="button" onClick={this.cancel}><i className="fa fa-fw fa-times"></i> Cancel</button>
+      <button className="btn btn-success pull-right" type="button" onClick={this.save}><i className="fa fa-fw fa-check"></i> Save</button>
+      </div>
+
+      )
+    } else {
+      return (
+        <ul className="row no-gutter">
+        { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : null }
+        <div className="col-xs-7">
+        <address className="inner">
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-cube"></i>
+            </span>
+            <p className="form-control-static">{ this.state.name }</p>
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-building"></i>
+            </span>
+            <p className="form-control-static">{ this.state.address }</p>
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-envelope"></i>
+            </span>
+            <p className="form-control-static">{ this.state.email }</p>
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-phone"></i>
+            </span>
+            <p className="form-control-static">{ this.state.phone }</p>
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-fax"></i>
+            </span>
+            <p className="form-control-static">{ this.state.fax }</p>
+          </div>
+        </address>
+        </div>
+        <div className="col-xs-5">
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-twitter"></i>
+            </span>
+            <p className="form-control-static">{ this.state.twitter }</p>
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-instagram"></i>
+            </span>
+            <p className="form-control-static">{ this.state.instagram }</p>
+          </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="fa fa-fw fa-youtube-play"></i>
+            </span>
+            <p className="form-control-static">{ this.state.youtube }</p>
+          </div>
+        </div>
+      </ul>
+      )
+    }
+  }
+})
+
+var PressContactDetail = React.createClass({
+
+  mixins: [ Editable, React.addons.LinkedStateMixin ],
+
+  render: function() {
+    if (this.state.editing) {
+      return (
+        <li className="col-md-7">
+          <div className="panel-heading">
+            <div className="panel-title">
+              Press Contact
+            </div>
+          </div>
+          <address>
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-microphone"></i>
+              </span>
+              <input type="text" className="form-control" valueLink={this.linkState('pressName')} />
+            </div>
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-envelope"></i>
+              </span>
+              <input type="text" className="form-control" valueLink={this.linkState('pressEmail')} />
+            </div>
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-phone"></i>
+              </span>
+              <input type="text" className="form-control" valueLink={this.linkState('pressPhone')} />
+            </div>
+          </address>
+          <button className="btn btn-danger" type="button" onClick={this.cancel}><i className="fa fa-fw fa-times"></i> Cancel</button>
+          <button className="btn btn-success pull-right" type="button" onClick={this.save}><i className="fa fa-fw fa-check"></i> Save</button>
+        </li>
+
+      )
+    } else {
+      return (
+        <li className="col-md-7">
+        { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : null }
+          <div className="panel-heading">
+            <div className="panel-title">
+              Press Contact
+            </div>
+          </div>
+          <address>
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-microphone"></i>
+              </span>
+              <p className="form-control-static">{ this.state.pressName }</p>
+            </div>
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-envelope"></i>
+              </span>
+              <p className="form-control-static">{ this.state.pressEmail }</p>
+            </div>
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-phone"></i>
+              </span>
+              <p className="form-control-static">{ this.state.pressPhone }</p>
+            </div>
+          </address>
+        </li>
+      )
+    }
+  }
+})
+
 
 module.exports = React.createClass({
 
   render: function() {
+
+    var $shared = this.props.$shared
+    var $campaign = this.props.$campaign
+
     return (
       <div className="container-fluid contact-content">
         <ul className="row">
-          <li className="col-md-6 col-lg-5 text-center">
+          <li className="col-md-6 col-lg-5">
             <div className="panel-heading">
               <div className="panel-title">
                  Contact Info
               </div>
             </div>
+
+
+
+                  <ContactDetail
+                    $cursor={$campaign.refine('contact')}
+                    isEditable={!_.isEmpty($shared.deref().session)}
+                  />
+
+
+
             <ul className="row no-gutter">
-              <div className="col-xs-7">
-                <address className="inner">
-                  <strong><i className="fa fa-building"></i> Brand Name</strong>
-                  <p>1427 Lincoln Blvd, Suite E<br />Santa Monica, CA 90404</p>
-                  <p>EIN ###############</p>
-                  <p><abbr title="Email"><i className="fa fa-envelope"></i></abbr> email@domain.org</p>
-                  <p><abbr title="Phone"><i className="fa fa-phone"></i></abbr> (123) 456-7890</p>
-                  <p><abbr title="Fax"><i className="fa fa-fax"></i></abbr> (123) 456-7890</p>
-                </address>
-              </div>
-              <div className="col-xs-5">
-                <p><abbr title="Twitter Handle"><i className="fa fa-twitter"></i></abbr> @brandname</p>
-                <p><abbr title="Instagram"><i className="fa fa-instagram"></i></abbr> @brandname</p>
-                <p><abbr title="Youtube"><i className="fa fa-youtube"></i></abbr> @brandname</p>
-              </div>
-            </ul>
-            <ul className="row no-gutter">
-              <li className="col-md-7">
-                <div className="panel-heading">
-                  <div className="panel-title">
-                    Press Contact
-                  </div>
-                </div>
-                <address>
-                  <strong><i className="fa fa-microphone"></i> Person Name</strong>
-                  <p><abbr title="Email"><i className="fa fa-envelope"></i></abbr> email@domain.org</p>
-                  <p><abbr title="Phone"><i className="fa fa-phone"></i></abbr> (123) 456-7890</p>
-                </address>
-              </li>
+              <PressContactDetail
+                $cursor={$campaign.refine('contact')}
+                isEditable={!_.isEmpty($shared.deref().session)}
+              />
               <div className="col-md-5">
                 <div className="panel-heading">
                   <div className="panel-title">

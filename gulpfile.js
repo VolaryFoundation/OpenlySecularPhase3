@@ -68,6 +68,20 @@ gulp.task('initDev', function(done) {
         ]
       }
     ],
+    contact: {
+      name: "Campaign Name",
+      address: "1234 Street, City Sate Zip",
+      ein: '55555555555555',
+      email: 'contact@campaign.org',
+      phone: '555-555-5555',
+      fax: '555-555-5555',
+      pressName: 'Contact Name',
+      pressEmail: 'press@campaign.org',
+      pressPhone: '555-555-5555',
+      twitter: '@campaign',
+      instagram: 'campaign',
+      youtube: 'campaign'
+    },
     downloads: [
       {
         title: 'Downloads',

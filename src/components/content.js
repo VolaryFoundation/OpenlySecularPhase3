@@ -35,7 +35,7 @@ module.exports = React.createClass({
         Page = _.partial(pages.Resources, { $shared: this.props.$shared, $campaign: this.props.$campaign })
         break
       case 'contact':
-        Page = _.partial(pages.Contact, {})
+        Page = _.partial(pages.Contact, { $shared: this.props.$shared, $campaign: this.props.$campaign })
         break
     }
 

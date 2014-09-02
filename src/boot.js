@@ -31,6 +31,12 @@ render({
     },
     updates: {
       list: []
+    },
+    downloads: {
+      list: []
+    },
+    resource: {
+      list: []
     }
   },
   shared: {

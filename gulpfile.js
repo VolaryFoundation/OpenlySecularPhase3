@@ -85,7 +85,7 @@ gulp.task('initDev', function(done) {
       instagram: 'campaign',
       youtube: 'campaign'
     },
-    downloads: [
+    downloads:
       {
         title: 'Downloads',
         description: 'Get your files bitch',
@@ -96,9 +96,8 @@ gulp.task('initDev', function(done) {
             file: "someogo.png",
             description: 'This is my description babyy'
           }
-        ]
-      }
-    ],
+          ]
+      },
     updates: {
       title: 'Latest updates',
       list: [
@@ -122,7 +121,7 @@ gulp.task('initDev', function(done) {
         { _id: 6, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' }
       ]
     },
-    resource: {
+    resources: {
       title: 'Resources',
       list: [
         { _id: 0, title: 'Freethinkers Whatever', desc: 'This is a descritpion more than a source', link: 'http://nytimes.com' }

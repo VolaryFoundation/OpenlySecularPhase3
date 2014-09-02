@@ -8,14 +8,25 @@ var guid = (function() {
 
 var React = require('react/addons')
 var Editable = require('../mixins/editable')
+var Paginated = require('../mixins/paginated')
 var campaignService = require('../services/campaign')
+var uploadService = require('../services/upload')
 var _ = require('lodash')
 var util = require('../util')
 
 var DownloadList = React.createClass({
 
-  mixins: [ Editable, React.addons.LinkedStateMixin ],
+  mixins: [ Editable, React.addons.LinkedStateMixin, Paginated ],
 
+  componentWillMount: function() {
+    this.paginate({
+      perPage:2,
+      getList:function() {
+        return this.props.$cursor.deref().list
+      }
+    })
+
+  },
   add: function(e) {
     e.preventDefault()
     var list = this.state.list
@@ -27,7 +38,7 @@ var DownloadList = React.createClass({
   },
 
   render: function() {
-
+    debugger
     return (
       <li className="col-md-3 list" key={guid()}>
         <div className="panel-heading">
@@ -36,7 +47,7 @@ var DownloadList = React.createClass({
         </div>
         <div className="feed-list">
           {
-            this.state.list.map(function(item, key) {
+            this.pagination.getCurrent().map(function(item, key) {
               return <DownloadItem
                 $cursor={this.props.$cursor.refine([ 'list', key ])}
                 index={key}
@@ -268,22 +279,17 @@ module.exports = React.createClass({
     return (
       <div className="container-fluid resources-content">
         <ul className="row">
-          {
-            $campaign.deref().downloads.map(function(downloads, key) {
-              return <DownloadList
-                $cursor={$campaign.refine([ 'downloads', key ])}
-                key={key}
-                onReset={this.forceUpdate.bind(this)}
-                isEditable={!_.isEmpty($shared.deref().session)}
-              />
-            }, this)
-          }
+          <DownloadList
+            $cursor={$campaign.refine([ 'downloads' ])}
+            onReset={this.forceUpdate.bind(this)}
+            isEditable={!_.isEmpty($shared.deref().session)}
+          />
           <DIYSection
             $cursor={$campaign.refine('DIY')}
             isEditable={!_.isEmpty($shared.deref().session)}
           />
           <Resource
-            $cursor={$campaign.refine('resource')}
+            $cursor={$campaign.refine('resources')}
             isEditable={!_.isEmpty($shared.deref().session)}
           />
         </ul>

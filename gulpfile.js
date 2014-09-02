@@ -39,6 +39,9 @@ gulp.task('initDev', function(done) {
       content: "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
       title: "Our Mission blah",
     },
+    DIYSection: {
+      content: "<strong>Blah is bold</strong><br>shnarf",
+    },
     logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
     partners: [
       {
@@ -117,6 +120,12 @@ gulp.task('initDev', function(done) {
         { _id: 4, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
         { _id: 5, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
         { _id: 6, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' }
+      ]
+    },
+    resource: {
+      title: 'Resources',
+      list: [
+        { _id: 0, title: 'Freethinkers Whatever', desc: 'This is a descritpion more than a source', link: 'http://nytimes.com' }
       ]
     },
     slug: "development",

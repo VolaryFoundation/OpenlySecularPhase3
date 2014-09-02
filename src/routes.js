@@ -17,6 +17,10 @@ module.exports = function($shared) {
       go('about')
     },
 
+    'latest /latest': function() {
+      go('latest')
+    },
+
     'partners /partners': function() {
       go('partners')
     },

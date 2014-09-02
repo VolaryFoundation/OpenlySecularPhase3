@@ -3,6 +3,7 @@
 
 var React = require('react')
 var Editable = require('../mixins/editable')
+var Paginated = require('../mixins/paginated')
 var _ = require('lodash')
 var util = require('../util')
 
@@ -45,7 +46,16 @@ var ActiveUpdate = React.createClass({
 
 var Updates = React.createClass({
 
-  mixins: [ Editable, React.addons.LinkedStateMixin ],
+  mixins: [ Paginated, Editable, React.addons.LinkedStateMixin ],
+
+  componentWillMount: function() {
+    this.paginate({
+      perPage: 2,
+      getList: function() {
+        return this.props.$cursor.deref().list
+      }
+    })
+  },
 
   add: function(e) {
     e.preventDefault()
@@ -62,6 +72,7 @@ var Updates = React.createClass({
   },
 
   render: function() {
+    var list = this.pagination.getCurrent()
     return (
       <li className="col-md-4 col-md-pull-8 list">
         <div className="xinner">
@@ -71,7 +82,7 @@ var Updates = React.createClass({
           </div>
           <div className="feed-list">
             { 
-              this.state.list.map(function(item, index) {
+              list.map(function(item, index) {
                 return <UpdateItem
                   $cursor={this.props.$cursor.refine([ 'list', index ])}
                   activate={this.props.activate}
@@ -83,10 +94,10 @@ var Updates = React.createClass({
           </div>
           <ul className="view-more clearfix">
             <li>
-              <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
+              <a onClick={this.pagination.down} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
             </li>
             <li>
-              <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
+              <a onClick={this.pagination.up} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
             </li>
           </ul>
         </div>
@@ -122,6 +133,17 @@ var UpdateItem = React.createClass({
 
 var News = React.createClass({
 
+  mixins: [ Paginated ],
+
+  componentWillMount: function() {
+    this.paginate({
+      perPage: 4,
+      getList: function() {
+        return this.props.$cursor.deref().list
+      }
+    })
+  },
+
   add: function(e) {
     e.preventDefault()
     var list = this.props.$cursor.deref().list
@@ -134,6 +156,9 @@ var News = React.createClass({
   },
 
   render: function() {
+    
+    var list = this.pagination.getCurrent()
+
     return (
       <ul className="row no-gutter news list">
         <li className="col-md-12">
@@ -144,7 +169,7 @@ var News = React.createClass({
           <ul className="row no-gutter feed-list text-center">
 
             {
-              this.props.$cursor.deref().list.map(function(item, i) {
+              list.map(function(item, i) {
                 return <NewsItem
                   $cursor={this.props.$cursor.refine(['list', i])}
                   onDelete={this.deleteItem.bind(null, i)}
@@ -157,10 +182,10 @@ var News = React.createClass({
           </ul>
           <ul className="view-more clearfix">
             <li>
-              <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
+              <a onClick={this.pagination.down} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
             </li>
             <li>
-              <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
+              <a onClick={this.pagination.up} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
             </li>
           </ul>
         </li>

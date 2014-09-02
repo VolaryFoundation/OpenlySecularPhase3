@@ -24,7 +24,15 @@ function render(state) {
 var $root = util.cursor({}, render)
 
 render({
-  campaign: {},
+  campaign: {
+    partners: [],
+    news: {
+      list: []
+    },
+    updates: {
+      list: []
+    }
+  },
   shared: {
     page: 'home',
     session: {},

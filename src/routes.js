@@ -3,38 +3,42 @@ var routie = require('routie-client')
 
 module.exports = function($shared) {
 
+  function go(page) {
+    $shared.update({ page: { $set: page } })
+  }
+
   routie({
 
     'home /': function() {
-      $shared.set('page', 'home')
+      go('home')
     },
 
     'about /about': function() {
-      $shared.set('page', 'about')
+      go('about')
     },
 
     'partners /partners': function() {
-      $shared.set('page', 'partners')
+      go('partners')
     },
 
     'media /media': function() {
-      $shared.set('page', 'media')
+      go('media')
     },
 
     'submission /submission': function() {
-      $shared.set('page', 'submission')
+      go('submission')
     },
 
     'guidelines /guidelines': function() {
-      $shared.set('page', 'guidelines')
+      go('guidelines')
     },
 
     'resources /resources': function() {
-      $shared.set('page', 'resources')
+      go('resources')
     },
 
     'contact /contact': function() {
-      $shared.set('page', 'contact')
+      go('contact')
     }
   })
 }

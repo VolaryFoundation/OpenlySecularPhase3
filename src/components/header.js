@@ -7,6 +7,7 @@ var _ = require('lodash')
 var Login = require('./login')
 var Immutable = require('immutable')
 var sessions = require('../services/session')
+var routie = require('routie-client')
 var util = require('../util')
 
 module.exports = React.createClass({
@@ -16,6 +17,7 @@ module.exports = React.createClass({
     return function(e) {
       e.preventDefault()
       $shared.update({ page: { $set: name } })
+      routie('/' + (name == 'home' ? '' : name))
     }
   },
 

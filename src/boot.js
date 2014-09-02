@@ -5,6 +5,7 @@ var React = require('react/addons')
 var hub = require('./hub')
 var util = require('./util')
 var sync = require('./sync')
+var routes = require('./routes')
 
 // for react devtools
 window.React = React
@@ -30,3 +31,5 @@ render({
     flash: []
   }
 })
+
+routes($root.refine('shared'))

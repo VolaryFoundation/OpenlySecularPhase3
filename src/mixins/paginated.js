@@ -12,7 +12,7 @@ module.exports = {
       },
       index: 0,
       canGoUp: function() {
-        return this.pagination.index * this.pagination.perPage < this.pagination.getList().length
+        return (this.pagination.index + 1) * this.pagination.perPage < this.pagination.getList().length
       },
       canGoDown: function() {
         return this.pagination.index > 0

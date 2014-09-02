@@ -10,7 +10,7 @@ var Editable = {
   edit: function() {
     this.replaceState(
       _.extend(this.getInitialState(), {
-        editing: true 
+        isEditing: true 
       })
     )
   },
@@ -25,20 +25,24 @@ var Editable = {
 
     this.props.$cursor.update({ $set: shitWeCareAbout })
 
-    this.setState({ editing: false })
+    this.setState({ isEditing: false })
   },
 
   cancel: function() {
-    this.replaceState(this.getInitialState())
+    this.replaceState(_.extend(this.getInitialState(), { isEditing: false }))
   },
 
   componentWillReceiveProps: function(newProps) {
     this.setState(newProps.$cursor.deref() || {})
   },
 
+  detectEditing: function() {
+    return (this.state && this.state.isEditing) || (this.detectNewness ? this.detectNewness() : false)
+  },
+
   getInitialState: function() {
     return _.extend({
-      editing: false
+      isEditing: this.detectEditing()
     }, this.props.$cursor.deref())
   }
 

@@ -35,8 +35,11 @@ render({
     downloads: {
       list: []
     },
-    resource: {
+    resources: {
       list: []
+    },
+    DIY: {
+
     }
   },
   shared: {

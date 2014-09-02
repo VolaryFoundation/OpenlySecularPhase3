@@ -39,7 +39,7 @@ gulp.task('initDev', function(done) {
       content: "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
       title: "Our Mission blah",
     },
-    DIYSection: {
+    DIY: {
       content: "<strong>Blah is bold</strong><br>shnarf",
     },
     logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
@@ -85,19 +85,18 @@ gulp.task('initDev', function(done) {
       instagram: 'campaign',
       youtube: 'campaign'
     },
-    downloads:
-      {
-        title: 'Downloads',
-        description: 'Get your files bitch',
-        list: [
-          {
-            _id: 0,
-            name: "rdf",
-            file: "someogo.png",
-            description: 'This is my description babyy'
-          }
-          ]
-      },
+    downloads: {
+      title: 'Downloads',
+      description: 'Get your files bitch',
+      list: [
+        {
+          _id: 0,
+          name: "rdf",
+          file: "someogo.png",
+          description: 'This is my description babyy'
+        }
+      ]
+    },
     updates: {
       title: 'Latest updates',
       list: [

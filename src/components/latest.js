@@ -84,7 +84,7 @@ var Updates = React.createClass({
             { 
               list.map(function(item, index) {
                 return <UpdateItem
-                  $cursor={this.props.$cursor.refine([ 'list', index ])}
+                  $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
                   activate={this.props.activate}
                   isEditable={this.props.isEditable}
                   onDelete={this.deleteItem.bind(this, index)}
@@ -174,7 +174,6 @@ var News = React.createClass({
                   $cursor={this.props.$cursor.refine(['list', i])}
                   onDelete={this.deleteItem.bind(null, i)}
                   isEditable={this.props.isEditable}
-                  isNew={!item.title}
                 />
               }, this)
             }
@@ -198,6 +197,10 @@ var NewsItem = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
+  detectNewness: function() {
+    return !this.props.$cursor.deref().title
+  },
+
   smartCancel: function() {
     if (this.props.isNew) {
       this.props.onDelete(this.props.index)
@@ -207,7 +210,7 @@ var NewsItem = React.createClass({
   },
 
   render: function() {
-    if (this.props.isNew || this.state.editing) {
+    if (this.detectEditing) {
       return (
         <li className="col-md-6" key={this.state._id}>
           <input type='text' valueLink={this.linkState('title')} />

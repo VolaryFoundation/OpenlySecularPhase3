@@ -1,11 +1,6 @@
 
 /** @jsx React.DOM */
 
-var guid = (function() {
-  var i = 0
-  return function() { return 'a' + (i++) }
-})()
-
 var React = require('react/addons')
 var Editable = require('../mixins/editable')
 var Paginated = require('../mixins/paginated')
@@ -38,32 +33,30 @@ var DownloadList = React.createClass({
   },
 
   render: function() {
-    debugger
     return (
-      <li className="col-md-3 list" key={guid()}>
+      <li className="col-md-3 list">
         <div className="panel-heading">
           <h3 className="panel-title">{this.state.title}</h3>
           { this.props.isEditable ? (<button className="btn-add" onClick={this.add}></button>) : null }
         </div>
         <div className="feed-list">
           {
-            this.pagination.getCurrent().map(function(item, key) {
+            this.pagination.getCurrent().map(function(item, index) {
               return <DownloadItem
-                $cursor={this.props.$cursor.refine([ 'list', key ])}
-                index={key}
-                editing={item.editing}
+                $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
                 isEditable={this.props.isEditable}
-                onDelete={this.deleteItem}
+                isNew={!item.name}
+                onDelete={this.deleteItem.bind(this, index)}
               />
             }, this)
           }
         </div>
         <ul className="view-more clearfix">
           <li>
-            <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
+            <a onClick={this.pagination.down} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
           </li>
           <li>
-            <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
+            <a onClick={this.pagination.up} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
           </li>
         </ul>
       </li>
@@ -78,13 +71,12 @@ var DownloadItem = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  componentWillMount: function() {
-    // infer editing state
-    if (!this.state.name) this.setState({ created: true, editing: true })
+  detectNewness: function() {
+    return !this.props.$cursor.deref().name
   },
 
   smartCancel: function() {
-    if (this.state.created) {
+    if (this.detectNewness()) {
       this.props.onDelete(this.props.index)
     } else {
       this.cancel()
@@ -107,9 +99,10 @@ var DownloadItem = React.createClass({
     })
   },
   render: function() {
-    if (this.state.editing) {
+    var _id = this.props.$cursor.deref()._id
+    if (this.detectEditing()) {
       return (
-        <div href="#" className="list-group-item" key={this.props.index}>
+        <div href="#" className="list-group-item" key={_id}>
           <input type="text" valueLink={this.linkState('name')} />
           <p className="list-group-meta">
             <div className="form-group">
@@ -126,7 +119,7 @@ var DownloadItem = React.createClass({
       )
     } else {
       return (
-        <a href="#" className="list-group-item" key={this.props.index}>
+        <a href="#" className="list-group-item" key={_id}>
           { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : '' }
           { this.props.isEditable ? (<button className="btn-delete" onClick={this.props.onDelete.bind(null, this.props.index)}></button>) : '' }
           <h4 className="list-group-item-heading">{this.state.name}</h4>
@@ -146,20 +139,13 @@ var DIYSection = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  smartCancel: function() {
-    if (this.state.created) {
-      this.props.onDelete(this.props.index)
-    } else {
-      this.cancel()
-    }
-  },
   render: function() {
-    if (this.state.editing) {
+    if (this.state.isEditing) {
       return (
         <li className="col-md-6">
         <div className="inner">
           <textarea rows="8" cols="80" valueLink={this.linkState('content')}></textarea>
-          <button className="btn-cancel" onClick={this.smartCancel}></button>
+          <button className="btn-cancel" onClick={this.cancel}></button>
           <button className="btn-save" onClick={this.save}></button>
         </div>
         </li>
@@ -179,7 +165,18 @@ var DIYSection = React.createClass({
 
 
 
-var Resource = React.createClass({
+var Resources = React.createClass({
+
+  mixins: [ Paginated ],
+
+  componentWillMount: function() {
+    this.paginate({
+      perPage: 2,
+      getList: function() {
+        return this.props.$cursor.deref().list
+      }
+    })
+  },
 
   add: function(e) {
     e.preventDefault()
@@ -201,22 +198,21 @@ var Resource = React.createClass({
         </div>
         <div className="feed-list">
           {
-            this.props.$cursor.deref().list.map(function(item, i) {
+            this.pagination.getCurrent().map(function(item, i) {
               return <ResourceItem
-                $cursor={this.props.$cursor.refine(['list', i])}
+                $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
                 onDelete={this.deleteItem.bind(null, i)}
                 isEditable={this.props.isEditable}
-                isNew={!item.title}
               />
             }, this)
           }
         </div>
         <ul className="view-more clearfix">
           <li>
-            <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
+            <a onClick={this.pagination.down} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
           </li>
           <li>
-            <a href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
+            <a onClick={this.pagination.up} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
           </li>
         </ul>
       </li>
@@ -228,8 +224,12 @@ var ResourceItem = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
+  detectNewness: function() {
+    return !this.props.$cursor.deref().title
+  },
+
   smartCancel: function() {
-    if (this.props.isNew) {
+    if (this.detectNewness) {
       this.props.onDelete(this.props.index)
     } else {
       this.cancel()
@@ -237,7 +237,7 @@ var ResourceItem = React.createClass({
   },
 
   render: function() {
-    if (this.props.isNew || this.state.editing) {
+    if (this.detectEditing()) {
       return (
         <p className="list-group-item" key={this.state._id}>
           <input type='text' valueLink={this.linkState('title')} />
@@ -265,12 +265,7 @@ var ResourceItem = React.createClass({
 
 
 module.exports = React.createClass({
-  activate: function($cursor, props) {
-    if (!$cursor) this.props.$shared.update({ activeUpdate: { $set: null } })
-    else this.props.$shared.update({ activeUpdate: { $set: { $cursor: $cursor, props: props || {} } } })
-  },
 
-  getInitialState: function() { return {} },
   render: function() {
 
     var $campaign = this.props.$campaign
@@ -281,14 +276,13 @@ module.exports = React.createClass({
         <ul className="row">
           <DownloadList
             $cursor={$campaign.refine([ 'downloads' ])}
-            onReset={this.forceUpdate.bind(this)}
             isEditable={!_.isEmpty($shared.deref().session)}
           />
           <DIYSection
             $cursor={$campaign.refine('DIY')}
             isEditable={!_.isEmpty($shared.deref().session)}
           />
-          <Resource
+          <Resources
             $cursor={$campaign.refine('resources')}
             isEditable={!_.isEmpty($shared.deref().session)}
           />

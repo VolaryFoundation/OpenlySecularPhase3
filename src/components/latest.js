@@ -76,8 +76,17 @@ var Updates = React.createClass({
     return (
       <div className="updates">
         <div className="panel-heading">
+        { this.props.isEditable ? (
+          <button onClick={this.add}className="btn-md btn-animated vertical btn-info pull-left">
+            <div className="is-visible content"><i className="add"></i></div>
+            <div className="not-visible content">Add</div>
+          </button>
+          ) : '' }
           <h3 className="panel-title">Latest Updates</h3>
-          { this.props.isEditable ? (<button onClick={this.add}>Add</button>) : '' }
+          <button className="btn-md btn-animated vertical btn-warning pull-right">
+            <div className="is-visible content"><i className="edit"></i></div>
+            <div className="not-visible content">Edit</div>
+          </button>
         </div>
         <div className="panel-body">
           <ul className="media-list">
@@ -130,8 +139,18 @@ var UpdateItem = React.createClass({
           </p>
           <p>{this.state.excerpt}</p>
           <div className="admin-bar clearfix">
-            { this.props.isEditable ? (<button onClick={this.activateEdit}>Edit</button>) : '' }
-            { this.props.isEditable ? (<button onClick={this.props.onDelete}>delete</button>) : '' }
+            { this.props.isEditable ? (
+              <button onClick={this.props.onDelete} className="btn-animated btn-sm vertical btn-danger pull-left">
+                <div className="is-visible content"><i className="delete"></i></div>
+                <div className="not-visible content">Delete</div>
+              </button>
+              ) : '' }
+            { this.props.isEditable ? (
+              <button onClick={this.activateEdit} className="btn-animated btn-sm vertical btn-warning pull-right">
+                <div className="is-visible content"><i className="edit"></i></div>
+                <div className="not-visible content">Edit</div>
+              </button>
+              ) : '' }
           </div>
         </div>
       </li>
@@ -170,11 +189,20 @@ var News = React.createClass({
     return (
       <div className="news">
         <div className="panel-heading">
+        { this.props.isEditable ? (
+          <button onClick={this.add}className="btn-md btn-animated vertical btn-info pull-left">
+            <div className="is-visible content"><i className="add"></i></div>
+            <div className="not-visible content">Add</div>
+          </button>
+          ) : '' }
           <h3 className="panel-title">In the News</h3>
-          { this.props.isEditable ? (<button className="btn-add" onClick={this.add}></button>) : null }
+          <button className="btn-md btn-animated vertical btn-warning pull-right">
+            <div className="is-visible content"><i className="edit"></i></div>
+            <div className="not-visible content">Edit</div>
+          </button>
         </div>
-        <div class="panel-body">
-          <ul class="media-list">
+        <div className="panel-body">
+          <ul className="media-list">
             {
               list.map(function(item, i) {
                 return <NewsItem
@@ -236,9 +264,21 @@ var NewsItem = React.createClass({
             <p className="meta">
               <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
             </p>
-            <a href={this.state.link}><h4 className="media-heading">{this.state.title}</h4></a>
+            <a href={this.state.link} target="_blank"><h4 className="media-heading">{this.state.title}</h4></a>
             <strong>{this.state.source}</strong>
             <div className="admin-bar clearfix">
+              { this.props.isEditable ? (
+                <button onClick={this.props.onDelete.bind(null, this.props.index)} className="btn-animated btn-sm vertical btn-danger pull-left">
+                  <div className="is-visible content"><i className="delete"></i></div>
+                  <div className="not-visible content">Delete</div>
+                </button>
+                ) : '' }
+              { this.props.isEditable ? (
+                <button onClick={this.edit} className="btn-animated btn-sm vertical btn-warning pull-right">
+                  <div className="is-visible content"><i className="edit"></i></div>
+                  <div className="not-visible content">Edit</div>
+                </button>
+                ) : '' }
             </div>
           </div>
         </li>
@@ -278,10 +318,38 @@ module.exports = React.createClass({
             onDelete={activeUpdate.props.onDelete}
           />) : null
         }
-        <News
-          $cursor={$campaign.refine('news')}
-          isEditable={!_.isEmpty($shared.deref().session)}
-        />
+        <div className="in-the-media">
+          <div className="social-media">
+            <div className="social-post">
+              <span>
+                <button className="btn-lg btn-animated btn-info">
+                  <div className="is-visible content"><i className="fa fa-fw fa-2x fa-twitter"></i></div>
+                  <div className="not-visible content">20k</div>
+                </button>
+              </span>
+            </div>
+            <div className="social-post">
+              <span>
+                <button className="btn-lg btn-animated btn-primary">
+                  <div className="is-visible content"><i className="fa fa-fw fa-2x fa-instagram"></i></div>
+                  <div className="not-visible content">20k</div>
+                </button>
+              </span>
+            </div>
+            <div className="social-post">
+              <span>
+                <button className="btn-lg btn-animated btn-danger">
+                  <div className="is-visible content"><i className="fa fa-fw fa-2x fa-youtube-play"></i></div>
+                  <div className="not-visible content">20k</div>
+                </button>
+              </span>
+            </div>
+          </div>
+          <News
+            $cursor={$campaign.refine('news')}
+            isEditable={!_.isEmpty($shared.deref().session)}
+          />
+        </div>
       </div>
     )
   }

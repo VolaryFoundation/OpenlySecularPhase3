@@ -229,7 +229,7 @@ var ResourceItem = React.createClass({
   },
 
   smartCancel: function() {
-    if (this.detectNewness) {
+    if (this.detectNewness()) {
       this.props.onDelete(this.props.index)
     } else {
       this.cancel()

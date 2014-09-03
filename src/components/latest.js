@@ -210,7 +210,7 @@ var NewsItem = React.createClass({
   },
 
   render: function() {
-    if (this.detectEditing) {
+    if (this.detectEditing()) {
       return (
         <li className="col-md-6" key={this.state._id}>
           <input type='text' valueLink={this.linkState('title')} />

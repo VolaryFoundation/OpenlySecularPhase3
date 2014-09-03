@@ -119,7 +119,7 @@ var DownloadItem = React.createClass({
       )
     } else {
       return (
-        <a href="#" className="list-group-item" key={_id}>
+        <a href={this.state.file} className="list-group-item" key={_id}>
           { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : '' }
           { this.props.isEditable ? (<button className="btn-delete" onClick={this.props.onDelete.bind(null, this.props.index)}></button>) : '' }
           <h4 className="list-group-item-heading">{this.state.name}</h4>
@@ -250,12 +250,13 @@ var ResourceItem = React.createClass({
     } else {
       return (
           <a href={this.state.link} className="list-group-item" key={this.state._id}>
-
             <h4 className="list-group-item-heading">{this.state.title}</h4>
             <p className="list-group-meta">
               <span className="type"><i className="fa fa-fw fa-link"></i>{this.state.link}</span>
             </p>
             <p className="list-group-item-text">{this.state.desc}</p>
+            { this.props.isEditable ? (<button className="btn-edit" onClick={util.preventEverything(this.edit)}></button>) : '' }
+            { this.props.isEditable ? (<button className="btn-delete" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}></button>) : '' }
           </a>
       )
     }

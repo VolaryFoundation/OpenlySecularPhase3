@@ -10,15 +10,18 @@ var util = {
     }, 0))
   },
 
-  preventDefault: function(fn) {
+  preventEverything: function(fn) {
     return function(e) {
-      if (e) e.preventDefault()
+      if (e) {
+        e.preventDefault()
+        e.stopPropagation()
+      }
       return fn()
     }
   },
 
   when: function(bool, yep, nope) {
-    return bool ? yep() : (nope ? nope() : null) 
+    return bool ? yep() : (nope ? nope() : null)
   },
 
   swapper: function(val) {
@@ -82,8 +85,8 @@ var util = {
           var source = this
           var data = this.deref()
 
-          return { 
-            
+          return {
+
             reattach: function() {
 
             }

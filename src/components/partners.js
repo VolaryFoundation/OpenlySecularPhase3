@@ -68,7 +68,7 @@ var PartnerList = React.createClass({
 
     return (
       <ul className="row" key={this.state.name}>
-        { this.state.editing ? renderEditing() : renderViewing() }
+        { this.detectEditing() ? renderEditing() : renderViewing() }
         <li className="col-md-8">
           <div className="carousel slide">
             <div className="carousel-inner">
@@ -99,13 +99,12 @@ var PartnerItem = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
-  componentWillMount: function() {
-    // infer editing state
-    if (!this.state.name) this.setState({ created: true, editing: true })
+  detectNewness: function() {
+    return !this.props.$cursor.deref().name
   },
 
   smartCancel: function() {
-    if (this.state.created) {
+    if (this.detectNewness()) {
       this.props.onDelete(this.props.index)
     } else {
       this.cancel()
@@ -130,7 +129,7 @@ var PartnerItem = React.createClass({
   },
 
   render: function() {
-    if (this.state.editing) {
+    if (this.detectEditing()) {
       return (
         <li className="col-xs-6 col-md-3" key={this.props.index}>
 

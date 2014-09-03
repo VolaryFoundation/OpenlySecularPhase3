@@ -53,7 +53,7 @@ var Login = React.createClass({
     return (
       <div className={loginClasses}>
         <div className="alert">
-          <button onClick={this.toggle} type="button" className="close"><span aria-hidden="true">x</span><span className="sr-only">Close</span></button>
+          <button onClick={this.toggle} type="button" className="close"><span className="sr-only">Close</span></button>
           <form className="form-inline" role="form" onSubmit={this.login}>
             <div className="form-group">
               <div className="input-group">

@@ -20,24 +20,54 @@ var ActiveUpdate = React.createClass({
     if (this.props.isEditing) {
       var cancel = this.props.isNew ? this.props.onDelete : this.props.activate.bind(null, this.props.$cursor)
       return (
-        <div className="list-group-item">
-          <input type="text" valueLink={this.linkState('title')} />
-          <input type="text" valueLink={this.linkState('date')} />
-          <textarea valueLink={this.linkState('excerpt')}></textarea>
-          <textarea valueLink={this.linkState('content')}></textarea>
-          <button onClick={cancel}>cancel</button>
-          <button onClick={this.saveAndReset}>save</button>
+        <div className="article">
+          <div className="panel-heading">
+            <button onClick={this.props.activate.bind(null, null)} className="btn-md btn-animated vertical btn-clean pull-right">
+              <div className="is-visible content"><i className="close"></i></div>
+              <div className="not-visible content">Close</div>
+            </button>
+          </div>
+          <div className="panel-body">
+            <div className="form-group">
+              <input className="form-control" type="text" valueLink={this.linkState('title')} />
+            </div>
+            <div className="form-group">
+              <input className="form-control" type="text" valueLink={this.linkState('date')} />
+            </div>
+            <div className="form-group">
+              <textarea className="form-control" valueLink={this.linkState('excerpt')}></textarea>
+            </div>
+            <div className="form-group">
+              <textarea className="form-control" valueLink={this.linkState('content')}></textarea>
+            </div>
+          </div>
+          <div className="panel-footer clearfix">
+            <button onClick={cancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.saveAndReset} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
+          </div>
         </div>
       )
     } else {
       return (
-        <div href="#" className="list-group-item">
-          <button onClick={this.props.activate.bind(null, null)}>close</button>
-          <h4 className="list-group-item-heading">{this.state.title}</h4>
-          <p className="list-group-meta">
-            <span className="date"><i className="fa fa-fw fa-clock-o"></i>{this.state.date}</span>
-          </p>
-          <p>{this.state.content}</p>
+        <div className="article">
+          <div className="panel-heading">
+            <button onClick={this.props.activate.bind(null, null)} className="btn-md btn-animated vertical btn-clean pull-right">
+              <div className="is-visible content"><i className="close"></i></div>
+              <div className="not-visible content">Close</div>
+            </button>
+          </div>
+          <div className="panel-body">
+            <h3>Our Monthly Status Update Press Release</h3>
+            <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
+            <hr/>
+            <p>{this.state.content}</p>
+          </div>
         </div>
       )
     }

@@ -1141,6 +1141,7 @@ a {
   border-bottom: $border;
 }
 
+
 .action-bar {
   @extend .row-flex;
   margin-bottom: 10px;
@@ -1198,7 +1199,6 @@ a {
 
 .action-content {
   padding: 20px;
-  margin: 10px 0 50px 0;
 }
 
 .action-footer {
@@ -1225,6 +1225,12 @@ a {
   @extend .fa-fw;
   @extend .fa-heart;
 }
+
+.social-links {
+  padding-top: 30px;
+  text-align: center;
+}
+
 
 
 .media-heading {
@@ -1524,6 +1530,50 @@ a {
   }
 }
 
+.btn-twitter {
+  color: #00acee;
+  background: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
+
+
+  &:hover {
+    color: #fff;
+    background-color: #00acee;
+    border-color: darken(#00acee, 5%);
+  }
+}
+
+.btn-facebook {
+  color: #3b5998;
+  background: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
+
+  &:hover {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: darken(#3b5998, 5%);
+  }
+}
+
+.btn-instagram {
+  color: #3f729b;
+  background: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
+
+  &:hover {
+    color: #fff;
+    background-color: #3f729b;
+    border-color: darken(#3f729b, 5%);
+  }
+}
+
+.btn-youtube {
+  color: #c4302b;
+  background: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
+
+  &:hover {
+    color: #fff;
+    background-color: #c4302b;
+    border-color: darken(#c4302b, 5%);
+  }
+}
 
 /*-------------------
        Icons
@@ -1575,4 +1625,27 @@ a {
   @extend .fa;
   @extend .fa-fw;
   @extend .fa-times;
+}
+
+
+
+.twitter {
+  @extend .fa;
+  @extend .fa-fw;
+  @extend .fa-twitter;
+}
+.facebook {
+  @extend .fa;
+  @extend .fa-fw;
+  @extend .fa-facebook;
+}
+.instagram {
+  @extend .fa;
+  @extend .fa-fw;
+  @extend .fa-instagram;
+}
+.youtube {
+  @extend .fa;
+  @extend .fa-fw;
+  @extend .fa-youtube-play;
 }

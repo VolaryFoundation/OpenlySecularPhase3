@@ -1,5 +1,6 @@
 $brand-primary: #005CB9;
 $brand-secondary: lighten( $brand-primary, 20% );
+$fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.2.0/fonts";
 
 @import "vendor/bootstrap/assets/stylesheets/bootstrap";
 @import "node_modules/font-awesome/scss/font-awesome";

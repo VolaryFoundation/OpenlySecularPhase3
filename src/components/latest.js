@@ -12,7 +12,7 @@ var ActiveUpdate = React.createClass({
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
   saveAndReset: function() {
-    this.save(); 
+    this.save();
     this.props.activate(null)
   },
 
@@ -61,7 +61,7 @@ var Updates = React.createClass({
     e.preventDefault()
     var list = this.state.list
     var _id = util.nextId(list)
-    var newUpdate = { _id: _id, title: '', date: '', excerpt: '', content: '' } 
+    var newUpdate = { _id: _id, title: '', date: '', excerpt: '', content: '' }
     this.props.$cursor.update({ list: { $unshift: [ newUpdate ] } })
     this.props.activate(this.props.$cursor.refine([ 'list', 0 ]), { isEditing: true, isNew: true, onDelete: this.deleteItem.bind(null, 0) })
   },
@@ -74,34 +74,36 @@ var Updates = React.createClass({
   render: function() {
     var list = this.pagination.getCurrent()
     return (
-      <li className="col-md-4 col-md-pull-8 list">
-        <div className="xinner">
-          <div className="panel-heading">
-            <h3 className="panel-title">Latest Updates</h3>
-            { this.props.isEditable ? (<button onClick={this.add}>Add</button>) : '' }
-          </div>
-          <div className="feed-list">
-            { 
-              list.map(function(item, index) {
-                return <UpdateItem
-                  $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
-                  activate={this.props.activate}
-                  isEditable={this.props.isEditable}
-                  onDelete={this.deleteItem.bind(this, index)}
-                />
-              }, this)
-            }
-          </div>
-          <ul className="view-more clearfix">
-            <li>
-              <a onClick={this.pagination.down} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
-            </li>
-            <li>
-              <a onClick={this.pagination.up} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
-            </li>
-          </ul>
+      <div className="updates">
+        <div className="panel-heading">
+          <h3 className="panel-title">Latest Updates</h3>
+          { this.props.isEditable ? (<button onClick={this.add}>Add</button>) : '' }
         </div>
-      </li>
+        <div className="panel-body">
+          <ul className="media-list">
+          {
+            list.map(function(item, index) {
+              return <UpdateItem
+                $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
+                activate={this.props.activate}
+                isEditable={this.props.isEditable}
+                onDelete={this.deleteItem.bind(this, index)}
+              />
+            }, this)
+          }
+          </ul>
+          <div className="pagination-bar clearfix">
+            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
+              <div className="is-visible content"><i className="prev"></i></div>
+              <div className="not-visible content">Prev</div>
+            </button>
+            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
+              <div className="is-visible content"><i className="next"></i></div>
+              <div className="not-visible content">Next</div>
+            </button>
+          </div>
+        </div>
+      </div>
     )
   }
 })
@@ -118,15 +120,21 @@ var UpdateItem = React.createClass({
 
   render: function() {
     return (
-      <a href="#" onClick={this.props.activate.bind(null, this.props.$cursor)} className="list-group-item" key={this.state._id}>
-        { this.props.isEditable ? (<button onClick={this.activateEdit}>Edit</button>) : '' }
-        { this.props.isEditable ? (<button onClick={this.props.onDelete}>delete</button>) : '' }
-        <h4 className="list-group-item-heading">{this.state.title}</h4>
-        <p className="list-group-meta">
-          <span className="date"><i className="fa fa-fw fa-clock-o"></i>{this.state.date}</span>
-        </p>
-        <p className="list-group-item-text">{this.state.excerpt}</p>
-      </a>
+      <li className="media">
+        <div className="media-body">
+          <a href="#" onClick={this.props.activate.bind(null, this.props.$cursor)} key={this.state._id}>
+            <h4 className="media-heading">{this.state.title}</h4>
+          </a>
+          <p className="meta">
+            <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
+          </p>
+          <p>{this.state.excerpt}</p>
+          <div className="admin-bar clearfix">
+            { this.props.isEditable ? (<button onClick={this.activateEdit}>Edit</button>) : '' }
+            { this.props.isEditable ? (<button onClick={this.props.onDelete}>delete</button>) : '' }
+          </div>
+        </div>
+      </li>
     )
   }
 })
@@ -156,18 +164,17 @@ var News = React.createClass({
   },
 
   render: function() {
-    
+
     var list = this.pagination.getCurrent()
 
     return (
-      <ul className="row no-gutter news list">
-        <li className="col-md-12">
-          <div className="panel-heading">
-            <h3 className="panel-title">In the News</h3>
-          </div>
+      <div className="news">
+        <div className="panel-heading">
+          <h3 className="panel-title">In the News</h3>
           { this.props.isEditable ? (<button className="btn-add" onClick={this.add}></button>) : null }
-          <ul className="row no-gutter feed-list text-center">
-
+        </div>
+        <div class="panel-body">
+          <ul class="media-list">
             {
               list.map(function(item, i) {
                 return <NewsItem
@@ -177,18 +184,19 @@ var News = React.createClass({
                 />
               }, this)
             }
-
           </ul>
-          <ul className="view-more clearfix">
-            <li>
-              <a onClick={this.pagination.down} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
-            </li>
-            <li>
-              <a onClick={this.pagination.up} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+          <div className="pagination-bar clearfix">
+            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
+              <div className="is-visible content"><i className="prev"></i></div>
+              <div className="not-visible content">Prev</div>
+            </button>
+            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
+              <div className="is-visible content"><i className="next"></i></div>
+              <div className="not-visible content">Next</div>
+            </button>
+          </div>
+        </div>
+      </div>
     )
   }
 })
@@ -223,14 +231,16 @@ var NewsItem = React.createClass({
       )
     } else {
       return (
-        <li className="col-md-6" key={this.state._id}>
-          <a href={this.state.link} className="list-group-item">
-            <p className="list-group-meta">
-              <span className="date">{this.state.date}</span>
+        <li className="media" key={this.state._id}>
+          <div className="media-body">
+            <p className="meta">
+              <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
             </p>
-            <h4 className="list-group-item-heading">{this.state.title}</h4>
-            <p className="list-group-item-text"><strong>{this.state.source}</strong></p>
-          </a>
+            <a href={this.state.link}><h4 className="media-heading">{this.state.title}</h4></a>
+            <strong>{this.state.source}</strong>
+            <div className="admin-bar clearfix">
+            </div>
+          </div>
         </li>
       )
     }
@@ -253,46 +263,25 @@ module.exports = React.createClass({
     var activeUpdate = this.props.$shared.deref().activeUpdate
 
     return (
-      <div className="container-fluid latest-content">
-        <ul className="row">
-          <li className="col-md-8 col-md-push-4 news list">
-            { 
-              activeUpdate ? (<ActiveUpdate
-                activate={this.activate}
-                $cursor={activeUpdate.$cursor}
-                isEditing={activeUpdate.props.isEditing}
-                isNew={activeUpdate.props.isNew}
-                onDelete={activeUpdate.props.onDelete}
-              />) : null
-            }
-            <ul className="row no-gutter latest-social-media">
-              <li className="col-md-4">
-                <div className="inner">
-                  <h3 className="panel-title"><i className="fa fa-fw fa-twitter"></i> Tweet</h3>
-                </div>
-              </li>
-              <li className="col-md-4">
-                <div className="inner">
-                  <h3 className="panel-title"><i className="fa fa-fw fa-instagram"></i> Instagram</h3>
-                </div>
-              </li>
-              <li className="col-md-4">
-                <div className="inner">
-                  <h3 className="panel-title"><i className="fa fa-fw fa-youtube-play"></i> Video</h3>
-                </div>
-              </li>
-            </ul>
-            <News 
-              $cursor={$campaign.refine('news')}
-              isEditable={!_.isEmpty($shared.deref().session)}
-            />
-          </li>
-          <Updates 
-            $cursor={$campaign.refine('updates')}
-            isEditable={!_.isEmpty($shared.deref().session)}
+      <div className="latest">
+        <Updates
+          $cursor={$campaign.refine('updates')}
+          isEditable={!_.isEmpty($shared.deref().session)}
+          activate={this.activate}
+        />
+        {
+          activeUpdate ? (<ActiveUpdate
             activate={this.activate}
-          />
-        </ul>
+            $cursor={activeUpdate.$cursor}
+            isEditing={activeUpdate.props.isEditing}
+            isNew={activeUpdate.props.isNew}
+            onDelete={activeUpdate.props.onDelete}
+          />) : null
+        }
+        <News
+          $cursor={$campaign.refine('news')}
+          isEditable={!_.isEmpty($shared.deref().session)}
+        />
       </div>
     )
   }

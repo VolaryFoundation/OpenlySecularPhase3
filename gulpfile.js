@@ -2,7 +2,7 @@
 var gulp = require('gulp')
 var mongo = require('mongo-promise')
 var config = require('config')
-var Parse = require('parse')
+var Parse = require('parse').Parse
 
 var srcPath = __dirname + '/src'
 var builder = require('volary-static-builder')({ srcPath: srcPath })
@@ -35,7 +35,7 @@ gulp.task('initDev', function(done) {
     .equalTo('slug', 'development')
     .first(function(campaign) {
       campaign.set({
-        userId: "MF8y1308Qh",
+        userId: "siRzY8KN64",
         about1: {
           content: "Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.",
           title: "Our Mission blah",

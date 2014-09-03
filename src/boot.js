@@ -6,9 +6,12 @@ var hub = require('./hub')
 var util = require('./util')
 var sync = require('./sync')
 var routes = require('./routes')
+var config = require('config')
 
 // for react devtools
 window.React = React
+
+Parse.initialize(config.parse.appId, config.parse.jsKey);
 
 var App = require('./components/app')
 

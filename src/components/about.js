@@ -11,8 +11,14 @@ var AboutSection = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
+  beforeSave: function(data) {
+    return campaign.patch(data)
+  },
+
+  detectNewness: function() { return false },
+
   render: function() {
-    if (this.state.editing) {
+    if (this.detectEditing()) {
       return (
         <div className="inner">
           <input type="text" valueLink={this.linkState('title')} />

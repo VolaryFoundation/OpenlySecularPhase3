@@ -7,11 +7,24 @@ var Stream = require('./stream')
 var Immutable = require('immutable')
 var hub = require('../hub')
 var _ = require('lodash')
+var sessions = require('../services/session')
+var campaigns = require('../services/campaign')
 
 module.exports = React.createClass({
 
   componentWillMount: function() {
+
     window.onkeydown = this.handleKeyDown
+
+    // bootstrap data
+    sessions.load().then(function(session) {
+      this.props.$root.update({ shared: { session: { $set: session } } })
+    }.bind(this))
+
+    // bootstrap data
+    campaigns.load().then(function(campaign) {
+      this.props.$root.update({ campaign: { $set: campaign } })
+    }.bind(this))
   },
 
   handleKeyDown: function(e) {
@@ -27,14 +40,6 @@ module.exports = React.createClass({
     }, 2000)
   },
 
-  loadSession: _.once(function($shared) {
-    require('../services/session').load($shared)
-  }),
-
-  loadCampaign: _.once(function($campaign) {
-    require('../services/campaign').load($campaign)
-  }),
-
   render: function() {
 
     var $root = this.props.$root
@@ -42,9 +47,6 @@ module.exports = React.createClass({
     var $campaign = $root.refine('campaign')
 
     window.$shared = $shared
-
-    this.loadSession($shared)
-    this.loadCampaign($campaign)
     this.resolveFlash($shared)
 
     console.log('rendering app', $campaign.deref())

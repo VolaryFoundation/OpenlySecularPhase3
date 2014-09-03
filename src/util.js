@@ -65,38 +65,43 @@ var util = {
 
   cursor: function(data, cb) {
 
-    var sub = function(path) {
+    var sub = function(path, root) {
 
-      return {
+      var _sub = {
 
-        deref: util.pick.bind(null, data, path),
+        path: path,
+
+        deref: function() {
+          return util.pick(root.data, path)
+        },
 
         refine: function(newPath) {
-          return sub(path.concat(newPath))
+          return sub(path.concat(newPath), root)
         },
 
         update: function(delta) {
           var deltaForRoot = util.nest(path, delta)
-          cb(React.addons.update(data, deltaForRoot))
+          cb(React.addons.update(root.data, deltaForRoot))
         },
 
         detach: function() {
-
-          var source = this
-          var data = this.deref()
-
-          return {
-
-            reattach: function() {
-
-            }
+          _sub.data = _sub.deref()
+          var detached = sub([], _sub)
+          detached.reattach = function() {
+            _sub.update({ $set: detached.deref() })
           }
+          return detached
         }
       }
+
+      root || (root = _sub)
+
+      return _sub
     }
 
     var root = sub([])
-    root.swap = function(updated) { data = updated }
+    root.data = data
+    root.swap = function(updated) { root.data = updated }
     return root
   }
 }

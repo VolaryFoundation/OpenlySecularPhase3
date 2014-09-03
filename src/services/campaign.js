@@ -1,35 +1,21 @@
 
 var config = require('../config')
-var xhr = require('xhr')
-var rsvp = require('rsvp')
-var sync = require('../sync')
+var _ = require('lodash')
+var Campaign = Parse.Object.extend('Campaign')
 
-sync.register('campaign')
+var toJSON = _.partialRight(_.result, 'toJSON')
 
 module.exports = {
 
   patch: function(patches) {
-    return new rsvp.Promise(function(res, rej) {
-      return xhr({
-        method: 'PATCH',
-        uri: config.apiRoot + '/campaigns/' + config.campaign.id,
-        json: patches,
-        withCredentials: true
-      }, function(e, resp, body) {
-        e ? rej(e) : res(body)
-      })
+    var query = new Parse.Query(Campaign)
+    return query.get(config.campaign.objectId).then(function(c) {
+      return c.set(patches).save().then(toJSON)
     })
   },
 
-  load: function($campaign) {
-    return xhr({
-      method: 'GET',
-      uri: config.apiRoot + '/campaigns/' + config.campaign.id,
-      json: 1,
-      withCredentials: true
-    }, function(e, resp, data) {
-      console.log('updating campaign')
-      $campaign.update({ $set: data })
-    })
+  load: function() {
+    var query = new Parse.Query(Campaign)
+    return query.get(config.campaign.objectId).then(toJSON)
   }
 }

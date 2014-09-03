@@ -1,5 +1,5 @@
 database:
   url: 'mongodb://localhost:27017/awaren-es'
 parse:
-  appId: 'd10HxHqjlK3ERfm9lJ0QZqPRNdVIvFmQSYYUxBEM' 
-  jsKey: 'jvehUiyOIgoNfgSJXyCCQI7Sb3aYhMZcNdlyn4EK'
+  appId: 'P6N7zNHb43Px9Yd6DZ3QyzAGvGMXxH9cT6PXufrJ' 
+  jsKey: 'c3y15CZxjimWcozyP6b2ywhaKU0OWzVbdwsfL46l'

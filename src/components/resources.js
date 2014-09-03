@@ -75,13 +75,6 @@ var DownloadItem = React.createClass({
     return !this.props.$cursor.deref().name
   },
 
-  smartCancel: function() {
-    if (this.detectNewness()) {
-      this.props.onDelete(this.props.index)
-    } else {
-      this.cancel()
-    }
-  },
   promptUpload: function() {
     var el = this.refs.upload.getDOMNode()
     el.click()
@@ -111,7 +104,7 @@ var DownloadItem = React.createClass({
               <p className="help-block">Upload downloads (images, pdfs, or documents)</p>
             </div>
             <textarea rows="4" cols="50" valueLink={this.linkState('description')}></textarea>
-            <button className="btn-cancel" onClick={this.smartCancel}></button>
+            <button className="btn-cancel" onClick={this.cancel}></button>
             <button className="btn-save" onClick={this.save}></button>
           </p>
         </div>
@@ -167,7 +160,7 @@ var DIYSection = React.createClass({
 
 var Resources = React.createClass({
 
-  mixins: [ Paginated ],
+  mixins: [ Editable, Paginated ],
 
   componentWillMount: function() {
     this.paginate({
@@ -203,6 +196,7 @@ var Resources = React.createClass({
                 $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
                 onDelete={this.deleteItem.bind(null, i)}
                 isEditable={this.props.isEditable}
+                onSave={this.save}
               />
             }, this)
           }
@@ -228,12 +222,8 @@ var ResourceItem = React.createClass({
     return !this.props.$cursor.deref().title
   },
 
-  smartCancel: function() {
-    if (this.detectNewness()) {
-      this.props.onDelete(this.props.index)
-    } else {
-      this.cancel()
-    }
+  saveToParent: function() {
+    var data = this.toJSON()
   },
 
   render: function() {
@@ -243,8 +233,8 @@ var ResourceItem = React.createClass({
           <input type='text' valueLink={this.linkState('title')} />
           <input type='text' valueLink={this.linkState('link')} />
           <textarea rows="4" cols="50" valueLink={this.linkState('desc')}></textarea>
-          <button className="btn-cancel" onClick={this.smartCancel}></button>
-          <button className="btn-save" onClick={this.save}></button>
+          <button className="btn-cancel" onClick={this.cancel}></button>
+          <button className="btn-save" onClick={this.props.onSave}></button>
         </p>
       )
     } else {

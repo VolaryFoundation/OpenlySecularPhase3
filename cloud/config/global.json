@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "_default": {
+            "link": "awaren.es"
+        }, 
+        "awaren.es": {
+            "applicationId": "P6N7zNHb43Px9Yd6DZ3QyzAGvGMXxH9cT6PXufrJ", 
+            "masterKey": "fhWwzwglSvQtdCEjzDV16IjULPESj5y2XvHqIcT9"
+        }
+    }
+}

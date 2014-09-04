@@ -92,7 +92,7 @@ var Updates = React.createClass({
     var list = this.state.list
     var _id = util.nextId(list)
     var newUpdate = { _id: _id, title: '', date: '', excerpt: '', content: '' }
-    this.props.$cursor.update({ list: { $unshift: [ newUpdate ] } })
+    this.props.$cursor.update({ list: { $unshift: [ newUpdate ] } }, { skipSync: true })
     this.props.activate(this.props.$cursor.refine([ 'list', 0 ]), { isEditing: true, isNew: true, onDelete: this.deleteItem.bind(null, 0) })
   },
 

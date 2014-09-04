@@ -79,9 +79,13 @@ var util = {
           return sub(path.concat(newPath), root)
         },
 
-        update: function(delta) {
+        update: function(delta, opts) {
+          opts || (opts = {})
           var deltaForRoot = util.nest(path, delta)
-          cb(React.addons.update(root.data, deltaForRoot))
+          var newData = React.addons.update(root.data, deltaForRoot)
+          if (!opts.skipSync) root.lastUpdate = deltaForRoot
+          root.swap(newData)
+          cb(newData, root.data, deltaForRoot, opts)
         },
 
         detach: function() {
@@ -91,6 +95,23 @@ var util = {
             _sub.update({ $set: detached.deref() })
           }
           return detached
+        },
+
+        affectedByLastUpdate: function() {
+          return !_.isUndefined(util.pick(root.lastUpdate, _sub.path))
+        },
+
+        isEmpty: function() {
+          return _.isEmpty(_sub.deref())
+        },
+
+        isNotEmpty: function() {
+          return !_sub.isEmpty()
+        },
+
+        get: function(key) {
+          var data = _sub.deref()
+          return data ? data[key] : null
         }
       }
 
@@ -101,6 +122,7 @@ var util = {
 
     var root = sub([])
     root.data = data
+    root.lastUpdate = {}
     root.swap = function(updated) { root.data = updated }
     return root
   }

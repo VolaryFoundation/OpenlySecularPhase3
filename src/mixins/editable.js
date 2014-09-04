@@ -4,8 +4,40 @@ var rsvp = require('rsvp')
 
 var Editable = {
 
+  _justCursorAttrs: function() {
+    var keys = Object.keys(this.props.$cursor.deref())
+    var data = _.reduce(this.state, function(memo, v, k) {
+      if (keys.indexOf(k) > -1) memo[k] = v
+      return memo
+    }.bind(this), {})
+    return data
+  },
+
+  _getIsNew: function() {
+    return (this.detectNewness ? this.detectNewness() : false)
+  },
+
+  _getIsEditing: function() {
+    return this.state && this.state.isEditing
+  },
+
   propTypes: {
-    isEditable: React.PropTypes.bool.isRequired
+    isEditable: React.PropTypes.bool.isRequired,
+    $cursor: React.PropTypes.object.isRequired
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    this.setState(newProps.$cursor.deref() || {})
+  },
+
+  getInitialState: function() {
+    return _.extend({
+      isEditing: this.detectEditing()
+    }, this.props.$cursor.deref())
+  },
+
+  detectEditing: function() {
+    return this._getIsEditing() || this._getIsNew()
   },
 
   edit: function() {
@@ -17,29 +49,9 @@ var Editable = {
     )
   },
 
-  toJSON: function() {
-    var keys = Object.keys(this.props.$cursor.deref())
-    var data = _.reduce(this.state, function(memo, v, k) {
-      if (keys.indexOf(k) > -1) memo[k] = v
-      return memo
-    }.bind(this), {})
-    return data
-  },
-
   save: function() {
-
-    var $cursor = this.props.$cursor
-    var data = this.toJSON()
-    var prep = (this.beforeSave) ? this.beforeSave(data) : new rsvp.Promise(function(res) { res() })
-
-    this.state.$cursor.reattach()
-
-    prep.then(function() {
-      if (this.props.onSave) {
-        this.props.onSave()
-      }
-      this.setState({ isEditing: false })
-    }.bind(this), console.log.bind(console, 'save errored'))
+    this.props.$cursor.update({ $set: this._justCursorAttrs() })
+    this.setState({ isEditing: false })
   },
 
   cancel: function() {
@@ -48,28 +60,6 @@ var Editable = {
     } else {
       this.replaceState(_.extend(this.getInitialState(), { isEditing: false }))
     }
-  },
-
-  componentWillReceiveProps: function(newProps) {
-    this.setState(newProps.$cursor.deref() || {})
-  },
-
-  getIsNew: function() {
-    return (this.detectNewness ? this.detectNewness() : false)
-  },
-
-  getIsEditing: function() {
-    return this.state && this.state.isEditing
-  },
-
-  detectEditing: function() {
-    return this.getIsEditing() || this.getIsNew()
-  },
-
-  getInitialState: function() {
-    return _.extend({
-      isEditing: this.detectEditing()
-    }, this.props.$cursor.deref())
   }
 }
 

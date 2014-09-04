@@ -2,7 +2,6 @@
 /** @jsx React.DOM */
 
 var React = require('react/addons')
-var campaign = require('../services/campaign')
 var _ = require('lodash')
 var Editable = require('../mixins/editable')
 var util = require('../util')
@@ -10,12 +9,6 @@ var util = require('../util')
 var AboutSection = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
-
-  beforeSave: function(data) {
-    return campaign.patch(data)
-  },
-
-  detectNewness: function() { return false },
 
   render: function() {
     if (this.detectEditing()) {

@@ -12,7 +12,7 @@ var ContactDetail = React.createClass({
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
   render: function() {
-    if (this.state.editing) {
+    if (this.detectEditing()) {
       return (
         <div>
         <ul className="row no-gutter">
@@ -148,7 +148,7 @@ var PressContactDetail = React.createClass({
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
   render: function() {
-    if (this.state.editing) {
+    if (this.detectEditing()) {
       return (
         <li className="col-md-7">
           <div className="panel-heading">

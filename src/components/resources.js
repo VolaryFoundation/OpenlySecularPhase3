@@ -113,8 +113,8 @@ var DownloadItem = React.createClass({
     } else {
       return (
         <a href={this.state.file} className="list-group-item" key={_id}>
-          { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : '' }
-          { this.props.isEditable ? (<button className="btn-delete" onClick={this.props.onDelete.bind(null, this.props.index)}></button>) : '' }
+          { this.props.isEditable ? (<button className="btn-edit" onClick={util.preventEverything(this.edit)}></button>) : '' }
+          { this.props.isEditable ? (<button className="btn-delete" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}></button>) : '' }
           <h4 className="list-group-item-heading">{this.state.name}</h4>
           <p className="list-group-meta">
             <span className="type"><i className="fa fa-fw fa-file-pdf-o"></i>{this.state.file}</span>
@@ -148,7 +148,7 @@ var DIYSection = React.createClass({
         <li className="col-md-6">
         <div className="inner">
         { this.props.isEditable ? (<button onClick={this.edit}>Edit</button>) : null }
-            <p className="DIYbody" dangerouslySetInnerHTML={{__html:this.state.content }}></p>
+        <div className="DIYbody" dangerouslySetInnerHTML={{__html:this.state.content }}></div>
         </div>
         </li>
       )
@@ -222,10 +222,6 @@ var ResourceItem = React.createClass({
     return !this.props.$cursor.deref().title
   },
 
-  saveToParent: function() {
-    var data = this.toJSON()
-  },
-
   render: function() {
     if (this.detectEditing()) {
       return (
@@ -234,7 +230,7 @@ var ResourceItem = React.createClass({
           <input type='text' valueLink={this.linkState('link')} />
           <textarea rows="4" cols="50" valueLink={this.linkState('desc')}></textarea>
           <button className="btn-cancel" onClick={this.cancel}></button>
-          <button className="btn-save" onClick={this.props.onSave}></button>
+          <button className="btn-save" onClick={this.save}></button>
         </p>
       )
     } else {

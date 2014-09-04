@@ -55,7 +55,7 @@ var Editable = {
   },
 
   cancel: function() {
-    if (this.getIsNew()) {
+    if (this._getIsNew()) {
       this.props.onDelete ? this.props.onDelete() : null
     } else {
       this.replaceState(_.extend(this.getInitialState(), { isEditing: false }))

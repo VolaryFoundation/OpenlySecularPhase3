@@ -135,13 +135,10 @@ var PartnerItem = React.createClass({
   },
 
   upload: function(e) {
-    var fd = new FormData
     var file = e.target.files[0]
-    fd.append('upload', file, file.name)
-    var self = this
-    uploadService.create(fd).then(function(url) {
-      self.props.$cursor.update({ logo: { $set: url } })
-    }, function() {
+    uploadService.create(file.name, file).then(function(f) {
+      this.props.$cursor.update({ file: { $set: f.url() } })
+    }.bind(this), function() {
       debugger
     })
   },

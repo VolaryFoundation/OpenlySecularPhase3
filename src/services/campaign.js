@@ -2,6 +2,7 @@
 var config = require('../config')
 var _ = require('lodash')
 var Campaign = Parse.Object.extend('Campaign')
+var errors = require('../errors')
 
 var toJSON = _.partialRight(_.result, 'toJSON')
 
@@ -26,13 +27,14 @@ var campaign = {
     })
   }), 
 
-  sync: function($campaign) {
+  sync: function($campaign, $errors) {
     this.init($campaign)
     if ($campaign.affectedByLastUpdate()) {
       campaign.patch($campaign.deref()).then(function() {
-        debugger
-      }, function() {
-        debugger
+      }, function(e) {
+        var error = JSON.parse(e.message)
+        var path = $campaign.path.concat(error.dataPath.split('/').slice(1))
+        errors.register(path, error.message)
       })
     }
   }

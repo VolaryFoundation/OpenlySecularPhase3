@@ -88,15 +88,6 @@ var util = {
           cb(newData, root.data, deltaForRoot, opts)
         },
 
-        detach: function() {
-          _sub.data = _sub.deref()
-          var detached = sub([], _sub)
-          detached.reattach = function() {
-            _sub.update({ $set: detached.deref() })
-          }
-          return detached
-        },
-
         affectedByLastUpdate: function() {
           return !_.isUndefined(util.pick(root.lastUpdate, _sub.path))
         },

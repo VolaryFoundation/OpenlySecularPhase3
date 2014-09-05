@@ -5,19 +5,28 @@ var React = require('react/addons')
 var _ = require('lodash')
 var Editable = require('../mixins/editable')
 var util = require('../util')
+var errors = require('../errors')
 
 var AboutSection = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
   render: function() {
-    if (this.detectEditing()) {
+
+    this.errors = this.errors || errors.forCursor(this.props.$cursor)
+
+    if (this.errors || this.detectEditing()) {
+      var classes = React.addons.classSet({
+        inner: true,
+        error: !!this.errors
+      })
       return (
-        <div className="inner">
+        <div className={classes}>
           <input type="text" valueLink={this.linkState('title')} />
           <textarea valueLink={this.linkState('content')}></textarea>
           <button onClick={this.cancel}>Cancel</button>
           <button onClick={this.save}>Save</button>
+          <p className="error-message">{this.errors}</p>
         </div>
       )
     } else {

@@ -7,11 +7,15 @@ var Stream = require('./stream')
 var Immutable = require('immutable')
 var hub = require('../hub')
 var _ = require('lodash')
+var errors = require('../errors')
 
 module.exports = React.createClass({
 
   componentWillMount: function() {
     window.onkeydown = this.handleKeyDown
+    errors.onRegistered = function() {
+      this.forceUpdate()
+    }.bind(this)
   },
 
   handleKeyDown: function(e) {

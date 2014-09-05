@@ -43,13 +43,13 @@ var Editable = {
   edit: function() {
     this.replaceState(
       _.extend(this.getInitialState(), {
-        isEditing: true,
-        $cursor: this.props.$cursor.detach()
+        isEditing: true
       })
     )
   },
 
   save: function() {
+    this.errors = null
     this.props.$cursor.update({ $set: this._justCursorAttrs() })
     this.setState({ isEditing: false })
   },

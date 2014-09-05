@@ -16,7 +16,7 @@ var DownloadList = React.createClass({
 
   componentWillMount: function() {
     this.paginate({
-      perPage:2,
+      perPage:3,
       getList:function() {
         return this.props.$cursor.deref().list
       }
@@ -37,8 +37,19 @@ var DownloadList = React.createClass({
     return (
       <li className="col-md-3 list">
         <div className="panel-heading">
+          { this.props.isEditable ? (
+            <button onClick={this.add} className="btn-md btn-animated vertical btn-info pull-left">
+              <div className="is-visible content"><i className="add"></i></div>
+              <div className="not-visible content">Add</div>
+            </button>
+          ) : null }
           <h3 className="panel-title">{this.state.title}</h3>
-          { this.props.isEditable ? (<button className="btn-add" onClick={this.add}></button>) : null }
+          { this.props.isEditable ? (
+            <button onClick={this.edit} className="btn-md btn-animated vertical btn-warning pull-right">
+              <div className="is-visible content"><i className="edit"></i></div>
+              <div className="not-visible content">Edit</div>
+            </button>
+          ) : null }
         </div>
         <div className="feed-list">
           {
@@ -91,33 +102,57 @@ var DownloadItem = React.createClass({
   },
   render: function() {
     var _id = this.props.$cursor.deref()._id
-    if (this.detectEditing()) {
+
+    this.errors = this.errors || errors.forCursor(this.props.$cursor)
+
+    if (this.errors || this.detectEditing()) {
+      var classes = React.addons.classSet({
+        inner: true,
+        error: !!this.errors
+      })
       return (
         <div href="#" className="list-group-item" key={_id}>
-          <input type="text" valueLink={this.linkState('name')} />
-          <p className="list-group-meta">
+          <label>Name</label>
+          <input type="text" className="form-control" valueLink={this.linkState('name')} />
             <div className="form-group">
               <label>File</label>
               <input onChange={this.upload} type="file" id="dlUpload" />
               <p className="help-block">Upload downloads (images, pdfs, or documents)</p>
             </div>
-            <textarea rows="4" cols="50" valueLink={this.linkState('description')}></textarea>
-            <button className="btn-cancel" onClick={this.cancel}></button>
-            <button className="btn-save" onClick={this.save}></button>
-          </p>
+            <label>Desription</label>
+            <textarea rows="4" cols="50" className="form-control" valueLink={this.linkState('description')}></textarea>
+            <p className="error-message">{this.errors}</p>
+            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
         </div>
 
       )
     } else {
       return (
         <a href={this.state.file} className="list-group-item" key={_id}>
-          { this.props.isEditable ? (<button className="btn-edit" onClick={util.preventEverything(this.edit)}></button>) : '' }
-          { this.props.isEditable ? (<button className="btn-delete" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}></button>) : '' }
           <h4 className="list-group-item-heading">{this.state.name}</h4>
           <p className="list-group-meta">
             <span className="type"><i className="fa fa-fw fa-file-pdf-o"></i>{this.state.file}</span>
           </p>
           <p className="list-group-item-text">{this.state.description}</p>
+          <div className="admin-bar clearfix">
+            { this.props.isEditable ? (
+            <button className="btn-animated btn-sm vertical btn-danger pull-left" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}>
+            <div className="is-visible content"><i className="delete"></i></div>
+            <div className="not-visible content">Delete</div>
+            </button>) : '' }
+            { this.props.isEditable ? (
+              <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
+                <div className="is-visible content"><i className="edit"></i></div>
+                <div className="not-visible content">Edit</div>
+              </button>) : '' }
+            </div>
         </a>
       )
     }
@@ -135,9 +170,17 @@ var DIYSection = React.createClass({
       return (
         <li className="col-md-6">
         <div className="inner">
-          <textarea rows="8" cols="80" valueLink={this.linkState('content')}></textarea>
-          <button className="btn-cancel" onClick={this.cancel}></button>
-          <button className="btn-save" onClick={this.save}></button>
+          <label>Custom HTML Content</label>
+          <textarea rows="15" cols="100" valueLink={this.linkState('content')}></textarea>
+          <p className="error-message">{this.errors}</p>
+          <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+            <div className="is-visible content"><i className="cancel"></i></div>
+            <div className="not-visible content">Cancel</div>
+          </button>
+          <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+            <div className="is-visible content">Save</div>
+            <div className="not-visible content"><i className="save"></i></div>
+          </button>
         </div>
         </li>
       )
@@ -145,7 +188,11 @@ var DIYSection = React.createClass({
       return (
         <li className="col-md-6">
         <div className="inner">
-        { this.props.isEditable ? (<button onClick={this.edit}>Edit</button>) : null }
+          { this.props.isEditable ? (
+            <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
+              <div className="is-visible content"><i className="edit"></i></div>
+              <div className="not-visible content">Edit</div>
+            </button>) : '' }
         <div className="DIYbody" dangerouslySetInnerHTML={{__html:this.state.content }}></div>
         </div>
         </li>
@@ -162,7 +209,7 @@ var Resources = React.createClass({
 
   componentWillMount: function() {
     this.paginate({
-      perPage: 2,
+      perPage: 3,
       getList: function() {
         return this.props.$cursor.deref().list
       }
@@ -184,8 +231,19 @@ var Resources = React.createClass({
     return (
       <li className="col-md-3 list">
         <div className="panel-heading">
-          <h3 className="panel-title">Other Resources</h3>
-        { this.props.isEditable ? (<button className="btn-add" onClick={this.add}></button>) : null }
+            { this.props.isEditable ? (
+              <button onClick={this.add} className="btn-md btn-animated vertical btn-info pull-left">
+                <div className="is-visible content"><i className="add"></i></div>
+                <div className="not-visible content">Add</div>
+              </button>
+            ) : null }
+        <h3 className="panel-title">Other Resources</h3>
+        { this.props.isEditable ? (
+          <button onClick={this.edit} className="btn-md btn-animated vertical btn-warning pull-right">
+            <div className="is-visible content"><i className="edit"></i></div>
+            <div className="not-visible content">Edit</div>
+          </button>
+        ) : null }
         </div>
         <div className="feed-list">
           {
@@ -231,12 +289,21 @@ var ResourceItem = React.createClass({
       })
       return (
         <div className="list-group-item" key={this.state._id}>
-          <input type='text' valueLink={this.linkState('title')} />
-          <input type='text' valueLink={this.linkState('link')} />
-          <textarea rows="4" cols="50" valueLink={this.linkState('desc')}></textarea>
-          <button className="btn-cancel" onClick={this.cancel}></button>
-          <button className="btn-save" onClick={this.save}></button>
+          <label>Title</label>
+          <input type='text' className="form-control" valueLink={this.linkState('title')} />
+          <label>Link</label>
+          <input type='text' className="form-control" valueLink={this.linkState('link')} />
+          <label>description</label>
+          <textarea rows="4" cols="50" className="form-control" valueLink={this.linkState('desc')}></textarea>
           <p className="error-message">{this.errors}</p>
+          <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+            <div className="is-visible content"><i className="cancel"></i></div>
+            <div className="not-visible content">Cancel</div>
+          </button>
+          <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+            <div className="is-visible content">Save</div>
+            <div className="not-visible content"><i className="save"></i></div>
+          </button>
         </div>
       )
     } else {
@@ -247,8 +314,18 @@ var ResourceItem = React.createClass({
               <span className="type"><i className="fa fa-fw fa-link"></i>{this.state.link}</span>
             </p>
             <p className="list-group-item-text">{this.state.desc}</p>
-            { this.props.isEditable ? (<button className="btn-edit" onClick={util.preventEverything(this.edit)}></button>) : '' }
-            { this.props.isEditable ? (<button className="btn-delete" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}></button>) : '' }
+            <div className="admin-bar clearfix">
+              { this.props.isEditable ? (
+              <button className="btn-animated btn-sm vertical btn-danger pull-left" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}>
+              <div className="is-visible content"><i className="delete"></i></div>
+              <div className="not-visible content">Delete</div>
+              </button>) : '' }
+              { this.props.isEditable ? (
+                <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
+                  <div className="is-visible content"><i className="edit"></i></div>
+                  <div className="not-visible content">Edit</div>
+                </button>) : '' }
+              </div>
           </a>
       )
     }

@@ -40,6 +40,21 @@ module.exports = {
       },
       required: [ 'title', 'content' ]
     },
+    downloads: {
+      type:'object',
+      properties: {
+        title: str(),
+        list: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              title: str(),
+            }
+          }
+        }
+      }
+    },
     resources: {
       type:'object',
       properties: {

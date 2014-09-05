@@ -3,6 +3,7 @@ function str() {
   return { type: 'string', minLength: 1 }
 }
 
+
 module.exports = {
   type: 'object',
   properties: {
@@ -11,7 +12,7 @@ module.exports = {
       type: 'object',
       properties: {
         title: str(),
-        content: str() 
+        content: str()
       },
       required: [ 'title', 'content' ]
     },
@@ -38,11 +39,31 @@ module.exports = {
         content: str()
       },
       required: [ 'title', 'content' ]
+    },
+    resources: {
+      type:'object',
+      properties: {
+        title: str(),
+        list: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              title: str(),
+              desc: str(),
+              link: {
+                type: 'string',
+                _format: 'uri'
+              }
+            }
+          }
+        }
+      }
     }
   },
-  required: [ 
-    'title', 
-    'about1', 
+  required: [
+    'title',
+    'about1',
     'about2',
     'about3',
     'about4'

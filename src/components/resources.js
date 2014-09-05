@@ -8,6 +8,7 @@ var campaignService = require('../services/campaign')
 var uploadService = require('../services/upload')
 var _ = require('lodash')
 var util = require('../util')
+var errors = require('../errors')
 
 var DownloadList = React.createClass({
 
@@ -88,7 +89,7 @@ var DownloadItem = React.createClass({
     uploadService.create(fd).then(function(url) {
       self.props.$cursor.update({ file: { $set: url } })
     }, function() {
-      debugger
+
     })
   },
   render: function() {
@@ -223,15 +224,23 @@ var ResourceItem = React.createClass({
   },
 
   render: function() {
-    if (this.detectEditing()) {
+
+    this.errors = this.errors || errors.forCursor(this.props.$cursor)
+
+    if (this.errors || this.detectEditing()) {
+      var classes = React.addons.classSet({
+        inner: true,
+        error: !!this.errors
+      })
       return (
-        <p className="list-group-item" key={this.state._id}>
+        <div className="list-group-item" key={this.state._id}>
           <input type='text' valueLink={this.linkState('title')} />
           <input type='text' valueLink={this.linkState('link')} />
           <textarea rows="4" cols="50" valueLink={this.linkState('desc')}></textarea>
           <button className="btn-cancel" onClick={this.cancel}></button>
           <button className="btn-save" onClick={this.save}></button>
-        </p>
+          <p className="error-message">{this.errors}</p>
+        </div>
       )
     } else {
       return (

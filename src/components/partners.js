@@ -15,7 +15,7 @@ var PartnerList = React.createClass({
   add: function(e) {
     e.preventDefault()
     var list = this.state.list
-    this.props.$cursor.update({ list: { $push: [ { name: '', logo: '', link: '' } ] } })
+    this.props.$cursor.update({ list: { $push: [ { name: '', file: '', link: '' } ] } })
   },
 
   deleteItem: function(index) {
@@ -151,7 +151,7 @@ var PartnerItem = React.createClass({
           <div className="panel-body">
             <div className="form-group">
               <label>Logo</label>
-              <input onChange={this.upload} type="file" id="logoUpload" />
+              <input onChange={this.upload} type="file" />
               <p className="help-block">Upload an image file.</p>
             </div>
             <label>Name</label>
@@ -196,7 +196,7 @@ var PartnerItem = React.createClass({
               ) : '' }
           </div>
           <a href={this.state.link} target="_blank">
-          <img src={this.state.logo} />
+          <img src={this.state.file} />
           <div className="partner-footer">
             <h3 className="panel-title">{this.state.name}</h3>
           </div>

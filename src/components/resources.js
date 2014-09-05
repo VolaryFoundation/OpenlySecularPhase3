@@ -26,7 +26,7 @@ var DownloadList = React.createClass({
   add: function(e) {
     e.preventDefault()
     var list = this.state.list
-    this.props.$cursor.update({ list: { $unshift: [ { name: '', file: '', description: '' } ] } })
+    this.props.$cursor.update({ list: { $unshift: [ { name: '', file: '', description: '' } ] } }, {skipSync:true})
   },
 
   deleteItem: function(index) {
@@ -107,16 +107,16 @@ var DownloadItem = React.createClass({
 
     if (this.errors || this.detectEditing()) {
       var classes = React.addons.classSet({
-        inner: true,
+        "list-group-item": true,
         error: !!this.errors
       })
       return (
-        <div href="#" className="list-group-item" key={_id}>
+        <div href="#" className={classes} key={_id}>
           <label>Name</label>
           <input type="text" className="form-control" valueLink={this.linkState('name')} />
             <div className="form-group">
               <label>File</label>
-              <input onChange={this.upload} type="file" id="dlUpload" />
+              <input onChange={this.upload} type="file" />
               <p className="help-block">Upload downloads (images, pdfs, or documents)</p>
             </div>
             <label>Desription</label>

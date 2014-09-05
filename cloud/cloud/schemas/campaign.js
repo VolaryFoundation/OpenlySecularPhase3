@@ -49,8 +49,13 @@ module.exports = {
           items: {
             type: 'object',
             properties: {
-              title: str(),
-            }
+              name: str(),
+              file: {
+                type: 'string',
+                _format: 'uri'
+              }
+            },
+        required: ['name', 'file']
           }
         }
       }

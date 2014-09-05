@@ -1,6 +1,7 @@
 $brand-primary: #005CB9;
 $brand-secondary: lighten( $brand-primary, 20% );
 $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.2.0/fonts";
+$background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
 
 @import "vendor/bootstrap/assets/stylesheets/bootstrap";
 @import "node_modules/font-awesome/scss/font-awesome";
@@ -645,7 +646,8 @@ PARTNERS STYLES:
     }
   }
 
-  .panel-footer {
+  .partner-footer {
+    @extend .panel-footer;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -1117,7 +1119,6 @@ a {
   //height: 45px;
   overflow: hidden;
   border-radius: 0;
-  border-bottom: 1px solid #ddd;
 
   *{
     display: table-cell;
@@ -1127,15 +1128,6 @@ a {
 }
 
 
-.panel-body {
-  margin-bottom: 43px;
-}
-
-.panel-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
 
 .media {
   border-bottom: $border;
@@ -1476,63 +1468,60 @@ a {
 }
 
 .btn-animated.btn-primary {
-  color: $btn-primary-border;
-  background-color: lighten($btn-primary-bg, 30%);
+  color: #fff;
+  background-color: lighten($btn-primary-bg, 10%);
   border-color: $btn-primary-border;
 
   &:hover {
-    color: #fff;
-    background-color: lighten($btn-primary-bg, 5%);
+    background-color: darken($btn-primary-bg, 10%);
   }
 }
 
 .btn-animated.btn-info {
-  color: $btn-info-border;
-  background-color: lighten($btn-info-bg, 30%);
+  color: #fff;
+  background-color: lighten($btn-info-bg, 10%);
   border-color: $btn-info-border;
 
   &:hover {
-    color: #fff;
-    background-color: lighten($btn-info-bg, 5%);
+    background-color: darken($btn-info-bg, 10%);
   }
 }
 
 .btn-animated.btn-warning {
-  color: $btn-warning-border;
-  background-color: lighten($btn-warning-bg, 30%);
+  color: #fff;
+  background-color: lighten($btn-warning-bg, 10%);
   border-color: $btn-warning-border;
 
   &:hover {
-    color: #fff;
-    background-color: lighten($btn-warning-bg, 5%);
+    background-color: darken($btn-warning-bg, 10%);
   }
 }
 
 .btn-animated.btn-danger {
-  color: $btn-danger-border;
-  background-color: lighten($btn-danger-bg, 30%);
+  color: #fff;
+  background-color: lighten($btn-danger-bg, 10%);
   border-color: $btn-danger-border;
 
   &:hover {
-    color: #fff;
-    background-color: lighten($btn-danger-bg, 5%);
+    background-color: darken($btn-danger-bg, 10%);
   }
 }
 
 .btn-animated.btn-success {
-  color: $btn-success-border;
-  background-color: lighten($btn-success-bg, 30%);
+  color: #fff;
+  background-color: lighten($btn-success-bg, 10%);
   border-color: $btn-success-border;
 
   &:hover {
-    color: #fff;
-    background-color: lighten($btn-success-bg, 5%);
+    background-color: darken($btn-success-bg, 10%);
   }
 }
 
+
+
 .btn-twitter {
   color: #00acee;
-  background: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
+  background:$background-highlight;
 
 
   &:hover {
@@ -1544,7 +1533,7 @@ a {
 
 .btn-facebook {
   color: #3b5998;
-  background: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
+  background: $background-highlight;
 
   &:hover {
     color: #fff;
@@ -1555,7 +1544,7 @@ a {
 
 .btn-instagram {
   color: #3f729b;
-  background: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
+  background: $background-highlight;
 
   &:hover {
     color: #fff;
@@ -1566,7 +1555,7 @@ a {
 
 .btn-youtube {
   color: #c4302b;
-  background: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
+  background: $background-highlight;
 
   &:hover {
     color: #fff;

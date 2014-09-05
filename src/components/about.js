@@ -22,17 +22,36 @@ var AboutSection = React.createClass({
       })
       return (
         <div className={classes}>
-          <input type="text" valueLink={this.linkState('title')} />
-          <textarea valueLink={this.linkState('content')}></textarea>
-          <button onClick={this.cancel}>Cancel</button>
-          <button onClick={this.save}>Save</button>
+          <div className="form-group">
+            <input className="form-control" type="text" valueLink={this.linkState('title')} />
+          </div>
+          <div className="form-group">
+            <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
+          </div>
+          <div className="panel-footer clearfix">
+            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
+          </div>
           <p className="error-message">{this.errors}</p>
         </div>
       )
     } else {
       return (
         <div className="inner">
-          { this.props.isEditable ? (<button onClick={this.edit}>Edit</button>) : null }
+          { this.props.isEditable ? (
+            <div className="panel-heading">
+              <button onClick={this.edit} className="btn-md btn-animated vertical btn-warning pull-right">
+                <div className="is-visible content"><i className="edit"></i></div>
+                <div className="not-visible content">Edit</div>
+              </button>
+            </div>
+          ) : null }
           <div className="panel-heading">
             <h3 className="panel-title text-center">{ this.state.title }</h3>
           </div>

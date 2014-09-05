@@ -35,8 +35,16 @@ var PartnerList = React.createClass({
               <textarea className="form-control" rows="6" valueLink={this.linkState('description')}></textarea>
             </div>
           </div>
-          <button className="btn-cancel" onClick={this.cancel}></button>
-          <button className="btn-save" onClick={this.save}></button>
+          <div className="panel-footer clearfix">
+            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
+          </div>
         </li>
       )
     }.bind(this)
@@ -45,9 +53,19 @@ var PartnerList = React.createClass({
       return (
         <li className="col-md-4 list">
           <div className="panel-heading">
+            { this.props.isEditable ? (
+              <button onClick={this.add} className="btn-md btn-animated vertical btn-info pull-left">
+                <div className="is-visible content"><i className="add"></i></div>
+                <div className="not-visible content">Add</div>
+              </button>
+            ) : null }
             <h3 className="panel-title">{this.state.title}</h3>
-            { this.props.isEditable ? (<button className="btn-add" onClick={this.add}></button>) : null }
-            { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : null }
+            { this.props.isEditable ? (
+              <button onClick={this.edit} className="btn-md btn-animated vertical btn-warning pull-right">
+                <div className="is-visible content"><i className="edit"></i></div>
+                <div className="not-visible content">Edit</div>
+              </button>
+            ) : null }
           </div>
           <div className="inner">
             <div className="panel-body">
@@ -149,19 +167,40 @@ var PartnerItem = React.createClass({
               <span className="input-group-addon"><i className="fa fa-fw fa-link"></i></span>
               <input className="form-control" type="text" valueLink={this.linkState('link')} />
             </div>
-            <button className="btn-cancel" onClick={this.smartCancel}></button>
-            <button className="btn-save" onClick={this.save}></button>
+            <div className="panel-footer clearfix">
+              <button onClick={this.smartCancel} className="btn-md btn-animated vertical btn-default pull-left">
+                <div className="is-visible content"><i className="cancel"></i></div>
+                <div className="not-visible content">Cancel</div>
+              </button>
+              <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                <div className="is-visible content">Save</div>
+                <div className="not-visible content"><i className="save"></i></div>
+              </button>
+            </div>
           </div>
         </li>
       )
     } else {
       return (
         <li className="col-xs-6 col-md-3">
-          { this.props.isEditable ? (<button className="btn-edit" onClick={this.edit}></button>) : '' }
-          { this.props.isEditable ? (<button className="btn-delete" onClick={this.props.onDelete.bind(null, this.props.index)}></button>) : '' }
+          <br/>
+          <div className="admin-bar clearfix">
+            { this.props.isEditable ? (
+              <button onClick={this.props.onDelete.bind(null, this.props.index)} className="btn-animated btn-sm vertical btn-danger pull-left">
+                <div className="is-visible content"><i className="delete"></i></div>
+                <div className="not-visible content">Delete</div>
+              </button>
+              ) : '' }
+            { this.props.isEditable ? (
+              <button onClick={this.edit} className="btn-animated btn-sm vertical btn-warning pull-right">
+                <div className="is-visible content"><i className="edit"></i></div>
+                <div className="not-visible content">Edit</div>
+              </button>
+              ) : '' }
+          </div>
           <a href={this.state.link} target="_blank">
           <img src={this.state.logo} />
-          <div className="panel-footer">
+          <div className="partner-footer">
             <h3 className="panel-title">{this.state.name}</h3>
           </div>
           </a>

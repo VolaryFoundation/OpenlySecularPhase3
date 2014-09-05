@@ -220,7 +220,7 @@ var News = React.createClass({
       <div className="news">
         <div className="panel-heading">
         { this.props.isEditable ? (
-          <button onClick={this.add}className="btn-md btn-animated vertical btn-info pull-left">
+          <button onClick={this.add} className="btn-md btn-animated vertical btn-info pull-left">
             <div className="is-visible content"><i className="add"></i></div>
             <div className="not-visible content">Add</div>
           </button>
@@ -279,12 +279,28 @@ var NewsItem = React.createClass({
     if (this.detectEditing()) {
       return (
         <li className="col-md-6" key={this.state._id}>
-          <input type='text' valueLink={this.linkState('title')} />
-          <input type='text' valueLink={this.linkState('date')} />
-          <input type='text' valueLink={this.linkState('source')} />
-          <input type='text' valueLink={this.linkState('link')} />
-          <button className="btn-cancel" onClick={this.smartCancel}></button>
-          <button className="btn-save" onClick={this.save}></button>
+          <div className="form-group">
+            <input className="form-control" type='text' valueLink={this.linkState('title')} />
+          </div>
+          <div className="form-group">
+            <input className="form-control" type='text' valueLink={this.linkState('date')} />
+          </div>
+          <div className="form-group">
+            <input className="form-control" type='text' valueLink={this.linkState('source')} />
+          </div>
+          <div className="form-group">
+            <input className="form-control" type='text' valueLink={this.linkState('link')} />
+          </div>
+          <div className="panel-footer clearfix">
+            <button onClick={this.smartCancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
+          </div>
         </li>
       )
     } else {

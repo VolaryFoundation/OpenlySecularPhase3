@@ -196,7 +196,7 @@ var PartnerItem = React.createClass({
               ) : '' }
           </div>
           <a href={this.state.link} target="_blank">
-          <img src={this.state.file} />
+          <img className="img-responsive" src={this.state.file} />
           <div className="partner-footer">
             <h3 className="panel-title">{this.state.name}</h3>
           </div>

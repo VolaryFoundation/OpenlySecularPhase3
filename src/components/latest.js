@@ -29,15 +29,19 @@ var ActiveUpdate = React.createClass({
           </div>
           <div className="panel-body">
             <div className="form-group">
+              <label>Title</label>
               <input className="form-control" type="text" valueLink={this.linkState('title')} />
             </div>
             <div className="form-group">
+              <label>Date</label>
               <input className="form-control" type="text" valueLink={this.linkState('date')} />
             </div>
             <div className="form-group">
+              <label>Excerpt</label>
               <textarea className="form-control" valueLink={this.linkState('excerpt')}></textarea>
             </div>
             <div className="form-group">
+              <label>Content</label>
               <textarea className="form-control" valueLink={this.linkState('content')}></textarea>
             </div>
           </div>
@@ -161,6 +165,20 @@ var UpdateItem = React.createClass({
     return (
       <li className="media">
         <div className="media-body">
+        <div className="admin-bar clearfix">
+          { this.props.isEditable ? (
+            <button onClick={this.props.onDelete} className="btn-animated btn-sm vertical btn-danger pull-left">
+              <div className="is-visible content"><i className="delete"></i></div>
+              <div className="not-visible content">Delete</div>
+            </button>
+            ) : '' }
+          { this.props.isEditable ? (
+            <button onClick={this.activateEdit} className="btn-animated btn-sm vertical btn-warning pull-right">
+              <div className="is-visible content"><i className="edit"></i></div>
+              <div className="not-visible content">Edit</div>
+            </button>
+            ) : '' }
+        </div>
           <a href="#" onClick={this.props.activate.bind(null, this.props.$cursor)} key={this.state._id}>
             <h4 className="media-heading">{this.state.title}</h4>
           </a>
@@ -168,20 +186,6 @@ var UpdateItem = React.createClass({
             <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
           </p>
           <p>{this.state.excerpt}</p>
-          <div className="admin-bar clearfix">
-            { this.props.isEditable ? (
-              <button onClick={this.props.onDelete} className="btn-animated btn-sm vertical btn-danger pull-left">
-                <div className="is-visible content"><i className="delete"></i></div>
-                <div className="not-visible content">Delete</div>
-              </button>
-              ) : '' }
-            { this.props.isEditable ? (
-              <button onClick={this.activateEdit} className="btn-animated btn-sm vertical btn-warning pull-right">
-                <div className="is-visible content"><i className="edit"></i></div>
-                <div className="not-visible content">Edit</div>
-              </button>
-              ) : '' }
-          </div>
         </div>
       </li>
     )
@@ -217,7 +221,7 @@ var News = React.createClass({
     var list = this.pagination.getCurrent()
 
     return (
-      <div className="news">
+      <div className="news-media">
         <div className="panel-heading">
         { this.props.isEditable ? (
           <button onClick={this.add} className="btn-md btn-animated vertical btn-info pull-left">
@@ -279,27 +283,33 @@ var NewsItem = React.createClass({
     if (this.detectEditing()) {
       return (
         <li className="col-md-6" key={this.state._id}>
-          <div className="form-group">
-            <input className="form-control" type='text' valueLink={this.linkState('title')} />
-          </div>
-          <div className="form-group">
-            <input className="form-control" type='text' valueLink={this.linkState('date')} />
-          </div>
-          <div className="form-group">
-            <input className="form-control" type='text' valueLink={this.linkState('source')} />
-          </div>
-          <div className="form-group">
-            <input className="form-control" type='text' valueLink={this.linkState('link')} />
-          </div>
-          <div className="panel-footer clearfix">
-            <button onClick={this.smartCancel} className="btn-md btn-animated vertical btn-default pull-left">
-              <div className="is-visible content"><i className="cancel"></i></div>
-              <div className="not-visible content">Cancel</div>
-            </button>
-            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-              <div className="is-visible content">Save</div>
-              <div className="not-visible content"><i className="save"></i></div>
-            </button>
+          <div className="media-body">
+            <div className="form-group">
+              <label>Title</label>
+              <input className="form-control" type='text' valueLink={this.linkState('title')} />
+            </div>
+            <div className="form-group">
+              <label>Date</label>
+              <input className="form-control" type='text' valueLink={this.linkState('date')} />
+            </div>
+            <div className="form-group">
+              <label>Source Name</label>
+              <input className="form-control" type='text' valueLink={this.linkState('source')} />
+            </div>
+            <div className="form-group">
+              <label>Source Link URL</label>
+              <input className="form-control" type='text' valueLink={this.linkState('link')} />
+            </div>
+            <div className="panel-footer clearfix">
+              <button onClick={this.smartCancel} className="btn-md btn-animated vertical btn-default pull-left">
+                <div className="is-visible content"><i className="cancel"></i></div>
+                <div className="not-visible content">Cancel</div>
+              </button>
+              <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                <div className="is-visible content">Save</div>
+                <div className="not-visible content"><i className="save"></i></div>
+              </button>
+            </div>
           </div>
         </li>
       )
@@ -307,11 +317,6 @@ var NewsItem = React.createClass({
       return (
         <li className="media" key={this.state._id}>
           <div className="media-body">
-            <p className="meta">
-              <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
-            </p>
-            <a href={this.state.link} target="_blank"><h4 className="media-heading">{this.state.title}</h4></a>
-            <strong>{this.state.source}</strong>
             <div className="admin-bar clearfix">
               { this.props.isEditable ? (
                 <button onClick={this.props.onDelete.bind(null, this.props.index)} className="btn-animated btn-sm vertical btn-danger pull-left">
@@ -326,6 +331,11 @@ var NewsItem = React.createClass({
                 </button>
                 ) : '' }
             </div>
+            <p className="meta">
+              <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
+            </p>
+            <a href={this.state.link} target="_blank"><h4 className="media-heading">{this.state.title}</h4></a>
+            <strong>{this.state.source}</strong>
           </div>
         </li>
       )
@@ -349,53 +359,38 @@ module.exports = React.createClass({
     var activeUpdate = this.props.$shared.deref().activeUpdate
 
     return (
-      <div className="latest">
-        <Updates
-          $cursor={$campaign.refine('updates')}
-          isEditable={!_.isEmpty($shared.deref().session)}
-          activate={this.activate}
-        />
-        {
-          activeUpdate ? (<ActiveUpdate
-            activate={this.activate}
-            $cursor={activeUpdate.$cursor}
-            isEditing={activeUpdate.props.isEditing}
-            isNew={activeUpdate.props.isNew}
-            onDelete={activeUpdate.props.onDelete}
-          />) : null
-        }
-        <div className="in-the-media">
-          <div className="social-media">
-            <div className="social-post">
-              <span>
-                <button className="btn-lg btn-animated btn-info">
-                  <div className="is-visible content"><i className="fa fa-fw fa-2x fa-twitter"></i></div>
-                  <div className="not-visible content">20k</div>
-                </button>
-              </span>
+      <div className="latest-container">
+          <div className="latest-row">
+            <div className="latest-item">
+              <div className="latest-item-content">
+                <Updates
+                  $cursor={$campaign.refine('updates')}
+                  isEditable={!_.isEmpty($shared.deref().session)}
+                  activate={this.activate}
+                />
+              </div>
             </div>
-            <div className="social-post">
-              <span>
-                <button className="btn-lg btn-animated btn-primary">
-                  <div className="is-visible content"><i className="fa fa-fw fa-2x fa-instagram"></i></div>
-                  <div className="not-visible content">20k</div>
-                </button>
-              </span>
-            </div>
-            <div className="social-post">
-              <span>
-                <button className="btn-lg btn-animated btn-danger">
-                  <div className="is-visible content"><i className="fa fa-fw fa-2x fa-youtube-play"></i></div>
-                  <div className="not-visible content">20k</div>
-                </button>
-              </span>
+            <div className="latest-item">
+              <div className="latest-item-content">
+                {
+                  activeUpdate ? (<ActiveUpdate
+                    activate={this.activate}
+                    $cursor={activeUpdate.$cursor}
+                    isEditing={activeUpdate.props.isEditing}
+                    isNew={activeUpdate.props.isNew}
+                    onDelete={activeUpdate.props.onDelete}
+                  />) : null
+                }
+                <br /><br /><br />
+                <div className="in-the-media">
+                  <News
+                    $cursor={$campaign.refine('news')}
+                    isEditable={!_.isEmpty($shared.deref().session)}
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          <News
-            $cursor={$campaign.refine('news')}
-            isEditable={!_.isEmpty($shared.deref().session)}
-          />
-        </div>
       </div>
     )
   }

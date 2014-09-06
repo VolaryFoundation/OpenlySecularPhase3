@@ -51,7 +51,7 @@ var PartnerList = React.createClass({
 
     var renderViewing = function() {
       return (
-        <li className="col-md-4 list">
+        <div className="partners-item">
           <div className="panel-heading">
             { this.props.isEditable ? (
               <button onClick={this.add} className="btn-md btn-animated vertical btn-info pull-left">
@@ -67,47 +67,43 @@ var PartnerList = React.createClass({
               </button>
             ) : null }
           </div>
-          <div className="inner">
-            <div className="panel-body">
-              <p>{this.state.description}</p>
-            </div>
-            <ul className="view-more">
-              <li>
-                <a data-slide="prev" href="#Partners" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
-              </li>
-              <li>
-                <a data-slide="next" href="#Partners" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
-              </li>
-            </ul>
+          <div className="panel-body">
+            <p>{this.state.description}</p>
           </div>
-        </li>
+          <div className="pagination-bar clearfix">
+          <button className="btn-md btn-animated vertical btn-clean pull-left">
+            <div className="is-visible content"><i className="prev"></i></div>
+            <div className="not-visible content">Prev</div>
+          </button>
+          <button className="btn-md btn-animated vertical btn-clean pull-right">
+            <div className="is-visible content"><i className="next"></i></div>
+            <div className="not-visible content">Next</div>
+          </button>
+          </div>
+        </div>
       )
     }.bind(this)
 
     return (
-      <ul className="row" key={this.state.name}>
+      <div className="partners-row" key={this.state.name}>
         { this.detectEditing() ? renderEditing() : renderViewing() }
-        <li className="col-md-8">
-          <div className="carousel slide">
-            <div className="carousel-inner">
-              <div className="item active">
-                <ul className="row no-gutter">
-                  {
-                    this.state.list.map(function(item, index) {
-                      return <PartnerItem
-                        $cursor={this.props.$cursor.refine([ 'list', index ])}
-                        index={index}
-                        isEditable={this.props.isEditable}
-                        onDelete={this.deleteItem}
-                      />
-                    }, this)
-                  }
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+        <div className="partners-item">
+          <div className="partners-list">
+            <ul>
+              {
+                this.state.list.map(function(item, index) {
+                  return <PartnerItem
+                    $cursor={this.props.$cursor.refine([ 'list', index ])}
+                    index={index}
+                    isEditable={this.props.isEditable}
+                    onDelete={this.deleteItem}
+                  />
+                }, this)
+              }
+            </ul>
+        </div>
+      </div>
+    </div>
     )
   }
 
@@ -146,8 +142,7 @@ var PartnerItem = React.createClass({
   render: function() {
     if (this.detectEditing()) {
       return (
-        <li className="col-xs-6 col-md-3" key={this.props.index}>
-
+        <div className="partner" key={this.props.index}>
           <div className="panel-body">
             <div className="form-group">
               <label>Logo</label>
@@ -175,12 +170,11 @@ var PartnerItem = React.createClass({
               </button>
             </div>
           </div>
-        </li>
+        </div>
       )
     } else {
       return (
-        <li className="col-xs-6 col-md-3">
-          <br/>
+        <li className="partner">
           <div className="admin-bar clearfix">
             { this.props.isEditable ? (
               <button onClick={this.props.onDelete.bind(null, this.props.index)} className="btn-animated btn-sm vertical btn-danger pull-left">
@@ -215,7 +209,7 @@ module.exports = React.createClass({
     var $shared = this.props.$shared
 
     return (
-      <div className="container-fluid partners-content">
+      <div className="partners-container">
 
         {
           $campaign.deref().partners.map(function(partners, index) {

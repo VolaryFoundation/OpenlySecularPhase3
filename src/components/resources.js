@@ -35,7 +35,7 @@ var DownloadList = React.createClass({
 
   render: function() {
     return (
-      <li className="col-md-3 list">
+      <div className="resources-item">
         <div className="panel-heading">
           { this.props.isEditable ? (
             <button onClick={this.add} className="btn-md btn-animated vertical btn-info pull-left">
@@ -51,28 +51,31 @@ var DownloadList = React.createClass({
             </button>
           ) : null }
         </div>
-        <div className="feed-list">
-          {
-            this.pagination.getCurrent().map(function(item, index) {
-              return <DownloadItem
-                $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
-                isEditable={this.props.isEditable}
-                isNew={!item.name}
-                onDelete={this.deleteItem.bind(this, index)}
-              />
-            }, this)
-          }
+        <div className="panel-body">
+          <ul className="media-list">
+            {
+              this.pagination.getCurrent().map(function(item, index) {
+                return <DownloadItem
+                  $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
+                  isEditable={this.props.isEditable}
+                  isNew={!item.name}
+                  onDelete={this.deleteItem.bind(this, index)}
+                />
+              }, this)
+            }
+          </ul>
         </div>
-        <ul className="view-more clearfix">
-          <li>
-            <a onClick={this.pagination.down} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
-          </li>
-          <li>
-            <a onClick={this.pagination.up} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
-          </li>
-        </ul>
-      </li>
-
+        <div className="pagination-bar clearfix">
+          <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
+            <div className="is-visible content"><i className="prev"></i></div>
+            <div className="not-visible content">Prev</div>
+          </button>
+          <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
+            <div className="is-visible content"><i className="next"></i></div>
+            <div className="not-visible content">Next</div>
+          </button>
+        </div>
+      </div>
     )
   }
 
@@ -107,11 +110,11 @@ var DownloadItem = React.createClass({
 
     if (this.errors || this.detectEditing()) {
       var classes = React.addons.classSet({
-        "list-group-item": true,
+        "media": true,
         error: !!this.errors
       })
       return (
-        <div href="#" className={classes} key={_id}>
+        <li className={classes} key={_id}>
           <label>Name</label>
           <input type="text" className="form-control" valueLink={this.linkState('name')} />
             <div className="form-group">
@@ -122,38 +125,44 @@ var DownloadItem = React.createClass({
             <label>Desription</label>
             <textarea rows="4" cols="50" className="form-control" valueLink={this.linkState('description')}></textarea>
             <p className="error-message">{this.errors}</p>
-            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-              <div className="is-visible content"><i className="cancel"></i></div>
-              <div className="not-visible content">Cancel</div>
-            </button>
-            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-              <div className="is-visible content">Save</div>
-              <div className="not-visible content"><i className="save"></i></div>
-            </button>
-        </div>
+            <div className="panel-footer clearfix">
+              <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                <div className="is-visible content"><i className="cancel"></i></div>
+                <div className="not-visible content">Cancel</div>
+              </button>
+              <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                <div className="is-visible content">Save</div>
+                <div className="not-visible content"><i className="save"></i></div>
+              </button>
+            </div>
+        </li>
 
       )
     } else {
       return (
-        <a href={this.state.file} className="list-group-item" key={_id}>
-          <h4 className="list-group-item-heading">{this.state.name}</h4>
-          <p className="list-group-meta">
-            <span className="type"><i className="fa fa-fw fa-file-pdf-o"></i>{this.state.file}</span>
-          </p>
-          <p className="list-group-item-text">{this.state.description}</p>
-          <div className="admin-bar clearfix">
-            { this.props.isEditable ? (
-            <button className="btn-animated btn-sm vertical btn-danger pull-left" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}>
-            <div className="is-visible content"><i className="delete"></i></div>
-            <div className="not-visible content">Delete</div>
-            </button>) : '' }
-            { this.props.isEditable ? (
-              <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
-                <div className="is-visible content"><i className="edit"></i></div>
-                <div className="not-visible content">Edit</div>
+        <li className="media" key={_id}>
+          <div class="media-body">
+            <div className="admin-bar clearfix">
+              { this.props.isEditable ? (
+              <button className="btn-animated btn-sm vertical btn-danger pull-left" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}>
+              <div className="is-visible content"><i className="delete"></i></div>
+              <div className="not-visible content">Delete</div>
               </button>) : '' }
-            </div>
-        </a>
+              { this.props.isEditable ? (
+                <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
+                  <div className="is-visible content"><i className="edit"></i></div>
+                  <div className="not-visible content">Edit</div>
+                </button>) : '' }
+              </div>
+            <a href={this.state.file}>
+              <h4 className="media-heading">{this.state.name}</h4>
+            </a>
+            <p className="meta">
+              <span className="type"><i className="fa fa-fw fa-file-pdf-o"></i>{this.state.file}</span>
+            </p>
+            <p>{this.state.description}</p>
+          </div>
+        </li>
       )
     }
   }
@@ -168,26 +177,25 @@ var DIYSection = React.createClass({
   render: function() {
     if (this.state.isEditing) {
       return (
-        <li className="col-md-6">
-        <div className="inner">
+        <div className="random-item">
           <label>Custom HTML Content</label>
           <textarea rows="15" cols="100" valueLink={this.linkState('content')}></textarea>
           <p className="error-message">{this.errors}</p>
-          <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-            <div className="is-visible content"><i className="cancel"></i></div>
-            <div className="not-visible content">Cancel</div>
-          </button>
-          <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-            <div className="is-visible content">Save</div>
-            <div className="not-visible content"><i className="save"></i></div>
-          </button>
+          <div className="panel-footer clearfix">
+            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
+          </div>
         </div>
-        </li>
       )
     } else {
       return (
-        <li className="col-md-6">
-        <div className="inner">
+        <div className="random-item">
           { this.props.isEditable ? (
             <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
               <div className="is-visible content"><i className="edit"></i></div>
@@ -195,7 +203,6 @@ var DIYSection = React.createClass({
             </button>) : '' }
         <div className="DIYbody" dangerouslySetInnerHTML={{__html:this.state.content }}></div>
         </div>
-        </li>
       )
     }
   }
@@ -229,7 +236,7 @@ var Resources = React.createClass({
 
   render: function() {
     return (
-      <li className="col-md-3 list">
+      <div className="resources-item">
         <div className="panel-heading">
             { this.props.isEditable ? (
               <button onClick={this.add} className="btn-md btn-animated vertical btn-info pull-left">
@@ -245,27 +252,31 @@ var Resources = React.createClass({
           </button>
         ) : null }
         </div>
-        <div className="feed-list">
-          {
-            this.pagination.getCurrent().map(function(item, i) {
-              return <ResourceItem
-                $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
-                onDelete={this.deleteItem.bind(null, i)}
-                isEditable={this.props.isEditable}
-                onSave={this.save}
-              />
-            }, this)
-          }
+        <div className="panel-body">
+          <ul className="media-list">
+            {
+              this.pagination.getCurrent().map(function(item, i) {
+                return <ResourceItem
+                  $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
+                  onDelete={this.deleteItem.bind(null, i)}
+                  isEditable={this.props.isEditable}
+                  onSave={this.save}
+                />
+              }, this)
+            }
+          </ul>
         </div>
-        <ul className="view-more clearfix">
-          <li>
-            <a onClick={this.pagination.down} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-left"></i></a>
-          </li>
-          <li>
-            <a onClick={this.pagination.up} href="#" className="btn btn-lg btn-default"><i className="fa fa-fw fa-lg fa-angle-right"></i></a>
-          </li>
-        </ul>
-      </li>
+        <div className="pagination-bar clearfix">
+          <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
+            <div className="is-visible content"><i className="prev"></i></div>
+            <div className="not-visible content">Prev</div>
+          </button>
+          <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
+            <div className="is-visible content"><i className="next"></i></div>
+            <div className="not-visible content">Next</div>
+          </button>
+        </div>
+      </div>
     )
   }
 })
@@ -288,7 +299,7 @@ var ResourceItem = React.createClass({
         error: !!this.errors
       })
       return (
-        <div className="list-group-item" key={this.state._id}>
+        <div className="media" key={this.state._id}>
           <label>Title</label>
           <input type='text' className="form-control" valueLink={this.linkState('title')} />
           <label>Link</label>
@@ -296,37 +307,41 @@ var ResourceItem = React.createClass({
           <label>description</label>
           <textarea rows="4" cols="50" className="form-control" valueLink={this.linkState('desc')}></textarea>
           <p className="error-message">{this.errors}</p>
-          <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-            <div className="is-visible content"><i className="cancel"></i></div>
-            <div className="not-visible content">Cancel</div>
-          </button>
-          <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-            <div className="is-visible content">Save</div>
-            <div className="not-visible content"><i className="save"></i></div>
-          </button>
+          <div className="panel-footer clearfix">
+            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
+          </div>
         </div>
       )
     } else {
       return (
-          <a href={this.state.link} className="list-group-item" key={this.state._id}>
-            <h4 className="list-group-item-heading">{this.state.title}</h4>
-            <p className="list-group-meta">
+           <li className="media" key={this.state._id}>
+           <div className="admin-bar clearfix">
+             { this.props.isEditable ? (
+             <button className="btn-animated btn-sm vertical btn-danger pull-left" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}>
+             <div className="is-visible content"><i className="delete"></i></div>
+             <div className="not-visible content">Delete</div>
+             </button>) : '' }
+             { this.props.isEditable ? (
+               <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
+                 <div className="is-visible content"><i className="edit"></i></div>
+                 <div className="not-visible content">Edit</div>
+               </button>) : '' }
+             </div>
+            <a href={this.state.link} >
+              <h4 className="media-heading">{this.state.title}</h4>
+            </a>
+            <p className="meta">
               <span className="type"><i className="fa fa-fw fa-link"></i>{this.state.link}</span>
             </p>
-            <p className="list-group-item-text">{this.state.desc}</p>
-            <div className="admin-bar clearfix">
-              { this.props.isEditable ? (
-              <button className="btn-animated btn-sm vertical btn-danger pull-left" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}>
-              <div className="is-visible content"><i className="delete"></i></div>
-              <div className="not-visible content">Delete</div>
-              </button>) : '' }
-              { this.props.isEditable ? (
-                <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
-                  <div className="is-visible content"><i className="edit"></i></div>
-                  <div className="not-visible content">Edit</div>
-                </button>) : '' }
-              </div>
-          </a>
+            <p>{this.state.desc}</p>
+          </li>
       )
     }
   }
@@ -342,8 +357,8 @@ module.exports = React.createClass({
     var $shared = this.props.$shared
 
     return (
-      <div className="container-fluid resources-content">
-        <ul className="row">
+      <div className="resources-container">
+        <div className="resources-row">
           <DownloadList
             $cursor={$campaign.refine([ 'downloads' ])}
             isEditable={!_.isEmpty($shared.deref().session)}
@@ -356,7 +371,7 @@ module.exports = React.createClass({
             $cursor={$campaign.refine('resources')}
             isEditable={!_.isEmpty($shared.deref().session)}
           />
-        </ul>
+        </div>
       </div>
     )
   }

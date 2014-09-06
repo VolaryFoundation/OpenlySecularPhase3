@@ -42,7 +42,11 @@ module.exports = React.createClass({
     })
 
     var logoutButton = function() {
-      return _.isEmpty($shared.deref().session) ? '' : <button className="btn-logout" onClick={this.logout}></button>
+      return _.isEmpty($shared.deref().session) ? '' :
+        <button onClick={this.logout} className="btn-md btn-animated vertical btn-clean pull-right">
+          <div className="is-visible content"><strong>Log Out</strong></div>
+          <div className="not-visible content"><i className="fa fa-fw fa-sign-out"></i></div>
+        </button>
     }.bind(this)
 
     return (

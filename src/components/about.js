@@ -21,42 +21,44 @@ var AboutSection = React.createClass({
         error: !!this.errors
       })
       return (
-        <div className={classes}>
-          <div className="form-group">
-            <input className="form-control" type="text" valueLink={this.linkState('title')} />
+        <div className="about-item">
+          <div className={classes}>
+            <div className="form-group">
+              <label>Title</label>
+              <input className="form-control" type="text" valueLink={this.linkState('title')} />
+            </div>
+            <div className="form-group">
+              <label>Content</label>
+              <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
+            </div>
+            <div className="panel-footer clearfix">
+              <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                <div className="is-visible content"><i className="cancel"></i></div>
+                <div className="not-visible content">Cancel</div>
+              </button>
+              <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                <div className="is-visible content">Save</div>
+                <div className="not-visible content"><i className="save"></i></div>
+              </button>
+            </div>
+            <p className="error-message">{this.errors}</p>
           </div>
-          <div className="form-group">
-            <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
-          </div>
-          <div className="panel-footer clearfix">
-            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-              <div className="is-visible content"><i className="cancel"></i></div>
-              <div className="not-visible content">Cancel</div>
-            </button>
-            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-              <div className="is-visible content">Save</div>
-              <div className="not-visible content"><i className="save"></i></div>
-            </button>
-          </div>
-          <p className="error-message">{this.errors}</p>
         </div>
       )
     } else {
       return (
-        <div className="inner">
+        <div className="about-item">
           { this.props.isEditable ? (
             <div className="panel-heading">
-              <button onClick={this.edit} className="btn-md btn-animated vertical btn-warning pull-right">
+              <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
                 <div className="is-visible content"><i className="edit"></i></div>
                 <div className="not-visible content">Edit</div>
               </button>
             </div>
           ) : null }
-          <div className="panel-heading">
-            <h3 className="panel-title text-center">{ this.state.title }</h3>
-          </div>
+          <h3 className="about-title">{ this.state.title }</h3>
           <div className="panel-body">
-            <p className="lead">{ this.state.content }</p>
+            <p>{ this.state.content }</p>
           </div>
         </div>
       )
@@ -73,40 +75,35 @@ module.exports = React.createClass({
     var data = $campaign.deref()
 
     return (
-      <div className="container-fluid about-content">
-        <ul className="row">
-          <li className="col-md-4 alt">
+      <div>
+      <div className="mission-container">
+        <div className="mission-row">
+          <div className="about-item">
             <div className="inner">
             </div>
-          </li>
-          <li className="col-md-8">
+          </div>
             <AboutSection
               $cursor={$campaign.refine('about1')}
               isEditable={!_.isEmpty($shared.deref().session)}
             />
-          </li>
-        </ul>
-        <ul className="row">
-          <li className="col-md-4">
-            <AboutSection
-              $cursor={$campaign.refine('about2')}
-              isEditable={!_.isEmpty($shared.deref().session)}
-            />
-          </li>
-          <li className="col-md-4">
-            <AboutSection
-              $cursor={$campaign.refine('about3')}
-              isEditable={!_.isEmpty($shared.deref().session)}
-            />
-          </li>
-          <li className="col-md-4">
-            <AboutSection
-              $cursor={$campaign.refine('about4')}
-              isEditable={!_.isEmpty($shared.deref().session)}
-            />
-          </li>
-        </ul>
-
+        </div>
+      </div>
+      <div className="about-container">
+        <div className="about-row">
+          <AboutSection
+            $cursor={$campaign.refine('about2')}
+            isEditable={!_.isEmpty($shared.deref().session)}
+          />
+          <AboutSection
+            $cursor={$campaign.refine('about3')}
+            isEditable={!_.isEmpty($shared.deref().session)}
+          />
+          <AboutSection
+            $cursor={$campaign.refine('about4')}
+            isEditable={!_.isEmpty($shared.deref().session)}
+          />
+        </div>
+      </div>
       </div>
     )
   }

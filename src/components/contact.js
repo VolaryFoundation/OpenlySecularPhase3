@@ -114,12 +114,15 @@ var ContactDetail = React.createClass({
       return (
         <div>
         <div className="panel-heading">
-          <figure className="btn-md btn-clean pull-left"></figure>
+          <button className="invisible btn-md btn-animated vertical btn-clean pull-left">
+            <div className="is-visible content"><i className="fa fa-fw"></i></div>
+            <div className="not-visible content"></div>
+          </button>
           <div className="panel-title">
              Contact Info
           </div>
           { this.props.isEditable ? (
-              <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
+              <button onClick={this.edit} className="btn-md btn-animated vertical btn-warning pull-right">
                 <div className="is-visible content"><i className="edit"></i></div>
                 <div className="not-visible content">Edit</div>
               </button>
@@ -256,12 +259,15 @@ var PressContactDetail = React.createClass({
       return (
         <div>
         <div className="panel-heading">
-          <figure className="btn-md btn-clean pull-left"></figure>
+          <button className="invisible btn-md btn-animated vertical btn-clean pull-left">
+            <div className="is-visible content"><i className="fa fa-fw"></i></div>
+            <div className="not-visible content"></div>
+          </button>
           <div className="panel-title">
             Press Contact
           </div>
           { this.props.isEditable ? (
-              <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
+              <button onClick={this.edit} className="btn-md btn-animated vertical btn-warning pull-right">
                 <div className="is-visible content"><i className="edit"></i></div>
                 <div className="not-visible content">Edit</div>
               </button>

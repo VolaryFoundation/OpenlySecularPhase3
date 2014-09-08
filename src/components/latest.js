@@ -38,11 +38,11 @@ var ActiveUpdate = React.createClass({
             </div>
             <div className="form-group">
               <label>Excerpt</label>
-              <textarea className="form-control" valueLink={this.linkState('excerpt')}></textarea>
+              <textarea className="form-control" rows="2" valueLink={this.linkState('excerpt')}></textarea>
             </div>
             <div className="form-group">
               <label>Content</label>
-              <textarea className="form-control" valueLink={this.linkState('content')}></textarea>
+              <textarea className="form-control" rows="24" valueLink={this.linkState('content')}></textarea>
             </div>
           </div>
           <div className="panel-footer clearfix">
@@ -67,7 +67,7 @@ var ActiveUpdate = React.createClass({
             </button>
           </div>
           <div className="panel-body">
-            <h3>Our Monthly Status Update Press Release</h3>
+            <h3>{this.state.title}</h3>
             <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
             <hr/>
             <p>{this.state.content}</p>
@@ -84,7 +84,7 @@ var Updates = React.createClass({
 
   componentWillMount: function() {
     this.paginate({
-      perPage: 2,
+      perPage: 4,
       getList: function() {
         return this.props.$cursor.deref().list
       }
@@ -136,11 +136,11 @@ var Updates = React.createClass({
           }
           </ul>
           <div className="pagination-bar clearfix">
-            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
+            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-left">
               <div className="is-visible content"><i className="prev"></i></div>
               <div className="not-visible content">Prev</div>
             </button>
-            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
+            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-right">
               <div className="is-visible content"><i className="next"></i></div>
               <div className="not-visible content">Next</div>
             </button>
@@ -198,7 +198,7 @@ var News = React.createClass({
 
   componentWillMount: function() {
     this.paginate({
-      perPage: 4,
+      perPage: 6,
       getList: function() {
         return this.props.$cursor.deref().list
       }
@@ -248,11 +248,11 @@ var News = React.createClass({
             }
           </ul>
           <div className="pagination-bar clearfix">
-            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
+            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-left">
               <div className="is-visible content"><i className="prev"></i></div>
               <div className="not-visible content">Prev</div>
             </button>
-            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
+            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-right">
               <div className="is-visible content"><i className="next"></i></div>
               <div className="not-visible content">Next</div>
             </button>

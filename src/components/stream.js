@@ -73,8 +73,7 @@ module.exports = React.createClass({
       var url = 'http://www.youtube.com/watch?v=' + videoID;
       var thumb = "http://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
       var classes = React.addons.classSet({
-        video: true,
-        quarter: true
+        video: true
       })
       return <div className={classes}>
         <a href="#" onClick={this.play.bind(this, url)}>
@@ -87,8 +86,10 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div id="stream-component">
-        {this.renderStream()}
+      <div className="stream-container">
+        <div className="stream-row">
+          {this.renderStream()}
+        </div>
       </div>
     )
   }

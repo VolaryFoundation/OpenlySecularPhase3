@@ -26,26 +26,28 @@ var PartnerList = React.createClass({
 
     var renderEditing = function() {
       return (
-        <li className="col-md-4 list">
-          <div className="panel-heading">
-            <input className="form-control" type="text" valueLink={this.linkState('title')} />
-          </div>
-          <div className="inner">
-            <div className="panel-body">
+        <div className="partners-item">
+          <div className="panel-body">
+            <div className="form-group">
+              <label>Title</label>
+              <input className="form-control" type="text" valueLink={this.linkState('title')} />
+            </div>
+            <div className="form-group">
+              <label>Description</label>
               <textarea className="form-control" rows="6" valueLink={this.linkState('description')}></textarea>
             </div>
+            <div className="panel-footer clearfix">
+              <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                <div className="is-visible content"><i className="cancel"></i></div>
+                <div className="not-visible content">Cancel</div>
+              </button>
+              <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                <div className="is-visible content">Save</div>
+                <div className="not-visible content"><i className="save"></i></div>
+              </button>
+            </div>
           </div>
-          <div className="panel-footer clearfix">
-            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-              <div className="is-visible content"><i className="cancel"></i></div>
-              <div className="not-visible content">Cancel</div>
-            </button>
-            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-              <div className="is-visible content">Save</div>
-              <div className="not-visible content"><i className="save"></i></div>
-            </button>
-          </div>
-        </li>
+        </div>
       )
     }.bind(this)
 
@@ -149,15 +151,19 @@ var PartnerItem = React.createClass({
               <input onChange={this.upload} type="file" />
               <p className="help-block">Upload an image file.</p>
             </div>
-            <label>Name</label>
-            <div className="input-group">
-              <span className="input-group-addon"><i className="fa fa-fw fa-cube"></i></span>
-              <input className="form-control" type="text" valueLink={this.linkState('name')} />
+            <div className="form-group">
+              <label>Name</label>
+              <div className="input-group">
+                <span className="input-group-addon"><i className="fa fa-fw fa-cube"></i></span>
+                <input className="form-control" type="text" valueLink={this.linkState('name')} />
+              </div>
             </div>
-            <label>Website</label>
-            <div className="input-group">
-              <span className="input-group-addon"><i className="fa fa-fw fa-link"></i></span>
-              <input className="form-control" type="text" valueLink={this.linkState('link')} />
+            <div className="form-group">
+              <label>Website</label>
+              <div className="input-group">
+                <span className="input-group-addon"><i className="fa fa-fw fa-link"></i></span>
+                <input className="form-control" type="text" valueLink={this.linkState('link')} />
+              </div>
             </div>
             <div className="panel-footer clearfix">
               <button onClick={this.smartCancel} className="btn-md btn-animated vertical btn-default pull-left">

@@ -157,9 +157,6 @@ var DownloadItem = React.createClass({
             <a href={this.state.file}>
               <h4 className="media-heading">{this.state.name}</h4>
             </a>
-            <p className="meta">
-              <span className="type"><i className="fa fa-fw fa-file-pdf-o"></i>{this.state.file}</span>
-            </p>
             <p>{this.state.description}</p>
           </div>
         </li>
@@ -178,30 +175,34 @@ var DIYSection = React.createClass({
     if (this.state.isEditing) {
       return (
         <div className="random-item">
-          <label>Custom HTML Content</label>
-          <textarea rows="15" cols="100" valueLink={this.linkState('content')}></textarea>
-          <p className="error-message">{this.errors}</p>
-          <div className="panel-footer clearfix">
-            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-              <div className="is-visible content"><i className="cancel"></i></div>
-              <div className="not-visible content">Cancel</div>
-            </button>
-            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-              <div className="is-visible content">Save</div>
-              <div className="not-visible content"><i className="save"></i></div>
-            </button>
+          <div className="panel-body">
+            <label>Custom HTML Content</label>
+            <textarea rows="15" cols="100" valueLink={this.linkState('content')}></textarea>
+            <p className="error-message">{this.errors}</p>
+            <div className="panel-footer clearfix">
+              <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                <div className="is-visible content"><i className="cancel"></i></div>
+                <div className="not-visible content">Cancel</div>
+              </button>
+              <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                <div className="is-visible content">Save</div>
+                <div className="not-visible content"><i className="save"></i></div>
+              </button>
+            </div>
           </div>
         </div>
       )
     } else {
       return (
         <div className="random-item">
-          { this.props.isEditable ? (
-            <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
-              <div className="is-visible content"><i className="edit"></i></div>
-              <div className="not-visible content">Edit</div>
-            </button>) : '' }
-        <div className="DIYbody" dangerouslySetInnerHTML={{__html:this.state.content }}></div>
+          <div className="panel-body">
+            { this.props.isEditable ? (
+              <button className="btn-animated btn-sm vertical btn-warning pull-right" onClick={util.preventEverything(this.edit)}>
+                <div className="is-visible content"><i className="edit"></i></div>
+                <div className="not-visible content">Edit</div>
+              </button>) : '' }
+            <div className="DIYbody" dangerouslySetInnerHTML={{__html:this.state.content }}></div>
+            </div>
         </div>
       )
     }
@@ -334,12 +335,9 @@ var ResourceItem = React.createClass({
                  <div className="not-visible content">Edit</div>
                </button>) : '' }
              </div>
-            <a href={this.state.link} >
+            <a href={this.state.link} target="_blank">
               <h4 className="media-heading">{this.state.title}</h4>
             </a>
-            <p className="meta">
-              <span className="type"><i className="fa fa-fw fa-link"></i>{this.state.link}</span>
-            </p>
             <p>{this.state.desc}</p>
           </li>
       )

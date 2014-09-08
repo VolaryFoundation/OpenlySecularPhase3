@@ -22,6 +22,7 @@ var AboutSection = React.createClass({
       })
       return (
         <div className="about-item">
+          <br />
           <div className={classes}>
             <div className="form-group">
               <label>Title</label>
@@ -79,8 +80,6 @@ module.exports = React.createClass({
       <div className="mission-container">
         <div className="mission-row">
           <div className="about-item">
-            <div className="inner">
-            </div>
           </div>
             <AboutSection
               $cursor={$campaign.refine('about1')}

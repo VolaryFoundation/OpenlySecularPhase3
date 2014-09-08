@@ -74,7 +74,7 @@ module.exports = React.createClass({
                 <h3 className="action-title"><div className="circle"><div className="circle-content"><i className="group"></i></div></div>Get Involved</h3>
               </div>
               <div className="action-item-body">
-                <p><span className="highlight">Take action and join the conversation by posting a status, photo, or video on social media with the hashtag <strong>#ourhashtag</strong>. Then submit it to us to make sure it gets featured on the site. Because together we can make sure our voices are heard.</span></p>
+                <p><span className="highlight">Take action and join the conversation by posting a status, photo, or video on social media with the hashtag #ourhashtag. Then submit it to us to make sure it gets featured on the site. Because together we can make sure our voices are heard.</span></p>
               </div>
               <div className="action-item-footer">
                 <p>

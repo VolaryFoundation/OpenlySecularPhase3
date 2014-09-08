@@ -20,88 +20,93 @@ var ContactDetail = React.createClass({
              Contact Info
           </div>
         </div>
-        <div className="panel-body">
         <div className="col-xs-7">
-          <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-cube"></i>
-              </span>
-              <input type="text" className="form-control" valueLink={this.linkState('name')} />
+          <div className="panel-body">
+            <div className="form-group">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-cube"></i>
+                </span>
+                <input type="text" className="form-control" valueLink={this.linkState('name')} />
+              </div>
             </div>
-          </div>
-          <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-building"></i>
-              </span>
-              <input type="text" className="form-control" valueLink={this.linkState('address')} />
+            <div className="form-group">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-building"></i>
+                </span>
+                <input type="text" className="form-control" valueLink={this.linkState('address')} />
+              </div>
             </div>
-          </div>
-          <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-envelope"></i>
-              </span>
-              <input type="text" className="form-control" valueLink={this.linkState('email')} />
+            <div className="form-group">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-envelope"></i>
+                </span>
+                <input type="text" className="form-control" valueLink={this.linkState('email')} />
+              </div>
             </div>
-          </div>
-          <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-phone"></i>
-              </span>
-              <input type="text" className="form-control" valueLink={this.linkState('phone')} />
+            <div className="form-group">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-phone"></i>
+                </span>
+                <input type="text" className="form-control" valueLink={this.linkState('phone')} />
+              </div>
             </div>
-          </div>
-          <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-fax"></i>
-              </span>
-              <input type="text" className="form-control" valueLink={this.linkState('fax')} />
+            <div className="form-group">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-fax"></i>
+                </span>
+                <input type="text" className="form-control" valueLink={this.linkState('fax')} />
+              </div>
             </div>
-          </div>
         </div>
+      </div>
       <div className="col-xs-5">
-        <div className="form-group">
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-twitter"></i>
-            </span>
-            <input type="text" className="form-control" valueLink={this.linkState('twitter')} />
+        <div className="panel-body">
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-twitter"></i>
+              </span>
+              <input type="text" className="form-control" valueLink={this.linkState('twitter')} />
+            </div>
           </div>
-        </div>
-        <div className="form-group">
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-instagram"></i>
-            </span>
-            <input type="text" className="form-control" valueLink={this.linkState('instagram')} />
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-instagram"></i>
+              </span>
+              <input type="text" className="form-control" valueLink={this.linkState('instagram')} />
+            </div>
           </div>
-        </div>
-        <div className="form-group">
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-youtube-play"></i>
-            </span>
-            <input type="text" className="form-control" valueLink={this.linkState('youtube')} />
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-youtube-play"></i>
+              </span>
+              <input type="text" className="form-control" valueLink={this.linkState('youtube')} />
+            </div>
           </div>
-        </div>
         </div>
       </div>
-      <div className="clearfix">
-        <div className="panel-footer clearfix">
-          <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-            <div className="is-visible content"><i className="cancel"></i></div>
-            <div className="not-visible content">Cancel</div>
-          </button>
-          <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-            <div className="is-visible content">Save</div>
-            <div className="not-visible content"><i className="save"></i></div>
-          </button>
+      <div className="col-xs-12">
+        <div className="panel-body">
+          <div className="panel-footer clearfix">
+            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
+          </div>
         </div>
       </div>
+
 
       </div>
       )
@@ -122,55 +127,71 @@ var ContactDetail = React.createClass({
         </div>
         <div className="panel-body">
         <div className="col-xs-7">
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-cube"></i>
-            </span>
-            <p className="form-control-static">{ this.state.name }</p>
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-cube"></i>
+              </span>
+              <p className="form-control-static">{ this.state.name }</p>
+            </div>
           </div>
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-building"></i>
-            </span>
-            <p className="form-control-static">{ this.state.address }</p>
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-building"></i>
+              </span>
+              <p className="form-control-static">{ this.state.address }</p>
+            </div>
           </div>
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-envelope"></i>
-            </span>
-            <p className="form-control-static">{ this.state.email }</p>
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-envelope"></i>
+              </span>
+              <p className="form-control-static">{ this.state.email }</p>
+            </div>
           </div>
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-phone"></i>
-            </span>
-            <p className="form-control-static">{ this.state.phone }</p>
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-phone"></i>
+              </span>
+              <p className="form-control-static">{ this.state.phone }</p>
+            </div>
           </div>
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-fax"></i>
-            </span>
-            <p className="form-control-static">{ this.state.fax }</p>
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-fax"></i>
+              </span>
+              <p className="form-control-static">{ this.state.fax }</p>
+            </div>
           </div>
         </div>
         <div className="col-xs-5">
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-twitter"></i>
-            </span>
-            <p className="form-control-static">{ this.state.twitter }</p>
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-twitter"></i>
+              </span>
+              <p className="form-control-static">{ this.state.twitter }</p>
+            </div>
           </div>
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-instagram"></i>
-            </span>
-            <p className="form-control-static">{ this.state.instagram }</p>
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-instagram"></i>
+              </span>
+              <p className="form-control-static">{ this.state.instagram }</p>
+            </div>
           </div>
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="fa fa-fw fa-youtube-play"></i>
-            </span>
-            <p className="form-control-static">{ this.state.youtube }</p>
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-youtube-play"></i>
+              </span>
+              <p className="form-control-static">{ this.state.youtube }</p>
+            </div>
           </div>
         </div>
       </div>
@@ -194,26 +215,30 @@ var PressContactDetail = React.createClass({
             </div>
           </div>
           <div className="panel-body">
-            <address>
+            <div className="form-group">
               <div className="input-group">
                 <span className="input-group-addon">
                   <i className="fa fa-fw fa-microphone"></i>
                 </span>
                 <input type="text" className="form-control" valueLink={this.linkState('pressName')} />
               </div>
+            </div>
+            <div className="form-group">
               <div className="input-group">
                 <span className="input-group-addon">
                   <i className="fa fa-fw fa-envelope"></i>
                 </span>
                 <input type="text" className="form-control" valueLink={this.linkState('pressEmail')} />
               </div>
+            </div>
+            <div className="form-group">
               <div className="input-group">
                 <span className="input-group-addon">
                   <i className="fa fa-fw fa-phone"></i>
                 </span>
                 <input type="text" className="form-control" valueLink={this.linkState('pressPhone')} />
               </div>
-            </address>
+            </div>
             <div className="panel-footer clearfix">
               <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
                 <div className="is-visible content"><i className="cancel"></i></div>
@@ -243,26 +268,30 @@ var PressContactDetail = React.createClass({
           ) : null }
         </div>
         <div className="panel-body">
-            <address>
+          <div className="form-group">
               <div className="input-group">
                 <span className="input-group-addon">
                   <i className="fa fa-fw fa-microphone"></i>
                 </span>
                 <p className="form-control-static">{ this.state.pressName }</p>
               </div>
+            </div>
+            <div className="form-group">
               <div className="input-group">
                 <span className="input-group-addon">
                   <i className="fa fa-fw fa-envelope"></i>
                 </span>
                 <p className="form-control-static">{ this.state.pressEmail }</p>
               </div>
+            </div>
+            <div className="form-group">
               <div className="input-group">
                 <span className="input-group-addon">
                   <i className="fa fa-fw fa-phone"></i>
                 </span>
                 <p className="form-control-static">{ this.state.pressPhone }</p>
               </div>
-            </address>
+            </div>
         </div>
         </div>
       )

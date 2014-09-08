@@ -115,26 +115,30 @@ var DownloadItem = React.createClass({
       })
       return (
         <li className={classes} key={_id}>
-          <label>Name</label>
-          <input type="text" className="form-control" valueLink={this.linkState('name')} />
-            <div className="form-group">
-              <label>File</label>
-              <input onChange={this.upload} type="file" />
-              <p className="help-block">Upload downloads (images, pdfs, or documents)</p>
-            </div>
+          <div className="form-group">
+            <label>Name</label>
+            <input type="text" className="form-control" valueLink={this.linkState('name')} />
+          </div>
+          <div className="form-group">
+            <label>File</label>
+            <input onChange={this.upload} type="file" />
+            <p className="help-block">Upload downloads (images, pdfs, or documents)</p>
+          </div>
+          <div className="form-group">
             <label>Desription</label>
             <textarea rows="4" cols="50" className="form-control" valueLink={this.linkState('description')}></textarea>
-            <p className="error-message">{this.errors}</p>
-            <div className="panel-footer clearfix">
-              <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-                <div className="is-visible content"><i className="cancel"></i></div>
-                <div className="not-visible content">Cancel</div>
-              </button>
-              <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-                <div className="is-visible content">Save</div>
-                <div className="not-visible content"><i className="save"></i></div>
-              </button>
-            </div>
+          </div>
+          <p className="error-message">{this.errors}</p>
+          <div className="panel-footer clearfix">
+            <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
+          </div>
         </li>
 
       )
@@ -176,8 +180,10 @@ var DIYSection = React.createClass({
       return (
         <div className="random-item">
           <div className="panel-body">
-            <label>Custom HTML Content</label>
-            <textarea rows="15" cols="100" valueLink={this.linkState('content')}></textarea>
+            <div className="form-group">
+              <label>Custom HTML Content</label>
+              <textarea className="form-control" rows="15" valueLink={this.linkState('content')}></textarea>
+            </div>
             <p className="error-message">{this.errors}</p>
             <div className="panel-footer clearfix">
               <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
@@ -301,12 +307,18 @@ var ResourceItem = React.createClass({
       })
       return (
         <div className="media" key={this.state._id}>
-          <label>Title</label>
-          <input type='text' className="form-control" valueLink={this.linkState('title')} />
-          <label>Link</label>
-          <input type='text' className="form-control" valueLink={this.linkState('link')} />
-          <label>description</label>
-          <textarea rows="4" cols="50" className="form-control" valueLink={this.linkState('desc')}></textarea>
+          <div className="form-group">
+            <label>Title</label>
+            <input type='text' className="form-control" valueLink={this.linkState('title')} />
+          </div>
+          <div className="form-group">
+            <label>Link</label>
+            <input type='text' className="form-control" valueLink={this.linkState('link')} />
+          </div>
+          <div className="form-group">
+            <label>description</label>
+            <textarea rows="4" cols="50" className="form-control" valueLink={this.linkState('desc')}></textarea>
+          </div>
           <p className="error-message">{this.errors}</p>
           <div className="panel-footer clearfix">
             <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">

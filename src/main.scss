@@ -318,10 +318,11 @@ a {
 .action-bar-container  {
   @include container-fixed;
   @extend .container-md-height;
-  border-top: $border;
+  border-top: $border-dark;
+  margin-top: 50px;
 
   @media (min-width: $screen-md) {
-    border-bottom: $border;
+    border-bottom: $border-dark;
   }
 }
 
@@ -401,10 +402,10 @@ a {
       padding: 20px 10px;
 
       span {
-       background: #fff;
+       background: rgba(255,255,255,0.5);
        line-height: 24px;
        padding: 2px 0;
-       box-shadow: 5px 0 0 #fff, -5px 0 0 #fff;
+       box-shadow: 5px 0 0 rgba(255,255,255,0.5), -5px 0 0 rgba(255,255,255,0.5);
       }
     }
 
@@ -625,11 +626,15 @@ a {
     }
 
     @media (max-width: $screen-md) {
-      border-bottom: $border;
+      border-bottom: $border-dark;
     }
 
     &:last-child {
       border-right: 0;
+
+      @media (max-width: $screen-md) {
+        border-bottom: none;
+      }
     }
   }
 }
@@ -803,6 +808,10 @@ a {
     @include make-sm-column(12, 0);
     @include make-md-column(3, 0);
 
+    @media (max-width: $screen-md) {
+      border-top: $border-dark;
+    }
+
     @media (min-width: $screen-md) {
       border-left: $border-dark;
     }
@@ -851,6 +860,10 @@ a {
     @include make-sm-column(12, 0);
     @include make-md-column(6, 0);
     @include make-lg-column(7, 0);
+
+    @media (max-width: $screen-md) {
+      border-top: $border-dark;
+    }
   }
 
   .panel-heading {
@@ -880,6 +893,12 @@ a {
   &:first-child {
     @media (min-width: $screen-md) {
       border-right: $border-dark;
+    }
+  }
+
+  &:last-child {
+    @media (max-width: $screen-md) {
+      border-top: $border-dark;
     }
   }
 }

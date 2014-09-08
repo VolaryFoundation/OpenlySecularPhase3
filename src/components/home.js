@@ -2,11 +2,15 @@
 /** @jsx React.DOM */
 
 var React = require('react')
+var FeaturedStream = require('./featured_stream')
 
 module.exports = React.createClass({
 
+
   render: function() {
     return (
+    <div>
+      <FeaturedStream  />
       <div className="action-bar-container">
         <div className="action-bar-row">
           <div className="action-bar-item">
@@ -88,6 +92,7 @@ module.exports = React.createClass({
           </div>
         </div>
       </div>
+    </div>
     )
   }
 })

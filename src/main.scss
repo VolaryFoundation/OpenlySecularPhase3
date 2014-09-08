@@ -39,6 +39,15 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
   }
 }
 
+#featured-stream {
+  iframe{
+    width:100%;
+  }
+  img{
+    width:100%;
+  }
+}
+
 .video.quarter {
   width: 25%;
 }

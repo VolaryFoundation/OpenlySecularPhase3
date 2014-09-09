@@ -20,7 +20,7 @@ module.exports = React.createClass({
     var Page
     switch (this.props.$shared.deref().page) {
       case 'home':
-        Page = _.partial(pages.Home, { $shared: this.props.$shared })
+        Page = _.partial(pages.Home, { $shared: this.props.$shared, $campaign: this.props.$campaign })
         break
       case 'about':
         Page = _.partial(pages.About, { $shared: this.props.$shared, $campaign: this.props.$campaign })

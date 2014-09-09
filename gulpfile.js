@@ -64,6 +64,14 @@ gulp.task('initDev', function(done) {
         MediaBlock3: {
           content: "<strong>Blah is bold</strong><br>shnarf",
         },
+        InvolvedHome: {
+          title: "Get Involved",
+          content: "Take action and join the conversation by posting a status, photo, or video on social media with the hashtag ourhashtag. Then submit it to us to make sure it gets featured on the site. Because together we can make sure our voices are heard.",
+        },
+        DonateHome: {
+          title: "Make a Donations",
+          content: "Donate to help us raise awareness",
+        },
         logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
         partners: [
           {

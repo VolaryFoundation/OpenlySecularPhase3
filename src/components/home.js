@@ -1,13 +1,168 @@
 
 /** @jsx React.DOM */
 
-var React = require('react')
+var React = require('react/addons')
 var FeaturedStream = require('./featured_stream')
+var _ = require('lodash')
+var Editable = require('../mixins/editable')
+var util = require('../util')
+var errors = require('../errors')
+
+var DonateHome = React.createClass({
+
+  mixins: [ Editable, React.addons.LinkedStateMixin ],
+
+  render: function() {
+
+    this.errors = this.errors || errors.forCursor(this.props.$cursor)
+
+    if (this.errors || this.detectEditing()) {
+      var classes = React.addons.classSet({
+        inner: true,
+        error: !!this.errors
+      })
+      return (
+        <div className="action-bar-item">
+          <div className="action-item-content">
+            <div className="action-item-header">
+              <div className={classes}>
+                <div className="form-group">
+                  <label>Title</label>
+                  <input className="form-control" type="text" valueLink={this.linkState('title')} />
+                </div>
+                <div className="form-group">
+                  <label>Content</label>
+                  <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
+                </div>
+                <div className="panel-footer clearfix">
+                  <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                    <div className="is-visible content"><i className="cancel"></i></div>
+                    <div className="not-visible content">Cancel</div>
+                  </button>
+                  <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                    <div className="is-visible content">Save</div>
+                    <div className="not-visible content"><i className="save"></i></div>
+                  </button>
+                </div>
+            </div>
+            <p className="error-message">{this.errors}</p>
+          </div>
+        </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="action-bar-item">
+          <div className="action-item-content">
+            <div className="action-item-header">
+            { this.props.isEditable ? (
+                <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
+                  <div className="is-visible content"><i className="edit"></i></div>
+                  <div className="not-visible content">Edit</div>
+                </button>
+            ) : null }
+              <h3 className="action-title"><div className="circle"><div className="circle-content"><i className="heart"></i></div></div>{ this.state.title }</h3>
+            </div>
+            <div className="action-item-body">
+              <p>{ this.state.content }</p>
+            </div>
+            <div className="action-item-footer">
+              <p>
+                <button type="button" className="btn-animated btn-md btn-primary">
+                  <div className="is-visible content">Donate</div>
+                  <div className="not-visible content"><i className="next"></i></div>
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
+})
+
+var GetInvolved = React.createClass({
+
+  mixins: [ Editable, React.addons.LinkedStateMixin ],
+
+  render: function() {
+
+    this.errors = this.errors || errors.forCursor(this.props.$cursor)
+
+    if (this.errors || this.detectEditing()) {
+      var classes = React.addons.classSet({
+        inner: true,
+        error: !!this.errors
+      })
+      return (
+        <div className="action-bar-item">
+          <div className="action-item-content">
+            <div className="action-item-header">
+              <div className={classes}>
+                <div className="form-group">
+                  <label>Title</label>
+                  <input className="form-control" type="text" valueLink={this.linkState('title')} />
+                </div>
+                <div className="form-group">
+                  <label>Content</label>
+                  <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
+                </div>
+                <div className="panel-footer clearfix">
+                  <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                    <div className="is-visible content"><i className="cancel"></i></div>
+                    <div className="not-visible content">Cancel</div>
+                  </button>
+                  <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                    <div className="is-visible content">Save</div>
+                    <div className="not-visible content"><i className="save"></i></div>
+                  </button>
+                </div>
+            </div>
+            <p className="error-message">{this.errors}</p>
+          </div>
+        </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="action-bar-item">
+          <div className="action-item-content">
+            <div className="action-item-header">
+            { this.props.isEditable ? (
+                <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
+                  <div className="is-visible content"><i className="edit"></i></div>
+                  <div className="not-visible content">Edit</div>
+                </button>
+            ) : null }
+              <h3 className="action-title"><div className="circle"><div className="circle-content"><i className="group"></i></div></div>{ this.state.title }</h3>
+            </div>
+            <div className="action-item-body">
+              <p><span className="highlight">{ this.state.content }</span></p>
+            </div>
+            <div className="action-item-footer">
+              <p>
+                <button type="button" className="btn-animated btn-md btn-primary">
+                  <div className="is-visible content">Share</div>
+                  <div className="not-visible content"><i className="next"></i></div>
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
+})
 
 module.exports = React.createClass({
 
 
   render: function() {
+
+    var $shared = this.props.$shared
+    var $campaign = this.props.$campaign
+    var data = $campaign.deref()
+
     return (
     <div>
       <FeaturedStream  />
@@ -54,42 +209,14 @@ module.exports = React.createClass({
               </div>
             </div>
           </div>
-          <div className="action-bar-item">
-            <div className="action-item-content">
-              <div className="action-item-header">
-                <h3 className="action-title"><div className="circle"><div className="circle-content"><i className="heart"></i></div></div>Make a Donation</h3>
-              </div>
-              <div className="action-item-body">
-                <p>Here</p>
-              </div>
-              <div className="action-item-footer">
-                <p>
-                  <button type="button" className="btn-animated btn-md btn-primary">
-                    <div className="is-visible content">Donate</div>
-                    <div className="not-visible content"><i className="next"></i></div>
-                  </button>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="action-bar-item">
-            <div className="action-item-content">
-              <div className="action-item-header">
-                <h3 className="action-title"><div className="circle"><div className="circle-content"><i className="group"></i></div></div>Get Involved</h3>
-              </div>
-              <div className="action-item-body">
-                <p><span className="highlight">Take action and join the conversation by posting a status, photo, or video on social media with the hashtag #ourhashtag. Then submit it to us to make sure it gets featured on the site. Because together we can make sure our voices are heard.</span></p>
-              </div>
-              <div className="action-item-footer">
-                <p>
-                  <button type="button" className="btn-animated btn-md btn-primary">
-                    <div className="is-visible content">Share</div>
-                    <div className="not-visible content"><i className="next"></i></div>
-                  </button>
-                </p>
-              </div>
-            </div>
-          </div>
+            <DonateHome
+              $cursor={$campaign.refine('DonateHome')}
+              isEditable={!_.isEmpty($shared.deref().session)}
+            />
+            <GetInvolved
+              $cursor={$campaign.refine('InvolvedHome')}
+              isEditable={!_.isEmpty($shared.deref().session)}
+            />
         </div>
       </div>
     </div>

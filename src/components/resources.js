@@ -34,6 +34,58 @@ var DownloadList = React.createClass({
   },
 
   render: function() {
+    var _id = this.props.$cursor.deref()._id
+
+    this.errors = this.errors || errors.forCursor(this.props.$cursor)
+
+    if (this.errors || this.detectEditing()) {
+      var classes = React.addons.classSet({
+        "media": true,
+        error: !!this.errors
+      })
+      return (
+<div className="resources-item">
+  <div className="panel-heading">
+    <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+      <div className="is-visible content"><i className="cancel"></i></div>
+        <div className="not-visible content">Cancel</div>
+    </button>
+    <div className="form-group">
+      <input type='text' className="form-control" valueLink={this.linkState('title')} />
+      </div>
+    <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+      <div className="is-visible content">Save</div>
+      <div className="not-visible content"><i className="save"></i></div>
+      </button>
+  </div>
+  <div className="panel-body">
+    <ul className="media-list">
+      {
+        this.pagination.getCurrent().map(function(item, index) {
+          return <DownloadItem
+            $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
+
+            isNew={!item.name}
+            onDelete={this.deleteItem.bind(this, index)}
+          />
+        }, this)
+      }
+    </ul>
+  </div>
+  <div className="pagination-bar clearfix">
+    <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
+      <div className="is-visible content"><i className="prev"></i></div>
+      <div className="not-visible content">Prev</div>
+    </button>
+    <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
+      <div className="is-visible content"><i className="next"></i></div>
+      <div className="not-visible content">Next</div>
+    </button>
+  </div>
+</div>
+
+      )
+    } else {
     return (
       <div className="resources-item">
         <div className="panel-heading">
@@ -78,6 +130,7 @@ var DownloadList = React.createClass({
       </div>
     )
   }
+}
 
 })
 
@@ -169,8 +222,6 @@ var DownloadItem = React.createClass({
   }
 })
 
-
-
 var DIYSection = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
@@ -215,11 +266,9 @@ var DIYSection = React.createClass({
   }
 })
 
-
-
 var Resources = React.createClass({
 
-  mixins: [ Editable, Paginated ],
+  mixins: [ Editable, Paginated, React.addons.LinkedStateMixin ],
 
   componentWillMount: function() {
     this.paginate({
@@ -242,7 +291,59 @@ var Resources = React.createClass({
   },
 
   render: function() {
-    return (
+    var _id = this.props.$cursor.deref()._id
+
+    this.errors = this.errors || errors.forCursor(this.props.$cursor)
+
+    if (this.errors || this.detectEditing()) {
+      var classes = React.addons.classSet({
+        "media": true,
+        error: !!this.errors
+      })
+      return (
+        <div className="resources-item">
+            <div className="panel-heading">
+              <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                <div className="is-visible content"><i className="cancel"></i></div>
+                  <div className="not-visible content">Cancel</div>
+              </button>
+              <div className="form-group">
+                <input type='text' className="form-control" valueLink={this.linkState('title')} />
+              </div>
+              <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                <div className="is-visible content">Save</div>
+                <div className="not-visible content"><i className="save"></i></div>
+                </button>
+            </div>
+          <div className="panel-body">
+            <ul className="media-list">
+              {
+                this.pagination.getCurrent().map(function(item, i) {
+                  return <ResourceItem
+                    $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
+                    onDelete={this.deleteItem.bind(null, i)}
+                    
+                    onSave={this.save}
+                  />
+                }, this)
+              }
+            </ul>
+          </div>
+          <div className="pagination-bar clearfix">
+            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
+              <div className="is-visible content"><i className="prev"></i></div>
+              <div className="not-visible content">Prev</div>
+            </button>
+            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
+              <div className="is-visible content"><i className="next"></i></div>
+              <div className="not-visible content">Next</div>
+            </button>
+          </div>
+        </div>
+
+      )
+      } else {
+      return (
       <div className="resources-item">
         <div className="panel-heading">
             { this.props.isEditable ? (
@@ -251,7 +352,7 @@ var Resources = React.createClass({
                 <div className="not-visible content">Add</div>
               </button>
             ) : null }
-        <h3 className="panel-title">Other Resources</h3>
+        <h3 className="panel-title">{this.state.title}</h3>
         { this.props.isEditable ? (
           <button onClick={this.edit} className="btn-md btn-animated vertical btn-warning pull-right">
             <div className="is-visible content"><i className="edit"></i></div>
@@ -285,6 +386,7 @@ var Resources = React.createClass({
         </div>
       </div>
     )
+  }
   }
 })
 

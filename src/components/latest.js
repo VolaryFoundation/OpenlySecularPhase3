@@ -121,10 +121,12 @@ var Updates = React.createClass({
           </button>
           ) : '' }
           <h3 className="panel-title">Latest Updates</h3>
+          { this.props.isEditable ? (
           <button className="btn-md btn-animated vertical btn-warning pull-right">
             <div className="is-visible content"><i className="edit"></i></div>
             <div className="not-visible content">Edit</div>
           </button>
+          ) : '' }
         </div>
         <div className="panel-body">
           <ul className="media-list">
@@ -234,10 +236,12 @@ var News = React.createClass({
           </button>
           ) : '' }
           <h3 className="panel-title">In the News</h3>
+          { this.props.isEditable ? (
           <button className="btn-md btn-animated vertical btn-warning pull-right">
             <div className="is-visible content"><i className="edit"></i></div>
             <div className="not-visible content">Edit</div>
           </button>
+          ) : '' }
         </div>
         <div className="panel-body">
           <ul className="media-list">

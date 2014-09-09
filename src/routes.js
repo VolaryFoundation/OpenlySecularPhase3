@@ -43,6 +43,10 @@ module.exports = function($shared) {
 
     'contact /contact': function() {
       go('contact')
+    },
+
+    'submission /submission': function() {
+      go('submission')
     }
   })
 }

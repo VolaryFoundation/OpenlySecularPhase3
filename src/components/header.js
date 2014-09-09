@@ -63,7 +63,7 @@ module.exports = React.createClass({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="index.html"><img id="logo" src="logo" /></a>
+              <a className="navbar-brand" href="index.html"><img id="logo" src={"http://www.openlysecular.org/widgets/awareness/img/logo.png"} /></a>
             </div>
             <div className="collapse navbar-collapse" id="navbar-site">
               <ul className="nav navbar-nav navbar-right">

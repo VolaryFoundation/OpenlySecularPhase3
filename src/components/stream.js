@@ -88,7 +88,7 @@ module.exports = React.createClass({
     return (
       <div className="stream-container">
         <div className="stream-header">
-          <h2 className="stream-title">#Stream</h2>
+          <div className="stream-title">#Stream</div>
         </div>
         <div className="stream-row">
           {this.renderStream()}

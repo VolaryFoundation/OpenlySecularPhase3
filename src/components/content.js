@@ -10,7 +10,8 @@ var pages = {
   Latest: require('./latest'),
   Partners: require('./partners'),
   Resources: require('./resources'),
-  Contact: require('./contact')
+  Contact: require('./contact'),
+  Submission: require('./submission')
 }
 
 module.exports = React.createClass({
@@ -36,6 +37,9 @@ module.exports = React.createClass({
         break
       case 'contact':
         Page = _.partial(pages.Contact, { $shared: this.props.$shared, $campaign: this.props.$campaign })
+        break
+      case 'submission':
+        Page = _.partial(pages.Submission, { $shared: this.props.$shared, $campaign: this.props.$campaign })
         break
     }
 

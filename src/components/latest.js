@@ -386,6 +386,17 @@ module.exports = React.createClass({
                 }
                 <br /><br /><br />
                 <div className="in-the-media">
+                  <div className="other-media-row">
+                    <div className="other-media-item">
+                      Here
+                    </div>
+                    <div className="other-media-item">
+                      Here
+                    </div>
+                    <div className="other-media-item">
+                      Here
+                    </div>
+                  </div>
                   <News
                     $cursor={$campaign.refine('news')}
                     isEditable={!_.isEmpty($shared.deref().session)}

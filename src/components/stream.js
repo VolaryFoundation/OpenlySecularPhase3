@@ -60,7 +60,7 @@ module.exports = React.createClass({
       if (this.state.playing == url) {
         return <div id="player">
         <button onClick={close}>close</button>
-        <iframe src={"//www.youtube.com/embed/" + id + "?rel=0"} frameborder="0" allowFullScreen></iframe>
+        <iframe src={"//www.youtube.com/embed/" + id + "?rel=0"} frameBorder="0" allowFullScreen></iframe>
         </div>
       }
     }.bind(this)
@@ -87,6 +87,9 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="stream-container">
+        <div className="stream-header">
+          <h2 className="stream-title">#Stream</h2>
+        </div>
         <div className="stream-row">
           {this.renderStream()}
         </div>

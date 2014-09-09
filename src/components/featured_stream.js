@@ -47,7 +47,7 @@ module.exports = React.createClass({
       if (this.state.playing == url) {
         return <div id="player">
         <button onClick={close}>close</button>
-        <iframe src={"//www.youtube.com/embed/" + id + "?rel=0"} frameborder="0" allowfullscreen></iframe>
+        <iframe src={"//www.youtube.com/embed/" + id + "?rel=0"} frameBorder="0" allowFullScreen></iframe>
         </div>
       }
     }.bind(this)
@@ -77,7 +77,7 @@ module.exports = React.createClass({
     var fragments = feedURL.split("/");
     var videoID = fragments[fragments.length - 2];
     return (
-      <div className="video-container"><iframe src={"//www.youtube.com/embed/" + videoID + "?rel=0"} width="560" height="315" frameborder="0" allowFullScreen></iframe></div>
+      <div className="video-container"><iframe src={"//www.youtube.com/embed/" + videoID + "?rel=0"} width="560" height="315" frameBorder="0" allowFullScreen></iframe></div>
     )
   },
 
@@ -91,9 +91,7 @@ module.exports = React.createClass({
             </div>
           </div>
           <div className="featured-item">
-            <div className="featured-row">
               {this.renderFeature()}
-            </div>
           </div>
           <div className="featured-item">
             <div className="featured-row">

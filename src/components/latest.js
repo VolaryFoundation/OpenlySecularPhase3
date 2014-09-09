@@ -17,6 +17,8 @@ var ActiveUpdate = React.createClass({
   },
 
   render: function() {
+    var _id = this.props.$cursor.deref()._id
+
     if (this.props.isEditing) {
       var cancel = this.props.isNew ? this.props.onDelete : this.props.activate.bind(null, this.props.$cursor)
       return (
@@ -84,7 +86,7 @@ var Updates = React.createClass({
 
   componentWillMount: function() {
     this.paginate({
-      perPage: 4,
+      perPage: 3,
       getList: function() {
         return this.props.$cursor.deref().list
       }
@@ -106,6 +108,7 @@ var Updates = React.createClass({
   },
 
   render: function() {
+    var _id = this.props.$cursor.deref()._id
     var list = this.pagination.getCurrent()
     return (
       <div className="updates">

@@ -60,11 +60,11 @@ module.exports = React.createClass({
       var url = 'http://www.youtube.com/watch?v=' + videoID;
       var thumb = "http://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
       var classes = React.addons.classSet({
-        "col-xs-6" : true
+        "video" : true
       })
       return <div className={classes}>
         <a href="#" onClick={this.play.bind(this, item)}>
-          <img src={thumb} />
+          <img src={thumb} className="img-responsive" />
         </a>
         {renderVideoFor(url, videoID)}
       </div>
@@ -77,23 +77,29 @@ module.exports = React.createClass({
     var fragments = feedURL.split("/");
     var videoID = fragments[fragments.length - 2];
     return (
-      <div className="col-xs-4"><iframe src={"//www.youtube.com/embed/" + videoID + "?rel=0"} frameborder="0" allowfullscreen></iframe></div>
+      <div className="video-container"><iframe src={"//www.youtube.com/embed/" + videoID + "?rel=0"} width="560" height="315" frameborder="0" allowFullScreen></iframe></div>
     )
   },
 
   render: function() {
     return (
-      <div id="featured-stream" className="row">
-        <div className="col-xs-4">
-          <div className="row">
-          {this.renderStream(this.state.videos.slice(1,5))}
+      <div className="featured-container">
+        <div className="featured-row">
+          <div className="featured-item">
+            <div className="featured-row">
+              {this.renderStream(this.state.videos.slice(1,5))}
+            </div>
           </div>
+          <div className="featured-item">
+            <div className="featured-row">
+              {this.renderFeature()}
+            </div>
           </div>
-          {this.renderFeature()}
-        <div className="col-xs-4">
-          <div className="row">
-          {this.renderStream(this.state.videos.slice(5,9))}
-        </div>
+          <div className="featured-item">
+            <div className="featured-row">
+              {this.renderStream(this.state.videos.slice(5,9))}
+            </div>
+          </div>
         </div>
       </div>
     )

@@ -60,7 +60,7 @@ module.exports = React.createClass({
       if (this.state.playing == url) {
         return <div id="player">
         <button onClick={close}>close</button>
-        <iframe src={"//www.youtube.com/embed/" + id + "?rel=0"} frameborder="0" allowfullscreen></iframe>
+        <iframe src={"//www.youtube.com/embed/" + id + "?rel=0"} frameborder="0" allowFullScreen></iframe>
         </div>
       }
     }.bind(this)

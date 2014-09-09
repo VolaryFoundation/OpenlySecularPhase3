@@ -6,6 +6,7 @@ var Editable = require('../mixins/editable')
 var Paginated = require('../mixins/paginated')
 var _ = require('lodash')
 var util = require('../util')
+var errors = require('../errors')
 
 var ActiveUpdate = React.createClass({
 
@@ -139,11 +140,11 @@ var Updates = React.createClass({
           }
           </ul>
           <div className="pagination-bar clearfix">
-            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-left">
+            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
               <div className="is-visible content"><i className="prev"></i></div>
               <div className="not-visible content">Prev</div>
             </button>
-            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-right">
+            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
               <div className="is-visible content"><i className="next"></i></div>
               <div className="not-visible content">Next</div>
             </button>
@@ -242,20 +243,21 @@ var News = React.createClass({
           <ul className="media-list">
             {
               list.map(function(item, i) {
+                var realI = (this.pagination.index * this.pagination.perPage) + i
                 return <NewsItem
-                  $cursor={this.props.$cursor.refine(['list', i])}
-                  onDelete={this.deleteItem.bind(null, i)}
+                  $cursor={this.props.$cursor.refine(['list', realI ])}
+                  onDelete={this.deleteItem.bind(null, realI)}
                   isEditable={this.props.isEditable}
                 />
               }, this)
             }
           </ul>
           <div className="pagination-bar clearfix">
-            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-left">
+            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
               <div className="is-visible content"><i className="prev"></i></div>
               <div className="not-visible content">Prev</div>
             </button>
-            <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-right">
+            <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
               <div className="is-visible content"><i className="next"></i></div>
               <div className="not-visible content">Next</div>
             </button>
@@ -346,6 +348,58 @@ var NewsItem = React.createClass({
   }
 })
 
+var MediaBlock = React.createClass({
+
+  mixins: [ Editable, React.addons.LinkedStateMixin ],
+
+  render: function() {
+
+    this.errors = this.errors || errors.forCursor(this.props.$cursor)
+
+    if (this.errors || this.detectEditing()) {
+      var classes = React.addons.classSet({
+        inner: true,
+        error: !!this.errors
+      })
+      return (
+        <div className="other-media-item">
+          <div className={classes}>
+            <div className="form-group">
+              <label>Edit Custom Block</label>
+              <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
+            </div>
+            <div className="panel-footer clearfix">
+              <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                <div className="is-visible content"><i className="cancel"></i></div>
+                <div className="not-visible content">Cancel</div>
+              </button>
+              <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                <div className="is-visible content">Save</div>
+                <div className="not-visible content"><i className="save"></i></div>
+              </button>
+            </div>
+            <p className="error-message">{this.errors}</p>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="other-media-item">
+          { this.props.isEditable ? (
+              <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
+                <div className="is-visible content"><i className="edit"></i></div>
+                <div className="not-visible content">Edit</div>
+              </button>
+          ) : null }
+          <div className="MediaBlockBody" dangerouslySetInnerHTML={{__html:this.state.content }}></div>
+        </div>
+      )
+    }
+  }
+})
+
+
+
 module.exports = React.createClass({
 
   activate: function($cursor, props) {
@@ -363,48 +417,46 @@ module.exports = React.createClass({
 
     return (
       <div className="latest-container">
-          <div className="latest-row">
-            <div className="latest-item">
-              <div className="latest-item-content">
-                <Updates
-                  $cursor={$campaign.refine('updates')}
-                  isEditable={!_.isEmpty($shared.deref().session)}
-                  activate={this.activate}
-                />
-              </div>
+        <div className="latest-row">
+          <div className="latest-item">
+            <div className="latest-item-content">
+              <Updates
+                $cursor={$campaign.refine('updates')}
+                isEditable={!_.isEmpty($shared.deref().session)}
+                activate={this.activate}
+              />
             </div>
-            <div className="latest-item">
-              <div className="latest-item-content">
-                {
-                  activeUpdate ? (<ActiveUpdate
-                    activate={this.activate}
-                    $cursor={activeUpdate.$cursor}
-                    isEditing={activeUpdate.props.isEditing}
-                    isNew={activeUpdate.props.isNew}
-                    onDelete={activeUpdate.props.onDelete}
-                  />) : null
-                }
-                <br /><br /><br />
-                <div className="in-the-media">
-                  <div className="other-media-row">
-                    <div className="other-media-item">
-                      Here
-                    </div>
-                    <div className="other-media-item">
-                      Here
-                    </div>
-                    <div className="other-media-item">
-                      Here
-                    </div>
-                  </div>
-                  <News
-                    $cursor={$campaign.refine('news')}
+          </div>
+          <div className="latest-item">
+            <div className="latest-item-content">
+              {
+                activeUpdate ? (<ActiveUpdate
+                  activate={this.activate}
+                  $cursor={activeUpdate.$cursor}
+                  isEditing={activeUpdate.props.isEditing}
+                  isNew={activeUpdate.props.isNew}
+                  onDelete={activeUpdate.props.onDelete}
+                />) : null
+              }
+              <div className="in-the-media">
+                <div className="other-media-row">
+                  <MediaBlock
+                    $cursor={$campaign.refine('MediaBlock1')}
+                    isEditable={!_.isEmpty($shared.deref().session)}
+                  />
+                  <MediaBlock
+                    $cursor={$campaign.refine('MediaBlock2')}
                     isEditable={!_.isEmpty($shared.deref().session)}
                   />
                 </div>
               </div>
+              <News
+                $cursor={$campaign.refine('news')}
+                isEditable={!_.isEmpty($shared.deref().session)}
+              />
             </div>
           </div>
+        </div>
       </div>
     )
   }

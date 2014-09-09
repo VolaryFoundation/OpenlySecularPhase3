@@ -64,7 +64,7 @@ var DownloadList = React.createClass({
         this.pagination.getCurrent().map(function(item, index) {
           return <DownloadItem
             $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
-
+            isEditable={this.props.isEditable}
             isNew={!item.name}
             onDelete={this.deleteItem.bind(this, index)}
           />
@@ -322,7 +322,7 @@ var Resources = React.createClass({
                   return <ResourceItem
                     $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
                     onDelete={this.deleteItem.bind(null, i)}
-                    
+
                     onSave={this.save}
                   />
                 }, this)

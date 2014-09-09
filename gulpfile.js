@@ -55,6 +55,15 @@ gulp.task('initDev', function(done) {
         DIY: {
           content: "<strong>Blah is bold</strong><br>shnarf",
         },
+        MediaBlock1: {
+          content: "<strong>Blah is bold</strong><br>shnarf",
+        },
+        MediaBlock2: {
+          content: "<strong>Blah is bold</strong><br>shnarf",
+        },
+        MediaBlock3: {
+          content: "<strong>Blah is bold</strong><br>shnarf",
+        },
         logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
         partners: [
           {

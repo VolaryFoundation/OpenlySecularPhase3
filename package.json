@@ -52,7 +52,8 @@
     "volary-static-builder": "*",
     "xhr": "^1.15.0",
     "yaml": "^0.2.3",
-    "zepto": "0.0.4"
+    "zepto": "0.0.4",
+    "rome": "~1.1.6"
   },
   "devDependencies": {
     "gulp": "^3.8.6"

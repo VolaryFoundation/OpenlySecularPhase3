@@ -445,7 +445,6 @@ module.exports = React.createClass({
                 />) : null
               }
               <div className="in-the-media">
-              <img src="/images/guide.jpg">
                 <div className="other-media-row">
                   <MediaBlock
                     $cursor={$campaign.refine('MediaBlock1')}

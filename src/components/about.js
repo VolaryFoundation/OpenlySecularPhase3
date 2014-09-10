@@ -59,7 +59,7 @@ var AboutSection = React.createClass({
           ) : null }
           <h3 className="about-title">{ this.state.title }</h3>
           <div className="panel-body">
-            <p>{ this.state.content }</p>
+            <div className="MediaBlockBody" dangerouslySetInnerHTML={{__html:this.state.content }}></div>
           </div>
         </div>
       )

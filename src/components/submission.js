@@ -44,19 +44,14 @@ var Guidelines = React.createClass({
       )
     } else {
       return (
-        <div className="about-item">
+          <div className="panel-body">
           { this.props.isEditable ? (
-            <div className="panel-heading">
               <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
                 <div className="is-visible content"><i className="edit"></i></div>
                 <div className="not-visible content">Edit</div>
               </button>
-            </div>
           ) : null }
-          <h3 className="about-title">{ this.state.title }</h3>
-          <div className="panel-body">
             <p>{ this.state.content }</p>
-          </div>
         </div>
       )
     }
@@ -81,9 +76,10 @@ module.exports = React.createClass({
                  Guidelines
               </div>
             </div>
-            <div className="panel-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium suscipit laoreet. Mauris gravida mattis enim finibus interdum. Sed porttitor feugiat tristique. Maecenas aliquam mi vehicula, pretium sapien ac, pretium lacus. Vestibulum euismod sapien at dignissim porta. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla et metus ut arcu sodales ornare.</p>
-            </div>
+            <Guidelines
+              $cursor={$campaign.refine('Guidelines1')}
+              isEditable={!_.isEmpty($shared.deref().session)}
+            />
           </div>
           <div className="submission-item">
             <div className="panel-heading">

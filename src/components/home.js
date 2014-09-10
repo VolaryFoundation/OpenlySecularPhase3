@@ -66,10 +66,12 @@ var DonateHome = React.createClass({
             </div>
             <div className="action-item-footer">
               <p>
+              <a href="#/donation">
                 <button type="button" className="btn-animated btn-md btn-primary">
                   <div className="is-visible content">Donate</div>
                   <div className="not-visible content"><i className="next"></i></div>
                 </button>
+              </a>
               </p>
             </div>
           </div>
@@ -137,12 +139,12 @@ var GetInvolved = React.createClass({
             </div>
             <div className="action-item-footer">
               <p>
-                <form action="#/submission">
+                <a href="#/submission">
                 <button type="submit" className="btn-animated btn-md btn-primary">
                   <div className="is-visible content">Share</div>
                   <div className="not-visible content"><i className="next"></i></div>
                 </button>
-                </form>
+                </a>
               </p>
             </div>
           </div>

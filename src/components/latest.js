@@ -335,7 +335,7 @@ var NewsItem = React.createClass({
   render: function() {
     if (this.detectEditing()) {
       return (
-        <li className="col-md-6" key={this.state._id}>
+        <li className="media-edit" key={this.state._id}>
           <div className="media-body">
             <div className="form-group">
               <label>Title</label>

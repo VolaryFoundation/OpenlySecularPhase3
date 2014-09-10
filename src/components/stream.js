@@ -49,27 +49,33 @@ module.exports = React.createClass({
     this.setState({ playing: url })
   },
 
-  renderStream: function() {
+  componentDidMount: function() {
+    $('body').on('click', '#stream-player-close', this.close)
+  },
 
-    var close = function(e) {
-      e.stopPropagation()
-      e.preventDefault()
-      this.setState({ playing: '' })
-      hub.emit('modal:close')
-    }.bind(this)
+  close: function(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    this.setState({ playing: '' })
+    hub.emit('modal:close')
+    $('#stream-player').remove()
+  },
+
+  renderStream: function() {
 
     var renderVideoFor = function(url, id) {
       if (this.state.playing == url) {
         hub.emit('modal:open')
-        return <div id="player">
-        <div className="panel-heading">
-          <button onClick={close} className="btn-md btn-animated vertical btn-default pull-right">
-            <div className="is-visible content"><i className="close"></i></div>
-            <div className="not-visible content">Close</div>
-          </button>
-        </div>
-        <iframe src={"//www.youtube.com/embed/" + id + "?rel=0"} frameBorder="0" allowFullScreen></iframe>
-        </div>
+        $(['<div id="stream-player">',
+        '<div class="panel-heading">',
+          '<button id="stream-player-close" class="btn-md btn-animated vertical btn-default pull-right">',
+            '<div class="is-visible content"><i class="close"></i></div>',
+            '<div class="not-visible content">Close</div>',
+          '</button>',
+        '</div>',
+        '<iframe src="//www.youtube.com/embed/' + id + '?rel=0"} frameBorder="0" allowFullScreen></iframe>',
+        '</div>' ].join('')).appendTo('body')
+        return <div></div>
       }
     }.bind(this)
 

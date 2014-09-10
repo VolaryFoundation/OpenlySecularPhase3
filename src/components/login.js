@@ -9,6 +9,7 @@ var _ = require('lodash')
 var Login = React.createClass({
 
   toggle: function() {
+    if (!_.isEmpty(this.props.$shared.deref().session)) return
     this.props.$shared.update({ showLogin: { $set: !this.props.$shared.deref().showLogin } })
   },
 

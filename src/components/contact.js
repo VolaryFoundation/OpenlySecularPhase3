@@ -335,7 +335,14 @@ module.exports = React.createClass({
                       Press Kit
                     </div>
                   </div>
-                  <a href="resources.html">View More Resources</a>
+                  <div className="panel-body text-center">
+                    <button className="btn-md btn-animated vertical btn-primary">
+                      <div className="is-visible content"><i className="fa fa-fw fa-download"></i> Download</div>
+                      <div className="not-visible content"><i className="fa fa-fw fa-file-archive-o"></i> Press Kit</div>
+                    </button>
+                    <br />
+                    <p><a href="#/resources">View More Resources</a></p>
+                  </div>
                 </div>
               </div>
             </div>

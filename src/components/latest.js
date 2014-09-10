@@ -8,6 +8,7 @@ var _ = require('lodash')
 var util = require('../util')
 var errors = require('../errors')
 var Pikaday = require('pikaday')
+
 var ActiveUpdate = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
@@ -39,14 +40,14 @@ var ActiveUpdate = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps) {
-    this.setState({ date: newProps.date })
+    this.setState({ date: newProps.$cursor.deref().date })
   },
 
   render: function() {
     var _id = this.props.$cursor.deref()._id
 
     if (this.props.isEditing) {
-      var cancel = this.props.isNew ? this.props.onDelete : this.props.activate.bind(null, this.props.$cursor)
+      var cancel = this.props.isNew ? this.props.onDelete : this.props.activate
       return (
         <div className="article">
           <div className="panel-heading">
@@ -320,6 +321,7 @@ var NewsItem = React.createClass({
     var format = 'MMMM DD, YYYY'
     this.picker = new Pikaday({
       format: format,
+
       onSelect: function() {
         component.setState({ date: this.getMoment().format(format) })
       },
@@ -331,7 +333,7 @@ var NewsItem = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps) {
-    this.setState({ date: newProps.date })
+    this.setState({ date: newProps.$cursor.deref() })
   },
 
   render: function() {
@@ -345,7 +347,7 @@ var NewsItem = React.createClass({
             </div>
             <div className="form-group">
               <label>Date</label>
-              <input className="form-control" ref="cal" type='text' valueLink={this.linkState('date')} />
+              <input className="form-control" ref="cal" type='text' />
             </div>
             <div className="form-group">
               <label>Source Name</label>
@@ -456,7 +458,9 @@ module.exports = React.createClass({
 
   activate: function($cursor, props) {
     if (!$cursor) this.props.$shared.update({ activeUpdate: { $set: null } })
-    else this.props.$shared.update({ activeUpdate: { $set: { $cursor: $cursor, props: props || {} } } })
+    else {
+      this.props.$shared.update({ activeUpdate: { $set: { $cursor: $cursor, props: props || {} } } })
+    }
   },
 
   getInitialState: function() { return {} },

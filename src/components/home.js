@@ -137,10 +137,12 @@ var GetInvolved = React.createClass({
             </div>
             <div className="action-item-footer">
               <p>
-                <button type="button" className="btn-animated btn-md btn-primary">
+                <form action="#/submission">
+                <button type="submit" className="btn-animated btn-md btn-primary">
                   <div className="is-visible content">Share</div>
                   <div className="not-visible content"><i className="next"></i></div>
                 </button>
+                </form>
               </p>
             </div>
           </div>

@@ -17,6 +17,14 @@ Parse.initialize('P6N7zNHb43Px9Yd6DZ3QyzAGvGMXxH9cT6PXufrJ', 'c3y15CZxjimWcozyP6
 
 var App = require('./components/app')
 
+hub.on('modal:open', function() {
+  $(document.body).addClass('modal-open')
+})
+
+hub.on('modal:close', function() {
+  $(document.body).removeClass('modal-open')
+})
+
 function render(state, oldState, delta, opts) {
 
   if (!opts.skipSync) {

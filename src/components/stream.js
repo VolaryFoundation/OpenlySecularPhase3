@@ -2,6 +2,7 @@
 /** @jsx React.DOM */
 
 var React = require('react/addons')
+var hub = require('../hub')
 
 module.exports = React.createClass({
 
@@ -54,12 +55,19 @@ module.exports = React.createClass({
       e.stopPropagation()
       e.preventDefault()
       this.setState({ playing: '' })
+      hub.emit('modal:close')
     }.bind(this)
 
     var renderVideoFor = function(url, id) {
       if (this.state.playing == url) {
+        hub.emit('modal:open')
         return <div id="player">
-        <button onClick={close}>close</button>
+        <div className="panel-heading">
+          <button onClick={close} className="btn-md btn-animated vertical btn-default pull-right">
+            <div className="is-visible content"><i className="close"></i></div>
+            <div className="not-visible content">Close</div>
+          </button>
+        </div>
         <iframe src={"//www.youtube.com/embed/" + id + "?rel=0"} frameBorder="0" allowFullScreen></iframe>
         </div>
       }

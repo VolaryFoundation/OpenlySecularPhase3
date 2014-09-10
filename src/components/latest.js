@@ -7,7 +7,7 @@ var Paginated = require('../mixins/paginated')
 var _ = require('lodash')
 var util = require('../util')
 var errors = require('../errors')
-
+var Pikaday = require('pikaday')
 var ActiveUpdate = React.createClass({
 
   mixins: [ Editable, React.addons.LinkedStateMixin ],
@@ -15,6 +15,31 @@ var ActiveUpdate = React.createClass({
   saveAndReset: function() {
     this.save();
     this.props.activate(null)
+  },
+
+  formatHTML: function(str) {
+    return str.replace(/\n/g, '<br />')
+  },
+
+  componentDidMount: function() {
+    var component = this
+    if (!this.refs.cal) return
+    var input = this.refs.cal.getDOMNode()
+    var format = 'MMMM DD, YYYY'
+    this.picker = new Pikaday({
+      format: format,
+      onSelect: function() {
+        component.setState({ date: this.getMoment().format(format) })
+      },
+      field: input,
+      onOpen: function() {
+        this.adjustPosition()
+      }
+    })
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    this.setState({ date: newProps.date })
   },
 
   render: function() {
@@ -37,7 +62,7 @@ var ActiveUpdate = React.createClass({
             </div>
             <div className="form-group">
               <label>Date</label>
-              <input className="form-control" type="text" valueLink={this.linkState('date')} />
+              <input className="form-control" ref="cal" type="text" value={this.state.date} />
             </div>
             <div className="form-group">
               <label>Excerpt</label>
@@ -73,7 +98,7 @@ var ActiveUpdate = React.createClass({
             <h3>{this.state.title}</h3>
             <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
             <hr/>
-            <p>{this.state.content}</p>
+            <div className="latestbody" dangerouslySetInnerHTML={{__html:this.formatHTML(this.state.content)}}></div>
           </div>
         </div>
       )
@@ -288,6 +313,27 @@ var NewsItem = React.createClass({
     }
   },
 
+  componentDidMount: function() {
+    var component = this
+    if (!this.refs.cal) return
+    var input = this.refs.cal.getDOMNode()
+    var format = 'MMMM DD, YYYY'
+    this.picker = new Pikaday({
+      format: format,
+      onSelect: function() {
+        component.setState({ date: this.getMoment().format(format) })
+      },
+      field: input,
+      onOpen: function() {
+        this.adjustPosition()
+      }
+    })
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    this.setState({ date: newProps.date })
+  },
+
   render: function() {
     if (this.detectEditing()) {
       return (
@@ -299,7 +345,7 @@ var NewsItem = React.createClass({
             </div>
             <div className="form-group">
               <label>Date</label>
-              <input className="form-control" type='text' valueLink={this.linkState('date')} />
+              <input className="form-control" ref="cal" type='text' valueLink={this.linkState('date')} />
             </div>
             <div className="form-group">
               <label>Source Name</label>

@@ -130,24 +130,24 @@ gulp.task('initDev', function(done) {
         updates: {
           title: 'Latest updates',
           list: [
-            { _id: 0, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 1, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 2, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 3, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 4, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 5, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' }
+            { _id: 0, title: 'Our monthly status 1', date: 'September 4, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 1, title: 'Our monthly status 2', date: 'September 5, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 2, title: 'Our monthly status 3', date: 'September 6, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 3, title: 'Our monthly status 4', date: 'September 7, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 4, title: 'Our monthly status 5', date: 'September 8, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 5, title: 'Our monthly status 6', date: 'September 9, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' }
           ]
         },
         news: {
           title: 'In the news',
           list: [
-            { _id: 0, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 1, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 2, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 3, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 4, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 5, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 6, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' }
+            { _id: 0, title: 'news article 1', date: 'September 4, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 1, title: 'news article 1', date: 'September 5, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 2, title: 'news article 1', date: 'September 6, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 3, title: 'news article 1', date: 'September 7, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 4, title: 'news article 1', date: 'September 8, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 5, title: 'news article 1', date: 'September 9, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 6, title: 'news article 1', date: 'September 10, 2014', source: 'nytimes.com', link: 'http://nytimes.com' }
           ]
         },
         resources: {

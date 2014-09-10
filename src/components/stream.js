@@ -68,7 +68,7 @@ module.exports = React.createClass({
         hub.emit('modal:open')
         $(['<div id="stream-player">',
         '<div class="panel-heading">',
-          '<button id="stream-player-close" class="btn-md btn-animated vertical btn-default pull-right">',
+          '<button id="stream-player-close" class="btn-md btn-animated vertical btn-primary pull-right">',
             '<div class="is-visible content"><i class="close"></i></div>',
             '<div class="not-visible content">Close</div>',
           '</button>',

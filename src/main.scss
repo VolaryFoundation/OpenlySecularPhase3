@@ -12,6 +12,7 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 
 .stripes {
   color: $brand-dark;
+  background-color: #fff;
   background-image: linear-gradient(
     to right top,
     transparent 33%,
@@ -647,6 +648,7 @@ a {
     @include make-sm-column(12, 0);
     @include make-md-column(4, 0);
     @extend .col-height;
+    background: #f5f5f5;
 
     @media (min-width: $screen-md) {
       border-right: $border-dark;
@@ -895,6 +897,7 @@ a {
     @include make-md-column(4, 0);
     @include make-lg-column(3, 0);
     @extend .col-height;
+    background: #f5f5f5;
 
     @media (min-width: $screen-md) {
       //border-right: $border;
@@ -1022,6 +1025,7 @@ a {
     @include make-sm-column(12, 0);
     @include make-md-column(3, 0);
     @extend .col-height;
+    background: #f5f5f5;
 
     @media (min-width: $screen-md) {
       border-right: $border-dark;
@@ -1032,6 +1036,7 @@ a {
     @include make-sm-column(12, 0);
     @include make-md-column(3, 0);
     @extend .col-height;
+    background: #f5f5f5;
 
     @media (max-width: $screen-md) {
       border-top: $border-dark;
@@ -1126,6 +1131,7 @@ a {
 
   &:last-child {
     @media (max-width: $screen-md) {
+      background: #f5f5f5;
       border-top: $border-dark;
     }
   }

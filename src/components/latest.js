@@ -90,7 +90,7 @@ var ActiveUpdate = React.createClass({
       return (
         <div className="article">
           <div className="panel-heading">
-            <button onClick={this.props.activate.bind(null, null)} className="btn-md btn-animated vertical btn-clean pull-right">
+            <button onClick={this.props.activate.bind(null, null)} className="btn-md btn-animated vertical btn-primary pull-right">
               <div className="is-visible content"><i className="close"></i></div>
               <div className="not-visible content">Close</div>
             </button>

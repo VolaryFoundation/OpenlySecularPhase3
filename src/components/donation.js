@@ -20,11 +20,6 @@ module.exports = React.createClass({
       <div className="container-fluid donation-content">
         <div className="row">
           <div className="col-md-8 col-md-push-4">
-            <div className="panel-heading">
-              <div className="panel-title">
-                 Make a Donation
-              </div>
-            </div>
             <div className="row no-gutter bs-wizard" role="tablist">
               <div className="col-xs-3 bs-wizard-step complete">
                 <div className="text-center bs-wizard-stepnum">Amount</div>

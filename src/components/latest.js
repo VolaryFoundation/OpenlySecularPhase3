@@ -383,12 +383,12 @@ var NewsItem = React.createClass({
                 </button>
                 ) : '' }
             </div>
-            <p className="meta">
-              <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
-            </p>
             <a href={this.state.link} target="_blank">
               <h4 className="media-heading">{this.state.title}</h4>
             </a>
+            <p className="meta">
+              <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
+            </p>
             <strong>{this.state.source}</strong>
           </div>
         </li>

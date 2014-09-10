@@ -114,10 +114,12 @@ var ContactDetail = React.createClass({
       return (
         <div>
         <div className="panel-heading">
+        { this.props.isEditable ? (
           <button className="invisible btn-md btn-animated vertical btn-clean pull-left">
             <div className="is-visible content"><i className="fa fa-fw"></i></div>
             <div className="not-visible content"></div>
           </button>
+        ) : null }
           <div className="panel-title">
              Contact Info
           </div>
@@ -259,10 +261,12 @@ var PressContactDetail = React.createClass({
       return (
         <div>
         <div className="panel-heading">
+        { this.props.isEditable ? (
           <button className="invisible btn-md btn-animated vertical btn-clean pull-left">
             <div className="is-visible content"><i className="fa fa-fw"></i></div>
             <div className="not-visible content"></div>
           </button>
+        ) : null }
           <div className="panel-title">
             Press Contact
           </div>

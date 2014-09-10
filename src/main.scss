@@ -547,6 +547,7 @@ a {
 
   h3.action-title {
        @extend .h4;
+       color: $brand-dark;
      }
 
   .action-item-body {

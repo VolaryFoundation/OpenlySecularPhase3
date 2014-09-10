@@ -65,6 +65,9 @@ module.exports = React.createClass({
       return <div className={classes}>
         <a href="#" onClick={this.play.bind(this, item)}>
           <img src={thumb} className="img-responsive" />
+          <div className="overlay">
+            <figure className="fa fa-3x fa-play-circle-o"></figure>
+          </div>
         </a>
         {renderVideoFor(url, videoID)}
       </div>

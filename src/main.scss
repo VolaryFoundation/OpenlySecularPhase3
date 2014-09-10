@@ -20,7 +20,7 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 }
 
 #logo {
-	margin-top: -30px;
+	margin-top: -33px;
   height: 100px;
 }
 
@@ -52,6 +52,7 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 
   .video {
     @include make-xs-column(6, 0);
+    padding: 2px;
 
     img {
       width: 100%;
@@ -61,6 +62,28 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
   }
 }
 
+.overlay {
+  position: absolute;
+  border: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 200px;
+  color: #fff;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+-webkit-transition: all .2s;
+-moz-transition: all .2s;
+-ms-transition: all .2s;
+-o-transition: all .2s;
+transition: all .2s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
 
 .video-container {
     position: relative;
@@ -99,6 +122,7 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
   margin-right: 0;
   padding: 0;
   overflow: hidden;
+  background: #1B1B1B;
 }
 
 .stream-row {
@@ -110,11 +134,18 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     @include make-xs-column(6, 0);
     @include make-md-column(4, 0);
     @include make-lg-column(3, 0);
+    padding: 2px;
 
     img {
       width: 100%;
       //border-left: 2px solid $gray-dark;
       //border-bottom: 2px solid $gray-dark;
+    }
+  }
+
+  .overlay {
+    @media (min-width: $screen-md) {
+      line-height: 280px;
     }
   }
 }
@@ -688,7 +719,7 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  height: 697px;
+  height: 706px;
   z-index: 3;
   background: #fff;
 
@@ -706,11 +737,15 @@ a {
   @include make-row();
   margin-left: 0;
   margin-right: 0;
-  height: 127px;
 }
 
 .other-media-item {
-  @include make-md-column(4, 0);
+  @include make-md-column(6, 0);
+}
+
+.MediaBlockBody {
+  height: 184px;
+  overflow: hidden;
 }
 
 //

@@ -18,36 +18,34 @@ var DonateHome = React.createClass({
 
     if (this.errors || this.detectEditing()) {
       var classes = React.addons.classSet({
-        inner: true,
+        "panel-body": true,
         error: !!this.errors
       })
       return (
         <div className="action-bar-item">
           <div className="action-item-content">
-            <div className="action-item-header">
-              <div className={classes}>
-                <div className="form-group">
-                  <label>Title</label>
-                  <input className="form-control" type="text" valueLink={this.linkState('title')} />
-                </div>
-                <div className="form-group">
-                  <label>Content</label>
-                  <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
-                </div>
-                <div className="panel-footer clearfix">
-                  <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-                    <div className="is-visible content"><i className="cancel"></i></div>
-                    <div className="not-visible content">Cancel</div>
-                  </button>
-                  <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-                    <div className="is-visible content">Save</div>
-                    <div className="not-visible content"><i className="save"></i></div>
-                  </button>
-                </div>
+            <div className={classes}>
+              <div className="form-group">
+                <label>Title</label>
+                <input className="form-control" type="text" valueLink={this.linkState('title')} />
+              </div>
+              <div className="form-group">
+                <label>Content</label>
+                <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
+              </div>
+              <div className="panel-footer clearfix">
+                <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                  <div className="is-visible content"><i className="cancel"></i></div>
+                  <div className="not-visible content">Cancel</div>
+                </button>
+                <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                  <div className="is-visible content">Save</div>
+                  <div className="not-visible content"><i className="save"></i></div>
+                </button>
+              </div>
             </div>
             <p className="error-message">{this.errors}</p>
           </div>
-        </div>
         </div>
       )
     } else {
@@ -91,36 +89,34 @@ var GetInvolved = React.createClass({
 
     if (this.errors || this.detectEditing()) {
       var classes = React.addons.classSet({
-        inner: true,
+        "panel-body": true,
         error: !!this.errors
       })
       return (
         <div className="action-bar-item">
           <div className="action-item-content">
-            <div className="action-item-header">
-              <div className={classes}>
-                <div className="form-group">
-                  <label>Title</label>
-                  <input className="form-control" type="text" valueLink={this.linkState('title')} />
-                </div>
-                <div className="form-group">
-                  <label>Content</label>
-                  <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
-                </div>
-                <div className="panel-footer clearfix">
-                  <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-                    <div className="is-visible content"><i className="cancel"></i></div>
-                    <div className="not-visible content">Cancel</div>
-                  </button>
-                  <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-                    <div className="is-visible content">Save</div>
-                    <div className="not-visible content"><i className="save"></i></div>
-                  </button>
-                </div>
+            <div className={classes}>
+              <div className="form-group">
+                <label>Title</label>
+                <input className="form-control" type="text" valueLink={this.linkState('title')} />
+              </div>
+              <div className="form-group">
+                <label>Content</label>
+                <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
+              </div>
+              <div className="panel-footer clearfix">
+                <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
+                  <div className="is-visible content"><i className="cancel"></i></div>
+                  <div className="not-visible content">Cancel</div>
+                </button>
+                <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
+                  <div className="is-visible content">Save</div>
+                  <div className="not-visible content"><i className="save"></i></div>
+                </button>
+              </div>
             </div>
             <p className="error-message">{this.errors}</p>
           </div>
-        </div>
         </div>
       )
     } else {

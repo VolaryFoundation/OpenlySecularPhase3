@@ -45,7 +45,7 @@ var ActiveUpdate = React.createClass({
             </div>
             <div className="form-group">
               <label>Content</label>
-              <textarea className="form-control" rows="24" valueLink={this.linkState('content')}></textarea>
+              <textarea className="form-control" rows="15" valueLink={this.linkState('content')}></textarea>
             </div>
           </div>
           <div className="panel-footer clearfix">
@@ -362,7 +362,7 @@ var MediaBlock = React.createClass({
 
     if (this.errors || this.detectEditing()) {
       var classes = React.addons.classSet({
-        inner: true,
+        "panel-body": true,
         error: !!this.errors
       })
       return (
@@ -389,13 +389,15 @@ var MediaBlock = React.createClass({
     } else {
       return (
         <div className="other-media-item">
-          { this.props.isEditable ? (
-              <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
-                <div className="is-visible content"><i className="edit"></i></div>
-                <div className="not-visible content">Edit</div>
-              </button>
-          ) : null }
-          <div className="MediaBlockBody" dangerouslySetInnerHTML={{__html:this.state.content }}></div>
+          <div className="panel-body">
+            { this.props.isEditable ? (
+                <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
+                  <div className="is-visible content"><i className="edit"></i></div>
+                  <div className="not-visible content">Edit</div>
+                </button>
+            ) : null }
+            <div className="MediaBlockBody" dangerouslySetInnerHTML={{__html:this.state.content }}></div>
+          </div>
         </div>
       )
     }
@@ -443,6 +445,7 @@ module.exports = React.createClass({
                 />) : null
               }
               <div className="in-the-media">
+              <img src="/images/guide.jpg">
                 <div className="other-media-row">
                   <MediaBlock
                     $cursor={$campaign.refine('MediaBlock1')}

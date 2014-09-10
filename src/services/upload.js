@@ -10,11 +10,11 @@ var file = {
 
     var reader = new FileReader();
     reader.onloadend = function() {
- 
+
       var tempImg = new Image();
       tempImg.src = reader.result;
       tempImg.onload = function() {
- 
+
         var MAX_WIDTH = opts.width;
         var MAX_HEIGHT = opts.height;
         var tempW = tempImg.width;
@@ -30,7 +30,7 @@ var file = {
             tempH = MAX_HEIGHT;
           }
         }
- 
+
         var canvas = document.createElement('canvas');
         canvas.width = tempW;
         canvas.height = tempH;
@@ -49,8 +49,16 @@ var file = {
 
   },
 
+  processFile: function(file, opts, cb) {
+    var file = new File(file.name, file, file.type)
+    file.save().then(function() {
+      cb(file)
+    })
+  },
+
   link: function() {
     hub.on('file:image:process', this.processImage, this)
+    hub.on('file:process', this.processFile, this)
   }
 }
 

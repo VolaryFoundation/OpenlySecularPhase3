@@ -36,56 +36,6 @@ var DownloadList = React.createClass({
   render: function() {
     var _id = this.props.$cursor.deref()._id
 
-    this.errors = this.errors || errors.forCursor(this.props.$cursor)
-
-    if (this.errors || this.detectEditing()) {
-      var classes = React.addons.classSet({
-        "media": true,
-        error: !!this.errors
-      })
-      return (
-<div className="resources-item">
-  <div className="panel-heading">
-    <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">
-      <div className="is-visible content"><i className="cancel"></i></div>
-        <div className="not-visible content">Cancel</div>
-    </button>
-    <div className="form-group">
-      <input type='text' className="form-control" valueLink={this.linkState('title')} />
-      </div>
-    <button onClick={this.save} className="btn-md btn-animated vertical btn-success pull-right">
-      <div className="is-visible content">Save</div>
-      <div className="not-visible content"><i className="save"></i></div>
-      </button>
-  </div>
-  <div className="panel-body">
-    <ul className="media-list">
-      {
-        this.pagination.getCurrent().map(function(item, index) {
-          return <DownloadItem
-            $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
-            isEditable={this.props.isEditable}
-            isNew={!item.name}
-            onDelete={this.deleteItem.bind(this, index)}
-          />
-        }, this)
-      }
-    </ul>
-  </div>
-  <div className="pagination-bar clearfix">
-    <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
-      <div className="is-visible content"><i className="prev"></i></div>
-      <div className="not-visible content">Prev</div>
-    </button>
-    <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
-      <div className="is-visible content"><i className="next"></i></div>
-      <div className="not-visible content">Next</div>
-    </button>
-  </div>
-</div>
-
-      )
-    } else {
     return (
       <div className="resources-item">
         <div className="panel-heading">
@@ -130,7 +80,6 @@ var DownloadList = React.createClass({
       </div>
     )
   }
-}
 
 })
 
@@ -150,7 +99,7 @@ var DownloadItem = React.createClass({
 
   upload: function(e) {
     var file = e.target.files[0]
-    hub.emit('file:image:process', file, {}, function(f) {
+    hub.emit('file:process', file, {}, function(f) {
       this.props.$cursor.update({ file: { $set: f.url() } })
     }.bind(this))
   },
@@ -291,14 +240,8 @@ var Resources = React.createClass({
   render: function() {
     var _id = this.props.$cursor.deref()._id
 
-    this.errors = this.errors || errors.forCursor(this.props.$cursor)
-
-    if (this.errors || this.detectEditing()) {
-      var classes = React.addons.classSet({
-        "media": true,
-        error: !!this.errors
-      })
-      return (
+if (this.detectEditing()) {
+  return (
         <div className="resources-item">
             <div className="panel-heading">
               <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">

@@ -3,6 +3,7 @@ var gulp = require('gulp')
 var mongo = require('mongo-promise')
 var config = require('config')
 var Parse = require('parse').Parse
+var _ = require('lodash')
 
 var srcPath = __dirname + '/src'
 var builder = require('volary-static-builder')({ srcPath: srcPath })
@@ -10,19 +11,45 @@ var builder = require('volary-static-builder')({ srcPath: srcPath })
 mongo.url = config.database.url
 mongo.shortcut('campaigns')
 
+function parseSlug(argv) {
+
+  var arg = _.find(argv, function(a) { return _.contains(a, '--slug') })
+  if (!arg) throw "Missing --slug argument"
+  var slug = arg.split('=')[1]
+  if (!slug) throw "Missing --slug={value} argument value"
+
+  return slug
+}
+
+function getCampaign(slug, fn) {
+  var Campaign = Parse.Object.extend('Campaign')
+  var query = new Parse.Query(Campaign)
+  return query.equalTo('slug', slug).first(fn)
+}
 
 gulp.task('buildAndServe', function(done) {
 
   Parse.initialize(config.parse.appId, config.parse.jsKey);
 
-  var Campaign = Parse.Object.extend('Campaign')
-  var query = new Parse.Query(Campaign)
-  query
-    .equalTo('slug', 'development')
-    .first(function(campaign) {
-      builder.buildAndServe({ campaign: campaign.toJSON() }, {})
-      done()
+  getCampaign('development', function(campaign) {
+    builder.buildAndServe({ campaign: campaign.toJSON() }, {})
+    done()
+  })
+})
+
+gulp.task('deploy', function(done) {
+
+  Parse.initialize(config.parse.appId, config.parse.jsKey);
+
+  var slug = parseSlug(process.argv)
+  getCampaign(slug, function(campaign) {
+    builder.buildAndUpload({ campaign: campaign.toJSON() }, {
+      accessKeyId: 'AKIAJ7WMASLN6BY3TOLQ',
+      secretKey: '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',
+      bucket: slug + '.awaren.es'
     })
+    done()
+  })
 })
 
 gulp.task('initDev', function(done) {
@@ -54,23 +81,6 @@ gulp.task('initDev', function(done) {
         },
         DIY: {
           content: "<strong>Blah is bold</strong><br>shnarf",
-        },
-        MediaBlock1: {
-          content: "<strong>Blah is bold</strong><br>shnarf",
-        },
-        MediaBlock2: {
-          content: "<strong>Blah is bold</strong><br>shnarf",
-        },
-        MediaBlock3: {
-          content: "<strong>Blah is bold</strong><br>shnarf",
-        },
-        InvolvedHome: {
-          title: "Get Involved",
-          content: "Take action and join the conversation by posting a status, photo, or video on social media with the hashtag ourhashtag. Then submit it to us to make sure it gets featured on the site. Because together we can make sure our voices are heard.",
-        },
-        DonateHome: {
-          title: "Make a Donations",
-          content: "Donate to help us raise awareness",
         },
         logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
         partners: [
@@ -130,24 +140,24 @@ gulp.task('initDev', function(done) {
         updates: {
           title: 'Latest updates',
           list: [
-            { _id: 0, title: 'Our monthly status 1', date: 'September 4, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 1, title: 'Our monthly status 2', date: 'September 5, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 2, title: 'Our monthly status 3', date: 'September 6, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 3, title: 'Our monthly status 4', date: 'September 7, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 4, title: 'Our monthly status 5', date: 'September 8, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
-            { _id: 5, title: 'Our monthly status 6', date: 'September 9, 2014', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' }
+            { _id: 0, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 1, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 2, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 3, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 4, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' },
+            { _id: 5, title: 'Our monthly status', date: '04/04/04', excerpt: 'This is a short excerpt...', content: 'Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.' }
           ]
         },
         news: {
           title: 'In the news',
           list: [
-            { _id: 0, title: 'news article 1', date: 'September 4, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 1, title: 'news article 1', date: 'September 5, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 2, title: 'news article 1', date: 'September 6, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 3, title: 'news article 1', date: 'September 7, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 4, title: 'news article 1', date: 'September 8, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 5, title: 'news article 1', date: 'September 9, 2014', source: 'nytimes.com', link: 'http://nytimes.com' },
-            { _id: 6, title: 'news article 1', date: 'September 10, 2014', source: 'nytimes.com', link: 'http://nytimes.com' }
+            { _id: 0, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 1, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 2, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 3, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 4, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 5, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' },
+            { _id: 6, title: 'news article 1', date: '04/04/04', source: 'nytimes.com', link: 'http://nytimes.com' }
           ]
         },
         resources: {
@@ -185,3 +195,4 @@ gulp.task('dev', [ 'buildAndServe' ], function() {
 // License along with Widget Server.  If not, see                           //
 // <http://www.gnu.org/licenses/>.                                          //
 //==========================================================================//
+

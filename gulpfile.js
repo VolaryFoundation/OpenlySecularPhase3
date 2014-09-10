@@ -7,6 +7,8 @@ var _ = require('lodash')
 
 var srcPath = __dirname + '/src'
 var builder = require('volary-static-builder')({ srcPath: srcPath })
+var creds = require('./.aws-creds.json')
+console.log(creds)
 
 mongo.url = config.database.url
 mongo.shortcut('campaigns')
@@ -44,8 +46,8 @@ gulp.task('deploy', function(done) {
   var slug = parseSlug(process.argv)
   getCampaign(slug, function(campaign) {
     builder.buildAndUpload({ campaign: campaign.toJSON() }, {
-      accessKeyId: 'AKIAJ7WMASLN6BY3TOLQ',
-      secretKey: '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',
+      accessKeyId: creds.secretKeyId,
+      secretKey: creds.secretKey,
       bucket: slug + '.awaren.es'
     })
     done()

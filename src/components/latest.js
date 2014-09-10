@@ -136,7 +136,9 @@ var Updates = React.createClass({
 
   render: function() {
     var _id = this.props.$cursor.deref()._id
-    var list = this.pagination.getCurrent()
+    var list = this.pagination.getCurrent().filter(function(item) {
+      return item.title
+    })
     return (
       <div className="updates">
         <div className="panel-heading">
@@ -314,23 +316,6 @@ var NewsItem = React.createClass({
     }
   },
 
-  componentDidMount: function() {
-    var component = this
-    if (!this.refs.cal) return
-    var input = this.refs.cal.getDOMNode()
-    var format = 'MMMM DD, YYYY'
-    this.picker = new Pikaday({
-      format: format,
-      onSelect: function() {
-        component.setState({ date: this.getMoment().format(format) })
-      },
-      field: input,
-      onOpen: function() {
-        this.adjustPosition()
-      }
-    })
-  },
-
   render: function() {
     if (this.detectEditing()) {
       return (
@@ -342,7 +327,7 @@ var NewsItem = React.createClass({
             </div>
             <div className="form-group">
               <label>Date</label>
-              <input className="form-control" ref="cal" type='text' value={this.state.date} />
+              <input className="form-control" type='text' valueLink={this.linkState('date')} />
             </div>
             <div className="form-group">
               <label>Source Name</label>

@@ -317,7 +317,6 @@ var NewsItem = React.createClass({
     var format = 'MMMM DD, YYYY'
     this.picker = new Pikaday({
       format: format,
-
       onSelect: function() {
         component.setState({ date: this.getMoment().format(format) })
       },
@@ -326,10 +325,6 @@ var NewsItem = React.createClass({
         this.adjustPosition()
       }
     })
-  },
-
-  componentWillReceiveProps: function(newProps) {
-    this.setState({ date: newProps.$cursor.deref() })
   },
 
   render: function() {
@@ -343,7 +338,7 @@ var NewsItem = React.createClass({
             </div>
             <div className="form-group">
               <label>Date</label>
-              <input className="form-control" ref="cal" type='text' />
+              <input className="form-control" ref="cal" type='text' value={this.state.date} />
             </div>
             <div className="form-group">
               <label>Source Name</label>
@@ -387,7 +382,9 @@ var NewsItem = React.createClass({
             <p className="meta">
               <span className="date"><i className="fa fa-fw fa-clock-o"></i> {this.state.date}</span>
             </p>
-            <a href={this.state.link} target="_blank"><h4 className="media-heading">{this.state.title}</h4></a>
+            <a href={this.state.link} target="_blank">
+              <h4 className="media-heading">{this.state.title}</h4>
+            </a>
             <strong>{this.state.source}</strong>
           </div>
         </li>

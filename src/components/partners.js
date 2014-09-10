@@ -5,6 +5,7 @@ var React = require('react/addons')
 var Editable = require('../mixins/editable')
 var campaignService = require('../services/campaign')
 var uploadService = require('../services/upload')
+var hub = require('../hub')
 var _ = require('lodash')
 var util = require('util')
 
@@ -134,11 +135,9 @@ var PartnerItem = React.createClass({
 
   upload: function(e) {
     var file = e.target.files[0]
-    uploadService.createImage(file.name, file).then(function(f) {
+    hub.emit('file:image:process', file, {}, function(f) {
       this.props.$cursor.update({ file: { $set: f.url() } })
-    }.bind(this), function() {
-      debugger
-    })
+    }.bind(this))
   },
 
   render: function() {

@@ -9,6 +9,7 @@ var routes = require('./routes')
 
 var campaignService = require('./services/campaign')
 var sessionService = require('./services/session')
+require('./services/upload').link()
 
 // for react devtools
 window.React = React

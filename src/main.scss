@@ -248,61 +248,18 @@ textarea.form-control {
   padding-left: 0;
 }
 
-/* columns of same height styles */
-.container-xs-height {
-    display: table;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-.row-xs-height {
-    display: table-row;
-}
-.col-xs-height {
-    display: table-cell;
-    float: none;
-}
-@media (min-width: 768px) {
-    .container-sm-height {
-        display: table;
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-    .row-sm-height {
-        display: table-row;
-    }
-    .col-sm-height {
-        display: table-cell;
-        float: none;
-    }
-}
+
+
 @media (min-width: 992px) {
-    .container-md-height {
-        display: table;
-        padding-left: 0px;
-        padding-right: 0px;
+    .row-height {
+      overflow: hidden;
     }
-    .row-md-height {
-        display: table-row;
-    }
-    .col-md-height {
-        display: table-cell;
-        float: none;
+    .col-height {
+      margin-bottom: -99999px;
+      padding-bottom: 99999px;
     }
 }
-@media (min-width: 1200px) {
-    .container-lg-height {
-        display: table;
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-    .row-lg-height {
-        display: table-row;
-    }
-    .col-lg-height {
-        display: table-cell;
-        float: none;
-    }
-}
+
 
 /* vertical alignment styles */
 .col-top {
@@ -471,7 +428,6 @@ a {
 
 .action-bar-container  {
   @include container-fixed;
-  @extend .container-md-height;
   //border-top: $border-dark;
 
   @media (min-width: $screen-md) {
@@ -481,16 +437,16 @@ a {
 
 .action-bar-row {
   @extend .row;
-  @extend .row-md-height;
+  @extend .row-height;
 }
 
 .action-bar-item {
-  padding: 40px 0;
+  padding: 20px 0;
 
   &:first-child {
     @include make-sm-column(6);
     @include make-md-column(4);
-    @extend .col-md-height;
+    @extend .col-height;
 
     .action-item-body {
       text-align: center;
@@ -500,8 +456,8 @@ a {
   &:nth-child(2) {
     @include make-sm-column(6, 0);
     @include make-md-column(4, 0);
+    @extend .col-height;
     @include make-md-column-push(4);
-    @extend .col-md-height;
 
     @media (max-width: $screen-sm) {
       border-top: $border;
@@ -515,8 +471,8 @@ a {
   &:last-child {
     @include make-sm-column(12, 0);
     @include make-md-column(4, 0);
+    @extend .col-height;
     @include make-md-column-pull(4);
-    @extend .col-md-height;
     background: $background-highlight;
 
     @media (max-width: $screen-md) {
@@ -634,6 +590,7 @@ a {
 
 .latest-row {
   @include make-row();
+  @extend .row-height;
 }
 
 .latest-item {
@@ -641,6 +598,7 @@ a {
   &:first-child {
     @include make-sm-column(12, 0);
     @include make-md-column(4, 0);
+    @extend .col-height;
 
     @media (min-width: $screen-md) {
       border-right: $border-dark;
@@ -650,6 +608,7 @@ a {
   &:last-child {
     @include make-sm-column(12, 0);
     @include make-md-column(8, 0);
+    @extend .col-height;
   }
 }
 
@@ -784,15 +743,19 @@ a {
 
 .mission-row {
   @include make-row();
+  @extend .row-height;
+
   .about-item:first-child {
     @include make-sm-column(12);
     @include make-md-column(4);
+    @extend .col-height;
     background: #f5f5f5;
   }
 
   .about-item:last-child {
     @include make-sm-column(12);
     @include make-md-column(8);
+    @extend .col-height;
 
     p {
       margin-bottom: 20px;
@@ -803,24 +766,28 @@ a {
   }
 }
 
+.about-item {
+  .panel-body {
+    padding: 60px 0;
+  }
+}
+
 .about-mission {
   padding: 40px;
 }
 
 .about-container {
   @include container-fixed;
-  //@extend .container-md-height;
-  border-bottom: $border-dark;
 }
 
 .about-row {
   @include make-row();
-  //@extend .row-md-height;
+  @extend .row-height;
 
   .about-item {
     @include make-sm-column(12);
     @include make-md-column(4);
-    //@extend .col-md-height;
+    @extend .col-height;
 
     @media (min-width: $screen-md) {
       border-right: $border;
@@ -863,7 +830,11 @@ a {
 
 .partners-row {
   @extend .row;
-  border-bottom: $border-dark;
+  @extend .row-height;
+
+  &:first-child {
+    border-bottom: $border-dark;
+  }
 }
 
 .partners-item {
@@ -872,6 +843,7 @@ a {
     @include make-sm-column(12, 0);
     @include make-md-column(4, 0);
     @include make-lg-column(3, 0);
+    @extend .col-height;
 
     @media (min-width: $screen-md) {
       //border-right: $border;
@@ -882,6 +854,7 @@ a {
     @include make-sm-column(12, 0);
     @include make-md-column(8, 0);
     @include make-lg-column(9, 0);
+    @extend .col-height;
   }
 
   .panel-heading {
@@ -984,14 +957,11 @@ a {
 
 .resources-container {
   @include container-fixed;
-
-  @media (min-width: $screen-md) {
-    border-bottom: $border;
-  }
 }
 
 .resources-row {
   @include make-row();
+  @extend .row-height;
 }
 
 .resources-item {
@@ -999,6 +969,7 @@ a {
   &:first-child {
     @include make-sm-column(12, 0);
     @include make-md-column(3, 0);
+    @extend .col-height;
 
     @media (min-width: $screen-md) {
       border-right: $border-dark;
@@ -1008,6 +979,7 @@ a {
   &:last-child {
     @include make-sm-column(12, 0);
     @include make-md-column(3, 0);
+    @extend .col-height;
 
     @media (max-width: $screen-md) {
       border-top: $border-dark;
@@ -1027,6 +999,7 @@ a {
 .random-item {
   @include make-sm-column(12, 0);
   @include make-md-column(6, 0);
+  @extend .col-height;
 }
 
 
@@ -1038,11 +1011,11 @@ a {
 
 .contact-container {
   @include container-fixed;
-  border-bottom: $border-dark;
 }
 
 .contact-row {
   @include make-row();
+  @extend .row-height;
 }
 
 .contact-item {
@@ -1051,6 +1024,7 @@ a {
     @include make-sm-column(12, 0);
     @include make-md-column(6, 0);
     @include make-lg-column(5, 0);
+    @extend .col-height;
 
     @media (min-width: $screen-md) {
       border-right: $border-dark;
@@ -1061,6 +1035,7 @@ a {
     @include make-sm-column(12, 0);
     @include make-md-column(6, 0);
     @include make-lg-column(7, 0);
+    @extend .col-height;
 
     @media (max-width: $screen-md) {
       border-top: $border-dark;
@@ -1083,6 +1058,7 @@ a {
 
 .press-row {
   @include make-row();
+  @extend .row-height;
   margin: 0;
   border-top: $border-dark;
 }
@@ -1090,6 +1066,7 @@ a {
 .press-item {
   @include make-sm-column(12, 0);
   @include make-md-column(6, 0);
+  @extend .col-height;
 
   &:first-child {
     @media (min-width: $screen-md) {

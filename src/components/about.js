@@ -80,6 +80,7 @@ module.exports = React.createClass({
       <div className="mission-container">
         <div className="mission-row">
           <div className="about-item">
+          <p>Image Here</p>
           </div>
             <AboutSection
               $cursor={$campaign.refine('about1')}

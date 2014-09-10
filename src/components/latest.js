@@ -47,7 +47,7 @@ var ActiveUpdate = React.createClass({
     var _id = this.props.$cursor.deref()._id
 
     if (this.props.isEditing) {
-      var cancel = this.props.isNew ? this.props.onDelete : this.props.activate
+      var cancel = function() { this.props.isNew ? this.props.onDelete() : this.props.activate() }.bind(this)
       return (
         <div className="article">
           <div className="panel-heading">

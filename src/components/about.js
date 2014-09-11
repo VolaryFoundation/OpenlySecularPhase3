@@ -30,7 +30,7 @@ var AboutSection = React.createClass({
             </div>
             <div className="form-group">
               <label>Content</label>
-              <textarea className="form-control" rows="6" valueLink={this.linkState('content')}></textarea>
+              <textarea className="form-control" rows="10" valueLink={this.linkState('content')}></textarea>
             </div>
             <div className="panel-footer clearfix">
               <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">

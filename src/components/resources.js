@@ -158,7 +158,7 @@ var DownloadItem = React.createClass({
                   <div className="not-visible content">Edit</div>
                 </button>) : '' }
               </div>
-            <a href={this.state.file}>
+            <a href={this.state.file} target="_blank">
               <h4 className="media-heading">{this.state.name}</h4>
             </a>
             <p>{this.state.description}</p>

@@ -113,7 +113,7 @@ var Updates = React.createClass({
 
   componentWillMount: function() {
     this.paginate({
-      perPage: 3,
+      perPage: 4,
       getList: function() {
         return this.props.$cursor.deref().list
       }
@@ -199,20 +199,18 @@ var UpdateItem = React.createClass({
     return (
       <li className="media">
         <div className="media-body">
+        { this.props.isEditable ? (
         <div className="admin-bar clearfix">
-          { this.props.isEditable ? (
             <button onClick={this.props.onDelete} className="btn-animated btn-sm vertical btn-danger pull-left">
               <div className="is-visible content"><i className="delete"></i></div>
               <div className="not-visible content">Delete</div>
             </button>
-            ) : '' }
-          { this.props.isEditable ? (
             <button onClick={this.activateEdit} className="btn-animated btn-sm vertical btn-warning pull-right">
               <div className="is-visible content"><i className="edit"></i></div>
               <div className="not-visible content">Edit</div>
             </button>
-            ) : '' }
         </div>
+        ) : '' }
           <a href="#" onClick={this.props.activate.bind(null, this.props.$cursor)} key={this.state._id}>
             <h4 className="media-heading">{this.state.title}</h4>
           </a>
@@ -354,20 +352,18 @@ var NewsItem = React.createClass({
       return (
         <li className="media" key={this.state._id}>
           <div className="media-body">
+          { this.props.isEditable ? (
             <div className="admin-bar clearfix">
-              { this.props.isEditable ? (
-                <button onClick={this.props.onDelete.bind(null, this.props.index)} className="btn-animated btn-sm vertical btn-danger pull-left">
-                  <div className="is-visible content"><i className="delete"></i></div>
-                  <div className="not-visible content">Delete</div>
-                </button>
-                ) : '' }
-              { this.props.isEditable ? (
-                <button onClick={this.edit} className="btn-animated btn-sm vertical btn-warning pull-right">
-                  <div className="is-visible content"><i className="edit"></i></div>
-                  <div className="not-visible content">Edit</div>
-                </button>
-                ) : '' }
+              <button onClick={this.props.onDelete.bind(null, this.props.index)} className="btn-animated btn-sm vertical btn-danger pull-left">
+                <div className="is-visible content"><i className="delete"></i></div>
+                <div className="not-visible content">Delete</div>
+              </button>
+              <button onClick={this.edit} className="btn-animated btn-sm vertical btn-warning pull-right">
+                <div className="is-visible content"><i className="edit"></i></div>
+                <div className="not-visible content">Edit</div>
+              </button>
             </div>
+            ) : '' }
             <a href={this.state.link} target="_blank">
               <h4 className="media-heading">{this.state.title}</h4>
             </a>

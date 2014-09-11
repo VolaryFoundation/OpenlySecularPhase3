@@ -197,20 +197,18 @@ var PartnerItem = React.createClass({
     } else {
       return (
         <li className="partner">
+        { this.props.isEditable ? (
           <div className="admin-bar clearfix">
-            { this.props.isEditable ? (
               <button onClick={this.props.onDelete} className="btn-animated btn-sm vertical btn-danger pull-left">
                 <div className="is-visible content"><i className="delete"></i></div>
                 <div className="not-visible content">Delete</div>
               </button>
-              ) : '' }
-            { this.props.isEditable ? (
               <button onClick={this.edit} className="btn-animated btn-sm vertical btn-warning pull-right">
                 <div className="is-visible content"><i className="edit"></i></div>
                 <div className="not-visible content">Edit</div>
               </button>
-              ) : '' }
           </div>
+        ) : '' }
           <a href={this.state.link} target="_blank">
           <img className="img-responsive" src={this.state.file} />
           <div className="partner-header">

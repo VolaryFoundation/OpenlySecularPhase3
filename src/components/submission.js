@@ -77,7 +77,7 @@ module.exports = React.createClass({
               </div>
             </div>
             <Guidelines
-              $cursor={$campaign.refine('Guidelines1')}
+              $cursor={$campaign.refine('Guidelines')}
               isEditable={!_.isEmpty($shared.deref().session)}
             />
           </div>

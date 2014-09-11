@@ -16,7 +16,7 @@ module.exports = React.createClass({
 
     }
 
-    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2hAwdlHVXw2jTGUFahKH43l?v=2&alt=json';
+    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2hAwdlHVXw2jTGUFahKH43l?max-results=50&v=2&alt=json';
     var videoURL= 'http://www.youtube.com/watch?v=';
 
     var xhr = new XMLHttpRequest
@@ -37,7 +37,7 @@ module.exports = React.createClass({
             var fragments = feedURL.split("/");
             var videoID = fragments[fragments.length - 2];
             var url = videoURL + videoID;
-            var thumb = "http://img.youtube.com/vi/"+ videoID +"/mediu.jpg";
+            var thumb = "http://img.youtube.com/vi/"+ videoID +"/medium.jpg";
             list_data += '<li><a href="'+ url +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a></li>';
         });
         $(list_data).appendTo(".cont");

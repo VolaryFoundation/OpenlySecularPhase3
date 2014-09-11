@@ -155,12 +155,8 @@ var PartnerItem = React.createClass({
   render: function() {
     if (this.detectEditing()) {
       return (
-        <li className="partner">
+        <li className="partner editing">
           <div className="panel-body">
-            <div className="form-group">
-              <label>Featured?</label>
-              <input type="checkbox" checkedLink={this.linkState('featured')} />
-            </div>
             <div className="form-group">
               <label>Logo</label>
               <input onChange={this.upload} type="file" />
@@ -179,6 +175,11 @@ var PartnerItem = React.createClass({
                 <span className="input-group-addon"><i className="fa fa-fw fa-link"></i></span>
                 <input className="form-control" type="text" valueLink={this.linkState('link')} />
               </div>
+            </div>
+            <div className="checkbox">
+              <label>
+                <input type="checkbox" checkedLink={this.linkState('featured')} /> Featured
+              </label>
             </div>
             <div className="panel-footer clearfix">
               <button onClick={this.smartCancel} className="btn-md btn-animated vertical btn-default pull-left">

@@ -133,8 +133,7 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
   width: 100%;
   height: 100%;
   text-align: center;
-  line-height: 200px;
-  color: #fff;
+  color: rgba(255,255,255,0.4);
   font-size: 14px;
   background-color: rgba(0,0,0,0.5);
 -webkit-transition: all .2s;
@@ -144,8 +143,13 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 transition: all .2s;
 
   &:hover {
+    color: #fff;
     background-color: rgba(0,0,0,0);
-    font-size: 16px;
+  }
+
+  figure {
+    position: relative;
+    top: 40%;
   }
 }
 
@@ -204,19 +208,16 @@ transition: all .2s;
     @include make-md-column(4, 0);
     @include make-lg-column(3, 0);
     padding: 2px;
+    overflow: hidden;
 
     img {
+      max-height: 271px;
       width: 100%;
       //border-left: 2px solid $gray-dark;
       //border-bottom: 2px solid $gray-dark;
     }
   }
 
-  .overlay {
-    @media (min-width: $screen-lg) {
-      line-height: 280px;
-    }
-  }
 }
 
 #stream-player-original {

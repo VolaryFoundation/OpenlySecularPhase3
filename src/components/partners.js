@@ -147,7 +147,7 @@ var PartnerItem = React.createClass({
 
   upload: function(e) {
     var file = e.target.files[0]
-    hub.emit('file:image:process', file, {}, function(f) {
+    hub.emit('file:image:process', file, { width: 300, height: 300 }, function(f) {
       this.props.$cursor.update({ file: { $set: f.url() } }, { skipSync: true })
     }.bind(this))
   },

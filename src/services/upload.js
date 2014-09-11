@@ -36,7 +36,7 @@ var file = {
         canvas.height = tempH;
         var ctx = canvas.getContext("2d");
         ctx.drawImage(this, 0, 0, tempW, tempH);
-        var dataURL = canvas.toDataURL("image/jpeg");
+        var dataURL = canvas.toDataURL("image/png");
 
         var file = new File(img.name, { base64: dataURL }, img.type)
         file.save().then(function() {

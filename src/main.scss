@@ -590,6 +590,18 @@ a {
   }
 }
 
+.social-links > a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  line-height: 30px;
+  text-align: center;
+  margin-right: 15px;
+  color: $brand-primary;
+  background: $brand-secondary;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
 
 .bullhorn {
   @extend .fa;
@@ -1373,10 +1385,7 @@ a {
 
 
 
-.btn-twitter {
-  color: #00acee;
-  background:$background-highlight;
-
+.twitter {
 
   &:hover {
     color: #fff;
@@ -1385,9 +1394,7 @@ a {
   }
 }
 
-.btn-facebook {
-  color: #3b5998;
-  background: $background-highlight;
+.facebook {
 
   &:hover {
     color: #fff;
@@ -1396,9 +1403,7 @@ a {
   }
 }
 
-.btn-instagram {
-  color: #3f729b;
-  background: $background-highlight;
+.instagram {
 
   &:hover {
     color: #fff;
@@ -1407,9 +1412,7 @@ a {
   }
 }
 
-.btn-youtube {
-  color: #c4302b;
-  background: $background-highlight;
+.youtube {
 
   &:hover {
     color: #fff;

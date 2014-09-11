@@ -189,22 +189,10 @@ module.exports = React.createClass({
                   </div>
                 </div>
                   <div className="social-links">
-                    <button className="btn-lg btn-animated vertical btn-twitter">
-                      <div className="is-visible content"><i className="twitter"></i></div>
-                      <div className="not-visible content"><i className="twitter"></i></div>
-                    </button>
-                    <button className="btn-lg btn-animated vertical btn-facebook">
-                      <div className="is-visible content"><i className="facebook"></i></div>
-                      <div className="not-visible content"><i className="facebook"></i></div>
-                    </button>
-                    <button className="btn-lg btn-animated vertical btn-instagram">
-                      <div className="is-visible content"><i className="instagram"></i></div>
-                      <div className="not-visible content"><i className="instagram"></i></div>
-                    </button>
-                    <button className="btn-lg btn-animated vertical btn-youtube">
-                      <div className="is-visible content"><i className="youtube"></i></div>
-                      <div className="not-visible content"><i className="youtube"></i></div>
-                    </button>
+                    <a className="twitter"></a>
+                    <a className="facebook"></a>
+                    <a className="instagram"></a>
+                    <a className="youtube"></a>
                   </div>
               </div>
             </div>

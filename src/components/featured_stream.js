@@ -15,7 +15,7 @@ module.exports = React.createClass({
 
     }
 
-    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLnJYzBywdWFPv_eWD6JxAtcrFbvnY7tGI?v=2&alt=json';
+    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2jOQdRZx_AuWMlMe7KpohFl?v=2&alt=json';
     var videoURL= 'http://www.youtube.com/watch?v=';
 
     var xhr = new XMLHttpRequest

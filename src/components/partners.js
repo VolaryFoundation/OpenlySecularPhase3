@@ -16,7 +16,7 @@ var PartnerList = React.createClass({
   add: function(e) {
     e.preventDefault()
     var list = this.state.list
-    this.props.$cursor.update({ list: { $push: [ { name: '', file: '', link: '' } ] } })
+    this.props.$cursor.update({ list: { $unshift: [ { name: '', file: '', link: '' } ] } })
   },
 
   deleteItem: function(index) {

@@ -3,23 +3,33 @@
 
 var React = require('react/addons')
 var Editable = require('../mixins/editable')
+var Paginated = require('../mixins/paginated')
 var campaignService = require('../services/campaign')
 var uploadService = require('../services/upload')
 var hub = require('../hub')
 var _ = require('lodash')
-var util = require('util')
+var util = require('../util')
 
 var PartnerList = React.createClass({
 
-  mixins: [ Editable, React.addons.LinkedStateMixin ],
+  mixins: [ Editable, React.addons.LinkedStateMixin, Paginated ],
+
+  componentWillMount: function() {
+    this.paginate({
+      perPage: 4,
+      getList: function() { return this.props.$cursor.deref().list }
+    })
+  },
 
   add: function(e) {
     e.preventDefault()
     var list = this.state.list
-    this.props.$cursor.update({ list: { $unshift: [ { name: '', file: '', link: '' } ] } })
+    var _id = util.nextId(list)
+    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, name: '', file: '', link: '', featured: false } ] } }, { skipSync: true })
   },
 
-  deleteItem: function(index) {
+  deleteItem: function(_id) {
+    var index = _.findIndex(this.props.$cursor.deref().list, { _id: _id })
     this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
   },
 
@@ -74,11 +84,11 @@ var PartnerList = React.createClass({
             <p>{this.state.description}</p>
           </div>
           <div className="pagination-bar clearfix">
-          <button className="btn-md btn-animated vertical btn-clean pull-left">
+          <button onClick={this.pagination.down} className="btn-md btn-animated vertical btn-clean pull-left">
             <div className="is-visible content"><i className="prev"></i></div>
             <div className="not-visible content">Prev</div>
           </button>
-          <button className="btn-md btn-animated vertical btn-clean pull-right">
+          <button onClick={this.pagination.up} className="btn-md btn-animated vertical btn-clean pull-right">
             <div className="is-visible content"><i className="next"></i></div>
             <div className="not-visible content">Next</div>
           </button>
@@ -87,6 +97,7 @@ var PartnerList = React.createClass({
       )
     }.bind(this)
 
+    var list = this.pagination.getCurrent()
     return (
       <div className="partners-row" key={this.state.name}>
         { this.detectEditing() ? renderEditing() : renderViewing() }
@@ -94,12 +105,13 @@ var PartnerList = React.createClass({
           <div className="partners-list">
             <ul>
               {
-                this.state.list.map(function(item, index) {
+                list.map(function(item, i) {
+                  var realI = (this.pagination.index * this.pagination.perPage) + i
                   return <PartnerItem
-                    $cursor={this.props.$cursor.refine([ 'list', index ])}
-                    index={index}
+                    key={item._id}
+                    $cursor={this.props.$cursor.refine([ 'list', realI ])}
                     isEditable={this.props.isEditable}
-                    onDelete={this.deleteItem}
+                    onDelete={this.deleteItem.bind(this, item._id)}
                   />
                 }, this)
               }
@@ -122,7 +134,7 @@ var PartnerItem = React.createClass({
 
   smartCancel: function() {
     if (this.detectNewness()) {
-      this.props.onDelete(this.props.index)
+      this.props.onDelete()
     } else {
       this.cancel()
     }
@@ -136,15 +148,19 @@ var PartnerItem = React.createClass({
   upload: function(e) {
     var file = e.target.files[0]
     hub.emit('file:image:process', file, {}, function(f) {
-      this.props.$cursor.update({ file: { $set: f.url() } })
+      this.props.$cursor.update({ file: { $set: f.url() } }, { skipSync: true })
     }.bind(this))
   },
 
   render: function() {
     if (this.detectEditing()) {
       return (
-        <div className="partner" key={this.props.index}>
+        <li className="partner">
           <div className="panel-body">
+            <div className="form-group">
+              <label>Featured?</label>
+              <input type="checkbox" checkedLink={this.linkState('featured')} />
+            </div>
             <div className="form-group">
               <label>Logo</label>
               <input onChange={this.upload} type="file" />
@@ -175,14 +191,14 @@ var PartnerItem = React.createClass({
               </button>
             </div>
           </div>
-        </div>
+        </li>
       )
     } else {
       return (
         <li className="partner">
           <div className="admin-bar clearfix">
             { this.props.isEditable ? (
-              <button onClick={this.props.onDelete.bind(null, this.props.index)} className="btn-animated btn-sm vertical btn-danger pull-left">
+              <button onClick={this.props.onDelete} className="btn-animated btn-sm vertical btn-danger pull-left">
                 <div className="is-visible content"><i className="delete"></i></div>
                 <div className="not-visible content">Delete</div>
               </button>

@@ -8,6 +8,12 @@ var toJSON = _.partialRight(_.result, 'toJSON')
 
 var initialized = false
 
+var partnerSorter = function(a, b) {
+    if (a.featured && !b.featured) return -1
+    if (!a.featured && b.featured) return 1
+    return 0
+}
+
 var campaign = {
 
   patch: function(patches) {
@@ -23,6 +29,9 @@ var campaign = {
 
   init: _.once(function($campaign) {
     campaign.load().then(function(c) {
+      c.partners.forEach(function(partners) {
+        partners.list = partners.list.sort(partnerSorter)
+      })
       $campaign.update({ $set: c })
     })
   }), 

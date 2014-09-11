@@ -36714,9 +36714,7 @@ module.exports = function (headers) {
 
   return result
 }
-},{"for-each":175,"trim":177}],"./boot":[function(require,module,exports){
-module.exports=require('/mCort');
-},{}],"/mCort":[function(require,module,exports){
+},{"for-each":175,"trim":177}],"/mCort":[function(require,module,exports){
 
 var _ = require('lodash')
 var Immutable = require('immutable')
@@ -36728,6 +36726,7 @@ var routes = require('./routes')
 
 var campaignService = require('./services/campaign')
 var sessionService = require('./services/session')
+require('./services/upload').link()
 
 // for react devtools
 window.React = React
@@ -36782,7 +36781,9 @@ $root.update({
 
 routes($root.refine('shared'))
 
-},{"./components/app":"1d8kwa","./hub":"MAeJA1","./routes":"1kDlg1","./services/campaign":"eajjYM","./services/session":"KwrW/Q","./sync":"OTZ8JZ","./util":"Y/OqMs","immutable":1,"lodash":2,"react/addons":5}],"3KNCAT":[function(require,module,exports){
+},{"./components/app":"1d8kwa","./hub":"MAeJA1","./routes":"1kDlg1","./services/campaign":"eajjYM","./services/session":"KwrW/Q","./services/upload":"wZcOGN","./sync":"OTZ8JZ","./util":"Y/OqMs","immutable":1,"lodash":2,"react/addons":5}],"./boot":[function(require,module,exports){
+module.exports=require('/mCort');
+},{}],"3KNCAT":[function(require,module,exports){
 
 /** @jsx React.DOM */
 
@@ -36844,7 +36845,7 @@ var AboutSection = React.createClass({displayName: 'AboutSection',
           ) : null, 
           React.DOM.h3({className: "about-title"},  this.state.title), 
           React.DOM.div({className: "panel-body"}, 
-            React.DOM.p(null,  this.state.content)
+            React.DOM.div({className: "MediaBlockBody", dangerouslySetInnerHTML: {__html:this.state.content}})
           )
         )
       )
@@ -37067,10 +37068,12 @@ var ContactDetail = React.createClass({displayName: 'ContactDetail',
       return (
         React.DOM.div(null, 
         React.DOM.div({className: "panel-heading"}, 
+         this.props.isEditable ? (
           React.DOM.button({className: "invisible btn-md btn-animated vertical btn-clean pull-left"}, 
             React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "fa fa-fw"})), 
             React.DOM.div({className: "not-visible content"})
-          ), 
+          )
+        ) : null, 
           React.DOM.div({className: "panel-title"}, 
              "Contact Info"
           ), 
@@ -37212,10 +37215,12 @@ var PressContactDetail = React.createClass({displayName: 'PressContactDetail',
       return (
         React.DOM.div(null, 
         React.DOM.div({className: "panel-heading"}, 
+         this.props.isEditable ? (
           React.DOM.button({className: "invisible btn-md btn-animated vertical btn-clean pull-left"}, 
             React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "fa fa-fw"})), 
             React.DOM.div({className: "not-visible content"})
-          ), 
+          )
+        ) : null, 
           React.DOM.div({className: "panel-title"}, 
             "Press Contact"
           ), 
@@ -37403,8 +37408,6 @@ module.exports = React.createClass({displayName: 'exports',
 
 },{"./about":"3KNCAT","./contact":"jrF3JG","./donation":"H3KtLz","./home":"3Vv9Pl","./latest":"9TDxeo","./partners":"AqdCjF","./resources":"4CfIzc","./submission":"60Uj0D","lodash":2,"react":164}],"./components/content":[function(require,module,exports){
 module.exports=require('veCK62');
-},{}],"./components/donation":[function(require,module,exports){
-module.exports=require('H3KtLz');
 },{}],"H3KtLz":[function(require,module,exports){
 
 /** @jsx React.DOM */
@@ -37428,11 +37431,6 @@ module.exports = React.createClass({displayName: 'exports',
       React.DOM.div({className: "container-fluid donation-content"}, 
         React.DOM.div({className: "row"}, 
           React.DOM.div({className: "col-md-8 col-md-push-4"}, 
-            React.DOM.div({className: "panel-heading"}, 
-              React.DOM.div({className: "panel-title"}, 
-                 "Make a Donation"
-              )
-            ), 
             React.DOM.div({className: "row no-gutter bs-wizard", role: "tablist"}, 
               React.DOM.div({className: "col-xs-3 bs-wizard-step complete"}, 
                 React.DOM.div({className: "text-center bs-wizard-stepnum"}, "Amount"), 
@@ -37543,7 +37541,9 @@ module.exports = React.createClass({displayName: 'exports',
   }
 })
 
-},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../util":"Y/OqMs","lodash":2,"react/addons":5}],"rdtrDj":[function(require,module,exports){
+},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../util":"Y/OqMs","lodash":2,"react/addons":5}],"./components/donation":[function(require,module,exports){
+module.exports=require('H3KtLz');
+},{}],"rdtrDj":[function(require,module,exports){
 
 /** @jsx React.DOM */
 
@@ -37977,9 +37977,7 @@ module.exports = React.createClass({displayName: 'exports',
   }
 })
 
-},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../util":"Y/OqMs","./featured_stream":"rdtrDj","lodash":2,"react/addons":5}],"./components/latest":[function(require,module,exports){
-module.exports=require('9TDxeo');
-},{}],"9TDxeo":[function(require,module,exports){
+},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../util":"Y/OqMs","./featured_stream":"rdtrDj","lodash":2,"react/addons":5}],"9TDxeo":[function(require,module,exports){
 
 /** @jsx React.DOM */
 
@@ -38029,7 +38027,7 @@ var ActiveUpdate = React.createClass({displayName: 'ActiveUpdate',
     var _id = this.props.$cursor.deref()._id
 
     if (this.props.isEditing) {
-      var cancel = this.props.isNew ? this.props.onDelete : this.props.activate
+      var cancel = function() { this.props.isNew ? this.props.onDelete() : this.props.activate() }.bind(this)
       return (
         React.DOM.div({className: "article"}, 
           React.DOM.div({className: "panel-heading"}, 
@@ -38072,7 +38070,7 @@ var ActiveUpdate = React.createClass({displayName: 'ActiveUpdate',
       return (
         React.DOM.div({className: "article"}, 
           React.DOM.div({className: "panel-heading"}, 
-            React.DOM.button({onClick: this.props.activate.bind(null, null), className: "btn-md btn-animated vertical btn-clean pull-right"}, 
+            React.DOM.button({onClick: this.props.activate.bind(null, null), className: "btn-md btn-animated vertical btn-primary pull-right"}, 
               React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "close"})), 
               React.DOM.div({className: "not-visible content"}, "Close")
             )
@@ -38118,7 +38116,9 @@ var Updates = React.createClass({displayName: 'Updates',
 
   render: function() {
     var _id = this.props.$cursor.deref()._id
-    var list = this.pagination.getCurrent()
+    var list = this.pagination.getCurrent().filter(function(item) {
+      return item.title
+    })
     return (
       React.DOM.div({className: "updates"}, 
         React.DOM.div({className: "panel-heading"}, 
@@ -38129,10 +38129,12 @@ var Updates = React.createClass({displayName: 'Updates',
           )
           ) : '', 
           React.DOM.h3({className: "panel-title"}, "Latest Updates"), 
+           this.props.isEditable ? (
           React.DOM.button({className: "invisible btn-md btn-animated vertical btn-clean pull-left"}, 
             React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "fa fa-fw"})), 
             React.DOM.div({className: "not-visible content"})
           )
+          ) : ''
         ), 
         React.DOM.div({className: "panel-body"}, 
           React.DOM.ul({className: "media-list"}, 
@@ -38242,10 +38244,12 @@ var News = React.createClass({displayName: 'News',
           )
           ) : '', 
           React.DOM.h3({className: "panel-title"}, "In the News"), 
+           this.props.isEditable ? (
           React.DOM.button({className: "invisible btn-md btn-animated vertical btn-clean pull-left"}, 
             React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "fa fa-fw"})), 
             React.DOM.div({className: "not-visible content"})
           )
+          ) : ''
         ), 
         React.DOM.div({className: "panel-body"}, 
           React.DOM.ul({className: "media-list"}, 
@@ -38292,28 +38296,6 @@ var NewsItem = React.createClass({displayName: 'NewsItem',
     }
   },
 
-  componentDidMount: function() {
-    var component = this
-    if (!this.refs.cal) return
-    var input = this.refs.cal.getDOMNode()
-    var format = 'MMMM DD, YYYY'
-    this.picker = new Pikaday({
-      format: format,
-
-      onSelect: function() {
-        component.setState({ date: this.getMoment().format(format) })
-      },
-      field: input,
-      onOpen: function() {
-        this.adjustPosition()
-      }
-    })
-  },
-
-  componentWillReceiveProps: function(newProps) {
-    this.setState({ date: newProps.$cursor.deref() })
-  },
-
   render: function() {
     if (this.detectEditing()) {
       return (
@@ -38325,7 +38307,7 @@ var NewsItem = React.createClass({displayName: 'NewsItem',
             ), 
             React.DOM.div({className: "form-group"}, 
               React.DOM.label(null, "Date"), 
-              React.DOM.input({className: "form-control", ref: "cal", type: "text"})
+              React.DOM.input({className: "form-control", type: "text", valueLink: this.linkState('date')})
             ), 
             React.DOM.div({className: "form-group"}, 
               React.DOM.label(null, "Source Name"), 
@@ -38366,10 +38348,12 @@ var NewsItem = React.createClass({displayName: 'NewsItem',
                 )
                 ) : ''
             ), 
+            React.DOM.a({href: this.state.link, target: "_blank"}, 
+              React.DOM.h4({className: "media-heading"}, this.state.title)
+            ), 
             React.DOM.p({className: "meta"}, 
               React.DOM.span({className: "date"}, React.DOM.i({className: "fa fa-fw fa-clock-o"}), " ", this.state.date)
             ), 
-            React.DOM.a({href: this.state.link, target: "_blank"}, React.DOM.h4({className: "media-heading"}, this.state.title)), 
             React.DOM.strong(null, this.state.source)
           )
         )
@@ -38496,7 +38480,9 @@ module.exports = React.createClass({displayName: 'exports',
   }
 })
 
-},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../mixins/paginated":"XABVER","../util":"Y/OqMs","lodash":2,"pikaday":4,"react":164}],"./components/login":[function(require,module,exports){
+},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../mixins/paginated":"XABVER","../util":"Y/OqMs","lodash":2,"pikaday":4,"react":164}],"./components/latest":[function(require,module,exports){
+module.exports=require('9TDxeo');
+},{}],"./components/login":[function(require,module,exports){
 module.exports=require('QqCiH7');
 },{}],"QqCiH7":[function(require,module,exports){
 
@@ -38591,6 +38577,7 @@ var React = require('react/addons')
 var Editable = require('../mixins/editable')
 var campaignService = require('../services/campaign')
 var uploadService = require('../services/upload')
+var hub = require('../hub')
 var _ = require('lodash')
 var util = require('util')
 
@@ -38720,11 +38707,9 @@ var PartnerItem = React.createClass({displayName: 'PartnerItem',
 
   upload: function(e) {
     var file = e.target.files[0]
-    uploadService.createImage(file.name, file).then(function(f) {
+    hub.emit('file:image:process', file, {}, function(f) {
       this.props.$cursor.update({ file: { $set: f.url() } })
-    }.bind(this), function() {
-      debugger
-    })
+    }.bind(this))
   },
 
   render: function() {
@@ -38819,7 +38804,7 @@ module.exports = React.createClass({displayName: 'exports',
   }
 })
 
-},{"../mixins/editable":"nRg1xI","../services/campaign":"eajjYM","../services/upload":"wZcOGN","lodash":2,"react/addons":5,"util":171}],"4CfIzc":[function(require,module,exports){
+},{"../hub":"MAeJA1","../mixins/editable":"nRg1xI","../services/campaign":"eajjYM","../services/upload":"wZcOGN","lodash":2,"react/addons":5,"util":171}],"4CfIzc":[function(require,module,exports){
 
 /** @jsx React.DOM */
 
@@ -38827,8 +38812,8 @@ var React = require('react/addons')
 var Editable = require('../mixins/editable')
 var Paginated = require('../mixins/paginated')
 var campaignService = require('../services/campaign')
-var uploadService = require('../services/upload')
 var _ = require('lodash')
+var hub = require('../hub')
 var util = require('../util')
 var errors = require('../errors')
 
@@ -38858,56 +38843,6 @@ var DownloadList = React.createClass({displayName: 'DownloadList',
   render: function() {
     var _id = this.props.$cursor.deref()._id
 
-    this.errors = this.errors || errors.forCursor(this.props.$cursor)
-
-    if (this.errors || this.detectEditing()) {
-      var classes = React.addons.classSet({
-        "media": true,
-        error: !!this.errors
-      })
-      return (
-React.DOM.div({className: "resources-item"}, 
-  React.DOM.div({className: "panel-heading"}, 
-    React.DOM.button({onClick: this.cancel, className: "btn-md btn-animated vertical btn-default pull-left"}, 
-      React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "cancel"})), 
-        React.DOM.div({className: "not-visible content"}, "Cancel")
-    ), 
-    React.DOM.div({className: "form-group"}, 
-      React.DOM.input({type: "text", className: "form-control", valueLink: this.linkState('title')})
-      ), 
-    React.DOM.button({onClick: this.save, className: "btn-md btn-animated vertical btn-success pull-right"}, 
-      React.DOM.div({className: "is-visible content"}, "Save"), 
-      React.DOM.div({className: "not-visible content"}, React.DOM.i({className: "save"}))
-      )
-  ), 
-  React.DOM.div({className: "panel-body"}, 
-    React.DOM.ul({className: "media-list"}, 
-      
-        this.pagination.getCurrent().map(function(item, index) {
-          return DownloadItem({
-            $cursor: this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ]), 
-            isEditable: this.props.isEditable, 
-            isNew: !item.name, 
-            onDelete: this.deleteItem.bind(this, index)}
-          )
-        }, this)
-      
-    )
-  ), 
-  React.DOM.div({className: "pagination-bar clearfix"}, 
-    React.DOM.button({onClick: this.pagination.down, className: "btn-md btn-animated vertical btn-clean pull-left"}, 
-      React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "prev"})), 
-      React.DOM.div({className: "not-visible content"}, "Prev")
-    ), 
-    React.DOM.button({onClick: this.pagination.up, className: "btn-md btn-animated vertical btn-clean pull-right"}, 
-      React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "next"})), 
-      React.DOM.div({className: "not-visible content"}, "Next")
-    )
-  )
-)
-
-      )
-    } else {
     return (
       React.DOM.div({className: "resources-item"}, 
         React.DOM.div({className: "panel-heading"}, 
@@ -38952,7 +38887,6 @@ React.DOM.div({className: "resources-item"},
       )
     )
   }
-}
 
 })
 
@@ -38972,11 +38906,9 @@ var DownloadItem = React.createClass({displayName: 'DownloadItem',
 
   upload: function(e) {
     var file = e.target.files[0]
-    uploadService.create(file.name, file).then(function(f) {
+    hub.emit('file:process', file, {}, function(f) {
       this.props.$cursor.update({ file: { $set: f.url() } })
-    }.bind(this), function() {
-      debugger
-    })
+    }.bind(this))
   },
   render: function() {
     var _id = this.props.$cursor.deref()._id
@@ -39115,14 +39047,8 @@ var Resources = React.createClass({displayName: 'Resources',
   render: function() {
     var _id = this.props.$cursor.deref()._id
 
-    this.errors = this.errors || errors.forCursor(this.props.$cursor)
-
-    if (this.errors || this.detectEditing()) {
-      var classes = React.addons.classSet({
-        "media": true,
-        error: !!this.errors
-      })
-      return (
+if (this.detectEditing()) {
+  return (
         React.DOM.div({className: "resources-item"}, 
             React.DOM.div({className: "panel-heading"}, 
               React.DOM.button({onClick: this.cancel, className: "btn-md btn-animated vertical btn-default pull-left"}, 
@@ -39311,7 +39237,7 @@ module.exports = React.createClass({displayName: 'exports',
   }
 })
 
-},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../mixins/paginated":"XABVER","../services/campaign":"eajjYM","../services/upload":"wZcOGN","../util":"Y/OqMs","lodash":2,"react/addons":5}],"./components/resources":[function(require,module,exports){
+},{"../errors":"p8GNTY","../hub":"MAeJA1","../mixins/editable":"nRg1xI","../mixins/paginated":"XABVER","../services/campaign":"eajjYM","../util":"Y/OqMs","lodash":2,"react/addons":5}],"./components/resources":[function(require,module,exports){
 module.exports=require('4CfIzc');
 },{}],"RlNGxQ":[function(require,module,exports){
 
@@ -39365,27 +39291,33 @@ module.exports = React.createClass({displayName: 'exports',
     this.setState({ playing: url })
   },
 
-  renderStream: function() {
+  componentDidMount: function() {
+    $('body').on('click', '#stream-player-close', this.close)
+  },
 
-    var close = function(e) {
-      e.stopPropagation()
-      e.preventDefault()
-      this.setState({ playing: '' })
-      hub.emit('modal:close')
-    }.bind(this)
+  close: function(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    this.setState({ playing: '' })
+    hub.emit('modal:close')
+    $('#stream-player').remove()
+  },
+
+  renderStream: function() {
 
     var renderVideoFor = function(url, id) {
       if (this.state.playing == url) {
         hub.emit('modal:open')
-        return React.DOM.div({id: "player"}, 
-        React.DOM.div({className: "panel-heading"}, 
-          React.DOM.button({onClick: close, className: "btn-md btn-animated vertical btn-default pull-right"}, 
-            React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "close"})), 
-            React.DOM.div({className: "not-visible content"}, "Close")
-          )
-        ), 
-        React.DOM.iframe({src: "//www.youtube.com/embed/" + id + "?rel=0", frameBorder: "0", allowFullScreen: true})
-        )
+        $(['<div id="stream-player">',
+        '<div class="panel-heading">',
+          '<button id="stream-player-close" class="btn-md btn-animated vertical btn-primary pull-right">',
+            '<div class="is-visible content"><i class="close"></i></div>',
+            '<div class="not-visible content">Close</div>',
+          '</button>',
+        '</div>',
+        '<iframe src="//www.youtube.com/embed/' + id + '?rel=0"} frameBorder="0" allowFullScreen></iframe>',
+        '</div>' ].join('')).appendTo('body')
+        return React.DOM.div(null)
       }
     }.bind(this)
 
@@ -39427,8 +39359,6 @@ module.exports = React.createClass({displayName: 'exports',
 
 },{"../hub":"MAeJA1","react/addons":5}],"./components/stream":[function(require,module,exports){
 module.exports=require('RlNGxQ');
-},{}],"./components/submission":[function(require,module,exports){
-module.exports=require('60Uj0D');
 },{}],"60Uj0D":[function(require,module,exports){
 
 /** @jsx React.DOM */
@@ -39438,6 +39368,58 @@ var _ = require('lodash')
 var Editable = require('../mixins/editable')
 var util = require('../util')
 var errors = require('../errors')
+
+var Guidelines = React.createClass({displayName: 'Guidelines',
+
+  mixins: [ Editable, React.addons.LinkedStateMixin ],
+
+  render: function() {
+
+    this.errors = this.errors || errors.forCursor(this.props.$cursor)
+
+    if (this.errors || this.detectEditing()) {
+      var classes = React.addons.classSet({
+        inner: true,
+        error: !!this.errors
+      })
+      return (
+        React.DOM.div({className: "panel-body"}, 
+          React.DOM.br(null), 
+          React.DOM.div({className: classes}, 
+            React.DOM.div({className: "form-group"}, 
+              React.DOM.label(null, "Content"), 
+              React.DOM.textarea({className: "form-control", rows: "6", valueLink: this.linkState('content')})
+            ), 
+            React.DOM.div({className: "panel-footer clearfix"}, 
+              React.DOM.button({onClick: this.cancel, className: "btn-md btn-animated vertical btn-default pull-left"}, 
+                React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "cancel"})), 
+                React.DOM.div({className: "not-visible content"}, "Cancel")
+              ), 
+              React.DOM.button({onClick: this.save, className: "btn-md btn-animated vertical btn-success pull-right"}, 
+                React.DOM.div({className: "is-visible content"}, "Save"), 
+                React.DOM.div({className: "not-visible content"}, React.DOM.i({className: "save"}))
+              )
+            ), 
+            React.DOM.p({className: "error-message"}, this.errors)
+          )
+        )
+      )
+    } else {
+      return (
+          React.DOM.div({className: "panel-body"}, 
+           this.props.isEditable ? (
+              React.DOM.button({onClick: this.edit, className: "btn-sm btn-animated vertical btn-warning pull-right"}, 
+                React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "edit"})), 
+                React.DOM.div({className: "not-visible content"}, "Edit")
+              )
+          ) : null, 
+            React.DOM.p(null,  this.state.content)
+        )
+      )
+    }
+  }
+})
+
 
 module.exports = React.createClass({displayName: 'exports',
 
@@ -39456,8 +39438,9 @@ module.exports = React.createClass({displayName: 'exports',
                  "Guidelines"
               )
             ), 
-            React.DOM.div({className: "panel-body"}, 
-              React.DOM.p(null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium suscipit laoreet. Mauris gravida mattis enim finibus interdum. Sed porttitor feugiat tristique. Maecenas aliquam mi vehicula, pretium sapien ac, pretium lacus. Vestibulum euismod sapien at dignissim porta. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla et metus ut arcu sodales ornare.")
+            Guidelines({
+              $cursor: $campaign.refine('Guidelines1'), 
+              isEditable: !_.isEmpty($shared.deref().session)}
             )
           ), 
           React.DOM.div({className: "submission-item"}, 
@@ -39502,15 +39485,17 @@ module.exports = React.createClass({displayName: 'exports',
   }
 })
 
-},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../util":"Y/OqMs","lodash":2,"react/addons":5}],"4itQ50":[function(require,module,exports){
+},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../util":"Y/OqMs","lodash":2,"react/addons":5}],"./components/submission":[function(require,module,exports){
+module.exports=require('60Uj0D');
+},{}],"./config":[function(require,module,exports){
+module.exports=require('4itQ50');
+},{}],"4itQ50":[function(require,module,exports){
 
-var config = {"campaign":{"DIY":{"content":"<strong>Blah is bold</strong><br>shnarf"},"DonateHome":{"content":"Donate to help us raise awareness","title":"Make a Donations"},"InvolvedHome":{"content":"Take action and join the conversation by posting a status, photo, or video on social media with the hashtag ourhashtag. Then submit it to us to make sure it gets featured on the site. Because together we can make sure our voices are heard.","title":"Get Involved"},"MediaBlock1":{"content":"<strong>Blah is bold</strong><br>shnarf<br>\ndd\n<img src=\"http://img.youtube.com/vi/6NWNa8Z6SFU/mqdefault.jpg\" data-reactid=\".0.2.1.2.0.0\">"},"MediaBlock2":{"content":"<strong>Blah is bold</strong><br>shnarf"},"MediaBlock3":{"content":"<strong>Blah is bold</strong><br>shnarf"},"about1":{"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","title":"Our Mission blah"},"about2":{"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","title":"Our Mission blah"},"about3":{"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","title":"Our Mission blah"},"about4":{"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","title":"Our Mission blah"},"contact":{"address":"1234 Street, City Sate Zip","ein":"55555555555555","email":"contact@campaign.org","fax":"555-555-5555","instagram":"campaign","name":"Campaign Name","phone":"555-555-5555","pressEmail":"press@campaign.org","pressName":"Contact Name","pressPhone":"555-555-5555","twitter":"@campaign","youtube":"campaign"},"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","downloads":{"description":"Get your files bitch","list":[{"_id":0,"description":"This is my description babyy","file":"someogo.png","name":"rdf"}],"title":"Downloads"},"logo":"https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg","news":{"list":[{"_id":0,"date":"September 4, 2014","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":1,"date":"September 5, 2014","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":2,"date":"September 6, 2014","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":3,"date":"September 7, 2014","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":4,"date":"September 8, 2014","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":5,"date":"September 9, 2014","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":6,"date":"September 10, 2014","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"}],"title":"In the news"},"partners":[{"_id":0,"description":"some friends of ours","list":[{"_id":0,"link":"rdf.net","logo":"someogo.png","name":"rdf"}],"title":"friends"},{"_id":1,"description":"some friends of ours... not","list":[{"_id":0,"link":"google.com","logo":"someogo.png","name":"brendan"}],"title":"people who hate us"}],"resources":{"list":[{"_id":0,"desc":"This is a descritpion more than a source","link":"http://nytimes.com","title":"Freethinkers Whatever"}],"title":"Resources"},"slug":"openlysecular","title":"Some freakin campaign","updates":{"list":[{"_id":0,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. \nProin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet veli\n\nt tincidunt volutpat vitae id eros\n. Nullam tincidunt sollicitudin mauris, \nconsectetur faucibus lorem dignissim vel.","date":"September 4, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 1"},{"_id":1,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 5, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 2"},{"_id":2,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 6, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 3"},{"_id":3,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 7, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 4"},{"_id":4,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 8, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 5"},{"_id":5,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 9, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 6"}],"title":"Latest updates"},"userId":"siRzY8KN64","objectId":"3ssvRGbGQO","createdAt":"2014-09-04T19:06:18.833Z","updatedAt":"2014-09-10T19:01:21.710Z"}}
+var config = {"campaign":{"DIY":{"content":"<img class=\"img-responsive\" src=\"http://s29.postimg.org/5s7ccqezb/guide.jpg\">"},"DonateHome":{"content":"Donate to help us raise awareness","title":"Make a Donation"},"InvolvedHome":{"content":"Take action and join the conversation by posting a status, photo, or video on social media with the hashtag ourhashtag. Then submit it to us to make sure it gets featured on the site. Because together we can make sure our voices are heard.","title":"Get Involved"},"MediaBlock1":{"content":"<img src=\"http://s29.postimg.org/5s7ccqezb/guide.jpg\">"},"MediaBlock2":{"content":"<img class=\"img-responsive\" src=\"http://s29.postimg.org/5s7ccqezb/guide.jpg\">"},"MediaBlock3":{"content":"<strong>Blah is bold</strong><br>shnarf"},"about1":{"content":"The mission of Openly Secular is to eliminate discrimination and increase acceptance by getting secular people - including atheists, freethinkers, agnostics, humanists and nonreligious people - to be open about their beliefs.","title":"Our Mission"},"about2":{"content":"In addition, we are working with a big tent of people from all across the secular spectrum - nonreligious groups including atheists, freethinkers, humanists, agnostics, and even the spiritual but not religious. We are also working with the nontheistic religious: people like deists, secular Jews, humanistic Unitarians, ethical culturists, and other religious humanists who are skeptical of theistic claims.","title":"Our Story"},"about3":{"content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","title":"Who We Are"},"about4":{"content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","title":"What We Do"},"contact":{"address":"1234 Street, City Sate Zip","ein":"55555555555555","email":"contact@campaign.org","fax":"555-555-5555","instagram":"campaign","name":"Campaign Name","phone":"555-555-5555","pressEmail":"press@campaign.org","pressName":"Contact Name","pressPhone":"555-555-5555","twitter":"@campaign","youtube":"campaign"},"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","downloads":{"description":"Get your files bitch","list":[{"_id":0,"description":"This is my description babyy","file":"someogo.png","name":"rdf"}],"title":"Downloads"},"logo":"https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg","news":{"list":[{"_id":0,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":1,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":2,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":3,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":4,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":5,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":6,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"}],"title":"In the news"},"partners":[{"_id":0,"description":"some friends of ours","list":[{"_id":0,"link":"rdf.net","logo":"someogo.png","name":"rdf"},{"file":"","link":"sdfsdf","name":"fsdf"}],"title":"Partners"},{"_id":1,"description":"some friends of ours","list":[{"_id":0,"link":"google.com","logo":"someogo.png","name":"brendan"}],"title":"Allies"}],"resources":{"list":[{"_id":0,"desc":"This is a descritpion more than a source","link":"http://nytimes.com","title":"Freethinkers Whatever"}],"title":"Resources"},"slug":"openlysecular","title":"Some freakin campaign","updates":{"list":[{"_id":6,"content":"asdfasdnf\nasdf\nasdf\nasdfasdfasdfasd\n\nasdf\nasdf","date":"September 17, 2014","excerpt":"THis is excerpt ","title":"Hi Lyz"},{"_id":0,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. \nProin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet veli\n\nt tincidunt volutpat vitae id eros\n. Nullam tincidunt sollicitudin mauris, \nconsectetur faucibus lorem dignissim vel.","date":"September 4, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 1"},{"_id":1,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 5, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 2"},{"_id":2,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 6, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 3"},{"_id":3,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 7, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 4"},{"_id":4,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 8, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 5"},{"_id":5,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 9, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 6"}],"title":"Latest updates"},"userId":"siRzY8KN64","objectId":"3ssvRGbGQO","createdAt":"2014-09-04T19:06:18.833Z","updatedAt":"2014-09-10T23:27:22.857Z"}}
 config.apiRoot = 'http://localhost:3000/api'
 
 module.exports = config
 
-},{}],"./config":[function(require,module,exports){
-module.exports=require('4itQ50');
 },{}],"./errors":[function(require,module,exports){
 module.exports=require('p8GNTY');
 },{}],"p8GNTY":[function(require,module,exports){
@@ -39829,22 +39814,72 @@ module.exports = session
 module.exports=require('KwrW/Q');
 },{}],"wZcOGN":[function(require,module,exports){
 
-var config = require('../config')
-var rsvp = require('rsvp')
+var File = Parse.File
+var hub = require('../hub')
 
-module.exports = {
+var file = {
 
-  create: function(name, rawFile) {
-    var file = new Parse.File(name, rawFile);
-    return file.save()
+  Model: File,
+
+  processImage: function(img, opts, cb) {
+
+    var reader = new FileReader();
+    reader.onloadend = function() {
+
+      var tempImg = new Image();
+      tempImg.src = reader.result;
+      tempImg.onload = function() {
+
+        var MAX_WIDTH = opts.width;
+        var MAX_HEIGHT = opts.height;
+        var tempW = tempImg.width;
+        var tempH = tempImg.height;
+        if (tempW > tempH) {
+          if (tempW > MAX_WIDTH) {
+            tempH *= MAX_WIDTH / tempW;
+            tempW = MAX_WIDTH;
+          }
+        } else {
+          if (tempH > MAX_HEIGHT) {
+            tempW *= MAX_HEIGHT / tempH;
+            tempH = MAX_HEIGHT;
+          }
+        }
+
+        var canvas = document.createElement('canvas');
+        canvas.width = tempW;
+        canvas.height = tempH;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(this, 0, 0, tempW, tempH);
+        var dataURL = canvas.toDataURL("image/jpeg");
+
+        var file = new File(img.name, { base64: dataURL }, img.type)
+        file.save().then(function() {
+          cb(file)
+        })
+      }
+    }
+
+    reader.readAsDataURL(img);
+
   },
 
-  createImage: function(name, rawFile) {
-    return Parse.Cloud.run('prepareImage', { name: name, rawFile: rawFile, width:50, height: 50 })
+  processFile: function(file, opts, cb) {
+    var file = new File(file.name, file, file.type)
+    file.save().then(function() {
+      cb(file)
+    })
+  },
+
+  link: function() {
+    hub.on('file:image:process', this.processImage, this)
+    hub.on('file:process', this.processFile, this)
   }
 }
 
-},{"../config":"4itQ50","rsvp":166}],"./services/upload":[function(require,module,exports){
+module.exports = file
+
+},{"../hub":"MAeJA1"}],"./services/upload":[function(require,module,exports){
 module.exports=require('wZcOGN');
 },{}],"OTZ8JZ":[function(require,module,exports){
 

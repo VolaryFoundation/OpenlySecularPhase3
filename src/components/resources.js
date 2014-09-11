@@ -100,7 +100,7 @@ var DownloadItem = React.createClass({
   upload: function(e) {
     var file = e.target.files[0]
     hub.emit('file:process', file, {}, function(f) {
-      this.props.$cursor.update({ file: { $set: f.url() } })
+      this.setState({ file: f.url() })
     }.bind(this))
   },
   render: function() {
@@ -230,7 +230,7 @@ var Resources = React.createClass({
     e.preventDefault()
     var list = this.props.$cursor.deref().list
     var _id = util.nextId(list)
-    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', desc: '', link: '', date: '' } ] } })
+    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', desc: '', link: '', date: '' } ] } }, { skipSync: true })
   },
 
   deleteItem: function(index) {
@@ -240,8 +240,8 @@ var Resources = React.createClass({
   render: function() {
     var _id = this.props.$cursor.deref()._id
 
-if (this.detectEditing()) {
-  return (
+  if (this.detectEditing()) {
+    return (
         <div className="resources-item">
             <div className="panel-heading">
               <button onClick={this.cancel} className="btn-md btn-animated vertical btn-default pull-left">

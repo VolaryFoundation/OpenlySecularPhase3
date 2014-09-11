@@ -243,7 +243,7 @@ var News = React.createClass({
     e.preventDefault()
     var list = this.props.$cursor.deref().list
     var _id = util.nextId(list)
-    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', source: '', link: '', date: '' } ] } })
+    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', source: '', link: '', date: '' } ] } }, { skipSync: true })
   },
 
   deleteItem: function(index) {

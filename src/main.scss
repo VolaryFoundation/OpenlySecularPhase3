@@ -11,6 +11,10 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 @import "node_modules/font-awesome/scss/font-awesome";
 @import "node_modules/pikaday/css/pikaday";
 
+.input-group .form-control {
+  z-index: 1;
+}
+
 .stripes {
   color: $brand-dark;
   background-color: #fff;
@@ -154,10 +158,6 @@ transition: all .2s;
   }
 }
 
-.navbar-static-top {
-  z-index:1;
-}
-
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -226,7 +226,8 @@ transition: all .2s;
 }
 #stream-player {
   position: fixed;
-  bottom: 200px;
+  top: 10%;
+  bottom: 0;
   left: 50%;
   margin-left: -400px;
   z-index: 6;
@@ -376,6 +377,10 @@ a {
 //
 
 
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+}
 
 .navbar-custom {
   padding: 20px 0;
@@ -396,7 +401,7 @@ a {
     color: rgba(255,255,255,0.6);
     border-bottom: 3px solid transparent;
 
-      &:hover, &.active {
+      &:hover, &.active, &.focus {
         color: #fff;
         background: none;
       }
@@ -421,7 +426,7 @@ a {
   width: 100%;
   text-align: center;
   background: #f5f5f5;
-  border-bottom: $border;
+  border-bottom: $border-dark;
   -webkit-transition: all 0.6s ease-in-out;
      -moz-transition: all 0.6s ease-in-out;
        -o-transition: all 0.6s ease-in-out;
@@ -975,6 +980,8 @@ a {
     img {
       max-height: 120px;
       width: auto;
+      //IE Fix
+      width: 100%\9;
       margin: 0 auto;
     }
 
@@ -986,6 +993,15 @@ a {
     }
   }
 }
+
+// Firefox Fix
+@-moz-document url-prefix() {
+	.partners-list .partner img {
+		width: 100%;
+	}
+}
+
+
 
 .partner.editing {
 

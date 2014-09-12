@@ -126,9 +126,10 @@ gulp.task('initDev', function(done) {
           pressName: 'Contact Name',
           pressEmail: 'press@campaign.org',
           pressPhone: '555-555-5555',
-          twitter: '@campaign',
-          instagram: 'campaign',
-          youtube: 'campaign'
+          twitter: 'twitter',
+          facebook: 'facebook',
+          instagram: 'instagram',
+          youtube: 'youtube'
         },
         downloads: {
           title: 'Downloads',

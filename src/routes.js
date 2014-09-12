@@ -51,6 +51,10 @@ module.exports = function($shared) {
 
     'donation /donation': function() {
       go('donation')
+    },
+
+    'resource /resource': function() {
+      go('resource')
     }
   })
 }

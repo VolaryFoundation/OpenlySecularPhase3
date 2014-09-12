@@ -13601,7 +13601,7 @@ var CSSCore = {
 module.exports = CSSCore;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],9:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],9:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -13930,7 +13930,7 @@ PooledClass.addPoolingTo(CallbackQueue);
 module.exports = CallbackQueue;
 
 }).call(this,require("GpKyiF"))
-},{"./PooledClass":33,"./invariant":139,"./mixInto":152,"GpKyiF":169}],12:[function(require,module,exports){
+},{"./PooledClass":33,"./invariant":139,"./mixInto":152,"GpKyiF":168}],12:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -14799,7 +14799,7 @@ var DOMChildrenOperations = {
 module.exports = DOMChildrenOperations;
 
 }).call(this,require("GpKyiF"))
-},{"./Danger":18,"./ReactMultiChildUpdateTypes":74,"./getTextContentAccessor":134,"./invariant":139,"GpKyiF":169}],16:[function(require,module,exports){
+},{"./Danger":18,"./ReactMultiChildUpdateTypes":74,"./getTextContentAccessor":134,"./invariant":139,"GpKyiF":168}],16:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -15101,7 +15101,7 @@ var DOMProperty = {
 module.exports = DOMProperty;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],17:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],17:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -15298,7 +15298,7 @@ var DOMPropertyOperations = {
 module.exports = DOMPropertyOperations;
 
 }).call(this,require("GpKyiF"))
-},{"./DOMProperty":16,"./escapeTextForBrowser":123,"./memoizeStringOnly":148,"./warning":163,"GpKyiF":169}],18:[function(require,module,exports){
+},{"./DOMProperty":16,"./escapeTextForBrowser":123,"./memoizeStringOnly":148,"./warning":163,"GpKyiF":168}],18:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -15489,7 +15489,7 @@ var Danger = {
 module.exports = Danger;
 
 }).call(this,require("GpKyiF"))
-},{"./ExecutionEnvironment":27,"./createNodesFromMarkup":118,"./emptyFunction":121,"./getMarkupWrap":131,"./invariant":139,"GpKyiF":169}],19:[function(require,module,exports){
+},{"./ExecutionEnvironment":27,"./createNodesFromMarkup":118,"./emptyFunction":121,"./getMarkupWrap":131,"./invariant":139,"GpKyiF":168}],19:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -15838,7 +15838,7 @@ var EventListener = {
 module.exports = EventListener;
 
 }).call(this,require("GpKyiF"))
-},{"./emptyFunction":121,"GpKyiF":169}],23:[function(require,module,exports){
+},{"./emptyFunction":121,"GpKyiF":168}],23:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -16132,7 +16132,7 @@ var EventPluginHub = {
 module.exports = EventPluginHub;
 
 }).call(this,require("GpKyiF"))
-},{"./EventPluginRegistry":24,"./EventPluginUtils":25,"./accumulate":111,"./forEachAccumulated":126,"./invariant":139,"./isEventSupported":140,"./monitorCodeUse":153,"GpKyiF":169}],24:[function(require,module,exports){
+},{"./EventPluginRegistry":24,"./EventPluginUtils":25,"./accumulate":111,"./forEachAccumulated":126,"./invariant":139,"./isEventSupported":140,"./monitorCodeUse":153,"GpKyiF":168}],24:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -16419,7 +16419,7 @@ var EventPluginRegistry = {
 module.exports = EventPluginRegistry;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],25:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],25:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -16647,7 +16647,7 @@ var EventPluginUtils = {
 module.exports = EventPluginUtils;
 
 }).call(this,require("GpKyiF"))
-},{"./EventConstants":21,"./invariant":139,"GpKyiF":169}],26:[function(require,module,exports){
+},{"./EventConstants":21,"./invariant":139,"GpKyiF":168}],26:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -16794,7 +16794,7 @@ var EventPropagators = {
 module.exports = EventPropagators;
 
 }).call(this,require("GpKyiF"))
-},{"./EventConstants":21,"./EventPluginHub":23,"./accumulate":111,"./forEachAccumulated":126,"GpKyiF":169}],27:[function(require,module,exports){
+},{"./EventConstants":21,"./EventPluginHub":23,"./accumulate":111,"./forEachAccumulated":126,"GpKyiF":168}],27:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -17245,7 +17245,7 @@ var LinkedValueUtils = {
 module.exports = LinkedValueUtils;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactPropTypes":80,"./invariant":139,"GpKyiF":169}],31:[function(require,module,exports){
+},{"./ReactPropTypes":80,"./invariant":139,"GpKyiF":168}],31:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014 Facebook, Inc.
@@ -17301,7 +17301,7 @@ var LocalEventTrapMixin = {
 module.exports = LocalEventTrapMixin;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactBrowserEventEmitter":36,"./accumulate":111,"./forEachAccumulated":126,"./invariant":139,"GpKyiF":169}],32:[function(require,module,exports){
+},{"./ReactBrowserEventEmitter":36,"./accumulate":111,"./forEachAccumulated":126,"./invariant":139,"GpKyiF":168}],32:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -17489,7 +17489,7 @@ var PooledClass = {
 module.exports = PooledClass;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],34:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],34:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -17624,7 +17624,7 @@ React.version = '0.11.1';
 module.exports = React;
 
 }).call(this,require("GpKyiF"))
-},{"./DOMPropertyOperations":17,"./EventPluginUtils":25,"./ExecutionEnvironment":27,"./ReactChildren":39,"./ReactComponent":40,"./ReactCompositeComponent":43,"./ReactContext":44,"./ReactCurrentOwner":45,"./ReactDOM":46,"./ReactDOMComponent":48,"./ReactDefaultInjection":58,"./ReactDescriptor":61,"./ReactInstanceHandles":69,"./ReactMount":72,"./ReactMultiChild":73,"./ReactPerf":76,"./ReactPropTypes":80,"./ReactServerRendering":84,"./ReactTextComponent":88,"./onlyChild":154,"GpKyiF":169}],35:[function(require,module,exports){
+},{"./DOMPropertyOperations":17,"./EventPluginUtils":25,"./ExecutionEnvironment":27,"./ReactChildren":39,"./ReactComponent":40,"./ReactCompositeComponent":43,"./ReactContext":44,"./ReactCurrentOwner":45,"./ReactDOM":46,"./ReactDOMComponent":48,"./ReactDefaultInjection":58,"./ReactDescriptor":61,"./ReactInstanceHandles":69,"./ReactMount":72,"./ReactMultiChild":73,"./ReactPerf":76,"./ReactPropTypes":80,"./ReactServerRendering":84,"./ReactTextComponent":88,"./onlyChild":154,"GpKyiF":168}],35:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -17674,7 +17674,7 @@ var ReactBrowserComponentMixin = {
 module.exports = ReactBrowserComponentMixin;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactEmptyComponent":63,"./ReactMount":72,"./invariant":139,"GpKyiF":169}],36:[function(require,module,exports){
+},{"./ReactEmptyComponent":63,"./ReactMount":72,"./invariant":139,"GpKyiF":168}],36:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -18244,7 +18244,7 @@ var ReactCSSTransitionGroupChild = React.createClass({
 module.exports = ReactCSSTransitionGroupChild;
 
 }).call(this,require("GpKyiF"))
-},{"./CSSCore":8,"./React":34,"./ReactTransitionEvents":90,"./onlyChild":154,"GpKyiF":169}],39:[function(require,module,exports){
+},{"./CSSCore":8,"./React":34,"./ReactTransitionEvents":90,"./onlyChild":154,"GpKyiF":168}],39:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -18401,7 +18401,7 @@ var ReactChildren = {
 module.exports = ReactChildren;
 
 }).call(this,require("GpKyiF"))
-},{"./PooledClass":33,"./traverseAllChildren":161,"./warning":163,"GpKyiF":169}],40:[function(require,module,exports){
+},{"./PooledClass":33,"./traverseAllChildren":161,"./warning":163,"GpKyiF":168}],40:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -18851,7 +18851,7 @@ var ReactComponent = {
 module.exports = ReactComponent;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactDescriptor":61,"./ReactOwner":75,"./ReactUpdates":92,"./invariant":139,"./keyMirror":145,"./merge":149,"GpKyiF":169}],41:[function(require,module,exports){
+},{"./ReactDescriptor":61,"./ReactOwner":75,"./ReactUpdates":92,"./invariant":139,"./keyMirror":145,"./merge":149,"GpKyiF":168}],41:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -18980,7 +18980,7 @@ var ReactComponentBrowserEnvironment = {
 module.exports = ReactComponentBrowserEnvironment;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactDOMIDOperations":50,"./ReactMarkupChecksum":71,"./ReactMount":72,"./ReactPerf":76,"./ReactReconcileTransaction":82,"./getReactRootElementInContainer":133,"./invariant":139,"./setInnerHTML":157,"GpKyiF":169}],42:[function(require,module,exports){
+},{"./ReactDOMIDOperations":50,"./ReactMarkupChecksum":71,"./ReactMount":72,"./ReactPerf":76,"./ReactReconcileTransaction":82,"./getReactRootElementInContainer":133,"./invariant":139,"./setInnerHTML":157,"GpKyiF":168}],42:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -20465,7 +20465,7 @@ var ReactCompositeComponent = {
 module.exports = ReactCompositeComponent;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactComponent":40,"./ReactContext":44,"./ReactCurrentOwner":45,"./ReactDescriptor":61,"./ReactDescriptorValidator":62,"./ReactEmptyComponent":63,"./ReactErrorUtils":64,"./ReactOwner":75,"./ReactPerf":76,"./ReactPropTransferer":77,"./ReactPropTypeLocationNames":78,"./ReactPropTypeLocations":79,"./ReactUpdates":92,"./instantiateReactComponent":138,"./invariant":139,"./keyMirror":145,"./mapObject":147,"./merge":149,"./mixInto":152,"./monitorCodeUse":153,"./shouldUpdateReactComponent":159,"./warning":163,"GpKyiF":169}],44:[function(require,module,exports){
+},{"./ReactComponent":40,"./ReactContext":44,"./ReactCurrentOwner":45,"./ReactDescriptor":61,"./ReactDescriptorValidator":62,"./ReactEmptyComponent":63,"./ReactErrorUtils":64,"./ReactOwner":75,"./ReactPerf":76,"./ReactPropTransferer":77,"./ReactPropTypeLocationNames":78,"./ReactPropTypeLocations":79,"./ReactUpdates":92,"./instantiateReactComponent":138,"./invariant":139,"./keyMirror":145,"./mapObject":147,"./merge":149,"./mixInto":152,"./monitorCodeUse":153,"./shouldUpdateReactComponent":159,"./warning":163,"GpKyiF":168}],44:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -20788,7 +20788,7 @@ ReactDOM.injection = injection;
 module.exports = ReactDOM;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactDOMComponent":48,"./ReactDescriptor":61,"./ReactDescriptorValidator":62,"./mapObject":147,"./mergeInto":151,"GpKyiF":169}],47:[function(require,module,exports){
+},{"./ReactDOMComponent":48,"./ReactDescriptor":61,"./ReactDescriptorValidator":62,"./mapObject":147,"./mergeInto":151,"GpKyiF":168}],47:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -21281,7 +21281,7 @@ mixInto(ReactDOMComponent, ReactBrowserComponentMixin);
 module.exports = ReactDOMComponent;
 
 }).call(this,require("GpKyiF"))
-},{"./CSSPropertyOperations":10,"./DOMProperty":16,"./DOMPropertyOperations":17,"./ReactBrowserComponentMixin":35,"./ReactBrowserEventEmitter":36,"./ReactComponent":40,"./ReactMount":72,"./ReactMultiChild":73,"./ReactPerf":76,"./escapeTextForBrowser":123,"./invariant":139,"./keyOf":146,"./merge":149,"./mixInto":152,"GpKyiF":169}],49:[function(require,module,exports){
+},{"./CSSPropertyOperations":10,"./DOMProperty":16,"./DOMPropertyOperations":17,"./ReactBrowserComponentMixin":35,"./ReactBrowserEventEmitter":36,"./ReactComponent":40,"./ReactMount":72,"./ReactMultiChild":73,"./ReactPerf":76,"./escapeTextForBrowser":123,"./invariant":139,"./keyOf":146,"./merge":149,"./mixInto":152,"GpKyiF":168}],49:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -21530,7 +21530,7 @@ var ReactDOMIDOperations = {
 module.exports = ReactDOMIDOperations;
 
 }).call(this,require("GpKyiF"))
-},{"./CSSPropertyOperations":10,"./DOMChildrenOperations":15,"./DOMPropertyOperations":17,"./ReactMount":72,"./ReactPerf":76,"./invariant":139,"./setInnerHTML":157,"GpKyiF":169}],51:[function(require,module,exports){
+},{"./CSSPropertyOperations":10,"./DOMChildrenOperations":15,"./DOMPropertyOperations":17,"./ReactMount":72,"./ReactPerf":76,"./invariant":139,"./setInnerHTML":157,"GpKyiF":168}],51:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -21770,7 +21770,7 @@ var ReactDOMInput = ReactCompositeComponent.createClass({
 module.exports = ReactDOMInput;
 
 }).call(this,require("GpKyiF"))
-},{"./AutoFocusMixin":6,"./DOMPropertyOperations":17,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":35,"./ReactCompositeComponent":43,"./ReactDOM":46,"./ReactMount":72,"./invariant":139,"./merge":149,"GpKyiF":169}],53:[function(require,module,exports){
+},{"./AutoFocusMixin":6,"./DOMPropertyOperations":17,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":35,"./ReactCompositeComponent":43,"./ReactDOM":46,"./ReactMount":72,"./invariant":139,"./merge":149,"GpKyiF":168}],53:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -21829,7 +21829,7 @@ var ReactDOMOption = ReactCompositeComponent.createClass({
 module.exports = ReactDOMOption;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactBrowserComponentMixin":35,"./ReactCompositeComponent":43,"./ReactDOM":46,"./warning":163,"GpKyiF":169}],54:[function(require,module,exports){
+},{"./ReactBrowserComponentMixin":35,"./ReactCompositeComponent":43,"./ReactDOM":46,"./warning":163,"GpKyiF":168}],54:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -22374,7 +22374,7 @@ var ReactDOMTextarea = ReactCompositeComponent.createClass({
 module.exports = ReactDOMTextarea;
 
 }).call(this,require("GpKyiF"))
-},{"./AutoFocusMixin":6,"./DOMPropertyOperations":17,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":35,"./ReactCompositeComponent":43,"./ReactDOM":46,"./invariant":139,"./merge":149,"./warning":163,"GpKyiF":169}],57:[function(require,module,exports){
+},{"./AutoFocusMixin":6,"./DOMPropertyOperations":17,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":35,"./ReactCompositeComponent":43,"./ReactDOM":46,"./invariant":139,"./merge":149,"./warning":163,"GpKyiF":168}],57:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -22583,7 +22583,7 @@ module.exports = {
 };
 
 }).call(this,require("GpKyiF"))
-},{"./BeforeInputEventPlugin":7,"./ChangeEventPlugin":12,"./ClientReactRootIndex":13,"./CompositionEventPlugin":14,"./DefaultEventPluginOrder":19,"./EnterLeaveEventPlugin":20,"./ExecutionEnvironment":27,"./HTMLDOMPropertyConfig":28,"./MobileSafariClickEventPlugin":32,"./ReactBrowserComponentMixin":35,"./ReactComponentBrowserEnvironment":41,"./ReactDOM":46,"./ReactDOMButton":47,"./ReactDOMForm":49,"./ReactDOMImg":51,"./ReactDOMInput":52,"./ReactDOMOption":53,"./ReactDOMSelect":54,"./ReactDOMTextarea":56,"./ReactDefaultBatchingStrategy":57,"./ReactDefaultPerf":59,"./ReactEventListener":66,"./ReactInjection":67,"./ReactInstanceHandles":69,"./ReactMount":72,"./SVGDOMPropertyConfig":94,"./SelectEventPlugin":95,"./ServerReactRootIndex":96,"./SimpleEventPlugin":97,"./createFullPageComponent":117,"GpKyiF":169}],59:[function(require,module,exports){
+},{"./BeforeInputEventPlugin":7,"./ChangeEventPlugin":12,"./ClientReactRootIndex":13,"./CompositionEventPlugin":14,"./DefaultEventPluginOrder":19,"./EnterLeaveEventPlugin":20,"./ExecutionEnvironment":27,"./HTMLDOMPropertyConfig":28,"./MobileSafariClickEventPlugin":32,"./ReactBrowserComponentMixin":35,"./ReactComponentBrowserEnvironment":41,"./ReactDOM":46,"./ReactDOMButton":47,"./ReactDOMForm":49,"./ReactDOMImg":51,"./ReactDOMInput":52,"./ReactDOMOption":53,"./ReactDOMSelect":54,"./ReactDOMTextarea":56,"./ReactDefaultBatchingStrategy":57,"./ReactDefaultPerf":59,"./ReactEventListener":66,"./ReactInjection":67,"./ReactInstanceHandles":69,"./ReactMount":72,"./SVGDOMPropertyConfig":94,"./SelectEventPlugin":95,"./ServerReactRootIndex":96,"./SimpleEventPlugin":97,"./createFullPageComponent":117,"GpKyiF":168}],59:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -23306,7 +23306,7 @@ ReactDescriptor.isValidDescriptor = function(object) {
 module.exports = ReactDescriptor;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactContext":44,"./ReactCurrentOwner":45,"./merge":149,"./warning":163,"GpKyiF":169}],62:[function(require,module,exports){
+},{"./ReactContext":44,"./ReactCurrentOwner":45,"./merge":149,"./warning":163,"GpKyiF":168}],62:[function(require,module,exports){
 /**
  * Copyright 2014 Facebook, Inc.
  *
@@ -23673,7 +23673,7 @@ var ReactEmptyComponent = {
 module.exports = ReactEmptyComponent;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],64:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],64:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -24492,7 +24492,7 @@ var ReactInstanceHandles = {
 module.exports = ReactInstanceHandles;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactRootIndex":83,"./invariant":139,"GpKyiF":169}],70:[function(require,module,exports){
+},{"./ReactRootIndex":83,"./invariant":139,"GpKyiF":168}],70:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -25312,7 +25312,7 @@ var ReactMount = {
 module.exports = ReactMount;
 
 }).call(this,require("GpKyiF"))
-},{"./DOMProperty":16,"./ReactBrowserEventEmitter":36,"./ReactCurrentOwner":45,"./ReactDescriptor":61,"./ReactInstanceHandles":69,"./ReactPerf":76,"./containsNode":114,"./getReactRootElementInContainer":133,"./instantiateReactComponent":138,"./invariant":139,"./shouldUpdateReactComponent":159,"./warning":163,"GpKyiF":169}],73:[function(require,module,exports){
+},{"./DOMProperty":16,"./ReactBrowserEventEmitter":36,"./ReactCurrentOwner":45,"./ReactDescriptor":61,"./ReactInstanceHandles":69,"./ReactPerf":76,"./containsNode":114,"./getReactRootElementInContainer":133,"./instantiateReactComponent":138,"./invariant":139,"./shouldUpdateReactComponent":159,"./warning":163,"GpKyiF":168}],73:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -25947,7 +25947,7 @@ var ReactOwner = {
 module.exports = ReactOwner;
 
 }).call(this,require("GpKyiF"))
-},{"./emptyObject":122,"./invariant":139,"GpKyiF":169}],76:[function(require,module,exports){
+},{"./emptyObject":122,"./invariant":139,"GpKyiF":168}],76:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -26036,7 +26036,7 @@ function _noMeasure(objName, fnName, func) {
 module.exports = ReactPerf;
 
 }).call(this,require("GpKyiF"))
-},{"GpKyiF":169}],77:[function(require,module,exports){
+},{"GpKyiF":168}],77:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -26202,7 +26202,7 @@ var ReactPropTransferer = {
 module.exports = ReactPropTransferer;
 
 }).call(this,require("GpKyiF"))
-},{"./emptyFunction":121,"./invariant":139,"./joinClasses":144,"./merge":149,"GpKyiF":169}],78:[function(require,module,exports){
+},{"./emptyFunction":121,"./invariant":139,"./joinClasses":144,"./merge":149,"GpKyiF":168}],78:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -26237,7 +26237,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = ReactPropTypeLocationNames;
 
 }).call(this,require("GpKyiF"))
-},{"GpKyiF":169}],79:[function(require,module,exports){
+},{"GpKyiF":168}],79:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -26991,7 +26991,7 @@ module.exports = {
 };
 
 }).call(this,require("GpKyiF"))
-},{"./ReactDescriptor":61,"./ReactInstanceHandles":69,"./ReactMarkupChecksum":71,"./ReactServerRenderingTransaction":85,"./instantiateReactComponent":138,"./invariant":139,"GpKyiF":169}],85:[function(require,module,exports){
+},{"./ReactDescriptor":61,"./ReactInstanceHandles":69,"./ReactMarkupChecksum":71,"./ReactServerRenderingTransaction":85,"./instantiateReactComponent":138,"./invariant":139,"GpKyiF":168}],85:[function(require,module,exports){
 /**
  * Copyright 2014 Facebook, Inc.
  *
@@ -28431,7 +28431,7 @@ var ReactUpdates = {
 module.exports = ReactUpdates;
 
 }).call(this,require("GpKyiF"))
-},{"./CallbackQueue":11,"./PooledClass":33,"./ReactCurrentOwner":45,"./ReactPerf":76,"./Transaction":109,"./invariant":139,"./mixInto":152,"./warning":163,"GpKyiF":169}],93:[function(require,module,exports){
+},{"./CallbackQueue":11,"./PooledClass":33,"./ReactCurrentOwner":45,"./ReactPerf":76,"./Transaction":109,"./invariant":139,"./mixInto":152,"./warning":163,"GpKyiF":168}],93:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -28491,7 +28491,7 @@ module.exports = React;
 
 
 }).call(this,require("GpKyiF"))
-},{"./LinkedStateMixin":29,"./React":34,"./ReactCSSTransitionGroup":37,"./ReactComponentWithPureRenderMixin":42,"./ReactDefaultPerf":59,"./ReactTestUtils":87,"./ReactTransitionGroup":91,"./cloneWithProps":113,"./cx":119,"./update":162,"GpKyiF":169}],94:[function(require,module,exports){
+},{"./LinkedStateMixin":29,"./React":34,"./ReactCSSTransitionGroup":37,"./ReactComponentWithPureRenderMixin":42,"./ReactDefaultPerf":59,"./ReactTestUtils":87,"./ReactTransitionGroup":91,"./cloneWithProps":113,"./cx":119,"./update":162,"GpKyiF":168}],94:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -29253,7 +29253,7 @@ var SimpleEventPlugin = {
 module.exports = SimpleEventPlugin;
 
 }).call(this,require("GpKyiF"))
-},{"./EventConstants":21,"./EventPluginUtils":25,"./EventPropagators":26,"./SyntheticClipboardEvent":98,"./SyntheticDragEvent":100,"./SyntheticEvent":101,"./SyntheticFocusEvent":102,"./SyntheticKeyboardEvent":104,"./SyntheticMouseEvent":105,"./SyntheticTouchEvent":106,"./SyntheticUIEvent":107,"./SyntheticWheelEvent":108,"./invariant":139,"./keyOf":146,"GpKyiF":169}],98:[function(require,module,exports){
+},{"./EventConstants":21,"./EventPluginUtils":25,"./EventPropagators":26,"./SyntheticClipboardEvent":98,"./SyntheticDragEvent":100,"./SyntheticEvent":101,"./SyntheticFocusEvent":102,"./SyntheticKeyboardEvent":104,"./SyntheticMouseEvent":105,"./SyntheticTouchEvent":106,"./SyntheticUIEvent":107,"./SyntheticWheelEvent":108,"./invariant":139,"./keyOf":146,"GpKyiF":168}],98:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -30290,7 +30290,7 @@ var Transaction = {
 module.exports = Transaction;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],110:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],110:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -30387,7 +30387,7 @@ function accumulate(current, next) {
 module.exports = accumulate;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],112:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],112:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -30493,7 +30493,7 @@ function cloneWithProps(child, props) {
 module.exports = cloneWithProps;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactPropTransferer":77,"./keyOf":146,"./warning":163,"GpKyiF":169}],114:[function(require,module,exports){
+},{"./ReactPropTransferer":77,"./keyOf":146,"./warning":163,"GpKyiF":168}],114:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -30602,7 +30602,7 @@ function copyProperties(obj, a, b, c, d, e, f) {
 module.exports = copyProperties;
 
 }).call(this,require("GpKyiF"))
-},{"GpKyiF":169}],116:[function(require,module,exports){
+},{"GpKyiF":168}],116:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -30762,7 +30762,7 @@ function createFullPageComponent(componentClass) {
 module.exports = createFullPageComponent;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactCompositeComponent":43,"./invariant":139,"GpKyiF":169}],118:[function(require,module,exports){
+},{"./ReactCompositeComponent":43,"./invariant":139,"GpKyiF":168}],118:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -30859,7 +30859,7 @@ function createNodesFromMarkup(markup, handleScript) {
 module.exports = createNodesFromMarkup;
 
 }).call(this,require("GpKyiF"))
-},{"./ExecutionEnvironment":27,"./createArrayFrom":116,"./getMarkupWrap":131,"./invariant":139,"GpKyiF":169}],119:[function(require,module,exports){
+},{"./ExecutionEnvironment":27,"./createArrayFrom":116,"./getMarkupWrap":131,"./invariant":139,"GpKyiF":168}],119:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -31046,7 +31046,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = emptyObject;
 
 }).call(this,require("GpKyiF"))
-},{"GpKyiF":169}],123:[function(require,module,exports){
+},{"GpKyiF":168}],123:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -31157,7 +31157,7 @@ function flattenChildren(children) {
 module.exports = flattenChildren;
 
 }).call(this,require("GpKyiF"))
-},{"./traverseAllChildren":161,"./warning":163,"GpKyiF":169}],125:[function(require,module,exports){
+},{"./traverseAllChildren":161,"./warning":163,"GpKyiF":168}],125:[function(require,module,exports){
 /**
  * Copyright 2014 Facebook, Inc.
  *
@@ -31385,7 +31385,7 @@ function getEventKey(nativeEvent) {
 module.exports = getEventKey;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],129:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],129:[function(require,module,exports){
 /**
  * Copyright 2013 Facebook, Inc.
  *
@@ -31601,7 +31601,7 @@ function getMarkupWrap(nodeName) {
 module.exports = getMarkupWrap;
 
 }).call(this,require("GpKyiF"))
-},{"./ExecutionEnvironment":27,"./invariant":139,"GpKyiF":169}],132:[function(require,module,exports){
+},{"./ExecutionEnvironment":27,"./invariant":139,"GpKyiF":168}],132:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -31970,7 +31970,7 @@ function instantiateReactComponent(descriptor) {
 module.exports = instantiateReactComponent;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],139:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],139:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -32034,7 +32034,7 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 }).call(this,require("GpKyiF"))
-},{"GpKyiF":169}],140:[function(require,module,exports){
+},{"GpKyiF":168}],140:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -32332,7 +32332,7 @@ var keyMirror = function(obj) {
 module.exports = keyMirror;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],146:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],146:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -32660,7 +32660,7 @@ var mergeHelpers = {
 module.exports = mergeHelpers;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"./keyMirror":145,"GpKyiF":169}],151:[function(require,module,exports){
+},{"./invariant":139,"./keyMirror":145,"GpKyiF":168}],151:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -32785,7 +32785,7 @@ function monitorCodeUse(eventName, data) {
 module.exports = monitorCodeUse;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],154:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],154:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -32832,7 +32832,7 @@ function onlyChild(children) {
 module.exports = onlyChild;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactDescriptor":61,"./invariant":139,"GpKyiF":169}],155:[function(require,module,exports){
+},{"./ReactDescriptor":61,"./invariant":139,"GpKyiF":168}],155:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -33165,7 +33165,7 @@ function toArray(obj) {
 module.exports = toArray;
 
 }).call(this,require("GpKyiF"))
-},{"./invariant":139,"GpKyiF":169}],161:[function(require,module,exports){
+},{"./invariant":139,"GpKyiF":168}],161:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -33362,7 +33362,7 @@ function traverseAllChildren(children, callback, traverseContext) {
 module.exports = traverseAllChildren;
 
 }).call(this,require("GpKyiF"))
-},{"./ReactInstanceHandles":69,"./ReactTextComponent":88,"./invariant":139,"GpKyiF":169}],162:[function(require,module,exports){
+},{"./ReactInstanceHandles":69,"./ReactTextComponent":88,"./invariant":139,"GpKyiF":168}],162:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -33537,7 +33537,7 @@ function update(value, spec) {
 module.exports = update;
 
 }).call(this,require("GpKyiF"))
-},{"./copyProperties":115,"./invariant":139,"./keyOf":146,"GpKyiF":169}],163:[function(require,module,exports){
+},{"./copyProperties":115,"./invariant":139,"./keyOf":146,"GpKyiF":168}],163:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014 Facebook, Inc.
@@ -33589,7 +33589,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = warning;
 
 }).call(this,require("GpKyiF"))
-},{"./emptyFunction":121,"GpKyiF":169}],164:[function(require,module,exports){
+},{"./emptyFunction":121,"GpKyiF":168}],164:[function(require,module,exports){
 module.exports = require('./lib/React');
 
 },{"./lib/React":34}],165:[function(require,module,exports){
@@ -35417,7 +35417,7 @@ module.exports = require('./lib/React');
     }
 }).call(this);
 }).call(this,require("GpKyiF"))
-},{"GpKyiF":169}],167:[function(require,module,exports){
+},{"GpKyiF":168}],167:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -35721,31 +35721,6 @@ function isUndefined(arg) {
 }
 
 },{}],168:[function(require,module,exports){
-if (typeof Object.create === 'function') {
-  // implementation from standard node.js 'util' module
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    ctor.prototype = Object.create(superCtor.prototype, {
-      constructor: {
-        value: ctor,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-  };
-} else {
-  // old school shim for old browsers
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    var TempCtor = function () {}
-    TempCtor.prototype = superCtor.prototype
-    ctor.prototype = new TempCtor()
-    ctor.prototype.constructor = ctor
-  }
-}
-
-},{}],169:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -35810,604 +35785,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],170:[function(require,module,exports){
-module.exports = function isBuffer(arg) {
-  return arg && typeof arg === 'object'
-    && typeof arg.copy === 'function'
-    && typeof arg.fill === 'function'
-    && typeof arg.readUInt8 === 'function';
-}
-},{}],171:[function(require,module,exports){
-(function (process,global){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-var formatRegExp = /%[sdj%]/g;
-exports.format = function(f) {
-  if (!isString(f)) {
-    var objects = [];
-    for (var i = 0; i < arguments.length; i++) {
-      objects.push(inspect(arguments[i]));
-    }
-    return objects.join(' ');
-  }
-
-  var i = 1;
-  var args = arguments;
-  var len = args.length;
-  var str = String(f).replace(formatRegExp, function(x) {
-    if (x === '%%') return '%';
-    if (i >= len) return x;
-    switch (x) {
-      case '%s': return String(args[i++]);
-      case '%d': return Number(args[i++]);
-      case '%j':
-        try {
-          return JSON.stringify(args[i++]);
-        } catch (_) {
-          return '[Circular]';
-        }
-      default:
-        return x;
-    }
-  });
-  for (var x = args[i]; i < len; x = args[++i]) {
-    if (isNull(x) || !isObject(x)) {
-      str += ' ' + x;
-    } else {
-      str += ' ' + inspect(x);
-    }
-  }
-  return str;
-};
-
-
-// Mark that a method should not be used.
-// Returns a modified function which warns once by default.
-// If --no-deprecation is set, then it is a no-op.
-exports.deprecate = function(fn, msg) {
-  // Allow for deprecating things in the process of starting up.
-  if (isUndefined(global.process)) {
-    return function() {
-      return exports.deprecate(fn, msg).apply(this, arguments);
-    };
-  }
-
-  if (process.noDeprecation === true) {
-    return fn;
-  }
-
-  var warned = false;
-  function deprecated() {
-    if (!warned) {
-      if (process.throwDeprecation) {
-        throw new Error(msg);
-      } else if (process.traceDeprecation) {
-        console.trace(msg);
-      } else {
-        console.error(msg);
-      }
-      warned = true;
-    }
-    return fn.apply(this, arguments);
-  }
-
-  return deprecated;
-};
-
-
-var debugs = {};
-var debugEnviron;
-exports.debuglog = function(set) {
-  if (isUndefined(debugEnviron))
-    debugEnviron = process.env.NODE_DEBUG || '';
-  set = set.toUpperCase();
-  if (!debugs[set]) {
-    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
-      var pid = process.pid;
-      debugs[set] = function() {
-        var msg = exports.format.apply(exports, arguments);
-        console.error('%s %d: %s', set, pid, msg);
-      };
-    } else {
-      debugs[set] = function() {};
-    }
-  }
-  return debugs[set];
-};
-
-
-/**
- * Echos the value of a value. Trys to print the value out
- * in the best way possible given the different types.
- *
- * @param {Object} obj The object to print out.
- * @param {Object} opts Optional options object that alters the output.
- */
-/* legacy: obj, showHidden, depth, colors*/
-function inspect(obj, opts) {
-  // default options
-  var ctx = {
-    seen: [],
-    stylize: stylizeNoColor
-  };
-  // legacy...
-  if (arguments.length >= 3) ctx.depth = arguments[2];
-  if (arguments.length >= 4) ctx.colors = arguments[3];
-  if (isBoolean(opts)) {
-    // legacy...
-    ctx.showHidden = opts;
-  } else if (opts) {
-    // got an "options" object
-    exports._extend(ctx, opts);
-  }
-  // set default options
-  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
-  if (isUndefined(ctx.depth)) ctx.depth = 2;
-  if (isUndefined(ctx.colors)) ctx.colors = false;
-  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
-  if (ctx.colors) ctx.stylize = stylizeWithColor;
-  return formatValue(ctx, obj, ctx.depth);
-}
-exports.inspect = inspect;
-
-
-// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
-inspect.colors = {
-  'bold' : [1, 22],
-  'italic' : [3, 23],
-  'underline' : [4, 24],
-  'inverse' : [7, 27],
-  'white' : [37, 39],
-  'grey' : [90, 39],
-  'black' : [30, 39],
-  'blue' : [34, 39],
-  'cyan' : [36, 39],
-  'green' : [32, 39],
-  'magenta' : [35, 39],
-  'red' : [31, 39],
-  'yellow' : [33, 39]
-};
-
-// Don't use 'blue' not visible on cmd.exe
-inspect.styles = {
-  'special': 'cyan',
-  'number': 'yellow',
-  'boolean': 'yellow',
-  'undefined': 'grey',
-  'null': 'bold',
-  'string': 'green',
-  'date': 'magenta',
-  // "name": intentionally not styling
-  'regexp': 'red'
-};
-
-
-function stylizeWithColor(str, styleType) {
-  var style = inspect.styles[styleType];
-
-  if (style) {
-    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
-           '\u001b[' + inspect.colors[style][1] + 'm';
-  } else {
-    return str;
-  }
-}
-
-
-function stylizeNoColor(str, styleType) {
-  return str;
-}
-
-
-function arrayToHash(array) {
-  var hash = {};
-
-  array.forEach(function(val, idx) {
-    hash[val] = true;
-  });
-
-  return hash;
-}
-
-
-function formatValue(ctx, value, recurseTimes) {
-  // Provide a hook for user-specified inspect functions.
-  // Check that value is an object with an inspect function on it
-  if (ctx.customInspect &&
-      value &&
-      isFunction(value.inspect) &&
-      // Filter out the util module, it's inspect function is special
-      value.inspect !== exports.inspect &&
-      // Also filter out any prototype objects using the circular check.
-      !(value.constructor && value.constructor.prototype === value)) {
-    var ret = value.inspect(recurseTimes, ctx);
-    if (!isString(ret)) {
-      ret = formatValue(ctx, ret, recurseTimes);
-    }
-    return ret;
-  }
-
-  // Primitive types cannot have properties
-  var primitive = formatPrimitive(ctx, value);
-  if (primitive) {
-    return primitive;
-  }
-
-  // Look up the keys of the object.
-  var keys = Object.keys(value);
-  var visibleKeys = arrayToHash(keys);
-
-  if (ctx.showHidden) {
-    keys = Object.getOwnPropertyNames(value);
-  }
-
-  // IE doesn't make error fields non-enumerable
-  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
-  if (isError(value)
-      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
-    return formatError(value);
-  }
-
-  // Some type of object without properties can be shortcutted.
-  if (keys.length === 0) {
-    if (isFunction(value)) {
-      var name = value.name ? ': ' + value.name : '';
-      return ctx.stylize('[Function' + name + ']', 'special');
-    }
-    if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-    }
-    if (isDate(value)) {
-      return ctx.stylize(Date.prototype.toString.call(value), 'date');
-    }
-    if (isError(value)) {
-      return formatError(value);
-    }
-  }
-
-  var base = '', array = false, braces = ['{', '}'];
-
-  // Make Array say that they are Array
-  if (isArray(value)) {
-    array = true;
-    braces = ['[', ']'];
-  }
-
-  // Make functions say that they are functions
-  if (isFunction(value)) {
-    var n = value.name ? ': ' + value.name : '';
-    base = ' [Function' + n + ']';
-  }
-
-  // Make RegExps say that they are RegExps
-  if (isRegExp(value)) {
-    base = ' ' + RegExp.prototype.toString.call(value);
-  }
-
-  // Make dates with properties first say the date
-  if (isDate(value)) {
-    base = ' ' + Date.prototype.toUTCString.call(value);
-  }
-
-  // Make error with message first say the error
-  if (isError(value)) {
-    base = ' ' + formatError(value);
-  }
-
-  if (keys.length === 0 && (!array || value.length == 0)) {
-    return braces[0] + base + braces[1];
-  }
-
-  if (recurseTimes < 0) {
-    if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-    } else {
-      return ctx.stylize('[Object]', 'special');
-    }
-  }
-
-  ctx.seen.push(value);
-
-  var output;
-  if (array) {
-    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
-  } else {
-    output = keys.map(function(key) {
-      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
-    });
-  }
-
-  ctx.seen.pop();
-
-  return reduceToSingleString(output, base, braces);
-}
-
-
-function formatPrimitive(ctx, value) {
-  if (isUndefined(value))
-    return ctx.stylize('undefined', 'undefined');
-  if (isString(value)) {
-    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
-                                             .replace(/'/g, "\\'")
-                                             .replace(/\\"/g, '"') + '\'';
-    return ctx.stylize(simple, 'string');
-  }
-  if (isNumber(value))
-    return ctx.stylize('' + value, 'number');
-  if (isBoolean(value))
-    return ctx.stylize('' + value, 'boolean');
-  // For some reason typeof null is "object", so special case here.
-  if (isNull(value))
-    return ctx.stylize('null', 'null');
-}
-
-
-function formatError(value) {
-  return '[' + Error.prototype.toString.call(value) + ']';
-}
-
-
-function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
-  var output = [];
-  for (var i = 0, l = value.length; i < l; ++i) {
-    if (hasOwnProperty(value, String(i))) {
-      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-          String(i), true));
-    } else {
-      output.push('');
-    }
-  }
-  keys.forEach(function(key) {
-    if (!key.match(/^\d+$/)) {
-      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-          key, true));
-    }
-  });
-  return output;
-}
-
-
-function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
-  var name, str, desc;
-  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
-  if (desc.get) {
-    if (desc.set) {
-      str = ctx.stylize('[Getter/Setter]', 'special');
-    } else {
-      str = ctx.stylize('[Getter]', 'special');
-    }
-  } else {
-    if (desc.set) {
-      str = ctx.stylize('[Setter]', 'special');
-    }
-  }
-  if (!hasOwnProperty(visibleKeys, key)) {
-    name = '[' + key + ']';
-  }
-  if (!str) {
-    if (ctx.seen.indexOf(desc.value) < 0) {
-      if (isNull(recurseTimes)) {
-        str = formatValue(ctx, desc.value, null);
-      } else {
-        str = formatValue(ctx, desc.value, recurseTimes - 1);
-      }
-      if (str.indexOf('\n') > -1) {
-        if (array) {
-          str = str.split('\n').map(function(line) {
-            return '  ' + line;
-          }).join('\n').substr(2);
-        } else {
-          str = '\n' + str.split('\n').map(function(line) {
-            return '   ' + line;
-          }).join('\n');
-        }
-      }
-    } else {
-      str = ctx.stylize('[Circular]', 'special');
-    }
-  }
-  if (isUndefined(name)) {
-    if (array && key.match(/^\d+$/)) {
-      return str;
-    }
-    name = JSON.stringify('' + key);
-    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
-      name = name.substr(1, name.length - 2);
-      name = ctx.stylize(name, 'name');
-    } else {
-      name = name.replace(/'/g, "\\'")
-                 .replace(/\\"/g, '"')
-                 .replace(/(^"|"$)/g, "'");
-      name = ctx.stylize(name, 'string');
-    }
-  }
-
-  return name + ': ' + str;
-}
-
-
-function reduceToSingleString(output, base, braces) {
-  var numLinesEst = 0;
-  var length = output.reduce(function(prev, cur) {
-    numLinesEst++;
-    if (cur.indexOf('\n') >= 0) numLinesEst++;
-    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
-  }, 0);
-
-  if (length > 60) {
-    return braces[0] +
-           (base === '' ? '' : base + '\n ') +
-           ' ' +
-           output.join(',\n  ') +
-           ' ' +
-           braces[1];
-  }
-
-  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
-}
-
-
-// NOTE: These type checking functions intentionally don't use `instanceof`
-// because it is fragile and can be easily faked with `Object.create()`.
-function isArray(ar) {
-  return Array.isArray(ar);
-}
-exports.isArray = isArray;
-
-function isBoolean(arg) {
-  return typeof arg === 'boolean';
-}
-exports.isBoolean = isBoolean;
-
-function isNull(arg) {
-  return arg === null;
-}
-exports.isNull = isNull;
-
-function isNullOrUndefined(arg) {
-  return arg == null;
-}
-exports.isNullOrUndefined = isNullOrUndefined;
-
-function isNumber(arg) {
-  return typeof arg === 'number';
-}
-exports.isNumber = isNumber;
-
-function isString(arg) {
-  return typeof arg === 'string';
-}
-exports.isString = isString;
-
-function isSymbol(arg) {
-  return typeof arg === 'symbol';
-}
-exports.isSymbol = isSymbol;
-
-function isUndefined(arg) {
-  return arg === void 0;
-}
-exports.isUndefined = isUndefined;
-
-function isRegExp(re) {
-  return isObject(re) && objectToString(re) === '[object RegExp]';
-}
-exports.isRegExp = isRegExp;
-
-function isObject(arg) {
-  return typeof arg === 'object' && arg !== null;
-}
-exports.isObject = isObject;
-
-function isDate(d) {
-  return isObject(d) && objectToString(d) === '[object Date]';
-}
-exports.isDate = isDate;
-
-function isError(e) {
-  return isObject(e) &&
-      (objectToString(e) === '[object Error]' || e instanceof Error);
-}
-exports.isError = isError;
-
-function isFunction(arg) {
-  return typeof arg === 'function';
-}
-exports.isFunction = isFunction;
-
-function isPrimitive(arg) {
-  return arg === null ||
-         typeof arg === 'boolean' ||
-         typeof arg === 'number' ||
-         typeof arg === 'string' ||
-         typeof arg === 'symbol' ||  // ES6 symbol
-         typeof arg === 'undefined';
-}
-exports.isPrimitive = isPrimitive;
-
-exports.isBuffer = require('./support/isBuffer');
-
-function objectToString(o) {
-  return Object.prototype.toString.call(o);
-}
-
-
-function pad(n) {
-  return n < 10 ? '0' + n.toString(10) : n.toString(10);
-}
-
-
-var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-              'Oct', 'Nov', 'Dec'];
-
-// 26 Feb 16:19:34
-function timestamp() {
-  var d = new Date();
-  var time = [pad(d.getHours()),
-              pad(d.getMinutes()),
-              pad(d.getSeconds())].join(':');
-  return [d.getDate(), months[d.getMonth()], time].join(' ');
-}
-
-
-// log is just a thin wrapper to console.log that prepends a timestamp
-exports.log = function() {
-  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
-};
-
-
-/**
- * Inherit the prototype methods from one constructor into another.
- *
- * The Function.prototype.inherits from lang.js rewritten as a standalone
- * function (not on Function.prototype). NOTE: If this file is to be loaded
- * during bootstrapping this function needs to be rewritten using some native
- * functions as prototype setup using normal JavaScript does not work as
- * expected during bootstrapping (see mirror.js in r114903).
- *
- * @param {function} ctor Constructor function which needs to inherit the
- *     prototype.
- * @param {function} superCtor Constructor function to inherit prototype from.
- */
-exports.inherits = require('inherits');
-
-exports._extend = function(origin, add) {
-  // Don't do anything if add isn't an object
-  if (!add || !isObject(add)) return origin;
-
-  var keys = Object.keys(add);
-  var i = keys.length;
-  while (i--) {
-    origin[keys[i]] = add[keys[i]];
-  }
-  return origin;
-};
-
-function hasOwnProperty(obj, prop) {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
-}
-
-}).call(this,require("GpKyiF"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":170,"GpKyiF":169,"inherits":168}],172:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 var window = require("global/window")
 var once = require("once")
 var parseHeaders = require('parse-headers')
@@ -36579,7 +35957,7 @@ function createXHR(options, callback) {
 
 function noop() {}
 
-},{"global/window":173,"once":174,"parse-headers":178}],173:[function(require,module,exports){
+},{"global/window":170,"once":171,"parse-headers":175}],170:[function(require,module,exports){
 (function (global){
 if (typeof window !== "undefined") {
     module.exports = window
@@ -36590,7 +35968,7 @@ if (typeof window !== "undefined") {
 }
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],174:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 module.exports = once
 
 once.proto = once(function () {
@@ -36611,7 +35989,7 @@ function once (fn) {
   }
 }
 
-},{}],175:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 var isFunction = require('is-function')
 
 module.exports = forEach
@@ -36659,7 +36037,7 @@ function forEachObject(object, iterator, context) {
     }
 }
 
-},{"is-function":176}],176:[function(require,module,exports){
+},{"is-function":173}],173:[function(require,module,exports){
 module.exports = isFunction
 
 var toString = Object.prototype.toString
@@ -36676,7 +36054,7 @@ function isFunction (fn) {
       fn === window.prompt))
 };
 
-},{}],177:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -36692,7 +36070,7 @@ exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
 
-},{}],178:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 var trim = require('trim')
   , forEach = require('for-each')
 
@@ -36714,7 +36092,7 @@ module.exports = function (headers) {
 
   return result
 }
-},{"for-each":175,"trim":177}],"/mCort":[function(require,module,exports){
+},{"for-each":172,"trim":174}],"/mCort":[function(require,module,exports){
 
 var _ = require('lodash')
 var Immutable = require('immutable')
@@ -36816,7 +36194,7 @@ var AboutSection = React.createClass({displayName: 'AboutSection',
             ), 
             React.DOM.div({className: "form-group"}, 
               React.DOM.label(null, "Content"), 
-              React.DOM.textarea({className: "form-control", rows: "6", valueLink: this.linkState('content')})
+              React.DOM.textarea({className: "form-control", rows: "10", valueLink: this.linkState('content')})
             ), 
             React.DOM.div({className: "panel-footer clearfix"}, 
               React.DOM.button({onClick: this.cancel, className: "btn-md btn-animated vertical btn-default pull-left"}, 
@@ -37561,7 +36939,7 @@ module.exports = React.createClass({displayName: 'exports',
 
     }
 
-    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLnJYzBywdWFPv_eWD6JxAtcrFbvnY7tGI?v=2&alt=json';
+    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2jOQdRZx_AuWMlMe7KpohFl?v=2&alt=json';
     var videoURL= 'http://www.youtube.com/watch?v=';
 
     var xhr = new XMLHttpRequest
@@ -37610,9 +36988,9 @@ module.exports = React.createClass({displayName: 'exports',
       })
       return React.DOM.div({className: classes}, 
         React.DOM.a({href: "#", onClick: this.play.bind(this, item)}, 
-          React.DOM.img({src: thumb, className: "img-responsive"}), 
+          React.DOM.img({className: "img-responsive", src: thumb}), 
           React.DOM.div({className: "overlay"}, 
-            React.DOM.figure({className: "fa fa-3x fa-play-circle-o"})
+            React.DOM.figure({className: "fa fa-3x fa-youtube-play"})
           )
         ), 
         renderVideoFor(url, videoID)
@@ -37942,22 +37320,10 @@ module.exports = React.createClass({displayName: 'exports',
                   )
                 ), 
                   React.DOM.div({className: "social-links"}, 
-                    React.DOM.button({className: "btn-lg btn-animated vertical btn-twitter"}, 
-                      React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "twitter"})), 
-                      React.DOM.div({className: "not-visible content"}, React.DOM.i({className: "twitter"}))
-                    ), 
-                    React.DOM.button({className: "btn-lg btn-animated vertical btn-facebook"}, 
-                      React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "facebook"})), 
-                      React.DOM.div({className: "not-visible content"}, React.DOM.i({className: "facebook"}))
-                    ), 
-                    React.DOM.button({className: "btn-lg btn-animated vertical btn-instagram"}, 
-                      React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "instagram"})), 
-                      React.DOM.div({className: "not-visible content"}, React.DOM.i({className: "instagram"}))
-                    ), 
-                    React.DOM.button({className: "btn-lg btn-animated vertical btn-youtube"}, 
-                      React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "youtube"})), 
-                      React.DOM.div({className: "not-visible content"}, React.DOM.i({className: "youtube"}))
-                    )
+                    React.DOM.a({className: "twitter"}), 
+                    React.DOM.a({className: "facebook"}), 
+                    React.DOM.a({className: "instagram"}), 
+                    React.DOM.a({className: "youtube"})
                   )
               )
             )
@@ -37977,7 +37343,9 @@ module.exports = React.createClass({displayName: 'exports',
   }
 })
 
-},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../util":"Y/OqMs","./featured_stream":"rdtrDj","lodash":2,"react/addons":5}],"9TDxeo":[function(require,module,exports){
+},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../util":"Y/OqMs","./featured_stream":"rdtrDj","lodash":2,"react/addons":5}],"./components/latest":[function(require,module,exports){
+module.exports=require('9TDxeo');
+},{}],"9TDxeo":[function(require,module,exports){
 
 /** @jsx React.DOM */
 
@@ -38093,7 +37461,7 @@ var Updates = React.createClass({displayName: 'Updates',
 
   componentWillMount: function() {
     this.paginate({
-      perPage: 3,
+      perPage: 4,
       getList: function() {
         return this.props.$cursor.deref().list
       }
@@ -38179,20 +37547,18 @@ var UpdateItem = React.createClass({displayName: 'UpdateItem',
     return (
       React.DOM.li({className: "media"}, 
         React.DOM.div({className: "media-body"}, 
+         this.props.isEditable ? (
         React.DOM.div({className: "admin-bar clearfix"}, 
-           this.props.isEditable ? (
             React.DOM.button({onClick: this.props.onDelete, className: "btn-animated btn-sm vertical btn-danger pull-left"}, 
               React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "delete"})), 
               React.DOM.div({className: "not-visible content"}, "Delete")
-            )
-            ) : '', 
-           this.props.isEditable ? (
+            ), 
             React.DOM.button({onClick: this.activateEdit, className: "btn-animated btn-sm vertical btn-warning pull-right"}, 
               React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "edit"})), 
               React.DOM.div({className: "not-visible content"}, "Edit")
             )
-            ) : ''
-        ), 
+        )
+        ) : '', 
           React.DOM.a({href: "#", onClick: this.props.activate.bind(null, this.props.$cursor), key: this.state._id}, 
             React.DOM.h4({className: "media-heading"}, this.state.title)
           ), 
@@ -38223,7 +37589,7 @@ var News = React.createClass({displayName: 'News',
     e.preventDefault()
     var list = this.props.$cursor.deref().list
     var _id = util.nextId(list)
-    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', source: '', link: '', date: '' } ] } })
+    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', source: '', link: '', date: '' } ] } }, { skipSync: true })
   },
 
   deleteItem: function(index) {
@@ -38334,20 +37700,18 @@ var NewsItem = React.createClass({displayName: 'NewsItem',
       return (
         React.DOM.li({className: "media", key: this.state._id}, 
           React.DOM.div({className: "media-body"}, 
+           this.props.isEditable ? (
             React.DOM.div({className: "admin-bar clearfix"}, 
-               this.props.isEditable ? (
-                React.DOM.button({onClick: this.props.onDelete.bind(null, this.props.index), className: "btn-animated btn-sm vertical btn-danger pull-left"}, 
-                  React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "delete"})), 
-                  React.DOM.div({className: "not-visible content"}, "Delete")
-                )
-                ) : '', 
-               this.props.isEditable ? (
-                React.DOM.button({onClick: this.edit, className: "btn-animated btn-sm vertical btn-warning pull-right"}, 
-                  React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "edit"})), 
-                  React.DOM.div({className: "not-visible content"}, "Edit")
-                )
-                ) : ''
-            ), 
+              React.DOM.button({onClick: this.props.onDelete.bind(null, this.props.index), className: "btn-animated btn-sm vertical btn-danger pull-left"}, 
+                React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "delete"})), 
+                React.DOM.div({className: "not-visible content"}, "Delete")
+              ), 
+              React.DOM.button({onClick: this.edit, className: "btn-animated btn-sm vertical btn-warning pull-right"}, 
+                React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "edit"})), 
+                React.DOM.div({className: "not-visible content"}, "Edit")
+              )
+            )
+            ) : '', 
             React.DOM.a({href: this.state.link, target: "_blank"}, 
               React.DOM.h4({className: "media-heading"}, this.state.title)
             ), 
@@ -38480,9 +37844,7 @@ module.exports = React.createClass({displayName: 'exports',
   }
 })
 
-},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../mixins/paginated":"XABVER","../util":"Y/OqMs","lodash":2,"pikaday":4,"react":164}],"./components/latest":[function(require,module,exports){
-module.exports=require('9TDxeo');
-},{}],"./components/login":[function(require,module,exports){
+},{"../errors":"p8GNTY","../mixins/editable":"nRg1xI","../mixins/paginated":"XABVER","../util":"Y/OqMs","lodash":2,"pikaday":4,"react":164}],"./components/login":[function(require,module,exports){
 module.exports=require('QqCiH7');
 },{}],"QqCiH7":[function(require,module,exports){
 
@@ -38575,23 +37937,33 @@ module.exports=require('AqdCjF');
 
 var React = require('react/addons')
 var Editable = require('../mixins/editable')
+var Paginated = require('../mixins/paginated')
 var campaignService = require('../services/campaign')
 var uploadService = require('../services/upload')
 var hub = require('../hub')
 var _ = require('lodash')
-var util = require('util')
+var util = require('../util')
 
 var PartnerList = React.createClass({displayName: 'PartnerList',
 
-  mixins: [ Editable, React.addons.LinkedStateMixin ],
+  mixins: [ Editable, React.addons.LinkedStateMixin, Paginated ],
+
+  componentWillMount: function() {
+    this.paginate({
+      perPage: 4,
+      getList: function() { return this.props.$cursor.deref().list }
+    })
+  },
 
   add: function(e) {
     e.preventDefault()
     var list = this.state.list
-    this.props.$cursor.update({ list: { $push: [ { name: '', file: '', link: '' } ] } })
+    var _id = util.nextId(list)
+    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, name: '', file: '', link: '', featured: false } ] } }, { skipSync: true })
   },
 
-  deleteItem: function(index) {
+  deleteItem: function(_id) {
+    var index = _.findIndex(this.props.$cursor.deref().list, { _id: _id })
     this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
   },
 
@@ -38646,11 +38018,11 @@ var PartnerList = React.createClass({displayName: 'PartnerList',
             React.DOM.p(null, this.state.description)
           ), 
           React.DOM.div({className: "pagination-bar clearfix"}, 
-          React.DOM.button({className: "btn-md btn-animated vertical btn-clean pull-left"}, 
+          React.DOM.button({onClick: this.pagination.down, className: "btn-md btn-animated vertical btn-clean pull-left"}, 
             React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "prev"})), 
             React.DOM.div({className: "not-visible content"}, "Prev")
           ), 
-          React.DOM.button({className: "btn-md btn-animated vertical btn-clean pull-right"}, 
+          React.DOM.button({onClick: this.pagination.up, className: "btn-md btn-animated vertical btn-clean pull-right"}, 
             React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "next"})), 
             React.DOM.div({className: "not-visible content"}, "Next")
           )
@@ -38659,6 +38031,7 @@ var PartnerList = React.createClass({displayName: 'PartnerList',
       )
     }.bind(this)
 
+    var list = this.pagination.getCurrent()
     return (
       React.DOM.div({className: "partners-row", key: this.state.name}, 
          this.detectEditing() ? renderEditing() : renderViewing(), 
@@ -38666,12 +38039,13 @@ var PartnerList = React.createClass({displayName: 'PartnerList',
           React.DOM.div({className: "partners-list"}, 
             React.DOM.ul(null, 
               
-                this.state.list.map(function(item, index) {
+                list.map(function(item, i) {
+                  var realI = (this.pagination.index * this.pagination.perPage) + i
                   return PartnerItem({
-                    $cursor: this.props.$cursor.refine([ 'list', index ]), 
-                    index: index, 
+                    key: item._id, 
+                    $cursor: this.props.$cursor.refine([ 'list', realI ]), 
                     isEditable: this.props.isEditable, 
-                    onDelete: this.deleteItem}
+                    onDelete: this.deleteItem.bind(this, item._id)}
                   )
                 }, this)
               
@@ -38694,7 +38068,7 @@ var PartnerItem = React.createClass({displayName: 'PartnerItem',
 
   smartCancel: function() {
     if (this.detectNewness()) {
-      this.props.onDelete(this.props.index)
+      this.props.onDelete()
     } else {
       this.cancel()
     }
@@ -38707,15 +38081,15 @@ var PartnerItem = React.createClass({displayName: 'PartnerItem',
 
   upload: function(e) {
     var file = e.target.files[0]
-    hub.emit('file:image:process', file, {}, function(f) {
-      this.props.$cursor.update({ file: { $set: f.url() } })
+    hub.emit('file:image:process', file, { width: 300, height: 300 }, function(f) {
+      this.props.$cursor.update({ file: { $set: f.url() } }, { skipSync: true })
     }.bind(this))
   },
 
   render: function() {
     if (this.detectEditing()) {
       return (
-        React.DOM.div({className: "partner", key: this.props.index}, 
+        React.DOM.li({className: "partner editing"}, 
           React.DOM.div({className: "panel-body"}, 
             React.DOM.div({className: "form-group"}, 
               React.DOM.label(null, "Logo"), 
@@ -38736,6 +38110,11 @@ var PartnerItem = React.createClass({displayName: 'PartnerItem',
                 React.DOM.input({className: "form-control", type: "text", valueLink: this.linkState('link')})
               )
             ), 
+            React.DOM.div({className: "checkbox"}, 
+              React.DOM.label(null, 
+                React.DOM.input({type: "checkbox", checkedLink: this.linkState('featured')}), " Featured"
+              )
+            ), 
             React.DOM.div({className: "panel-footer clearfix"}, 
               React.DOM.button({onClick: this.smartCancel, className: "btn-md btn-animated vertical btn-default pull-left"}, 
                 React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "cancel"})), 
@@ -38752,20 +38131,18 @@ var PartnerItem = React.createClass({displayName: 'PartnerItem',
     } else {
       return (
         React.DOM.li({className: "partner"}, 
+         this.props.isEditable ? (
           React.DOM.div({className: "admin-bar clearfix"}, 
-             this.props.isEditable ? (
-              React.DOM.button({onClick: this.props.onDelete.bind(null, this.props.index), className: "btn-animated btn-sm vertical btn-danger pull-left"}, 
+              React.DOM.button({onClick: this.props.onDelete, className: "btn-animated btn-sm vertical btn-danger pull-left"}, 
                 React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "delete"})), 
                 React.DOM.div({className: "not-visible content"}, "Delete")
-              )
-              ) : '', 
-             this.props.isEditable ? (
+              ), 
               React.DOM.button({onClick: this.edit, className: "btn-animated btn-sm vertical btn-warning pull-right"}, 
                 React.DOM.div({className: "is-visible content"}, React.DOM.i({className: "edit"})), 
                 React.DOM.div({className: "not-visible content"}, "Edit")
               )
-              ) : ''
-          ), 
+          )
+        ) : '', 
           React.DOM.a({href: this.state.link, target: "_blank"}, 
           React.DOM.img({className: "img-responsive", src: this.state.file}), 
           React.DOM.div({className: "partner-header"}, 
@@ -38804,7 +38181,7 @@ module.exports = React.createClass({displayName: 'exports',
   }
 })
 
-},{"../hub":"MAeJA1","../mixins/editable":"nRg1xI","../services/campaign":"eajjYM","../services/upload":"wZcOGN","lodash":2,"react/addons":5,"util":171}],"4CfIzc":[function(require,module,exports){
+},{"../hub":"MAeJA1","../mixins/editable":"nRg1xI","../mixins/paginated":"XABVER","../services/campaign":"eajjYM","../services/upload":"wZcOGN","../util":"Y/OqMs","lodash":2,"react/addons":5}],"4CfIzc":[function(require,module,exports){
 
 /** @jsx React.DOM */
 
@@ -38907,7 +38284,7 @@ var DownloadItem = React.createClass({displayName: 'DownloadItem',
   upload: function(e) {
     var file = e.target.files[0]
     hub.emit('file:process', file, {}, function(f) {
-      this.props.$cursor.update({ file: { $set: f.url() } })
+      this.setState({ file: f.url() })
     }.bind(this))
   },
   render: function() {
@@ -38965,7 +38342,7 @@ var DownloadItem = React.createClass({displayName: 'DownloadItem',
                   React.DOM.div({className: "not-visible content"}, "Edit")
                 )) : ''
               ), 
-            React.DOM.a({href: this.state.file}, 
+            React.DOM.a({href: this.state.file, target: "_blank"}, 
               React.DOM.h4({className: "media-heading"}, this.state.name)
             ), 
             React.DOM.p(null, this.state.description)
@@ -39037,7 +38414,7 @@ var Resources = React.createClass({displayName: 'Resources',
     e.preventDefault()
     var list = this.props.$cursor.deref().list
     var _id = util.nextId(list)
-    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', desc: '', link: '', date: '' } ] } })
+    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, title: '', desc: '', link: '', date: '' } ] } }, { skipSync: true })
   },
 
   deleteItem: function(index) {
@@ -39047,8 +38424,8 @@ var Resources = React.createClass({displayName: 'Resources',
   render: function() {
     var _id = this.props.$cursor.deref()._id
 
-if (this.detectEditing()) {
-  return (
+  if (this.detectEditing()) {
+    return (
         React.DOM.div({className: "resources-item"}, 
             React.DOM.div({className: "panel-heading"}, 
               React.DOM.button({onClick: this.cancel, className: "btn-md btn-animated vertical btn-default pull-left"}, 
@@ -39258,7 +38635,7 @@ module.exports = React.createClass({displayName: 'exports',
 
     }
 
-    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLnJYzBywdWFPv_eWD6JxAtcrFbvnY7tGI?v=2&alt=json';
+    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2hAwdlHVXw2jTGUFahKH43l?max-results=50&v=2&alt=json';
     var videoURL= 'http://www.youtube.com/watch?v=';
 
     var xhr = new XMLHttpRequest
@@ -39279,7 +38656,7 @@ module.exports = React.createClass({displayName: 'exports',
             var fragments = feedURL.split("/");
             var videoID = fragments[fragments.length - 2];
             var url = videoURL + videoID;
-            var thumb = "http://img.youtube.com/vi/"+ videoID +"/mediu.jpg";
+            var thumb = "http://img.youtube.com/vi/"+ videoID +"/medium.jpg";
             list_data += '<li><a href="'+ url +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a></li>';
         });
         $(list_data).appendTo(".cont");
@@ -39333,9 +38710,9 @@ module.exports = React.createClass({displayName: 'exports',
       })
       return React.DOM.div({className: classes}, 
         React.DOM.a({href: "#", onClick: this.play.bind(this, url)}, 
-          React.DOM.img({src: thumb}), 
+          React.DOM.img({className: "img-responsive", src: thumb}), 
           React.DOM.div({className: "overlay"}, 
-            React.DOM.figure({className: "fa fa-3x fa-play-circle-o"})
+            React.DOM.figure({className: "fa fa-3x fa-youtube-play"})
           )
         ), 
         renderVideoFor(url, videoID)
@@ -39347,7 +38724,7 @@ module.exports = React.createClass({displayName: 'exports',
     return (
       React.DOM.div({className: "stream-container"}, 
         React.DOM.div({className: "stream-header"}, 
-          React.DOM.div({className: "stream-title"}, "#Stream")
+          React.DOM.div({className: "stream-title"}, "#OpenlySecular")
         ), 
         React.DOM.div({className: "stream-row"}, 
           this.renderStream()
@@ -39439,7 +38816,7 @@ module.exports = React.createClass({displayName: 'exports',
               )
             ), 
             Guidelines({
-              $cursor: $campaign.refine('Guidelines1'), 
+              $cursor: $campaign.refine('Guidelines'), 
               isEditable: !_.isEmpty($shared.deref().session)}
             )
           ), 
@@ -39491,7 +38868,7 @@ module.exports=require('60Uj0D');
 module.exports=require('4itQ50');
 },{}],"4itQ50":[function(require,module,exports){
 
-var config = {"campaign":{"DIY":{"content":"<img class=\"img-responsive\" src=\"http://s29.postimg.org/5s7ccqezb/guide.jpg\">"},"DonateHome":{"content":"Donate to help us raise awareness","title":"Make a Donation"},"InvolvedHome":{"content":"Take action and join the conversation by posting a status, photo, or video on social media with the hashtag ourhashtag. Then submit it to us to make sure it gets featured on the site. Because together we can make sure our voices are heard.","title":"Get Involved"},"MediaBlock1":{"content":"<img src=\"http://s29.postimg.org/5s7ccqezb/guide.jpg\">"},"MediaBlock2":{"content":"<img class=\"img-responsive\" src=\"http://s29.postimg.org/5s7ccqezb/guide.jpg\">"},"MediaBlock3":{"content":"<strong>Blah is bold</strong><br>shnarf"},"about1":{"content":"The mission of Openly Secular is to eliminate discrimination and increase acceptance by getting secular people - including atheists, freethinkers, agnostics, humanists and nonreligious people - to be open about their beliefs.","title":"Our Mission"},"about2":{"content":"In addition, we are working with a big tent of people from all across the secular spectrum - nonreligious groups including atheists, freethinkers, humanists, agnostics, and even the spiritual but not religious. We are also working with the nontheistic religious: people like deists, secular Jews, humanistic Unitarians, ethical culturists, and other religious humanists who are skeptical of theistic claims.","title":"Our Story"},"about3":{"content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","title":"Who We Are"},"about4":{"content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","title":"What We Do"},"contact":{"address":"1234 Street, City Sate Zip","ein":"55555555555555","email":"contact@campaign.org","fax":"555-555-5555","instagram":"campaign","name":"Campaign Name","phone":"555-555-5555","pressEmail":"press@campaign.org","pressName":"Contact Name","pressPhone":"555-555-5555","twitter":"@campaign","youtube":"campaign"},"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","downloads":{"description":"Get your files bitch","list":[{"_id":0,"description":"This is my description babyy","file":"someogo.png","name":"rdf"}],"title":"Downloads"},"logo":"https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg","news":{"list":[{"_id":0,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":1,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":2,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":3,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":4,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":5,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"},{"_id":6,"date":"04/04/04","link":"http://nytimes.com","source":"nytimes.com","title":"news article 1"}],"title":"In the news"},"partners":[{"_id":0,"description":"some friends of ours","list":[{"_id":0,"link":"rdf.net","logo":"someogo.png","name":"rdf"},{"file":"","link":"sdfsdf","name":"fsdf"}],"title":"Partners"},{"_id":1,"description":"some friends of ours","list":[{"_id":0,"link":"google.com","logo":"someogo.png","name":"brendan"}],"title":"Allies"}],"resources":{"list":[{"_id":0,"desc":"This is a descritpion more than a source","link":"http://nytimes.com","title":"Freethinkers Whatever"}],"title":"Resources"},"slug":"openlysecular","title":"Some freakin campaign","updates":{"list":[{"_id":6,"content":"asdfasdnf\nasdf\nasdf\nasdfasdfasdfasd\n\nasdf\nasdf","date":"September 17, 2014","excerpt":"THis is excerpt ","title":"Hi Lyz"},{"_id":0,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. \nProin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet veli\n\nt tincidunt volutpat vitae id eros\n. Nullam tincidunt sollicitudin mauris, \nconsectetur faucibus lorem dignissim vel.","date":"September 4, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 1"},{"_id":1,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 5, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 2"},{"_id":2,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 6, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 3"},{"_id":3,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 7, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 4"},{"_id":4,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 8, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 5"},{"_id":5,"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","date":"September 9, 2014","excerpt":"This is a short excerpt...","title":"Our monthly status 6"}],"title":"Latest updates"},"userId":"siRzY8KN64","objectId":"3ssvRGbGQO","createdAt":"2014-09-04T19:06:18.833Z","updatedAt":"2014-09-10T23:27:22.857Z"}}
+var config = {"campaign":{"DIY":{"content":"<img class=\"img-responsive\" src=\"http://s29.postimg.org/5s7ccqezb/guide.jpg\">"},"DonateHome":{"content":"Donate to help us raise awareness","title":"Make a Donation"},"Guidelines":{"content":"These are guidelines for submission! Feel free to add whatever"},"Guidlines":{"content":"These are guidelines for submission!"},"InvolvedHome":{"content":"Take action and join the conversation by posting a status, photo, or video on social media with the hashtag ourhashtag. Then submit it to us to make sure it gets featured on the site. Because together we can make sure our voices are heard.","title":"Get Involved"},"MediaBlock1":{"content":"<img src=\"http://s29.postimg.org/5s7ccqezb/guide.jpg\">"},"MediaBlock2":{"content":"<img class=\"img-responsive\" src=\"http://s29.postimg.org/5s7ccqezb/guide.jpg\">"},"MediaBlock3":{"content":"<strong>Blah is bold</strong><br>shnarf"},"about1":{"content":"<p>The mission of Openly Secular is to eliminate discrimination and increase acceptance by getting secular people - including atheists, freethinkers, agnostics, humanists and nonreligious people - to be open about their beliefs.</p>\n","title":"Our Mission"},"about2":{"content":"<p>Discrimination is rampant against those who are secular. Teens are made homeless after being thrown out of their homes; young activists receive death threats; people lose relationships with friends, family, and coworkers for not believing the same. A 2014 Pew research study, for example, showed 53% of people would be less likely to vote for someone who does not believe in God. Gay and even adulterous candidates were less discriminated against.</p>\n\n<p>We envision a world where there are no social costs for being secular, where families and communities remain whole when some members have moved away from religion or supernaturalism.</p>","title":"Our Vision"},"about3":{"content":"Openly Secular is the joint project of four of the best-known and respected secular organizations: \n<a href=\"http://richarddawkins.net/\" target=\"_blank\">Richard Dawkins Foundation</a>, \n<a href=\"http://secular.org/\" target=\"_blank\">Secular Coalition for America</a>, \n <a href=\"https://www.secularstudents.org/\" target=\"_blank\">Secular Student Alliance</a>, \n<a href=\"http://www.stiefelfreethoughtfoundation.org/\" target=\"_blank\">Stiefel Freethought Foundation</a>.\n","title":"Who We Are"},"about4":{"content":"<p>We believe increasing visibility of secular people will lower prejudice against them, much in the same way as has occurred in the LGBT community. “For example, 68% of those who know a lot of people who are gay or lesbian favor marriage equality, compared with just 32% of those who don’t know anyone.” (Pew Research, June 2013) Secular people will realize they are not alone when they are open and others say, “So am I.”</p>\n\n<p>We will tell stories of pain to show how discrimination hurts and why it needs to end – like that of Damon Fowler, a high school student kicked out of his home when he came out of the atheist closet; or Adriana Ramirez and Margaret Doughty, who were denied U.S. citizenship because their morality is humanist/secular, not religiously-based.</p>\n\n<p>We will tell narratives of joy to demonstrate our values of Acceptance, Reason, and Love; express what we believe, show how love can ﬂow despite differences, and that people are glad they became open. Ultimately, we strive to save relationships that might be lost to misunderstanding.</p>","title":"What We Do"},"contact":{"address":"1234 Street, City Sate Zip","ein":"55555555555555","email":"contact@campaign.org","fax":"555-555-5555","instagram":"campaign","name":"Campaign Name","phone":"555-555-5555","pressEmail":"press@openlysecular.org","pressName":"Carolyn E. Becker","pressPhone":"916-444-1380","twitter":"@OpenlySecular","youtube":"campaign"},"content":"Loren gotsum, boy!, dolor sit amet, consectetur adipiscing elit. Proin pharetra lectus ut rhoncus suscipit. Sed et elit sit amet velit tincidunt volutpat vitae id eros. Nullam tincidunt sollicitudin mauris, consectetur faucibus lorem dignissim vel.","downloads":{"description":"Get your files bitch","list":[{"description":"This is the openly spousal document that is not finished but it will be right Lyz? YAY!","file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-92e4c099-d7f7-4b0f-8ff2-05753b337106-OS-spouse-1.pdf","name":"Openly Spousal"},{"_id":0,"description":"This is my description babyy","file":"someogo.png","name":"rdf"}],"title":"Downloads"},"logo":"https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg","news":{"list":[{"_id":15,"date":"September 02, 2014","link":"http://www.rollcall.com/news/what_the_religious_right_doesnt_get_about_religious_freedom_commentary-235920-1.html?pg=2&dczone=opinion","source":"Roll Call","title":"What the Religious Right Does Not Get About Religious Freedom | Commentary"},{"_id":14,"date":"August 31, 2014","link":"http://www.annistonstar.com/opinion/article_a4f8ee94-2fce-11e4-b039-001a4bcf887a.html","source":"The Anniston Star","title":"Insight: Alabama quest for equality"},{"_id":13,"date":"July 23, 2014","link":"http://www.christiantoday.com/article/atheist.group.takes.humanist.chaplain.campaign.to.congress/39038.htm","source":"Christian Today","title":" Atheist group takes humanist chaplain campaign to Congress"},{"_id":12,"date":"July 15, 2014","link":"http://www.wcny.org/cpr071514/","source":"WCNY","title":"Capitol Pressroom: Secular Invocation in Greece, NY"},{"_id":11,"date":"July 15, 2014","link":"http://www.democratandchronicle.com/story/news/2014/07/14/town-greece-dan-courtney-prayer-athiest/12650143/","source":"Rochester Democrat & Chronicle","title":"Atheist gives historic invocation in Greece"},{"_id":10,"date":"June 26, 2014","link":"http://www.navytimes.com/article/20140626/NEWS/306260080/Push-1st-humanist-chaplain-continues-after-rejection","source":"Navy Times","title":"Push for 1st humanist chaplain continues after rejection"},{"_id":9,"date":"June 21, 2014","link":"http://www.christiantoday.com/article/secular.group.wants.humanist.chaplain.for.the.u.s.navy/38238.htm","source":"Christian Today","title":"Secular group wants humanist chaplain for the U.S. Navy"},{"_id":8,"date":"June 18, 2014","link":"http://www.theblaze.com/stories/2014/06/18/should-the-u-s-military-allow-atheist-chaplains-latest-rejection-reignites-debate/","source":"The Blaze","title":"Should the U.S. Military Allow Atheist and Humanist Chaplains?"},{"_id":7,"date":"June 17, 2014","link":"http://www.washingtonpost.com/local/secular-group-protests-navys-rejection-of-humanist-chaplain/2014/06/17/71ae1746-f642-11e3-8aa9-dad2ec039789_story.html","source":"The Washington Post","title":"Secular group protests Navy’s rejection of humanist chaplain"},{"_id":6,"date":"June 14, 2014","link":"http://www.buffalonews.com/life-arts/religion/atheists-emerging-from-the-shadows-20140614","source":"The Buffalo News","title":"Atheists emerging from the shadows"},{"_id":5,"date":"May 24, 2014","link":"http://religion.blogs.cnn.com/2014/05/24/atheists-in-the-bible-belt-a-survival-guide/","source":"CNN","title":"Atheists in the Bible Belt: A survival guide"},{"_id":4,"date":"May 20, 2014","link":"http://blog.sfgate.com/nov05election/2014/05/20/voters-to-politicians-pot-cheating-ok-not-atheism/","source":"San Francisco Chronicle","title":"Voters to politicians: Pot, cheating OK, but not atheism"},{"_id":3,"date":"May 20, 2014","link":"http://www.washingtonpost.com/national/religion/more-americans-willing-to-vote-for-an-atheist-president/2014/05/20/4a73d900-e05c-11e3-9442-54189bf1a809_story.html","source":"The Washington Post","title":"More Americans willing to vote for an atheist president"},{"_id":2,"date":"May 05, 2014","link":"http://time.com/88216/supreme-court-decision-on-official-prayer-will-not-end-public-debate/","source":"TIME","title":"Supreme Court Decision On Official Prayer Will Not End Public Debate"},{"_id":1,"date":"May 02, 2014","link":"http://www.washingtonpost.com/national/religion/new-openly-secular-group-seeks-to-combat-anti-atheist-discrimination/2014/05/02/b8195ba8-d231-11e3-a714-be7e7f142085_story.html","source":"The Washington Post","title":"New ‘Openly Secular’ group seeks to combat anti-atheist discrimination"}],"title":"In the news"},"partners":[{"_id":0,"description":"We are working with a big tent of partners from all across the secular spectrum - nonreligious groups including atheists, freethinkers, humanists, agnostics, and even the spiritual but not religious. We are also working with the nontheistic religious: people like deists, secular Jews, humanistic Unitarians, ethical culturists, and other religious humanists who are skeptical of theistic claims.","list":[{"_id":29,"featured":true,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-49e838d8-431b-4892-bf2b-e0314085509f-Richard-Dawkins-Foundaiton-for-Reason-and-Science-300x122.png","link":"http://richarddawkins.net/","name":"Richard Dawkins Foundation"},{"_id":27,"featured":true,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-108412d1-74b0-45a4-ad12-70ee9c4fe573-SSA.logo_.normal-300x190.png","link":"http://www.secularstudents.org/","name":"Secular Student Alliance"},{"_id":26,"featured":true,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-72cef8b0-4aee-492c-945f-d26b5502b5aa-Stiefel-Freethought-Foundation-187x300.jpg","link":"http://www.stiefelfreethoughtfoundation.org/","name":"Stiefel Freethought Foundation "},{"_id":28,"featured":true,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-348733c8-e2e4-4877-a04f-ec166abf26af-Secular_Coalition_logo_large-300x111.png","link":"http://secular.org/","name":"Secular Coalition for America"},{"_id":25,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-23638def-94c7-49cc-89b8-0dc8ef112364-American-atheists-300x62.png","link":"http://www.atheists.org/","name":"American Atheists"},{"_id":24,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-88bf8432-31d9-4fef-9396-96c157db76b2-aeu-300x105.jpg","link":"http://aeu.org/","name":"American Ethical Union"},{"_id":23,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-168d5e09-d27d-4f77-96b3-b7142fc9522d-american-humanist-association-300x173.jpg","link":"http://americanhumanist.org/","name":"American Humanist Association"},{"_id":22,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-a037cfa4-6f09-46e4-882b-c9040fa03f8b-atheist-alliance-of-america-300x300.jpg","link":"http://atheistallianceamerica.org/","name":"Atheist Alliance of America"},{"_id":21,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-1fdce363-a33b-4443-8925-c4f2deb0bf8b-AtheistNexus-logo-300x187.gif","link":"http://www.atheistnexus.org/","name":"Atheist Nexus"},{"_id":20,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-fe090344-01e7-4943-aa93-b084f40a9199-black-atheists-of-america1-300x120.jpg","link":"https://www.facebook.com/BlackAtheistsofAmerica","name":"Black Atheists Of America"},{"_id":10,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-af9eca7e-db93-437e-84c6-28536d969db0-hafree_logo-300x176.png","link":"http://www.hafree.org/","name":"Hispanic American Freethinkers"},{"_id":19,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-349aa3de-64e8-4bdf-bfc2-f4f875015f95-black-nonbelievers-of-america-300x205.jpeg","link":"http://blacknonbelievers.wordpress.com/","name":"Black Nonbelievers"},{"_id":9,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-990942e4-ea5a-4eef-9e65-f90239c95562-secular-community-project-300x287.png","link":"http://harvardhumanist.org/","name":"Humanist Community Project"},{"_id":8,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-b6003f2e-df5a-4987-a876-930f29fae3a8-institute-for-humanist-studies-300x160.jpg","link":"http://humaniststudies.org/","name":"Institute for Humanist Studies"},{"_id":1,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-a02170ae-eacf-4b3d-aef2-6e657debdf4b-youth-secular-association-300x76.jpg","link":"http://www.youthsecularassociation.org/","name":"Youth Secular Association"},{"_id":14,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-4449a9ef-6ca4-41a8-be10-00239e34e6b5-FBBLOGOS-fbb-horizontal-color-615x241px-300x117.png","link":"http://foundationbeyondbelief.org","name":"Foundation Beyond Belief"},{"_id":13,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-254d3379-42c3-4fe6-b403-b393fb9ff4e6-linkffrf_300x140-300x139.gif","link":"http://ffrf.org/","name":"Freedom from Religion Foundation"},{"_id":12,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-ef617afe-ae6c-4ee3-aa27-c40cdf9e759a-freethought-society-300x204.jpg","link":"http://www.ftsociety.org/","name":"Freethought Society"},{"_id":11,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-37a5acfc-021e-4202-8163-3533cf4a83c1-FreethoughtAction_logo1-300x179.jpg","link":"http://www.freethoughtaction.org/","name":"FreeThought Action"},{"_id":17,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-dc89e6cd-08d0-4a33-85d4-d340c243e186-camp-quest-297x300.png","link":"http://www.campquest.org/","name":"Camp Quest"},{"_id":18,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-cafa947e-0728-448b-b3d2-cd805d9b8b4b-bhalogofull.png","link":"http://humanism.org.uk","name":"British Humanist Association"},{"_id":15,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-cad21210-c6f3-4024-82e3-38c4f55e8863-ex-muslims-of-north-america-300x111.jpg","link":"http://www.exmna.org/","name":"Ex-Muslims of North America"},{"_id":7,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-a4b1cfde-6e7e-4d93-9511-162097fdaae1-military-association-of-atheists-_-freethinkers-300x300.jpg","link":"http://militaryatheists.org/","name":"Military Association of Atheists & Freethinkers"},{"_id":6,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-9abd8b72-353e-4e43-a5e0-c7a250fdca6a-PR_NewLogo-300x48.jpg","link":"http://www.project-reason.org/","name":"Project Reason"},{"_id":5,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-2ba7d44f-d662-4d51-8395-0b73bb6e3640-recovering-from-religion-300x190.jpg","link":"http://recoveringfromreligion.org/","name":"Recovering From Religion"},{"_id":4,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-784ac048-a17a-4052-b394-260e0d390041-shjheader-300x97.gif","link":"http://www.shj.org/","name":"Society for Humanistic Judaism"},{"_id":3,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-45d7557b-ed52-4ccd-95bb-5d1e82bb7232-secular-connexion-seculaire-300x134.jpg","link":"http://www.secularconnexion.ca/","name":"Secular Connexion Séculaire"},{"_id":2,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-f7cb39d5-5ec3-4427-8e0f-2a55922bd6e0-united-coalition-of-reason-300x138.gif","link":"http://unitedcor.org/","name":"United Coalition of Reason"},{"_id":16,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-c91f31cd-d11b-46b0-97d5-2098e480b3a9-cfi-logo-300x167.png","link":"http://www.centerforinquiry.net/","name":"Center for Inquiry"}],"title":"Partners"},{"_id":1,"description":"We additionally seek to work with allies from outside of the movement: groups that support equality and fight discrimination such as LGBT groups, interfaith and civil liberties organizations, and other potential allied groups. These groups will provide guidance and help promote the campaign after it launches, and will be allowed to reprint and utilize with their own logos any brochures and printed resources that are created.","list":[{"_id":3,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-bb1a5046-deaf-41f3-b88c-eeb486434376-americans-united-for-the-separation-of-church-and-state-300x38.png","link":"http://www.au.org/","name":"Americans United"},{"_id":2,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-569d5e12-57cc-485d-a76f-77acdd9e42d0-Military-Relgious-Freedom-Foundation-300x122.jpg","link":"http://www.militaryreligiousfreedom.org/","name":"Military Religious Freedom Foundation"},{"_id":1,"featured":false,"file":"http://files.parsetfss.com/2950e8df-331d-4704-8aec-779968c9f651/tfss-6be3e59c-45c4-49d1-ad19-b159592507df-pfaw-300x135.gif","link":"http://www.pfaw.org/","name":"People For the American Way"}],"title":"Allies"}],"resources":{"list":[{"_id":1,"date":"","desc":"This is a link to Tech Crunch!","link":"http://techcrunch.com/","title":"Loren Vandegrift"},{"_id":0,"desc":"This is a descritpion more than a source","link":"http://nytimes.com","title":"Freethinkers Whatever"}],"title":"Resources"},"slug":"openlysecular","title":"Some freakin campaign","updates":{"list":[{"_id":14,"content":"<strong>WASHINGTON, D.C.</strong> – Openly Secular, a coalition comprised of more than two dozen secular organizations across the country, today issued a statement responding to the Air Force's denial of re-enlistment to an atheist airman who refused to include the term, “so help me god” in his oath.\n\n“There is no place for discrimination in America against anyone, let alone the brave men and women of our military who are risking their lives to protect our rights. We call on the Air Force to immediately grant this airman re-enlistment and for U.S. military to change the language in the oath so that everyone, regardless of religious affiliation, can serve in the military,” said Todd Stiefel, the chair of Openly Secular. “American patriots come from a spectrum of religious beliefs, including none at all. There are atheists in foxholes, and they deserve the respect and admiration of their command structure and the nation they are fighting for.”\n\nThe unnamed airman was told last month that the Air Force would not accept his contract because he had crossed out the phrase. He was then told his only option was to sign the contract without adjustment or leave the Air Force.\n\n\"The Air Force's response is not only unfair to the airman, it is also a violation of Article VI of the U.S. Constitution which ensures people of all religions (or no religion) can serve their country equally,\" Stiefel continued.\n\nOpenly Secular joins its partner, American Humanist Association, in calling for a secular alternative to the oath.","date":"September 07, 2014","excerpt":"Openly Secular, a coalition comprised of more than two dozen secular organizations across the country, today issued a statement responding to the Air Force's denial of re-enlistment to an atheist airman who refused to include the term, “so help me god” in his oath.","title":"Openly Secular Calls on Air Force to Immediately Grant Reenlistment to Atheist Airman Who Refused to Sign Oath That Included “So Help Me God”"},{"_id":13,"content":"<strong>WASHINGTON, D.C.</strong> – Todd Stiefel, chair of the new coalition Openly Secular, today released the following statement on efforts to block nonreligious people from offering invocations at public meetings:\n\n<em>We are disappointed to hear the Town of Greece, NY and Brevard County, FL are seeking to change their policies and deny atheists and agnostics the opportunity to give invocations at town and county meetings.</em>\n\n<em>Just last month, we were thrilled to see atheist Dan Courtney front and center at a Greece town board meeting giving the invocation, the first time an atheist had been able to participate in the community at the center of the recent U.S. Supreme Court public prayer decision, which ultimately said legislative prayer does not violate the Constitution but that anyone should be allowed to give it regardless of their faith.</em>\n\n<em>The new Greece policy reversal flies of that ruling and specifically one of the  reasons the Court allowed the invocations to continue. The ruling stated the invocations were legal, in part because the town’s “leaders maintained that a minister or layperson of any persuasion, including an atheist, could give the invocation.” Creating an exclusive list of approved religious institutions goes against the intent of the Supreme Court.</em>\n\n<em>We are also frustrated to read that atheists in Brevard County, FL may have to bring a religious discrimination suit to ensure they are able to give invocations at commission meetings.</em>\n\n<em>We hope these are two isolated incidents and that ultimately, we will not see a larger trend over time. Atheists, agnostics and any nonreligious persons should be allowed to offer invocations and participate in governmental meetings equal to that of religious citizens, and we look forward to the day when all Americans are given that opportunity, regardless of beliefs.</em>","date":"August 26, 2014","excerpt":"Todd Stiefel, chair of the new coalition Openly Secular, today released the following statement on efforts to block nonreligious people from offering invocations at public meetings:","title":"Openly Secular Statement Regarding Invocation Discrimination Despite Recent U.S. Supreme Court Ruling"},{"_id":12,"content":"<strong>Washington, D.C. – </strong><em>Openly Secular</em>, a new coalition of more than two dozen secular groups, is calling for the resignation of right-wing radio talk show host Rick Wiles after he suggested an Ebola outbreak in America could “solve America’s problems with atheism.”\n\nWiles made the remarks earlier this week during his <em>Trunews</em> program.\n\n“The fact that anyone would actually welcome a deadly outbreak of any kind is beyond appalling,” said Todd Stiefel, chair of <em>Openly Secular</em> and President of the Stiefel Freethought Foundation. “Rick Wiles is more than implying he wishes genocide on atheists and gay people. This despicable bigotry from the religious media is hurtful and alarming. Wiles should resign and his supporters ought to yank their funding.”\n\nAtheists were not the only target of Wiles’ ugly comments. Here is the excerpt in question:\n\n<em>“Now this Ebola epidemic can become a global pandemic and that’s another name for plague. It may be the great attitude adjustment that I believe is coming. Ebola could solve America’s problems with atheism, homosexuality, sexual promiscuity, pornography and abortion. If Ebola becomes a global plague, you better make sure the blood of Jesus is upon you; you better make sure you have been marked by the angels so that you are protected by God. If not, you may be a candidate to meet the Grim Reaper.” –Rick Wiles</em>\n\nWiles’ first radio broadcast was in 1999, and according to the <em>Trunews</em> website, people from around the world regularly tune in to his program every weeknight.","date":"August 07, 2014","excerpt":"Right-wing Radio Host Rick Wiles Says An Ebola Outbreak in America Would Be A Good Thing","title":"Openly Secular Calls for Resignation of Radio Talk Show Host Who Says Ebola Could ‘Solve’ Atheism"},{"_id":11,"content":"<b><i>TRANSCRIPT</i></b>\n\n<b>Host: </b>This past spring, in what many believed to be a surprising ruling, the Supreme Court upheld the right of the Western New York town of Greece to hold a pre-town meeting prayer. The case was brought by 2 residents of Greece, one Jewish, one atheist. They had argued that most of the time it was a Christian prayer that kicked off the meetings. While they lost in the nation’s highest court, a community of atheists is making sure their voices are heard at the town meetings in Greece. Dan Courtney, who describes himself as an atheist, is scheduled to deliver an invocation this afternoon before the Greece Town Board meeting this afternoon. He joins us today on the Capitol pressroom along with Robyn Blumner, spokesperson for a group called Openly Secular and an Executive Director for the Richard Dawkins Foundation for Reason and Science. Dan and Robyn, welcome to the Capitol Pressroom.\n\n<b>Dan: </b>Thank you, Susan.\n\n<b>Robyn: </b>Thank you for having us.\n\n<b>Host: </b>So Dan, we’re going to start with you. When you heard the Supreme Court’s decision in Greece v Galloway, um, which basically said that prayers in town meetings are in keeping with American tradition, what went through your mind?\n\n<b>Dan: </b>Yeah, well, what they specifically... was that sectarian prayer was constitutional; there was never a challenge to the offering of a prayer per se, but it was the sectarian nature of the prayers that was at issue. But when I heard the ruling, uh, I guess I was not surprised given the make up of the court. Uh, however, I was disappointed that they could not see to it that sectarian type prayers was an issue in this particular case.\n\n<b>Host: </b>According to a report I read in the <i>Democrat and Chronicle, </i>Dan, you listened to the oral arguments in the case and were struck by something that Justice Scalia had said sort of rhetorically off the cuff. What was that?\n\n<b>Dan: </b>Yeah, he asked the question what would, uh, a non-believer’s prayer sound like in the context of an invocation. And he said it, as you mentioned, rhetorically, and there was actually laughter in the courtroom during the exchange when neither he nor the attorney for the town could come up with what exactly a non-believer would invoke during that process. And what I realized at that point was that not only Justice Scalia but many Americans, there’s essentially a blind spot that nonbelievers can actually participate in this kind of process and that invocations are not unique to theists, or Christians for that matter. Nonbelievers have given invocations and instead of invoking a deity, we simply invoke an idea. And what I’m trying to do this evening is, uh, invoke an idea that is common to all Americans. I’ll be quoting the Declaration of Independence, and I’ll be trying to bring us all together and say, this is an idea that all Americans, whether you’re Christian, Muslim, Jewish or an atheist, that we can all share and all rally around.\n\n<b>Host: </b>Robyn, um,what Dan is doing is part of a larger movement, which is urging secular organizations to call on other atheists to speak publicly about their beliefs. Why is this so important?\n\n<b>Robyn:</b> Openly Secular is a coalition of more than two dozen secular organizations, and we have the same mission, which is to eliminate discrimination and increase the acceptance of secular people. You know, right now, um, secular people are amongst the most discriminated group in the country, even though it’s kind of subversive. You don’t really hear about it that much. But believe it or not, there are still seven states in the country that make it illegal…\n\n<b>Host: </b>You know, we have to take a break, Robyn. But when we come back, we will continue and pick up right where you’re leaving off. We’ll be right back.\n\n41:33\n\n<b>Host: </b>Robyn, I unfortunately had to interrupt you but you were talking about how atheistic beliefs are not accepted and are, in fact, not respected in some pockets of the U.S.\n\n<b>Robyn: </b>Exactly. And that’s the reason we’re asking, uh, secularists and nonbelievers, uh, the nonreligious to come forward and be more vocal about who they are. So, as I was saying, there are actually seven states that currently still have language in their state constitutions, making it illegal for an atheist to hold public office. Now those provisions are not enforceable any longer, of course. There’s been U.S. Supreme Court precedent saying they can’t be enforced. Nonetheless, the language is sustained in these constitutions because no politician wants to be seen as attempting a repeal of that language. But can you imagine if there was remaining language that African Americans, someone who is Jewish or a woman, couldn’t hold public office in a state constitution? You know, instantly that language would, would be repealed. So it just shows, goes to show you that there is this lingering societal bias against people who hold secular views. And one of the reasons that occurs is that secular people tend to keep their views to themselves and have not been vocal about it. And so there’s these, there are these misconceptions about it and misperceptions about people who are nonreligious that we can, I think, easily sweep away with just a little public awareness. And so, we’re asking those Americans out there, and there’s a growing cohort of them, to start telling your friends, your neighbors, your co-workers, your loved ones, that you just don’t happen to share their belief system and why.Not confrontational, not argumentative. This is just about reducing the inherent societal bias that remains against people who are humanist, atheist, agnostics and the nonreligious.\n\n<b>Host: </b>Dan, is there a stigma against atheists?\n\n<b>Dan: </b>Oh absolutely. In fact, just this morning, I was contacted by an old college friend, and he said that he, he is an atheist, but he is a closeted atheist specifically because of the stigma that goes along with it. So what Robyn is saying is absolutely true. The.. theoretical happens every single day because of the stigma, because people generally don’t trust atheists for no good reason, uh, they tend to stay closeted and the discrimination continues.\n\n<b>Robyn: </b>Do you know, Susan, that there was a recent poll, in which Americans were asked, on a whole variety of characteristics and traits, what would make them more likely, or less likely, to vote for someone for President of the United States.\n\n<b>Host: </b>mmmmm hmmmm.\n\n<b>Robyn: </b>And an atheist came in dead last. They would prefer to vote for an adulterous candidate, a candidate who was a , smoked pot illegally, a candidate who had absolutely no political experience, than to vote for someone who simply didn’t subscribe to the super natural, who was, who grounded their beliefs in an evidence-based view of the natural world. You know we elect politicians all the time in this country, who claim the earth is between five and ten-thousand years old. But somebody who comes out publicly and says that they’re secular, or their non-, nonreligious, it precludes them from winning elections at, at almost every level.\n\n<b>Host: </b>There are…\n\n<b>Robyn: </b>And that’s just not fair.\n\n<b>Host: </b>There, in terms of, um, when it comes to anti-Semitism, there are some very long-standing, historic myths and, uh, uh, you know, inaccuracies and, uh, that, uh, you know are really outrageous. What do you think are the historic myths and inaccuracies surrounding atheism?\n\n<b>Dan: </b>Yeah, I guess I’ll tackle that one. I think the most pernicious myth has to do with the fact that atheists cannot be moral. Uh, and and, that idea seems to persist. Religion has done quite an effective job at essentially cornering on the market on the belief that you need to have some belief in deity to be a good person, t have some oral basis. And as I said before, there’s no foundation for that. You can look, as an example, you can look at the prison population in the U.S., atheists are actually underrepresented in the prison population, which is precisely the opposite of what you’d expect, if there was any truth to the myth that somehow you needed belief in a diety to be good. So that’s probably the most pernicious myth.\n\n<b>Host: </b>So, I have a question for both of you. It’s a rather personal one so if you don’t want to answer it, just say so. Do your views rise from a lack of a belief in a higher power or a belief that religion and religious language is done more to hurt society than to help it?\n\n&nbsp;\n\n<b>Robyn: </b>Are you asking about our personal views, why we have chosen to be nonreligious and non-theists?\n\n<b>Host: </b>Yes. That’s exactly what I’m doing.\n\n<b>Robyn: </b>Ok, well, at least in my personal life, I, I came to my nonbelief as a very young child when I was brought up in the Jewish faith, but there were elements of those teachings that didn’t make sense to me, just by deduction. And I was learning more about the scientific world, the natural world, um, the claims of the Old Testament were, were at odds with it, and eventually that lead to additional questioning and a realization, at least for me, and, and I respect the views of, of others and those who hold those beliefs…\n\n<b>Host: </b>Sure.\n\n<b>Robyn: </b>But at least for me, that, um, that there was no supernatural authority governing our universe and our lives.\n\n<b>Host: </b>Dan, what about you?\n\n<b>Dan: </b>Yeah, I wad actually raised in at least a nominally Christian home, and I would say in my late teens, um, realized, uh just what Robyn.. uh, essentially the arguments for a deity were much weaker than the arguments against. And, as I studied the issue through my twenties, it became evident to me that, uh, we have the natural world that we all agree on, but references to a supernatural simply have no foundation. And that’s, that’s where my atheism comes from, is, is that realization.\n\n<b>Host: </b>What is the difference…\n\n<b>Robyn: </b>But I want you to understand that Openly, Susan, Openly Secular is a very broad coalition of secular groups and we also have allies in the religious world. You know, this is just an equality movement. It’s a non-discrimination movement. We’re not trying to de-convert anyone or suggest that our beliefs are, are more right than theirs.\n\n<b>Host: </b>Sure.\n\n<b>Robyn: </b>… but rather to say that society does not accept a group of people, who simply subscribe to a different set of beliefs and there aren’t artificial barriers.\n\n<b>Host: </b>… that you shouldn’t be marginalized. Sure.\n\n<b>Robyn: </b>Exactly.\n\n<b>Host: </b>So, um, uh, we only have about 30 seconds so I’m hoping, uh, Dan, that you’ll tell us more about the text that you’re going to be drawing upon for your invocation, you mentioned the Declaration, what else?\n\n<b>Dan: </b>Right. Well, the, the central theme of, of both the invocation and the press conference to follow is inclusion. We as non-believers, want to be included in the process, we don’t want to be discriminated against, we have a voice to be heard. But what I am going to, in the invocation specifically, the Declaration of Independence, I’m going to be pointing to the fact that government derives its authority from the people themselves, and I think that’s a, that’s a message that we all, as Americans, can rally around. And I think that’s an important point.\n\n<b>Host: </b>We are out of time.\n\n<b>Dan: </b>OK.\n\n<b>Host: </b>Tonight at 6pm, Dan Courtney will be presenting an invocation at Greece Town Hall, and that will be followed by a press conference. Dan and Robyn Blumner, from Openly Secular, thank you both for joining us.","date":"July 15, 2014","excerpt":"his past spring, in what many believed to be a surprising ruling, the Supreme Court upheld the right of the Western New York town of Greece to hold a pre-town meeting prayer. The case was brought by 2 residents of Greece, one Jewish, one atheist. ","title":"WCNY, Capitol Pressroom: Secular Invocation in Greece, NY"},{"_id":10,"content":"<em>Atheist to Offer Secular Invocation Tuesday in Greece, NY</em>\n\n<em> </em><em>Secular Groups Offer Resources to Individuals Delivering Secular Invocations</em>\n\n<strong>Washington, DC </strong>– Dan Courtney, the atheist man who will offer a secular invocation tomorrow in the town at the center of the controversial Supreme Court public prayer ruling, today joined with leaders from Openly Secular and other prominent secular organizations to call on other atheists, humanists and nonreligious people to speak publicly about their core values and beliefs.\n\nCourtney will offer the secular invocation Tuesday at the Greece Town Board.\n\nFollowing the controversial Supreme Court ruling in May, the American Humanist Association – a partner within <em>Openly Secular – </em>launched a <a href=\"http://humanist-society.org/invocations/\">program</a> to provide resources for people to deliver secular invocations during legislative meetings.\n\nThe newly-formed <em>Openly Secular </em>coalition is leading the call to action as part of its mission to increase acceptance of secular people and eliminate discrimination.\n\n“We are working toward a day when it is not news for an American to deliver a secular invocation in Greece or at organizations and groups across the country,” said Dan Courtney. “The only way for us to make that happen is to urge secular individuals to come forward and to support them when they do. Instead of using religious language to divide us, I intend to use secular language to bring us together as Americans.”\n\n“We believe the very practice of being open about your beliefs helps create a culture that promotes tolerance and a society where everyone is accepted,” <strong>said Robyn Blumner, spokesperson for <em>Openly Secular</em> and Executive Director for the Richard Dawkins Foundation for Reason and Science</strong>. “Today’s call continues our work to support secular Americans who step forward and are open about their beliefs and values.”\n\n“More than a hundred people have stepped forward and been approved to give secular invocations – a major step toward an open society,” <strong>said David Niose, AHA legal director</strong>. “We want to make sure people have what they need when it comes to offering a secular invocation so that legislative meetings can be nondiscriminatory.”","date":"July 14, 2014","excerpt":"Atheist to Offer Secular Invocation Tuesday in Greece, NY. Secular Groups Offer Resources to Individuals Delivering Secular Invocations.","title":"Openly Secular, Atheist Man in Town at Center of Supreme Court Prayer Case Urges Secular Americans to Step Forward"},{"_id":9,"content":"<p class=\"p1\"><b>Washington, D.C. – </b>Jason Heap, whose application to be a chaplain in the U.S. Navy was recently denied because he’s an atheist, today released the following statement:</p>\n<p class=\"p1\">“I am exceptionally disappointed and aggrieved by the Navy's initial rejection of my application. I will continue to seek acceptance. I hope military leaders will open their hearts to humanists and give me the opportunity to serve all sailors as a chaplain for the next 20 years or more.”</p>\n<p class=\"p1\">Also today, the leaders of <i>Openly Secular</i> have made public an official letter to Rear Admiral Mark L. Tidd, the Chaplain of the U.S. Navy, calling for his support in reversing the ruling blocking Heap from serving his country as a military chaplain. <i>Openly Secular </i>believes this denial is a blatant and un-American form of discrimination, given Heap’s many qualifications for the chaplaincy. A full copy of the letter is provided below.</p>\n<p class=\"p1\">Despite having confirmed receipt of the letter to Admiral Tidd, the Navy has not otherwise responded to calls for reconsideration.</p>\n<p class=\"p1\">The discrimination against Heap comes as two separate polls offer more evidence of the prejudice nonreligious people regularly face in the United States:</p>\n\n<ul class=\"ul1\">\n\t<li class=\"li1\">A recent poll by the Pew Research Center found nearly half of the public (49%) would be unhappy if a family member were to marry someone who doesn’t believe in God</li>\n\t<li class=\"li1\">A recent survey by the Public Religion Research Institute shows 15% of respondents, including 19% of Republicans and 21% of white evangelicals, say it’s acceptable for business owners to deny services to atheists</li>\n</ul>","date":"September 18, 2014","excerpt":"Jason Heap, whose application to be a chaplain in the U.S. Navy was recently denied because he’s an atheist, today released the following statement:","title":"Humanist Chaplain Blocked from Serving in U.S. Navy: “I Hope Military Leaders Will Open Their Hearts to Humanists”"},{"_id":8,"content":"<p class=\"p1\">Jason Heap wants to be a chaplain and by all measures he is more than qualified. He holds masters’ degrees in Divinity and Religious History from Texas Christian University and Oxford University, respectively, and has years of experience as a teacher of Religious Education and Philosophy.</p>\n<p class=\"p2\">Yet the U.S. Navy just rejected Heap’s application. Why? The water-based branch of the armed services seems tongue-tied on the matter, but the reason appears crystal clear.</p>\n<p class=\"p2\">Heap is an atheist and a humanist.</p>\n<p class=\"p3\">What exactly does that mean? To be humanist is to emphasize the value of human beings and our capacity to do good during our lifetimes without the need for a higher power.</p>\n<p class=\"p2\">An atheist chaplain may sound strange to some, but in truth military chaplains advise on far more than faith and spiritual issues. On a practical level, if a service member needs bereavement leave to attend a funeral of a loved one at home, the chaplain is the point of contact. They provide confidential counseling to troops suffering from stress and other coping challenges -- and are often far more accessible than the military’s other mental health services, without the attending stigma.</p>\n<p class=\"p2\">The fact is there are more atheists and other non-theists in our armed forces than any other non-Christian denomination, yet there are currently no chaplains exclusively representing non-theistic beliefs. Non-theists in the military outnumber Hindus, Muslims and Jews <i>combined,</i> all of whom have chaplains for their respective religions.</p>\n<p class=\"p2\">Nonreligious service members face the same questions about life and death, fear and loss as any other person in the military. These brave men and women should not have to face them alone while their religious counterparts receive support and guidance.</p>\n<p class=\"p2\">Moreover, military personnel looking to obtain a security clearance will often be asked whether they've seen a therapist -- and the content of those counseling sessions may be shared with higher-ups. Counseling by a chaplain is completely confidential and doesn't have the same potential career impact.</p>\n<p class=\"p2\">Humanist chaplains are a common feature at the most respected institutions, including top universities such as Harvard, Stanford and Columbia. The militaries of the Netherlands and Belgium employ humanist chaplains to ensure all their troops, regardless of belief or non-belief, receive those comforting services.</p>\n<p class=\"p2\">To defend its rejection of Heap, the Navy may point to rules on who may qualify as a chaplain, but those rules were designed to promote majority faiths and exclude humanists. Heap is uniquely qualified for the chaplaincy. As a religious scholar he has worked in the Middle East, West Africa and China, counseling and empowering people from all walks of life.</p>\n<p class=\"p2\">Heap’s rejection represents bald-faced, government-sanctioned discrimination. It communicates a distaste for America’s largest growing cohort: people who profess to have no religious affiliation. Fully one-third of Americans under the age of 30 tell pollsters they fit in this category.</p>\n<p class=\"p2\">You don’t have to agree with religious skeptics and non-believers to be accepting of them and respect their right to be who they are. All people who believe in religious freedom should be concerned that the U.S. Navy thinks it’s okay to consign nonreligious troops to second-class status.</p>\n<p class=\"p2\">From integrating African-American troops in 1948, to recent advances in opening combat roles to women soldiers and allowing gays and lesbians to serve openly, the military has had to adjust to social change.</p>\n<p class=\"p2\">What we have seen, without exception, is when the military rejects rigid thinking and baseless prejudice it becomes stronger, looks more like America, and is better able to defend the country. The case for welcoming humanist chaplains is no exception.</p>\n<p class=\"p2\"><i>Blumner is executive director for the Richard Dawkins Foundation for Reason and Science and the project director for Openly Secular.</i></p>","date":"September 11, 2014","excerpt":"Jason Heap wants to be a chaplain and by all measures he is more than qualified. He holds masters’ degrees in Divinity and Religious History from Texas Christian University and Oxford University, respectively, and has years of experience as a teacher of Religious Education and Philosophy.","title":"Overturn the ruling against a humanist chaplain"},{"_id":7,"content":"<p class=\"p1\"><i>Mother of Three Struggling to Overcome Prejudice; Daughter Physically Assaulted</i></p>\n<p class=\"p4\">Washington, DC – A mother whose six-year-old daughter has been physically assaulted because of the family’s atheism will be one of the featured guests on a panel this Wednesday, June 11<sup>th</sup> at the National Press Club in Washington, D.C.</p>\n<p class=\"p4\">Partner organizations within the new <i>Openly Secular</i> coalition will share research into the lives of non-religious Americans and findings of the discrimination and mistreatment that goes on nearly unnoticed by most people who do not identify as secular.</p>\n<p class=\"p4\">Panelists include:</p>\n<p class=\"p4\"><b>David Silverman</b>, President, American Atheists</p>\n<p class=\"p4\"><b>Kelly Damerow</b>, Director of Federal and State Affairs, Secular Coalition of America</p>\n<p class=\"p4\"><b>Sarah Morehead</b>, Executive Director, Recovering from Religion Foundation</p>\n<p class=\"p4\"><b>August Brunsman</b>, Executive Director, Secular Student Alliance</p>\n<p class=\"p4\"><b>Joni Mars</b>, Oklahoma City Mother Facing Ongoing Discrimination for Being Atheist</p>\n<p class=\"p4\"><b>Neil Polzin</b>, Was Kicked Out of the Boy Scouts of America for Being Atheist</p>\n<p class=\"p4\"><b>This National Press Club Newsmakers panel is scheduled for 2:00 PM, Wednesday, June 11, 2014 in the Club’s Zenger Room on the 13<sup>th</sup> Floor of the National Press Building, 529 14<sup>th</sup> St, NW, Washington, DC, 20045.</b></p>","date":"June 10, 2015","excerpt":"A mother whose six-year-old daughter has been physically assaulted because of the family’s atheism will be one of the featured guests on a panel this Wednesday, June 11th at the National Press Club in Washington, D.C.","title":"Discrimination Victims to be Featured on National Press Club Panel About Being Openly Secular"},{"_id":6,"content":"<p class=\"p1\" style=\"text-align: left;\"><b>WASHINGTON, D.C.</b> – In the wake of a decision by the U.S. Navy to reject the application of a 38-year-old atheist man to become a military chaplain, the newly-formed <i>Openly Secular </i>coalition is calling on military leaders and the Department of Defense to overturn the ruling.</p>\n<p class=\"p3\">There are more atheists and other nontheists in our armed forces than any other non-Christian denomination, yet there are currently no chaplains exclusively representing nontheistic beliefs.</p>\n<p class=\"p3\">Jason Heap is uniquely qualified for the chaplaincy with masters’ degrees in Divinity and Religious History from Texas Christian University and Oxford, respectively. He also taught Religious Education and Philosophy for five years. He was endorsed by the Humanist Society and otherwise met all physical and security requirements of the U.S. Navy.</p>\n<p class=\"p3\">\"This is illegal religious-based employment discrimination, plain and simple,\" said Todd Stiefel, Chair of <i>Openly Secular</i>. “If a church rejected a humanist chaplain, that would be fine, but the federal government cannot use tax dollars to hire Christian, Hindu and Buddhist chaplains, but refuse to employ any openly secular chaplains. Humanists and atheists serve honorably and deserve the same moral support provided to other minorities.\"</p>\n<p class=\"p3\">Key facts about chaplains in the military:</p>\n\n<ul class=\"ul1\">\n\t<li class=\"li3\">Nearly 25% of service members indicate “no religious preference”</li>\n\t<li class=\"li3\">There are no chaplains who exclusively represent nontheistic members</li>\n\t<li class=\"li3\">18% of service members identify as evangelical</li>\n\t<li class=\"li3\">Nearly 63% of chaplains are evangelical</li>\n</ul>\n<p class=\"p3\">Nonreligious service members face the same questions about life and death, fear, and loss as any other person in the military. These brave men and women should not have to face challenges alone, while their religious counterparts receive support and guidance. Humanist chaplains are recognized as valued members in the most respected institutions, including nearly a dozen top universities as well as the militaries in the Netherlands and Belgium.</p>\n<p class=\"p3\">“Organizations like the Chaplain Alliance for Religious Liberty are celebrating the Navy's rejection on grounds of his atheist beliefs, and that is open discrimination,” said Jason Torpy, President of the Military Association of Atheists and Freethinkers, a partner organization to <i>Openly Secular</i>. “The Navy claims many candidates were turned down, but Heap has advanced educational qualifications and a special ability to serve an unrepresented community. By this decision, the chaplaincy seems to have turned its back on many sailors. We hope non-chaplain military leaders swiftly overturn this discriminatory decision.”</p>","date":"June 04, 2014","excerpt":"In the wake of a decision by the U.S. Navy to reject the application of a 38-year-old atheist man to become a military chaplain, the newly-formed Openly Secular coalition is calling on military leaders and the Department of Defense to overturn the ruling.","title":"U.S. Navy Discriminates Against Applicant for Chaplaincy"},{"_id":3,"content":"<p class=\"p1\">Which moral position is worse, cheating on one's spouse or rejecting religious dogma? Are you less trustworthy if you use an illegal drug or reject supernatural explanations for life?</p>\n<p class=\"p1\">These questions were recently put to Americans by the Pew Research Center in a poll asking what traits would make someone less likely to vote for a candidate for president of the United States.</p>\n<p class=\"p1\">The trait people identified as the least desirable in a president: \"Atheist.\" 53 percent of Americans said they would be less likely to vote for a candidate who is an atheist. It beat out pot-smoker and adulterer. People found atheism a bigger barrier to high office than someone who is gay or lesbian, or even someone who lacked any political experience.</p>\n<p class=\"p1\">Wow. The Christian Right complains there is a war on them, but here's proof that it's just the opposite. A politician's strong religious beliefs do not harm his or her chances for public office. But Americans willingly share their bias against non-believers with pollsters, as if it is self-evident atheists are not to be trusted.</p>\n<p class=\"p1\">Meanwhile, the media goes along.</p>\n<p class=\"p1\">For instance, Denver radio host Dan Caplis recently tossed this out when discussing Los Angeles Clippers owner Donald Sterling's racist comments: \"All racists are, at the end of the day, atheists.\" What? On what basis is he making this claim? And where was the corresponding outcry by the press for such a baseless and callous assertion?</p>\n<p class=\"p2\">Then there's <i>Fox News</i>'s Megyn Kelly, who recently threw around the term \"atheist\" as a way to discredit an organization that fights for church-state separation in the military. Kelly labeled Mikey Weinstein, the founder and president of the Military Religious Freedom Foundation, an atheist -- though he's not -- as a pejorative, signaling to viewers that this man should not be trusted because his complaints come with an anti-God agenda.</p>\n<p class=\"p2\">Okay, that's <i>Fox News</i>, but even the <i>New York Times</i> is guilty of knee-jerk bias. Columnist Nicholas Kristof, in a recent column on Americans' shocking lack of basic knowledge on religion, singled out non-believers as particularly clueless, saying, \"secular Americans are largely ignorant about religion.\"</p>\nIn fact, polls show that secular Americans are <span class=\"s1\"><i>more</i></span> knowledgeable about religion than those who profess to follow one.\n\nA 2010 Pew survey asked Americans more than 30 questions about various aspects of religion, including the Bible, Christianity, Judaism, Mormonism, world religions, religion in public life and atheism and agnosticism.\n\nThe group that performed the best was the atheists and agnostics. They were able to answer nearly 21 out of 32 questions correctly, compared with an average respondent's score of 16 correct answers. No group -- including Christians or Jews -- scored as high as atheists and agnostics on religious knowledge.\n<p class=\"p1\">People who reject the religion they were born into often give it a great deal of thought and study before walking away. Atheists know they are risking the loss of family relationships, friendships and community for being true to their own reasoning. Being open about one's non-belief carries the possibility of job discrimination, the loss of business, and social alienation.</p>\n<p class=\"p2\">Why is it that in the 21st century, when America's economic might depends upon science, technology and innovation, people who subscribe to a science- and evidence-based view of the natural world are social pariahs?</p>\nThis prejudice is particularly evident in the political realm, where being open about non-belief is an insuperable barrier to election. Moreover, seven states still ban atheists from holding office -- prohibitions that violate the U.S. Constitution's prohibition on religious tests for public office, but remain on the books because no lawmaker wants to be seen supporting their repeal.\n\nTo counter this, a new coalition called <i>Openly Secular </i>has formed. Made up of more than two dozen national organizations across the secular movement, <i>Openly Secular</i>'s goal is to increase acceptance and eliminate discrimination of atheists, agnostics and other seculars.\n\nBy being open about our beliefs and values, we at Openly Secular want to show that -- like all people -- we are worthy of acceptance, common decency, respect and equality, no matter our religious views or lack of them. We ask voters, journalists, and everyone, to keep this in mind before marginalizing us again.\n<p class=\"p2\"><i>Robyn Blumner is the Executive Director for the Richard Dawkins Foundation for Reason and Science and the project director for Openly Secular.</i><span class=\"s2\"> </span></p>","date":"May 23, 2014","excerpt":"Which moral position is worse, cheating on one's spouse or rejecting religious dogma? These questions were recently put to Americans by the Pew Research Center in a poll asking what traits would make someone less likely to vote for a candidate for president of the United States.","title":"Why Are the Openly Secular Openly Disdained?"},{"_id":4,"content":"<p class=\"p1\"><b>WASHINGTON, D.C.</b> – Robyn Blumner, project director for Openly Secular, releases the following statement in light of today’s United States Supreme Court ruling in the case of <i>Town of Greece v. Galloway</i>:</p>\n<p class=\"p2\">“Today we are disappointed by the ruling from the U.S. Supreme Court, upholding the practice of Christian prayer before official meetings by city councils and other governing bodies. This divisive issue split the court 5 to 4, demonstrating that there is nothing unifying about sectarian prayer at government functions. The court's conservative majority is moving the country away from the founders' vision of a nation committed to the separation between church and state. The practical consequence will be more official prayer, overwhelmingly Christian — clearly communicating to all Americans whose faith holds the power and whose beliefs don’t count.”</p>","date":"May 05, 2014","excerpt":"Robyn Blumner, project director for Openly Secular, releases the following statement in light of today’s United States Supreme Court ruling in the case of Town of Greece v. Galloway","title":"Openly Secular Statement Following U.S. Supreme Court Ruling Regarding Prayer in Council Meetings"},{"_id":5,"content":"<p class=\"p1\"><b>WASHINGTON, D.C.</b> – The Richard Dawkins Foundation for Reason and Science and other secular groups have joined together to form a new coalition called <i>Openly Secular</i> to highlight and overcome discrimination in America.</p>\n<p class=\"p1\">Atheists and other nonreligious people not only face discrimination on a regular basis, but the prejudice often goes unrecognized because it can be socially acceptable to distrust those outside the majority religious faith. A Gallup poll in 2012 found almost half of Americans would vote against a well-qualified presidential candidate from their party, if he or she was an atheist.</p>\n<p class=\"p1\">“Our mission is to is to eliminate discrimination and increase acceptance by getting atheists, freethinkers, agnostics, humanists and all nonreligious people to be open about their beliefs,” said Todd Stiefel, Chair for the Openly Secular coalition and founder of the Stiefel Freethought Foundation. “By being open about our beliefs and values, we can show that we, like all people, are worthy of love and kindness undeterred by religious differences.”</p>\n<p class=\"p1\">“After I spoke openly about being an atheist, I lost many friends and was threatened with</p>\n<p class=\"p1\">rape and death. My own representative publicly called me an ‘evil little thing.’ All of this, simply because I did not believe in God,” said student activist Jessica Ahlquist, who successfully sued her public high school in 2012 to remove a religious prayer banner from the auditorium. “But this experience has not discouraged me. Today, I hold my head high as a proud, secular American.”</p>\n<p class=\"p1\">Other cases of discrimination against people who are nonreligious have gotten limited media attention, including a high school student kicked out of his own home, a man who lost child custody rights, and two women who were denied U.S. citizenship. U.S. Representative Barney Frank came out as gay 26 years before he felt comfortable being an open atheist, and then, only after leaving office. Each of these cases underscores the need for new momentum.</p>\n<p class=\"p1\">Openly Secular is headed by leaders from the Richard Dawkins Foundation for Reason and Science, the Secular Coalition for America, the Secular Student Alliance and the Stiefel Freethought Foundation. They are joined by a group of over 20 prominent national partner organizations from the secular movement. Openly Secular<i> </i>hopes to engage both nonbelievers and believers in a dialogue about acceptance, love and equality.</p>\n<p class=\"p2\">The coalition is now looking to expand to bring in religious and civil liberties groups as allies mutually interested in ending discrimination. Openly Secular has launched a new online outlet for people to share their own stories of discrimination. There’s a form at this link: secular.org/stories.</p>\n<p class=\"p1\">“We want to live in a world where there are no social costs for being nonreligious, where families and communities remain whole even when some have moved away from religion,” said Robyn Blumner of the Richard Dawkins Foundation.</p>\n\n\n<hr />\n<p class=\"p1\"><b>About the Richard Dawkins Foundation for Reason and Science </b></p>\n<p class=\"p1\">The Richard Dawkins Foundation for Reason and Science (RDFRS or RDF) is a non-profit organization founded by British biologist Richard Dawkins in 2006. Our mission is to support scientific education, critical thinking and evidence-based understanding of the natural world in the quest to overcome religious fundamentalism, superstition, intolerance and human suffering.</p>\n<p class=\"p1\"><b>About the Secular Coalition for America</b></p>\n<p class=\"p1\">The Secular Coalition for America is a non-profit advocacy organization whose purpose is to amplify the diverse and growing voice of the nontheistic community in the United States. Formed in 2002, the Secular Coalition for America holds that freedom of conscience, including religious freedom, is a fundamental American value and is best guaranteed by protecting and strengthening the secular character of our government.</p>\n<p class=\"p1\"> <b>About the Secular Student Alliance</b></p>\n<p class=\"p1\">The Secular Student Alliance – an educational nonprofit – was formed in 2000 to organize, unite, educate, and serve students and student communities that promote the ideals of scientific and critical inquiry, democracy, secularism, and human-based ethics. The SSA devotes the majority of its resources to supporting affiliate groups through various avenues, including supplying literature and outreach supplies, group running guides, hands-on assistance, discounted access to prominent speakers, and monetary project grants.</p>\n<p class=\"p1\"><b>About the Stiefel Freethought Foundation</b></p>\n<p class=\"p1\">The Stiefel Freethought Foundation is a non-profit that provides financial support and volunteer strategy consulting to the Freethought Movement. Freethought is a philosophical viewpoint that holds that opinions should be formed on the basis of science, logic, and reason and should not be influenced by authority, tradition or any other dogma (including religion).</p>","date":"April 29, 2014","excerpt":"The Richard Dawkins Foundation for Reason and Science and other secular groups have joined together to form a new coalition called Openly Secular to highlight and overcome discrimination in America.","title":"New Coalition Formed to Highlight and Overcome Discrimination Against Nonreligious and Atheists"}],"title":"Latest updates"},"userId":"siRzY8KN64","objectId":"3ssvRGbGQO","createdAt":"2014-09-04T19:06:18.833Z","updatedAt":"2014-09-12T01:43:15.875Z"}}
 config.apiRoot = 'http://localhost:3000/api'
 
 module.exports = config
@@ -39726,6 +39103,12 @@ var toJSON = _.partialRight(_.result, 'toJSON')
 
 var initialized = false
 
+var partnerSorter = function(a, b) {
+    if (a.featured && !b.featured) return -1
+    if (!a.featured && b.featured) return 1
+    return 0
+}
+
 var campaign = {
 
   patch: function(patches) {
@@ -39741,6 +39124,9 @@ var campaign = {
 
   init: _.once(function($campaign) {
     campaign.load().then(function(c) {
+      c.partners.forEach(function(partners) {
+        partners.list = partners.list.sort(partnerSorter)
+      })
       $campaign.update({ $set: c })
     })
   }), 
@@ -39772,7 +39158,7 @@ module.exports = {
 
 }
 
-},{"../config":"4itQ50","rsvp":166,"xhr":172}],"KwrW/Q":[function(require,module,exports){
+},{"../config":"4itQ50","rsvp":166,"xhr":169}],"KwrW/Q":[function(require,module,exports){
 
 var config = require('../config')
 var rsvp = require('rsvp')
@@ -39851,7 +39237,7 @@ var file = {
         canvas.height = tempH;
         var ctx = canvas.getContext("2d");
         ctx.drawImage(this, 0, 0, tempW, tempH);
-        var dataURL = canvas.toDataURL("image/jpeg");
+        var dataURL = canvas.toDataURL("image/png");
 
         var file = new File(img.name, { base64: dataURL }, img.type)
         file.save().then(function() {

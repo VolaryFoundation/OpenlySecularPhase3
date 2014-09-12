@@ -189,10 +189,10 @@ module.exports = React.createClass({
                   </div>
                 </div>
                   <div className="social-links">
-                    <a className="twitter"></a>
-                    <a className="facebook"></a>
-                    <a className="instagram"></a>
-                    <a className="youtube"></a>
+                    <a href="http://twitter.com/openlysecular" target="_blank" className="twitter"></a>
+                    <a href="http://facebook.com/openlysecular" target="_blank" className="facebook"></a>
+                    <a href="http://instagram.com/openlysecular" target="_blank" className="instagram"></a>
+                    <a href="http://www.youtube.com/user/OpenlySecular" target="_blank" className="youtube"></a>
                   </div>
               </div>
             </div>

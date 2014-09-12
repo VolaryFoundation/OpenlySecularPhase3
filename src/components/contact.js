@@ -12,6 +12,7 @@ var ContactDetail = React.createClass({
   mixins: [ Editable, React.addons.LinkedStateMixin ],
 
   render: function() {
+
     if (this.detectEditing()) {
       return (
         <div>
@@ -23,12 +24,7 @@ var ContactDetail = React.createClass({
         <div className="col-xs-7">
           <div className="panel-body">
             <div className="form-group">
-              <div className="input-group">
-                <span className="input-group-addon">
-                  <i className="fa fa-fw fa-cube"></i>
-                </span>
-                <input type="text" className="form-control" valueLink={this.linkState('name')} />
-              </div>
+              <input type="text" className="form-control" valueLink={this.linkState('name')} />
             </div>
             <div className="form-group">
               <div className="input-group">
@@ -65,6 +61,7 @@ var ContactDetail = React.createClass({
         </div>
       </div>
       <div className="col-xs-5">
+        <br /><br />
         <div className="panel-body">
           <div className="form-group">
             <div className="input-group">
@@ -72,6 +69,14 @@ var ContactDetail = React.createClass({
                 <i className="fa fa-fw fa-twitter"></i>
               </span>
               <input type="text" className="form-control" valueLink={this.linkState('twitter')} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-addon">
+                <i className="fa fa-fw fa-facebook"></i>
+              </span>
+              <input type="text" className="form-control" valueLink={this.linkState('facebook')} />
             </div>
           </div>
           <div className="form-group">
@@ -132,13 +137,10 @@ var ContactDetail = React.createClass({
         </div>
         <div className="panel-body">
         <div className="col-xs-7">
-          <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-cube"></i>
-              </span>
+          <div className="form-group text-center">
+            <strong>
               <p className="form-control-static">{ this.state.name }</p>
-            </div>
+            </strong>
           </div>
           <div className="form-group">
             <div className="input-group">
@@ -149,12 +151,14 @@ var ContactDetail = React.createClass({
             </div>
           </div>
           <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-envelope"></i>
-              </span>
-              <p className="form-control-static">{ this.state.email }</p>
-            </div>
+            <a href={"mailto:" + this.state.email } target="_blank">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-envelope"></i>
+                </span>
+                <p className="form-control-static">{ this.state.email }</p>
+              </div>
+            </a>
           </div>
           <div className="form-group">
             <div className="input-group">
@@ -174,29 +178,46 @@ var ContactDetail = React.createClass({
           </div>
         </div>
         <div className="col-xs-5">
+          <br /><br />
           <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-twitter"></i>
-              </span>
-              <p className="form-control-static">{ this.state.twitter }</p>
-            </div>
+            <a href={"http://twitter.com/" + this.state.twitter } target="_blank">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-twitter"></i>
+                </span>
+                <p className="form-control-static">{ this.state.twitter }</p>
+              </div>
+            </a>
           </div>
           <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-instagram"></i>
-              </span>
-              <p className="form-control-static">{ this.state.instagram }</p>
-            </div>
+            <a href={"http://facebook.com/" + this.state.facebook } target="_blank">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-facebook"></i>
+                </span>
+                <p className="form-control-static">{ this.state.facebook }</p>
+              </div>
+            </a>
           </div>
           <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-youtube-play"></i>
-              </span>
-              <p className="form-control-static">{ this.state.youtube }</p>
-            </div>
+            <a href={"http://instagram.com/" + this.state.instagram } target="_blank">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-instagram"></i>
+                </span>
+                <p className="form-control-static">{ this.state.instagram }</p>
+              </div>
+            </a>
+          </div>
+          <div className="form-group">
+            <a href={"http://www.youtube.com/user/" + this.state.youtube } target="_blank">
+              <div className="input-group">
+                <span className="input-group-addon">
+                  <i className="fa fa-fw fa-youtube-play"></i>
+                </span>
+                <p className="form-control-static">{ this.state.youtube }</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -287,12 +308,14 @@ var PressContactDetail = React.createClass({
               </div>
             </div>
             <div className="form-group">
-              <div className="input-group">
-                <span className="input-group-addon">
-                  <i className="fa fa-fw fa-envelope"></i>
-                </span>
-                <p className="form-control-static">{ this.state.pressEmail }</p>
-              </div>
+              <a href={"mailto:" + this.state.pressEmail } target="_blank">
+                <div className="input-group">
+                  <span className="input-group-addon">
+                    <i className="fa fa-fw fa-envelope"></i>
+                  </span>
+                  <p className="form-control-static">{ this.state.pressEmail }</p>
+                </div>
+              </a>
             </div>
             <div className="form-group">
               <div className="input-group">

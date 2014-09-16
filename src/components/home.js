@@ -67,7 +67,7 @@ var DonateHome = React.createClass({
             <div className="action-item-footer">
               <p>
               <a href="#/donation">
-                <button type="button" className="btn-animated btn-md btn-primary">
+                <button type="button" className="btn-animated btn-md btn-featured">
                   <div className="is-visible content">Donate</div>
                   <div className="not-visible content"><i className="next"></i></div>
                 </button>

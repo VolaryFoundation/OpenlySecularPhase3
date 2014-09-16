@@ -41,6 +41,10 @@ module.exports = function($shared) {
       go('resources')
     },
 
+    'toolkits /toolkits': function() {
+      go('resources')
+    },
+
     'contact /contact': function() {
       go('contact')
     },

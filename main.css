@@ -6320,10 +6320,14 @@ button.close {
 .input-group .form-control {
   z-index: 1; }
 
-.stripes, .action-bar-item:last-child, .updates .panel-heading, .news-media .panel-heading, .partners-item .panel-heading, .partner-header, .resources-item .panel-heading, .contact-item .panel-heading {
+.iframe-responsive {
+  width: 100%;
+  height: 900px; }
+
+.stripes, .action-bar-item:last-child, .updates .panel-heading, .news-media .panel-heading, .partners-item .panel-heading, .partner-header, .resources-item .panel-heading, .contact-item .panel-heading, .submission-container .panel-heading {
   color: #245882;
   background-color: #fff;
-  background-image: linear-gradient(to right top, transparent 33%, #b9d5ec 33%, #b9d5ec 66%, transparent 66%);
+  background-image: linear-gradient(to right top, transparent 33%, #e9f2f9 33%, #e9f2f9 66%, transparent 66%);
   background-size: 3px 3px;
   border-bottom: 1px solid #b9d5ec; }
 
@@ -6334,7 +6338,7 @@ button.close {
   background-size: 3px 3px;
   border-bottom: 1px solid #b9d5ec; }
 
-.stripes-straight {
+.stripes-straight, .bs-wizard {
   color: #fff;
   background-color: #245882;
   background-image: linear-gradient(to right, transparent 33%, rgba(255, 255, 255, 0.02) 33%, rgba(255, 255, 255, 0.02) 66%, transparent 66%);
@@ -7249,7 +7253,7 @@ a:hover {
 
 @-moz-document url-prefix() {
   .partners-list .partner img {
-    width: 100%; } }
+    max-width: 180px; } }
 
 .partner.editing a {
   height: 300px; }
@@ -7488,10 +7492,6 @@ a:hover {
       background: #f5f5f5;
       border-top: 1px solid #92bde0; } }
 
-.submission-container .panel-heading {
-  background: #f5f5f5 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC);
-  border-bottom: 1px solid #e1edf7; }
-
 .submission-item:first-child {
   position: relative;
   min-height: 1px;
@@ -7634,6 +7634,13 @@ a:hover {
   .btn-animated.btn-primary:hover {
     background-color: #3073a9; }
 
+.btn-animated.btn-featured {
+  color: #fff;
+  background-color: #fb6c48;
+  border-color: #d82f05; }
+  .btn-animated.btn-featured:hover {
+    background-color: #d82f05; }
+
 .btn-animated.btn-info {
   color: #fff;
   background-color: #85d2e7;
@@ -7688,7 +7695,6 @@ a:hover {
 /*Form Wizard*/
 .bs-wizard {
   padding: 20px 10px;
-  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAWSjEh8SSD7OUwAzAFJggTgHJAAAEkuAx5OdRJCAAAAAElFTkSuQmCC) repeat;
   margin-top: -1px;
   border-top: 1px solid #e1edf7;
   border-bottom: 1px solid #e1edf7; }
@@ -7698,12 +7704,12 @@ a:hover {
   position: relative; }
 
 .bs-wizard > .bs-wizard-step .bs-wizard-stepnum {
-  color: #777777;
+  color: #fff;
   font-size: 16px;
   margin-bottom: 5px; }
 
 .bs-wizard > .bs-wizard-step.active .bs-wizard-stepnum {
-  color: #428bca; }
+  color: #fff; }
 
 .bs-wizard > .bs-wizard-step.disabled .bs-wizard-stepnum {
   visibility: hidden; }

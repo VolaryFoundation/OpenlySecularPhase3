@@ -13,7 +13,7 @@ var pages = {
   Contact: require('./contact'),
   Submission: require('./submission'),
   Donation: require('./donation'),
-  Resource: require('./resource')
+  FamousFreethinkers: require('./famous-freethinkers')
 }
 
 module.exports = React.createClass({
@@ -46,8 +46,8 @@ module.exports = React.createClass({
       case 'donation':
         Page = _.partial(pages.Donation, { $shared: this.props.$shared, $campaign: this.props.$campaign })
         break
-      case 'resource':
-        Page = _.partial(pages.Resource, { $shared: this.props.$shared, $campaign: this.props.$campaign })
+      case 'famous-freethinkers':
+        Page = _.partial(pages.FamousFreethinkers, { $shared: this.props.$shared, $campaign: this.props.$campaign })
         break
     }
 

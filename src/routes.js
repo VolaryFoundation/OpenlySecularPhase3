@@ -57,8 +57,8 @@ module.exports = function($shared) {
       go('donation')
     },
 
-    'resource /resource': function() {
-      go('resource')
+    'famous-freethinkers /famous-freethinkers': function() {
+      go('famous-freethinkers')
     }
   })
 }

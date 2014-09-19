@@ -175,25 +175,29 @@ module.exports = React.createClass({
               </div>
               <div className="action-item-body">
                 <p>Get the latest through email or social media.</p>
-                <div className="form-group">
-                  <div className="input-group">
-                    <span className="input-group-addon">
-                      <i className="fa fa-envelope"></i>
-                    </span>
-                  <input type="email" placeholder="E-mail address" className="form-control" />
-                    <span className="input-group-btn">
-                      <button className="btn btn-primary">
-                        Submit
-                      </button>
-                    </span>
+                <form action="http://openlysecular.us8.list-manage1.com/subscribe/post" target="_blank"  method="POST">
+                  <input type="hidden" name="u" value="dd96fe6e39a2b4ed24bee3423" />
+                  <input type="hidden" name="id" value="56bb515eb9" />
+                  <div className="form-group">
+                    <div className="input-group">
+                      <span className="input-group-addon">
+                        <i className="fa fa-envelope"></i>
+                      </span>
+                      <input type="email" name="MERGE0" id="MERGE0" placeholder="E-mail address" className="form-control" />
+                      <span className="input-group-btn">
+                        <button type="submit" className="btn btn-primary">
+                          Submit
+                        </button>
+                      </span>
+                    </div>
                   </div>
+                </form>
+                <div className="social-links">
+                  <a href="http://twitter.com/openlysecular" target="_blank" className="twitter"></a>
+                  <a href="http://facebook.com/openlysecular" target="_blank" className="facebook"></a>
+                  <a href="http://instagram.com/openlysecular" target="_blank" className="instagram"></a>
+                  <a href="http://www.youtube.com/user/OpenlySecular" target="_blank" className="youtube"></a>
                 </div>
-                  <div className="social-links">
-                    <a href="http://twitter.com/openlysecular" target="_blank" className="twitter"></a>
-                    <a href="http://facebook.com/openlysecular" target="_blank" className="facebook"></a>
-                    <a href="http://instagram.com/openlysecular" target="_blank" className="instagram"></a>
-                    <a href="http://www.youtube.com/user/OpenlySecular" target="_blank" className="youtube"></a>
-                  </div>
               </div>
             </div>
           </div>

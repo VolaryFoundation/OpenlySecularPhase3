@@ -80,7 +80,7 @@ module.exports = React.createClass({
       <div className="mission-container">
         <div className="mission-row">
           <div className="about-item">
-          <p>Image Here</p>
+            <p><img className="img-responsive" src="http://www.openlysecular.org/img/os_slogan.png" /></p>
           </div>
             <AboutSection
               $cursor={$campaign.refine('about1')}

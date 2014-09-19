@@ -17,7 +17,6 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 
 .iframe-responsive {
   width: 100%;
-  height: 900px;
 }
 
 .stripes {
@@ -1046,6 +1045,19 @@ a {
   }
 
 
+
+.partner-apply {
+  border-top: $border-dark;
+  height: 54px;
+  padding: 10px;
+  text-align: right;
+
+  button {
+    margin-left: 15px;
+    margin-right: 40px;
+  }
+}
+
 //
 //
 //  Resources //
@@ -1167,6 +1179,7 @@ a {
 .press-item {
   @include make-sm-column(12, 0);
   @include make-md-column(6, 0);
+
   @extend .col-height;
 
   &:first-child {
@@ -1198,14 +1211,22 @@ a {
   }
 }
 
+.submission-row {
+  @include make-row();
+  @extend .row-height;
+  margin: 0;
+}
+
 .submission-item {
 
   &:first-child {
     @include make-md-column(4, 0);
+    @extend .col-height;
   }
 
   &:last-child {
     @include make-md-column(8, 0);
+    @extend .col-height;
 
     @media (min-width: $screen-md) {
       border-left: $border-dark;

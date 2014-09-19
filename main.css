@@ -6321,8 +6321,7 @@ button.close {
   z-index: 1; }
 
 .iframe-responsive {
-  width: 100%;
-  height: 900px; }
+  width: 100%; }
 
 .stripes, .action-bar-item:last-child, .updates .panel-heading, .news-media .panel-heading, .partners-item .panel-heading, .partner-header, .resources-item .panel-heading, .contact-item .panel-heading, .submission-container .panel-heading {
   color: #245882;
@@ -6585,9 +6584,9 @@ textarea.form-control {
   padding-left: 0; }
 
 @media (min-width: 480px) {
-  .row-height, .action-bar-row, .mission-row, .about-row, .partners-row, .resources-row, .contact-row, .press-row {
+  .row-height, .action-bar-row, .mission-row, .about-row, .partners-row, .resources-row, .contact-row, .press-row, .submission-row {
     overflow: hidden; }
-  .col-height, .action-bar-item:first-child, .action-bar-item:nth-child(2), .action-bar-item:last-child, .mission-row .about-item:first-child, .mission-row .about-item:last-child, .about-row .about-item, .partners-item:first-child, .partners-list .partner, .resources-item:first-child, .resources-item:last-child, .random-item, .contact-item:first-child, .contact-item:last-child, .press-item {
+  .col-height, .action-bar-item:first-child, .action-bar-item:nth-child(2), .action-bar-item:last-child, .mission-row .about-item:first-child, .mission-row .about-item:last-child, .about-row .about-item, .partners-item:first-child, .partners-list .partner, .resources-item:first-child, .resources-item:last-child, .random-item, .contact-item:first-child, .contact-item:last-child, .press-item, .submission-item:first-child, .submission-item:last-child {
     margin-bottom: -99999px;
     padding-bottom: 99999px; } }
 
@@ -7281,6 +7280,15 @@ a:hover {
     font-size: 14px;
     color: #245882; }
 
+.partner-apply {
+  border-top: 1px solid #92bde0;
+  height: 54px;
+  padding: 10px;
+  text-align: right; }
+  .partner-apply button {
+    margin-left: 15px;
+    margin-right: 40px; }
+
 .resources-container {
   margin-right: auto;
   margin-left: auto;
@@ -7491,6 +7499,16 @@ a:hover {
     .press-item:last-child {
       background: #f5f5f5;
       border-top: 1px solid #92bde0; } }
+
+.submission-row {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin: 0; }
+  .submission-row:before, .submission-row:after {
+    content: " ";
+    display: table; }
+  .submission-row:after {
+    clear: both; }
 
 .submission-item:first-child {
   position: relative;

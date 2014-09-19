@@ -25,6 +25,10 @@ module.exports = function($shared) {
       go('partners')
     },
 
+    'partner-apply /partner-apply': function() {
+      go('partner-apply')
+    },
+
     'media /media': function() {
       go('media')
     },
@@ -58,6 +62,10 @@ module.exports = function($shared) {
     },
 
     'famous-freethinkers /famous-freethinkers': function() {
+      go('famous-freethinkers')
+    },
+
+    'famousfreethinkers /famousfreethinkers': function() {
       go('famous-freethinkers')
     }
   })

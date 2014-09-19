@@ -365,10 +365,10 @@ module.exports = React.createClass({
                   <div className="panel-body text-center">
                   <br />
                   <br />
-                    <button className="btn-md btn-animated vertical btn-primary">
+                    <a href="http://www.openlysecular.org/OS_MediaKit.zip" target="_blank"><button className="btn-md btn-animated vertical btn-primary">
                       <div className="is-visible content"><i className="fa fa-fw fa-download"></i> Download</div>
                       <div className="not-visible content"><i className="fa fa-fw fa-file-archive-o"></i> Press Kit</div>
-                    </button>
+                    </button></a>
                     <br />
                     <br />
                     <p><a href="#/resources">View More Resources</a></p>
@@ -383,29 +383,34 @@ module.exports = React.createClass({
             </div>
             <div className="panel-body">
               <div className="row">
-                <div className="col-lg-6">
+                <form action="http://submit.jotformpro.com/submit/41775081989975/" method="post" target="_blank" name="form_41775081989975" id="41775081989975" accept-charset="utf-8">
+                  <input type="hidden" name="formID" value="41775081989975" />
+                  <div className="col-lg-6">
                   <div className="form-group">
                     <label>Name</label>
-                    <div className="input-group"><span className="input-group-addon"><i className="fa fa-fw fa-user"></i></span><input type="text" id="name" placeholder="Name" required="" className="form-control" /></div>
+                    <div className="input-group"><span className="input-group-addon"><i className="fa fa-fw fa-user"></i></span><input type="text" id="input_3" name="q3_whatsYour" placeholder="Name" required="" className="form-control" /></div>
                   </div>
                   <div className="form-group">
                     <label>Email</label>
-                    <div className="input-group"><span className="input-group-addon"><i className="fa fa-fw fa-envelope"></i></span><input type="email" id="email" placeholder="Email address" required="" className="form-control" /></div>
+                    <div className="input-group"><span className="input-group-addon"><i className="fa fa-fw fa-envelope"></i></span><input type="email" id="input_5" name="q5_yourEmail" placeholder="Email address" required="" className="form-control" /></div>
                   </div>
                   <div className="form-group">
                     <label>Subject</label>
-                    <select className="form-control">
-                      <option value="option">General Inquiry</option>
-                      <option value="option">Press/Media Inquiry</option>
-                      <option value="option">Donation Inquiry</option>
-                      <option value="option">Etc</option>
+                    <select className="form-control" id="input_6" name="q6_subject">
+                      <option value="General Inquiry"> General Inquiry </option>
+                      <option value="Press/Media Inquiry"> Press/Media Inquiry </option>
+                      <option value="Donation Inquiry"> Donation Inquiry </option>
                     </select>
                   </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="form-group"><label>Message</label><textarea name="message" id="message" rows="9" placeholder="Message" className="form-control"></textarea></div>
-                </div>
-                <div className="col-md-12 text-right"><button type="submit" className="btn btn-primary">Send <i className="fa fa-paper-plane"></i></button></div>
+                  <input type="hidden" id="simple_spc" name="simple_spc" value="41775081989975" />
+                  </div>
+                  <div className="col-lg-6">
+                    <div className="form-group"><label>Message</label><textarea name="message" id="input_4" name="q4_whatsOn" rows="9" placeholder="Message" className="form-control"></textarea></div>
+                  </div>
+                  <div className="col-md-12 text-right">
+                    <button type="submit" id="input_2" className="btn btn-primary">Send <i className="fa fa-paper-plane"></i></button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

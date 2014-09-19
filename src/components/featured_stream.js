@@ -47,7 +47,7 @@ module.exports = React.createClass({
       if (this.state.playing == url) {
         return <div id="player">
         <button onClick={close}>close</button>
-        <iframe src={"//www.youtube.com/embed/" + id + "?rel=0"} frameBorder="0" allowFullScreen></iframe>
+        <iframe src={"http://www.youtube.com/embed/" + id + "?rel=0"} frameBorder="0" allowFullScreen></iframe>
         </div>
       }
     }.bind(this)
@@ -80,7 +80,7 @@ module.exports = React.createClass({
     var fragments = feedURL.split("/");
     var videoID = fragments[fragments.length - 2];
     return (
-      <div className="video-container"><iframe src={"//www.youtube.com/embed/" + videoID + "?rel=0"} width="560" height="315" frameBorder="0" allowFullScreen></iframe></div>
+      <div className="video-container"><iframe src={"http://www.youtube.com/embed/" + videoID + "?rel=0"} width="560" height="315" frameBorder="0" allowFullScreen></iframe></div>
     )
   },
 

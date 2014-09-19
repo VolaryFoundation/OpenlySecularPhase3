@@ -73,7 +73,7 @@ module.exports = React.createClass({
             '<div class="not-visible content">Close</div>',
           '</button>',
         '</div>',
-        '<iframe src="//www.youtube.com/embed/' + id + '?rel=0"} frameBorder="0" allowFullScreen></iframe>',
+        '<iframe src="http://www.youtube.com/embed/' + id + '?rel=0"} frameBorder="0" allowFullScreen></iframe>',
         '</div>' ].join('')).appendTo('body')
         return <div></div>
       }

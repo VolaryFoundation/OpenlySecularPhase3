@@ -17,7 +17,7 @@ module.exports = React.createClass({
 
     return (
       <div>
-      <iframe className="iframe-responsive" height="600px" frameBorder="0" src="http://www.openlysecular.org/flash/donation.html"></iframe>
+      <iframe className="iframe-responsive" height="800px" frameBorder="0" src="http://www.openlysecular.org/flash/donation.html"></iframe>
       </div>
     )
   }

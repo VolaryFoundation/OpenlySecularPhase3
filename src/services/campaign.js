@@ -18,8 +18,10 @@ var campaign = {
 
   patch: function(patches) {
     var campaign = new Campaign({ objectId: config.campaign.objectId })
-    campaign.set(patches)
-    return campaign.save()
+    return campaign.fetch().then(function(c) {
+      c.set(patches)
+      return c.save()
+    })
   },
 
   load: function() {
@@ -34,7 +36,7 @@ var campaign = {
       })
       $campaign.update({ $set: c })
     })
-  }), 
+  }),
 
   sync: function($campaign, $errors) {
     this.init($campaign)

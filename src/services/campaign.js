@@ -3,11 +3,7 @@ var config = require('../config')
 var _ = require('lodash')
 var Campaign = Parse.Object.extend('Campaign')
 var errors = require('../errors')
-
-var getDeltaKeys = function(delta) {
-  if (delta.campaign) return Object.keys(delta.campaign)
-  return []
-}
+var React = require('react/addons')
 
 var toJSON = _.partialRight(_.result, 'toJSON')
 
@@ -23,13 +19,10 @@ var campaign = {
 
   patch: function(patches, delta) {
     var campaign = new Campaign({ objectId: config.campaign.objectId })
-    var keys = getDeltaKeys(delta)
-    var justChanges = _.reduce(patches, function(memo, v, k) {
-      if (keys.indexOf(k) > -1) memo[k] = v
-      return memo
-    }, {})
-    campaign.set(justChanges)
-    return campaign.save()
+    return campaign.fetch().then(function(c) {
+      c.set(React.addons.update(c.attributes, delta.campaign))
+      return c.save()
+    })
   },
 
   load: function() {

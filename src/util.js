@@ -89,7 +89,7 @@ var util = {
         },
 
         affectedByLastUpdate: function() {
-          return !_.isUndefined(util.pick(root.lastUpdate, _sub.path))
+          return !_.isUndefined(util.pick(root.lastUpdate, _sub.path)) ? root.lastUpdate : false
         },
 
         isEmpty: function() {

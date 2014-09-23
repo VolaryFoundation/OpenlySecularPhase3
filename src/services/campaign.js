@@ -4,6 +4,11 @@ var _ = require('lodash')
 var Campaign = Parse.Object.extend('Campaign')
 var errors = require('../errors')
 
+var getDeltaKeys = function(delta) {
+  if (delta.campaign) return Object.keys(delta.campaign)
+  return []
+}
+
 var toJSON = _.partialRight(_.result, 'toJSON')
 
 var initialized = false
@@ -16,12 +21,15 @@ var partnerSorter = function(a, b) {
 
 var campaign = {
 
-  patch: function(patches) {
+  patch: function(patches, delta) {
     var campaign = new Campaign({ objectId: config.campaign.objectId })
-    return campaign.fetch().then(function(c) {
-      c.set(patches)
-      return c.save()
-    })
+    var keys = getDeltaKeys(delta)
+    var justChanges = _.reduce(patches, function(memo, v, k) {
+      if (keys.indexOf(k) > -1) memo[k] = v
+      return memo
+    }, {})
+    campaign.set(justChanges)
+    return campaign.save()
   },
 
   load: function() {
@@ -40,8 +48,9 @@ var campaign = {
 
   sync: function($campaign, $errors) {
     this.init($campaign)
-    if ($campaign.affectedByLastUpdate()) {
-      campaign.patch($campaign.deref()).then(function() {
+    var delta = $campaign.affectedByLastUpdate()
+    if (delta) {
+      campaign.patch($campaign.deref(), delta).then(function() {
       }, function(e) {
         var error = JSON.parse(e.message)
         var path = $campaign.path.concat(error.dataPath.split('/').slice(1))

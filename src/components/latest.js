@@ -131,7 +131,7 @@ var Updates = React.createClass({
 
   deleteItem: function(index) {
     this.props.activate(null)
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
   },
 
   render: function() {
@@ -245,7 +245,7 @@ var News = React.createClass({
   },
 
   deleteItem: function(index) {
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
   },
 
   render: function() {

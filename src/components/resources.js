@@ -30,7 +30,7 @@ var DownloadList = React.createClass({
   },
 
   deleteItem: function(index) {
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
   },
 
   render: function() {
@@ -277,7 +277,7 @@ var Resources = React.createClass({
   },
 
   deleteItem: function(index) {
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
   },
 
   render: function() {

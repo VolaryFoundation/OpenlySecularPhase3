@@ -30,7 +30,7 @@ var PartnerList = React.createClass({
 
   deleteItem: function(_id) {
     var index = _.findIndex(this.props.$cursor.deref().list, { _id: _id })
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
   },
 
   render: function() {

@@ -20,8 +20,8 @@ var campaign = {
   patch: function(patches, delta) {
     var campaign = new Campaign({ objectId: config.campaign.objectId })
     return campaign.fetch().then(function(c) {
-      c.set(React.addons.update(c.attributes, delta.campaign))
-      return c.save()
+      var merged = _.merge(c.attributes, patches)
+      return c.save(merged)
     })
   },
 

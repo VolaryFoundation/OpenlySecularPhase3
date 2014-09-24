@@ -1133,12 +1133,16 @@ a {
 }
 
 .random-item {
+  @extend .stripes;
   @include make-sm-column(12, 0);
   @include make-md-column(6, 0);
   @extend .col-height;
 
+  .panel-body {
+    background: #fff;
+  }
+
   .row {
-    @extend .stripes;
     text-align: center;
     border-top: $border-dark;
     border-bottom: none;

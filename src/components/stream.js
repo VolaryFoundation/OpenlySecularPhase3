@@ -105,7 +105,7 @@ module.exports = React.createClass({
     return (
       <div className="stream-container">
         <div className="stream-header">
-          <div className="stream-title">#OpenlySecular</div>
+          <div className="stream-title"><a href="https://www.youtube.com/user/OpenlySecular" target="_blank">#OpenlySecular</a></div>
         </div>
         <div className="stream-row">
           {this.renderStream()}

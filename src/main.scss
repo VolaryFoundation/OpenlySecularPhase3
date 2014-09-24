@@ -232,13 +232,36 @@ transition: all .2s;
   position: fixed;
   top: 10%;
   bottom: 0;
-  left: 50%;
-  margin-left: -400px;
   z-index: 6;
 
   iframe {
-    width: 800px;
-    height: 600px;
+    width: 360px;
+    height: 203px;
+  }
+
+  @media (min-width: 470px) {
+    left: 5%;
+    iframe {
+      width: 460px;
+      height: 259px;
+    }
+  }
+
+  @media (min-width: 650px) {
+    left: 60%;
+    margin-left: -400px;
+    iframe {
+      width: 640px;
+      height: 360px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    left: 50%;
+    iframe {
+      width: 853px;
+      height: 480px;
+    }
   }
 }
 
@@ -1113,6 +1136,24 @@ a {
   @include make-sm-column(12, 0);
   @include make-md-column(6, 0);
   @extend .col-height;
+
+  .row {
+    @extend .stripes;
+    text-align: center;
+    border-top: $border-dark;
+    border-bottom: none;
+
+    > :first-child {
+      padding: 20px 0;
+    }
+  }
+
+  blockquote {
+    height: 100px;
+    margin-bottom: 0;
+    line-height: 90px;
+    border-left: none;
+  }
 }
 
 

@@ -8,6 +8,8 @@ var hub = require('../hub')
 var _ = require('lodash')
 var errors = require('../errors')
 
+var currentPage
+
 module.exports = React.createClass({
 
   componentWillMount: function() {
@@ -30,6 +32,12 @@ module.exports = React.createClass({
     }, 2000)
   },
 
+  componentWillReceiveProps: function() {
+    var $page = this.props.$root.refine([ 'shared', 'page' ])
+    if ($page.deref() !== currentPage) window.scrollTo(0, 0)
+    currentPage = $page.deref()
+  },
+
   render: function() {
 
     var $root = this.props.$root
@@ -37,6 +45,7 @@ module.exports = React.createClass({
     var $campaign = $root.refine('campaign')
 
     this.resolveFlash($shared)
+
 
     return (
       <div>

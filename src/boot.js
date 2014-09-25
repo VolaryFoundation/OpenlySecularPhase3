@@ -1,6 +1,5 @@
 
 var _ = require('lodash')
-var Immutable = require('immutable')
 var React = require('react/addons')
 var hub = require('./hub')
 var util = require('./util')

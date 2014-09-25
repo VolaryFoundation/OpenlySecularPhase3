@@ -255,10 +255,10 @@ var DIYSection = React.createClass({
                 <h4><div className="circle"><div className="circle-content"><i className="fa fa-flag"></i></div></div>Signs</h4>
               </div>
               <div className="col-xs-5 col-md-6 col-lg-5">
-                <blockquote><a href="https://richarddawkins.net/wp-content/uploads/2014/09/OS_we_are_sign.pdf" className="btn btn-primary" target="_blank">I'm Openly Secular</a></blockquote>
+                <blockquote><a href="https://richarddawkins.net/wp-content/uploads/2014/09/OS_I_am_sign.pdf" className="btn btn-primary" target="_blank">I'm Openly Secular</a></blockquote>
               </div>
               <div className="col-xs-5 col-md-6  col-lg-5">
-                <blockquote><a href="https://richarddawkins.net/wp-content/uploads/2014/09/OS_I_am_sign.pdf" className="btn btn-primary" target="_blank">We're Openly Secular</a></blockquote>
+                <blockquote><a href="https://richarddawkins.net/wp-content/uploads/2014/09/OS_we_are_sign.pdf" className="btn btn-primary" target="_blank">We're Openly Secular</a></blockquote>
               </div>
             </div>
         </div>

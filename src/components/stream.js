@@ -3,6 +3,7 @@
 
 var React = require('react/addons')
 var hub = require('../hub')
+var _ = require('lodash')
 
 module.exports = React.createClass({
 
@@ -25,23 +26,9 @@ module.exports = React.createClass({
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var videos = JSON.parse(xhr.responseText)
-        this.setState({ videos: videos.feed.entry })
+        this.setState({ videos: _.shuffle(videos.feed.entry) })
       }
     }.bind(this)
-    return
-    $.getJSON(playListURL, function(data) {
-        var list_data="";
-        $.each(data.feed.entry, function(i, item) {
-            var feedTitle = item.title.$t;
-            var feedURL = item.link[1].href;
-            var fragments = feedURL.split("/");
-            var videoID = fragments[fragments.length - 2];
-            var url = videoURL + videoID;
-            var thumb = "http://img.youtube.com/vi/"+ videoID +"/medium.jpg";
-            list_data += '<li><a href="'+ url +'" title="'+ feedTitle +'"><img alt="'+ feedTitle+'" src="'+ thumb +'"</a></li>';
-        });
-        $(list_data).appendTo(".cont");
-    });
   },
 
   play: function(url, e) {

@@ -81,6 +81,7 @@ module.exports = React.createClass({
           <img className="img-responsive" src={thumb} />
           <div className="overlay">
             <figure className="fa fa-3x fa-youtube-play"></figure>
+            <div className="title">{feedTitle}</div>
           </div>
         </a>
         {renderVideoFor(url, videoID)}

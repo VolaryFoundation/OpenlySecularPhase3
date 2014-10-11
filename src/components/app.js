@@ -7,6 +7,8 @@ var Stream = require('./stream')
 var hub = require('../hub')
 var _ = require('lodash')
 var errors = require('../errors')
+var ga = require('react-google-analytics');
+var GAInitiailizer = ga.Initializer;
 
 var currentPage
 
@@ -36,6 +38,8 @@ module.exports = React.createClass({
     var $page = this.props.$root.refine([ 'shared', 'page' ])
     if ($page.deref() !== currentPage) window.scrollTo(0, 0)
     currentPage = $page.deref()
+    ga('create', 'UA-55644532-1', 'auto');
+    ga('send', 'pageview');
   },
 
   render: function() {
@@ -49,6 +53,7 @@ module.exports = React.createClass({
 
     return (
       <div>
+        <GAInitiailizer />
         <Header $root={$root} $shared={$shared} />
         <Content $root={$root} $campaign={$campaign} $shared={$shared} />
         <Stream $root={$root} />

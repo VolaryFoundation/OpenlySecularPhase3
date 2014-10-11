@@ -145,22 +145,44 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
   color: rgba(255,255,255,0.4);
   font-size: 14px;
   background-color: rgba(0,0,0,0.5);
--webkit-transition: all .2s;
--moz-transition: all .2s;
--ms-transition: all .2s;
--o-transition: all .2s;
-transition: all .2s;
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+  overflow: hidden;
 
   &:hover {
     color: #fff;
     background-color: rgba(0,0,0,0);
+
+    .video-title {
+      bottom: 0;
+    }
   }
 
   figure {
     position: relative;
     top: 40%;
   }
+
+  .video-title {
+    position: absolute;
+    left: 0;
+    bottom: -100px;
+    display: block;
+    width: 100%;
+    //text-align: left;
+    padding: 10px;
+    background: rgba(0,0,0,0.7);
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+  }
 }
+
 
 .video-container {
     position: relative;

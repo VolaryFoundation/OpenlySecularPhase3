@@ -39,7 +39,7 @@ module.exports = React.createClass({
     if ($page.deref() !== currentPage) window.scrollTo(0, 0)
     currentPage = $page.deref()
     ga('create', 'UA-55644532-1', 'auto');
-    ga('send', 'pageview');
+    ga('send', 'pageview', location.hash);
   },
 
   render: function() {

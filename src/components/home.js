@@ -141,7 +141,7 @@ var GetInvolved = React.createClass({
               <p>
                 <a href="#/submission">
                 <button type="submit" className="btn-animated btn-md btn-primary">
-                  <div className="is-visible content">Share</div>
+                  <div className="is-visible content">Tell Your Story</div>
                   <div className="not-visible content"><i className="next"></i></div>
                 </button>
                 </a>
@@ -192,6 +192,8 @@ module.exports = React.createClass({
                     </div>
                   </div>
                 </form>
+              </div>
+              <div className="action-item-footer">
                 <div className="social-links">
                   <a href="http://twitter.com/openlysecular" target="_blank" className="twitter"></a>
                   <a href="http://facebook.com/openlysecular" target="_blank" className="facebook"></a>

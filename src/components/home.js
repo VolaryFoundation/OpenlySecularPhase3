@@ -62,7 +62,7 @@ var DonateHome = React.createClass({
               <h3 className="action-title"><div className="circle"><div className="circle-content"><i className="heart"></i></div></div>{ this.state.title }</h3>
             </div>
             <div className="action-item-body">
-              <p>{ this.state.content }</p>
+              <p dangerouslySetInnerHTML={{__html:this.state.content }}></p>
             </div>
             <div className="action-item-footer">
               <p>
@@ -142,6 +142,12 @@ var GetInvolved = React.createClass({
                 <a href="#/submission">
                 <button type="submit" className="btn-animated btn-md btn-primary">
                   <div className="is-visible content">Tell Your Story</div>
+                  <div className="not-visible content"><i className="next"></i></div>
+                </button>
+                </a>
+                <a href="#/removeyourmask">
+                <button type="submit" className="btn-animated btn-md btn-primary">
+                  <div className="is-visible content">Remove Your Mask</div>
                   <div className="not-visible content"><i className="next"></i></div>
                 </button>
                 </a>

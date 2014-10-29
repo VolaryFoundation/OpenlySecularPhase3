@@ -61,12 +61,20 @@ module.exports = function($shared) {
       go('donation')
     },
 
+    'faq /faq': function() {
+      go('faq')
+    },
+
     'famous-freethinkers /famous-freethinkers': function() {
       go('famous-freethinkers')
     },
 
     'famousfreethinkers /famousfreethinkers': function() {
       go('famous-freethinkers')
+    },
+
+    'removeyourmask /removeyourmask': function() {
+      go('removeyourmask')
     }
   })
 }

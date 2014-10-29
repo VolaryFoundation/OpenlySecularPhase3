@@ -82,6 +82,9 @@ gulp.task('initDev', function(done) {
         Guidelines: {
           content: "shnarf",
         },
+        MaskGuidelines: {
+          content: "shnarf",
+        },
         logo: "https://richarddawkins.net/file/2014/06/Openly-Secular-logo-2C-RGB-700x700.jpg",
         partners: [
           {

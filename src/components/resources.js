@@ -9,6 +9,7 @@ var _ = require('lodash')
 var hub = require('../hub')
 var util = require('../util')
 var errors = require('../errors')
+var ga = require('react-google-analytics');
 
 var DownloadList = React.createClass({
 
@@ -140,6 +141,10 @@ var DownloadItem = React.createClass({
     el.click()
   },
 
+  track: function(e) {
+    ga('send', 'event', 'download', 'click', e.target.href)
+  },
+
   upload: function(e) {
     var file = e.target.files[0]
     hub.emit('file:process', file, {}, function(f) {
@@ -201,7 +206,7 @@ var DownloadItem = React.createClass({
                   <div className="not-visible content">Edit</div>
                 </button>) : '' }
               </div>
-            <a href={this.state.file} target="_blank">
+            <a href={this.state.file} onClick={this.track} target="_blank">
               <h4 className="media-heading">{this.state.name}</h4>
             </a>
             <p>{this.state.description}</p>
@@ -393,6 +398,10 @@ var ResourceItem = React.createClass({
     return !this.props.$cursor.deref().title
   },
 
+  track: function(e) {
+    ga('send', 'event', 'resource', 'click', e.target.href)
+  },
+
   render: function() {
 
     this.errors = this.errors || errors.forCursor(this.props.$cursor)
@@ -444,7 +453,7 @@ var ResourceItem = React.createClass({
                  <div className="not-visible content">Edit</div>
                </button>) : '' }
              </div>
-            <a href={this.state.link} target="_blank">
+            <a href={this.state.link} onClick={this.track} target="_blank">
               <h4 className="media-heading">{this.state.title}</h4>
             </a>
             <p>{this.state.desc}</p>

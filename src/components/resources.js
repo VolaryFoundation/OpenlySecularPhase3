@@ -142,7 +142,7 @@ var DownloadItem = React.createClass({
   },
 
   track: function(e) {
-    ga('send', 'event', 'download', 'click', e.target.href)
+    ga('send', 'event', 'download', 'click', e.currentTarget.href)
   },
 
   upload: function(e) {
@@ -399,7 +399,7 @@ var ResourceItem = React.createClass({
   },
 
   track: function(e) {
-    ga('send', 'event', 'resource', 'click', e.target.href)
+    ga('send', 'event', 'resource', 'click', e.currentTarget.href)
   },
 
   render: function() {

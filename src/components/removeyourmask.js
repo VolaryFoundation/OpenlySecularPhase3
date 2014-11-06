@@ -151,7 +151,7 @@ module.exports = React.createClass({
                   </div>
                   <div className="radio">
                     <label>
-                      <input type="radio" name="optionsRadios" id="input_8_1" name="q8_areYou" checked="checked" value="No, I am not currently a student" />
+                      <input type="radio" name="optionsRadios" id="input_8_1" name="q8_areYou" value="No, I am not currently a student" />
                       No, I am not currently a student.
                     </label>
                   </div>

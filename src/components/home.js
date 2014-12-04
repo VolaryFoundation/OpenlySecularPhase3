@@ -145,12 +145,6 @@ var GetInvolved = React.createClass({
                   <div className="not-visible content"><i className="next"></i></div>
                 </button>
                 </a>
-                <a href="#/removeyourmask">
-                <button type="submit" className="btn-animated btn-md btn-primary">
-                  <div className="is-visible content">Remove Your Mask</div>
-                  <div className="not-visible content"><i className="next"></i></div>
-                </button>
-                </a>
               </p>
             </div>
           </div>

@@ -24,44 +24,12 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 }
 
 .stripes {
-  color: $brand-dark;
-  background-color: #fff;
-  background-image: linear-gradient(
-    to right top,
-    transparent 33%,
-    lighten( $brand-primary, 42% ) 33%,
-    lighten( $brand-primary, 42% ) 66%,
-    transparent 66%
-    );
-    background-size: 3px 3px;
-    border-bottom: 1px solid $brand-secondary;
 }
 
 .stripes-alt {
-  color: $brand-dark;
-  background-color: $brand-secondary;
-  background-image: linear-gradient(
-    to right top,
-    transparent 33%,
-    rgba(255,255,255,0.6) 33%,
-    rgba(255,255,255,0.6) 66%,
-    transparent 66%
-    );
-    background-size: 3px 3px;
-    border-bottom: 1px solid $brand-secondary;
 }
 
 .stripes-straight {
-  color: #fff;
-  background-color: $brand-dark;
-  background-image: linear-gradient(
-    to right,
-    transparent 33%,
-    rgba(255,255,255,0.02) 33%,
-    rgba(255,255,255,0.02) 66%,
-    transparent 66%
-    );
-    background-size: 3px 3px;
 }
 
 .hidden {

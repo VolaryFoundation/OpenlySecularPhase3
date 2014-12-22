@@ -24,8 +24,11 @@
     "font-awesome": "^4.2.0",
     "jquery": "^2.1.1",
     "lodash": "^2.4.1",
+    "marked": "^0.3.2",
     "parse": "^1.2.19",
     "react": "^0.11.1",
+    "react-google-analytics": "~0.2.0",
+    "rome": "~1.1.6",
     "routie-client": "^0.1.0",
     "rsvp": "^3.0.13",
     "tower-route": "^0.1.0",
@@ -33,9 +36,7 @@
     "volary-static-builder": "*",
     "xhr": "^1.15.0",
     "yaml": "^0.2.3",
-    "zepto": "0.0.4",
-    "rome": "~1.1.6",
-    "react-google-analytics": "~0.2.0"
+    "zepto": "0.0.4"
   },
   "devDependencies": {
     "gulp": "^3.8.6"

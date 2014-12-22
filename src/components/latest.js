@@ -8,6 +8,7 @@ var _ = require('lodash')
 var util = require('../util')
 var errors = require('../errors')
 var Pikaday = require('pikaday')
+var marked = require('marked')
 
 var ActiveUpdate = React.createClass({
 
@@ -19,7 +20,8 @@ var ActiveUpdate = React.createClass({
   },
 
   formatHTML: function(str) {
-    return str.replace(/\n/g, '<br />')
+    return marked(str)
+    //return str.replace(/\n/g, '<br />')
   },
 
   componentDidMount: function() {

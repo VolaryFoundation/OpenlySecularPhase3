@@ -39,5 +39,9 @@ module.exports = {
       }
       return memo
     }, {}, this)
+  },
+
+  componentDidUnmount: function() {
+    delete this.pagination
   }
 }

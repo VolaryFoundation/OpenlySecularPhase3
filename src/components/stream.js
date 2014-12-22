@@ -6,6 +6,7 @@ var hub = require('../hub')
 var _ = require('lodash')
 
 module.exports = React.createClass({
+  displayName: 'streamPage',
 
   getInitialState: function() {
     return { videos: [] }
@@ -76,7 +77,7 @@ module.exports = React.createClass({
       var classes = React.addons.classSet({
         video: true
       })
-      return <div className={classes}>
+      return <div className={classes} key={url}>
         <a href="#" onClick={this.play.bind(this, url)}>
           <img className="img-responsive" src={thumb} />
           <div className="overlay">

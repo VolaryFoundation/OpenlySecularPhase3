@@ -27,11 +27,12 @@ var DownloadList = React.createClass({
   add: function(e) {
     e.preventDefault()
     var list = this.state.list
-    this.props.$cursor.update({ list: { $unshift: [ { name: '', file: '', description: '' } ] } }, {skipSync:true})
+    var _id = util.nextId(list)
+    this.props.$cursor.update({ list: { $unshift: [ { _id: _id, name: '', file: '', description: '' } ] } }, {skipSync:true})
   },
 
   deleteItem: function(index) {
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
   },
 
   render: function() {
@@ -58,6 +59,7 @@ var DownloadList = React.createClass({
                 {
                   this.pagination.getCurrent().map(function(item, index) {
                     return <DownloadItem
+                      key={item._id || 'new'}
                       $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
                       isEditable={this.props.isEditable}
                       isNew={!item.name}
@@ -102,6 +104,7 @@ var DownloadList = React.createClass({
             {
               this.pagination.getCurrent().map(function(item, index) {
                 return <DownloadItem
+                  key={item._id || 'new'}
                   $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
                   isEditable={this.props.isEditable}
                   isNew={!item.name}
@@ -162,7 +165,7 @@ var DownloadItem = React.createClass({
         error: !!this.errors
       })
       return (
-        <li className={classes} key={_id}>
+        <li className={classes}>
           <div className="form-group">
             <label>Name</label>
             <input type="text" className="form-control" valueLink={this.linkState('name')} />
@@ -192,8 +195,8 @@ var DownloadItem = React.createClass({
       )
     } else {
       return (
-        <li className="media" key={_id}>
-          <div class="media-body">
+        <li className="media">
+          <div className="media-body">
             <div className="admin-bar clearfix">
               { this.props.isEditable ? (
               <button className="btn-animated btn-sm vertical btn-danger pull-left" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}>
@@ -293,7 +296,7 @@ var Resources = React.createClass({
   },
 
   deleteItem: function(index) {
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
   },
 
   render: function() {
@@ -320,6 +323,7 @@ var Resources = React.createClass({
               {
                 this.pagination.getCurrent().map(function(item, i) {
                   return <ResourceItem
+                    key={item._id}
                     $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
                     onDelete={this.deleteItem.bind(null, i)}
 
@@ -365,6 +369,7 @@ var Resources = React.createClass({
             {
               this.pagination.getCurrent().map(function(item, i) {
                 return <ResourceItem
+                  key={item._id || 'new'}
                   $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
                   onDelete={this.deleteItem.bind(null, i)}
                   isEditable={this.props.isEditable}
@@ -412,7 +417,7 @@ var ResourceItem = React.createClass({
         error: !!this.errors
       })
       return (
-        <div className="media" key={this.state._id}>
+        <div className="media">
           <div className="form-group">
             <label>Title</label>
             <input type='text' className="form-control" valueLink={this.linkState('title')} />
@@ -440,7 +445,7 @@ var ResourceItem = React.createClass({
       )
     } else {
       return (
-           <li className="media" key={this.state._id}>
+           <li className="media">
            <div className="admin-bar clearfix">
              { this.props.isEditable ? (
              <button className="btn-animated btn-sm vertical btn-danger pull-left" onClick={util.preventEverything(this.props.onDelete.bind(null, this.props.index))}>
@@ -466,6 +471,7 @@ var ResourceItem = React.createClass({
 
 
 module.exports = React.createClass({
+  displayName: 'resourcePage',
 
   render: function() {
 

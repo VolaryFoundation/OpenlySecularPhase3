@@ -39,6 +39,10 @@ var ActiveUpdate = React.createClass({
     })
   },
 
+  componentDidUnmount: function() {
+    delete this.picker
+  },
+
   componentWillReceiveProps: function(newProps) {
     this.setState({ date: newProps.$cursor.deref().date })
   },

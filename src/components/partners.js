@@ -30,7 +30,7 @@ var PartnerList = React.createClass({
 
   deleteItem: function(_id) {
     var index = _.findIndex(this.props.$cursor.deref().list, { _id: _id })
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
   },
 
   render: function() {
@@ -99,7 +99,7 @@ var PartnerList = React.createClass({
 
     var list = this.pagination.getCurrent()
     return (
-      <div className="partners-row" key={this.state.name}>
+      <div className="partners-row" key={this.state._id}>
         { this.detectEditing() ? renderEditing() : renderViewing() }
         <div className="partners-item">
           <div className="partners-list">
@@ -234,6 +234,7 @@ module.exports = React.createClass({
         {
           $campaign.deref().partners.map(function(partners, index) {
             return <PartnerList
+              key={partners.name}
               $cursor={$campaign.refine([ 'partners', index ])}
               index={index}
               onReset={this.forceUpdate.bind(this)}

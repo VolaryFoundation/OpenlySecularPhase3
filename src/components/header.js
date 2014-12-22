@@ -71,6 +71,7 @@ module.exports = React.createClass({
                 <li><a href="/#/" onClick={this.pageUpdater('about')}>About</a></li>
                 <li><a href="/#/" onClick={this.pageUpdater('partners')}>Partners</a></li>
                 <li><a href="/#/" onClick={this.pageUpdater('resources')}>Resources</a></li>
+                <li><a href="http://richarddawkins.myshopify.com/collections/openlysecular" target="_blank">Store</a></li>
                 <li><a href="/#/" onClick={this.pageUpdater('contact')}>Contact</a></li>
                 { logoutButton() }
               </ul>

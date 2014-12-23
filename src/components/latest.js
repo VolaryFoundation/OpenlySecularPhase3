@@ -137,7 +137,7 @@ var Updates = React.createClass({
 
   deleteItem: function(index) {
     this.props.activate(null)
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
   },
 
   render: function() {
@@ -167,6 +167,7 @@ var Updates = React.createClass({
           {
             list.map(function(item, index) {
               return <UpdateItem
+                key={item._id}
                 $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
                 activate={this.props.activate}
                 isEditable={this.props.isEditable}
@@ -251,7 +252,7 @@ var News = React.createClass({
   },
 
   deleteItem: function(index) {
-    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } }, { skipSync: true })
+    this.props.$cursor.update({ list: { $splice: [ [ index, 1 ] ] } })
   },
 
   render: function() {
@@ -281,6 +282,7 @@ var News = React.createClass({
               list.map(function(item, i) {
                 var realI = (this.pagination.index * this.pagination.perPage) + i
                 return <NewsItem
+                  key={item._id}
                   $cursor={this.props.$cursor.refine(['list', realI ])}
                   onDelete={this.deleteItem.bind(null, realI)}
                   isEditable={this.props.isEditable}

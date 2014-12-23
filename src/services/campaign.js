@@ -20,7 +20,7 @@ var campaign = {
   patch: function(patches, delta) {
     var campaign = new Campaign({ objectId: config.campaign.objectId })
     return campaign.fetch().then(function(c) {
-      var merged = _.merge(c.attributes, patches)
+      var merged = _.extend(c.attributes, patches)
       return c.save(merged)
     })
   },

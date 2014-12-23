@@ -7,6 +7,7 @@ var _ = require('lodash')
 var Editable = require('../mixins/editable')
 var util = require('../util')
 var errors = require('../errors')
+var marked = require('marked')
 
 var DonateHome = React.createClass({
 
@@ -62,7 +63,7 @@ var DonateHome = React.createClass({
               <h3 className="action-title"><div className="circle"><div className="circle-content"><i className="heart"></i></div></div>{ this.state.title }</h3>
             </div>
             <div className="action-item-body">
-              <p dangerouslySetInnerHTML={{__html:this.state.content }}></p>
+              <p dangerouslySetInnerHTML={{__html:marked(this.state.content)}}></p>
             </div>
             <div className="action-item-footer">
               <p>
@@ -135,7 +136,7 @@ var GetInvolved = React.createClass({
               <h3 className="action-title"><div className="circle"><div className="circle-content"><i className="group"></i></div></div>{ this.state.title }</h3>
             </div>
             <div className="action-item-body">
-              <p><span className="highlight">{ this.state.content }</span></p>
+              <p><span className="highlight" dangerouslySetInnerHTML={{__html:marked(this.state.content)}}></span></p>
             </div>
             <div className="action-item-footer">
               <p>

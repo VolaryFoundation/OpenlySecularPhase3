@@ -160,22 +160,6 @@ var ContactDetail = React.createClass({
               </div>
             </a>
           </div>
-          <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-phone"></i>
-              </span>
-              <p className="form-control-static">{ this.state.phone }</p>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="input-group">
-              <span className="input-group-addon">
-                <i className="fa fa-fw fa-fax"></i>
-              </span>
-              <p className="form-control-static">{ this.state.fax }</p>
-            </div>
-          </div>
         </div>
         <div className="col-xs-5">
           <br /><br />

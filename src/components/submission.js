@@ -48,7 +48,7 @@ var Guidelines = React.createClass({
           { this.props.isEditable ? (
               <button onClick={this.edit} className="btn-sm btn-animated vertical btn-warning pull-right">
                 <div className="is-visible content"><i className="edit"></i></div>
-                <div className="not-visible content">Edit</div> 
+                <div className="not-visible content">Edit</div>
               </button>
           ) : null }
             <div dangerouslySetInnerHTML={{__html:this.state.content }}></div>

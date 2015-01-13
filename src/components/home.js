@@ -140,9 +140,9 @@ var GetInvolved = React.createClass({
             </div>
             <div className="action-item-footer">
               <p>
-                <a href="#/submission">
+                <a href="#/takeaction">
                 <button type="submit" className="btn-animated btn-md btn-primary">
-                  <div className="is-visible content">Tell Your Story</div>
+                  <div className="is-visible content">Take Action</div>
                   <div className="not-visible content"><i className="next"></i></div>
                 </button>
                 </a>

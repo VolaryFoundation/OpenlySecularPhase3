@@ -589,9 +589,11 @@ a {
     overflow: hidden;
     width: 100%;
     height: 200px;
-
+    padding: 20px 10px;
+    form{
+      padding:20px 0;
+    }
     p {
-      padding: 20px 10px;
 
       span {
        line-height: 24px;
@@ -658,6 +660,31 @@ a {
   }
 }
 
+.actionlist button{
+  float:left;
+  clear:both;
+  margin:10px;
+  width:90px;
+}
+
+ul.actionlist{
+  list-style-type:none;
+  padding:0px;
+  margin:0px;
+}
+
+.actionlist li {
+  clear:both;
+}
+
+.actionlist li p {
+  padding-top:15px;
+  font-weight:500;
+}
+
+.action-item h3 {
+  margin-top:-15px;
+}
 
 
 
@@ -1281,6 +1308,47 @@ a {
   }
 }
 
+//
+//
+//  action //
+//
+//
+
+.action-container {
+  @extend .container-fluid;
+  @extend .col-no-gutter;
+
+  .panel-heading {
+    @extend .stripes;
+  }
+}
+
+.action-row {
+  @include make-row();
+  @extend .row-height;
+  margin: 0;
+}
+
+.action-item {
+
+  &:first-child {
+    @include make-md-column(7, 0);
+    @extend .col-height;
+  }
+
+  &:last-child {
+    @include make-md-column(5, 0);
+    @extend .col-height;
+
+    @media (min-width: $screen-md) {
+      border-left: $border-dark;
+    }
+
+    @media (max-width: $screen-md) {
+      border-top: $border-dark;
+    }
+  }
+}
 
 //
 //

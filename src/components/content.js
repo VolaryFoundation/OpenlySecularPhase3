@@ -16,7 +16,8 @@ var pages = {
   Donation: require('./donation'),
   FAQ: require('./faq'),
   FamousFreethinkers: require('./famous-freethinkers'),
-  RemoveYourMask: require('./removeyourmask')
+  RemoveYourMask: require('./removeyourmask'),
+  TakeAction: require('./takeaction')
 }
 
 module.exports = React.createClass({
@@ -60,6 +61,9 @@ module.exports = React.createClass({
         break
       case 'removeyourmask':
         Page = _.partial(pages.RemoveYourMask, { $shared: this.props.$shared, $campaign: this.props.$campaign })
+        break
+      case 'takeaction':
+        Page = _.partial(pages.TakeAction, { $shared: this.props.$shared, $campaign: this.props.$campaign })
         break
     }
 

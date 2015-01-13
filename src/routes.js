@@ -37,6 +37,10 @@ module.exports = function($shared) {
       go('submission')
     },
 
+    'takeaction /takeaction': function() {
+      go('takeaction')
+    },
+
     'guidelines /guidelines': function() {
       go('guidelines')
     },

@@ -25,7 +25,7 @@ var DownloadList = React.createClass({
   },
   add: function(e) {
     e.preventDefault()
-    var list = this.state.list
+    var list = this.props.$cursor.deref().list
     var _id = util.nextId(list)
     this.props.$cursor.update({ list: { $unshift: [ { _id: _id, name: '', file: '', description: '' } ] } }, {skipSync:true})
   },
@@ -59,10 +59,10 @@ var DownloadList = React.createClass({
                   this.pagination.getCurrent().map(function(item, index) {
                     return <DownloadItem
                       key={item._id || 'new'}
-                      $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
+                      $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
                       isEditable={this.props.isEditable}
-                      isNew={!item.name}
                       onDelete={this.deleteItem.bind(this, index)}
+                      onSave={this.save}
                     />
                   }, this)
                 }
@@ -104,10 +104,10 @@ var DownloadList = React.createClass({
               this.pagination.getCurrent().map(function(item, index) {
                 return <DownloadItem
                   key={item._id || 'new'}
-                  $cursor={this.props.$cursor.refine([ 'list', this.props.$cursor.deref().list.indexOf(item) ])}
+                  $cursor={this.props.$cursor.refine(['list', this.props.$cursor.deref().list.indexOf(item) ])}
                   isEditable={this.props.isEditable}
-                  isNew={!item.name}
                   onDelete={this.deleteItem.bind(this, index)}
+                  onSave={this.save}
                 />
               }, this)
             }

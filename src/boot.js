@@ -7,6 +7,7 @@ var sync = require('./sync')
 var routes = require('./routes')
 
 var campaignService = require('./services/campaign')
+var newsService = require('./services/news')
 var sessionService = require('./services/session')
 require('./services/upload').link()
 
@@ -29,6 +30,7 @@ function render(state, oldState, delta, opts) {
 
   if (!opts.skipSync) {
     campaignService.sync($campaign)
+    newsService.sync($news)
     sessionService.sync($session)
   }
 
@@ -48,6 +50,7 @@ function render(state, oldState, delta, opts) {
 
 var $root = util.cursor({}, render)
 var $campaign = $root.refine('campaign')
+var $news = $root.refine('news')
 var $shared = $root.refine('shared')
 var $session = $shared.refine('session')
 

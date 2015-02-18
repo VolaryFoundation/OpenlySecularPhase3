@@ -261,6 +261,12 @@ $background-highlight: #f5f5f5  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
   }
 }
 
+.get-more {
+  text-align:center;
+  font-size:20px;
+  line-height:40px;
+  font-weight:bold;
+}
 //
 //
 //  Main //
@@ -706,6 +712,10 @@ ul.actionlist{
 .latest-container {
   @include container-fixed;
   border-top: $brand-border;
+}
+
+.latestbody {
+  padding-bottom:50px;
 }
 
 .latest-row {

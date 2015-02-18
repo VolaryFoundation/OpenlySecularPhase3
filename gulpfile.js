@@ -24,13 +24,22 @@ function getCampaign(slug, fn) {
   return query.equalTo('slug', slug).first(fn)
 }
 
+function getNews(slug, fn) {
+  var News = Parse.Object.extend('News')
+  var query = new Parse.Query(News)
+  return query.equalTo('slug', slug).first(fn)
+}
+
 gulp.task('buildAndServe', function(done) {
 
   Parse.initialize(config.parse.appId, config.parse.jsKey);
 
   getCampaign('development', function(campaign) {
-    builder.buildAndServe({ campaign: campaign.toJSON() }, {})
-    done()
+    getNews('development', function(news) {
+      builder.buildAndServe({ campaign: campaign.toJSON(), news: news.toJSON()}, {})
+      done()
+    })
+
   })
 })
 
@@ -40,12 +49,14 @@ gulp.task('deploy', function(done) {
 
   var slug = parseSlug(process.argv)
   getCampaign(slug, function(campaign) {
-    builder.buildAndUpload({ campaign: campaign.toJSON() }, {
+    getNews(slug, function(news) {
+    builder.buildAndUpload({ campaign: campaign.toJSON(), news: news.toJSON() }, {
       accessKeyId: creds.secretKeyId,
       secretKey: creds.secretKey,
       bucket: slug + '.awaren.es'
     })
     done()
+    })
   })
 })
 

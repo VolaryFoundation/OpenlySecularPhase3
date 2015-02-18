@@ -18,7 +18,7 @@ module.exports = React.createClass({
 
     }
 
-    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2hAwdlHVXw2jTGUFahKH43l?max-results=50&v=2&alt=json';
+    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2geH_bYKqSXjd6SvKt_hYqA?max-results=50&v=2&alt=json';
     var videoURL= 'http://www.youtube.com/watch?v=';
 
     var xhr = new XMLHttpRequest
@@ -99,6 +99,7 @@ module.exports = React.createClass({
         <div className="stream-row">
           {this.renderStream()}
         </div>
+          <div className="get-more"><a href="https://www.youtube.com/user/OpenlySecular" target="_blank">See More Videos</a></div>
       </div>
     )
   }

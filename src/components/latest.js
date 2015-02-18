@@ -62,6 +62,16 @@ var ActiveUpdate = React.createClass({
               <div className="not-visible content">Close</div>
             </button>
           </div>
+          <div className="panel-footer clearfix">
+            <button onClick={cancel} className="btn-md btn-animated vertical btn-default pull-left">
+              <div className="is-visible content"><i className="cancel"></i></div>
+              <div className="not-visible content">Cancel</div>
+            </button>
+            <button onClick={this.saveAndReset} className="btn-md btn-animated vertical btn-success pull-right">
+              <div className="is-visible content">Save</div>
+              <div className="not-visible content"><i className="save"></i></div>
+            </button>
+          </div>
           <div className="panel-body">
             <div className="form-group">
               <label>Title</label>
@@ -79,16 +89,6 @@ var ActiveUpdate = React.createClass({
               <label>Content</label>
               <textarea className="form-control" rows="15" valueLink={this.linkState('content')}></textarea>
             </div>
-          </div>
-          <div className="panel-footer clearfix">
-            <button onClick={cancel} className="btn-md btn-animated vertical btn-default pull-left">
-              <div className="is-visible content"><i className="cancel"></i></div>
-              <div className="not-visible content">Cancel</div>
-            </button>
-            <button onClick={this.saveAndReset} className="btn-md btn-animated vertical btn-success pull-right">
-              <div className="is-visible content">Save</div>
-              <div className="not-visible content"><i className="save"></i></div>
-            </button>
           </div>
         </div>
       )
@@ -455,6 +455,8 @@ module.exports = React.createClass({
 
     var $shared = this.props.$shared
     var $campaign = this.props.$campaign
+    var $news = this.props.$news
+
     var activeUpdate = this.props.$shared.deref().activeUpdate
 
     return (
@@ -463,7 +465,7 @@ module.exports = React.createClass({
           <div className="latest-item">
             <div className="latest-item-content">
               <Updates
-                $cursor={$campaign.refine('updates')}
+                $cursor={$news.refine('updates')}
                 isEditable={!_.isEmpty($shared.deref().session)}
                 activate={this.activate}
               />

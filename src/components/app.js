@@ -47,6 +47,7 @@ module.exports = React.createClass({
     var $root = this.props.$root
     var $shared = $root.refine('shared')
     var $campaign = $root.refine('campaign')
+    var $news = $root.refine('news')
 
     this.resolveFlash($shared)
 
@@ -55,7 +56,7 @@ module.exports = React.createClass({
       <div>
         <GAInitiailizer />
         <Header $root={$root} $shared={$shared} />
-        <Content $root={$root} $campaign={$campaign} $shared={$shared} />
+        <Content $root={$root} $campaign={$campaign} $shared={$shared} $news={$news} />
         <Stream $root={$root} />
       </div>
     )

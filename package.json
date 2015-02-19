@@ -36,7 +36,8 @@
     "volary-static-builder": "*",
     "xhr": "^1.15.0",
     "yaml": "^0.2.3",
-    "zepto": "0.0.4"
+    "zepto": "0.0.4",
+    "prerender-node": "~1.2.1"
   },
   "devDependencies": {
     "gulp": "^3.8.6"

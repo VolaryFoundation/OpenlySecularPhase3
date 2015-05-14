@@ -136,13 +136,13 @@ module.exports = React.createClass({
               <h3>Six Ways to be Openly Secular</h3>
               <ul className="actionlist">
               <li>
-                <a href="#/submission">
+                <a href="/submission">
                   <button type="submit" className="btn-animated btn-md btn-primary">
                     <div className="is-visible content">Create</div>
                     <div className="not-visible content"><i className="next"></i></div>
                   </button>
                 </a>
-                <p>Film <a href="https://www.youtube.com/user/OpenlySecular">a YouTube </a>video and <a href="http://www.openlysecular.org/#/submission">submit it on our website</a>.</p>
+                <p>Film <a href="https://www.youtube.com/user/OpenlySecular">a YouTube </a>video and <a href="http://www.openlysecular.org/submission">submit it on our website</a>.</p>
               </li>
               <li>
                 <a href="http://instagram.com/openlysecular" target="_blank">
@@ -154,13 +154,13 @@ module.exports = React.createClass({
                 <p>Post a short video on <a href="https://vine.co/OpenlySecular">Vine</a> and <a href="http://instagram.com/openlysecular">Instagram</a>.</p>
               </li>
               <li>
-                <a href="http://www.openlysecular.org/#/resources">
+                <a href="http://www.openlysecular.org/resources">
                   <button type="submit" className="btn-animated btn-md btn-primary">
                     <div className="is-visible content">Post</div>
                     <div className="not-visible content"><i className="next"></i></div>
                   </button>
                 </a>
-                <p>Post pictures on <a href="http://instagram.com/openlysecular">Instagram</a> or <a href="https://www.facebook.com/OpenlySecular">Facebook </a>using our <a href="http://www.openlysecular.org/#/resources">customizable Openly Secular signs</a>.</p>
+                <p>Post pictures on <a href="http://instagram.com/openlysecular">Instagram</a> or <a href="https://www.facebook.com/OpenlySecular">Facebook </a>using our <a href="http://www.openlysecular.org/resources">customizable Openly Secular signs</a>.</p>
               </li>
               <li>
                 <a href="https://twitter.com/search?src=typd&amp;q=%23openlysecular" target="_blank">

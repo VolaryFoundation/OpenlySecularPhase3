@@ -5,7 +5,6 @@ var hub = require('./hub')
 var util = require('./util')
 var sync = require('./sync')
 var routes = require('./routes')
-
 var campaignService = require('./services/campaign')
 var newsService = require('./services/news')
 var sessionService = require('./services/session')
@@ -16,7 +15,10 @@ window.React = React
 
 Parse.initialize('P6N7zNHb43Px9Yd6DZ3QyzAGvGMXxH9cT6PXufrJ', 'c3y15CZxjimWcozyP6b2ywhaKU0OWzVbdwsfL46l');
 
+
+
 var App = require('./components/app')
+
 
 hub.on('modal:open', function() {
   $(document.body).addClass('modal-open')

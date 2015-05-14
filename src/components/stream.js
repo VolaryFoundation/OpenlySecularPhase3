@@ -18,8 +18,8 @@ module.exports = React.createClass({
 
     }
 
-    var playListURL = 'http://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2geH_bYKqSXjd6SvKt_hYqA?max-results=50&v=2&alt=json';
-    var videoURL= 'http://www.youtube.com/watch?v=';
+    var playListURL = 'https://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2geH_bYKqSXjd6SvKt_hYqA?max-results=50&v=2&alt=json';
+    var videoURL= 'https://www.youtube.com/watch?v=';
 
     var xhr = new XMLHttpRequest
     xhr.open('GET', playListURL, true)
@@ -61,7 +61,7 @@ module.exports = React.createClass({
             '<div class="not-visible content">Close</div>',
           '</button>',
         '</div>',
-        '<iframe src="http://www.youtube.com/embed/' + id + '?rel=0"} frameBorder="0" allowFullScreen></iframe>',
+        '<iframe src="https://www.youtube.com/embed/' + id + '?rel=0"} frameBorder="0" allowFullScreen></iframe>',
         '</div>' ].join('')).appendTo('body')
         return <div></div>
       }
@@ -72,8 +72,8 @@ module.exports = React.createClass({
       var feedURL = item.link[1].href;
       var fragments = feedURL.split("/");
       var videoID = fragments[fragments.length - 2];
-      var url = 'http://www.youtube.com/watch?v=' + videoID;
-      var thumb = "http://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
+      var url = 'https://www.youtube.com/watch?v=' + videoID;
+      var thumb = "https://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
       var classes = React.addons.classSet({
         video: true
       })

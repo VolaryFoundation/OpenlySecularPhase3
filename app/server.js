@@ -21,6 +21,11 @@ var campaignService = require('./services/campaigns')
 var sessionService = require('./services/session')
 var uploadService = require('./services/uploads')
 
+var app = express()
+
+app.use(require('prerender-node').set('prerenderToken', '88IzXBfWdrRu4AQJLNKq'));
+
+
 server
   .use(multiparty())
   .use(bodyParser.json())
@@ -28,7 +33,7 @@ server
   .use(cookieSession({ secret: 'foo' }))
   .use(passport.initialize())
   .use(passport.session())
-  .use(cors({ 
+  .use(cors({
     credentials: true,
     origin: function(origin, cb) { cb(null, true) }
   }))

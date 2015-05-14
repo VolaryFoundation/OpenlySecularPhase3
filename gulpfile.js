@@ -3,7 +3,7 @@ var gulp = require('gulp')
 var config = require('config')
 var Parse = require('parse').Parse
 var _ = require('lodash')
-
+var uglify = require('gulp-uglify');
 var srcPath = __dirname + '/src'
 var builder = require('volary-static-builder')({ srcPath: srcPath })
 var creds = require('./.aws-creds.json')

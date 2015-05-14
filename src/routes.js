@@ -1,5 +1,5 @@
 
-var routie = require('routie-client')
+var routie = require('page')
 
 module.exports = function($shared) {
 
@@ -7,78 +7,27 @@ module.exports = function($shared) {
     $shared.update({ page: { $set: page } })
   }
 
-  routie({
+  routie('/', go.bind(null, 'home'))
+  routie('/about', go.bind(null, 'about'))
+  routie('/latest', go.bind(null, 'latest'))
+  routie('/partners', go.bind(null, 'partners'))
+  routie('/partner-apply', go.bind(null, 'partner-apply'))
+  routie('/media', go.bind(null, 'media'))
+  routie('/submission', go.bind(null, 'submission'))
+  routie('/takeaction', go.bind(null, 'takeaction'))
+  routie('/guidelines', go.bind(null, 'guidelines'))
+  routie('/media', go.bind(null, 'media'))
+  routie('/resources', go.bind(null, 'resources'))
+  routie('/takeaction', go.bind(null, 'takeaction'))
+  routie('/toolkits', go.bind(null, 'resources'))
+  routie('/contact', go.bind(null, 'contact'))
+  routie('/takeaction', go.bind(null, 'takeaction'))
+  routie('/toolkits', go.bind(null, 'resources'))
+  routie('/donation', go.bind(null, 'donation'))
+  routie('/faq', go.bind(null, 'faq'))
+  routie('/famous-freethinkers', go.bind(null, 'famous-freethinkers'))
+  routie('/removeyourmask', go.bind(null, 'removeyourmask'))
 
-    'home /': function() {
-      go('home')
-    },
+  routie()
 
-    'about /about': function() {
-      go('about')
-    },
-
-    'latest /latest': function() {
-      go('latest')
-    },
-
-    'partners /partners': function() {
-      go('partners')
-    },
-
-    'partner-apply /partner-apply': function() {
-      go('partner-apply')
-    },
-
-    'media /media': function() {
-      go('media')
-    },
-
-    'submission /submission': function() {
-      go('submission')
-    },
-
-    'takeaction /takeaction': function() {
-      go('takeaction')
-    },
-
-    'guidelines /guidelines': function() {
-      go('guidelines')
-    },
-
-    'resources /resources': function() {
-      go('resources')
-    },
-
-    'toolkits /toolkits': function() {
-      go('resources')
-    },
-
-    'contact /contact': function() {
-      go('contact')
-    },
-
-    'submission /submission': function() {
-      go('submission')
-    },
-
-    'donation /donation': function() {
-      go('donation')
-    },
-
-    'faq /faq': function() {
-      go('faq')
-    },
-
-    'famous-freethinkers /famous-freethinkers': function() {
-      go('famous-freethinkers')
-    },
-
-    'famousfreethinkers /famousfreethinkers': function() {
-      go('famous-freethinkers')
-    },
-
-    'removeyourmask /removeyourmask': function() {
-      go('removeyourmask')
-    }
-  })
 }

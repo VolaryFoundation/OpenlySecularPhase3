@@ -1,0 +1,11 @@
+
+<html>
+  <head>
+    <title>Openly Secular</title>
+    <pre>
+    <?php
+    print_r(apache_get_modules());
+    ?>
+    </pre>
+  </body>
+</html>

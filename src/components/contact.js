@@ -355,7 +355,7 @@ module.exports = React.createClass({
                     </button></a>
                     <br />
                     <br />
-                    <p><a href="#/resources">View More Resources</a></p>
+                    <p><a href="/resources">View More Resources</a></p>
                   </div>
                 </div>
               </div>

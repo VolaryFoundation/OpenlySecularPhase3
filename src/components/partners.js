@@ -246,7 +246,7 @@ module.exports = React.createClass({
         <div className="row">
           <div className="partner-apply">
             Interested in becoming a Partner or Ally?
-            <a href="/#/partner-apply">
+            <a href="/partner-apply">
               <button className="btn-md btn-animated vertical btn-primary">
                 <div className="is-visible content">Apply</div>
                 <div className="not-visible content"><i className="next"></i></div>

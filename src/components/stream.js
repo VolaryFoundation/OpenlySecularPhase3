@@ -27,7 +27,7 @@ module.exports = React.createClass({
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var videos = JSON.parse(xhr.responseText)
-        this.setState({ videos: _.shuffle(videos.items.snippet) })
+        this.setState({ videos: _.shuffle(videos.items) })
       }
     }.bind(this)
   },
@@ -67,8 +67,11 @@ module.exports = React.createClass({
       }
     }.bind(this)
 
-    return this.state.videos.map(function(videoSnippet) {
-      var feedTitle = videoSnippet.title.$t;
+		console.log('in stream')
+    return this.state.videos.map(function(video) {
+			var videoSnippet = video.snippet
+			console.log(videoSnippet)
+      var feedTitle = videoSnippet.title;
       var videoID = videoSnippet.resourceId.videoId;
       var url = 'https://www.youtube.com/watch?v=' + videoID;
       var thumb = "https://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";

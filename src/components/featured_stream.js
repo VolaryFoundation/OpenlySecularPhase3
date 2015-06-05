@@ -24,7 +24,7 @@ module.exports = React.createClass({
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var videos = JSON.parse(xhr.responseText)
-        this.setState({ videos: videos.feed.entry })
+        this.setState({ videos: videos.items })
       }
     }.bind(this)
 
@@ -53,10 +53,11 @@ module.exports = React.createClass({
     }.bind(this)
 
     return videos.map(function(item) {
-      var feedTitle = item.title.$t;
-      var feedURL = item.link[1].href;
-      var fragments = feedURL.split("/");
-      var videoID = fragments[fragments.length - 2];
+      var feedTitle = item.snippet.title;
+			//var feedURL = item.link[1].href;
+			//var fragments = feedURL.split("/");
+			//var videoID = fragments[fragments.length - 2];
+			var videoID = item.snippet.resourceId.videoId
       var url = 'https://www.youtube.com/watch?v=' + videoID;
       var thumb = "https://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
       var classes = React.addons.classSet({
@@ -77,9 +78,10 @@ module.exports = React.createClass({
   renderFeature: function() {
     var featured = this.state.featured || this.state.videos[0]
     if (!featured) return
-    var feedURL = featured.link[1].href;
-    var fragments = feedURL.split("/");
-    var videoID = fragments[fragments.length - 2];
+		//var feedURL = featured.link[1].href;
+		//var fragments = feedURL.split("/");
+		//var videoID = fragments[fragments.length - 2];
+		var videoID = featured.snippet.resourceId.videoId
     return (
       <div className="video-container"><iframe src={"https://www.youtube.com/embed/" + videoID + "?rel=0"} width="560" height="315" frameBorder="0" allowFullScreen></iframe></div>
     )

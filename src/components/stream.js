@@ -18,7 +18,7 @@ module.exports = React.createClass({
 
     }
 
-    var playListURL = 'https://gdata.youtube.com/feeds/api/playlists/PLz8PTUrU7V2geH_bYKqSXjd6SvKt_hYqA?max-results=50&v=2&alt=json';
+    var playListURL = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLz8PTUrU7V2geH_bYKqSXjd6SvKt_hYqA&key=AIzaSyDEaJ3gB-Ba__STHanfsW8HRwrRM2OqUMc';
     var videoURL= 'https://www.youtube.com/watch?v=';
 
     var xhr = new XMLHttpRequest
@@ -27,7 +27,7 @@ module.exports = React.createClass({
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var videos = JSON.parse(xhr.responseText)
-        this.setState({ videos: _.shuffle(videos.feed.entry) })
+        this.setState({ videos: _.shuffle(videos.items.snippet) })
       }
     }.bind(this)
   },
@@ -67,11 +67,9 @@ module.exports = React.createClass({
       }
     }.bind(this)
 
-    return this.state.videos.map(function(item) {
-      var feedTitle = item.title.$t;
-      var feedURL = item.link[1].href;
-      var fragments = feedURL.split("/");
-      var videoID = fragments[fragments.length - 2];
+    return this.state.videos.map(function(videoSnippet) {
+      var feedTitle = videoSnippet.title.$t;
+      var videoID = videoSnippet.resourceId.videoId;
       var url = 'https://www.youtube.com/watch?v=' + videoID;
       var thumb = "https://img.youtube.com/vi/"+ videoID +"/mqdefault.jpg";
       var classes = React.addons.classSet({
@@ -82,7 +80,7 @@ module.exports = React.createClass({
           <img className="img-responsive" src={thumb} />
           <div className="overlay">
             <figure className="fa fa-3x fa-youtube-play"></figure>
-            <div className="video-title">{feedTitle.split("-")[0]}</div>
+            <div className="video-title">{feedTitle}</div>
           </div>
         </a>
         {renderVideoFor(url, videoID)}
